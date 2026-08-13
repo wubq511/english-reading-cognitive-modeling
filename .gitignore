@@ -1,0 +1,27 @@
+.DS_Store
+
+# Private recovery evidence. Keep locally; never add to public Git history.
+webchat_raw_materials/
+
+# Third-party full text is local by default. Rights-cleared release assets are
+# published separately only after a recorded license audit.
+papers/**/*.pdf
+papers/.staging/
+tmp/
+
+# Human-participant and sensitive research data never belongs in public Git.
+data/human/
+data/private/
+data/identifiers/
+artifacts/human/
+
+# Raw AI provider payloads may contain licensed or human-derived inputs.
+artifacts/ai/raw/
+
+# Secrets and local environments.
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
