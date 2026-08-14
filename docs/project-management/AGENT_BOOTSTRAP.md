@@ -1,4 +1,4 @@
-# Agent First-Entry Bootstrap Audit
+# Agent Bootstrap Governance
 
 Status: `CURRENT`
 Audit date: 2026-08-14

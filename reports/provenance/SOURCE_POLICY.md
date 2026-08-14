@@ -56,6 +56,7 @@ Handoff 是会话边界时由 ChatGPT 生成的派生文档，不是逐字 trans
 | 阶段依赖与 exit gate | `reports/project_state/ROADMAP.md` | 阶段 ID 与指针，不维护 current status |
 | Baseline 架构 | `reports/synthesis/SYSTEM_DESIGN.md` | Module/section ID 与指针 |
 | AI 与真人治理 | 对应 `reports/protocols/` | 一句话不可突破边界与指针 |
+| Agent 启动与来源协作机制 | `docs/project-management/AGENT_BOOTSTRAP.md` + `docs/project-management/SOURCE_DISTRIBUTION.md` | 命令/决策摘要与指针，不复制机制正文 |
 | 外部来源身份、路径、版本、权利与 hash | `sources/catalog.yaml` + `sources/checksums.sha256` | 稳定 source ID、页码和指针 |
 | 来源编号/历史路径到当前路径 | `SOURCE_REPORT_CROSSWALK.md` | 旧 alias，不复制书目真值 |
 | 实验设计与 run 复现规则 | `experiments/README.md` + 对应 `EXP-*` spec | experiment/run ID 与结果摘要 |

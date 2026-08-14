@@ -15,7 +15,7 @@ The approved first snapshot must remain metadata-first: it contains canonical re
 | Check | Result |
 | --- | --- |
 | Tracked raw recovery material | `0`; `webchat_raw_materials/` is ignored |
-| Prospective tracked files | `86` |
+| Prospective tracked files | `87` |
 | Tracked third-party source files | `0`; only `sources/library/README.md` is tracked below the ignored local library |
 | Tracked human/private data directories | `0` |
 | Common credential/token/private-key signatures | no matches in the staged snapshot |
@@ -37,7 +37,7 @@ The credential scan is a bounded signature scan, not a proof that arbitrary pros
 - Despite the permissions, **zero source originals may enter the first Git history**. Any later release is a separate file-level audit and public-approval event.
 - Collaborators run `scripts/bootstrap` once. Human downloads go to `tmp/pdfs/`; Agents update metadata and use `scripts/sources inbox`, which removes only verified migrated copies.
 
-The legal and engineering rationale is recorded in [`../research/public-repository-source-distribution-audit.md`](../research/public-repository-source-distribution-audit.md).
+The legal and engineering rationale is recorded in [`../../docs/project-management/SOURCE_DISTRIBUTION.md`](../../docs/project-management/SOURCE_DISTRIBUTION.md).
 
 ## Research-claim boundary
 
@@ -51,20 +51,20 @@ The legal and engineering rationale is recorded in [`../research/public-reposito
 
 ```text
 28 unit tests                                      PASS
-scripts/verify (local)                            PASS: 65 Markdown, 80 sources, 25 raw sources
-scripts/verify --public                           PASS: 65 Markdown, 80 sources, 25 raw sources
+scripts/verify (local)                            PASS: 66 Markdown, 80 sources, 25 raw sources
+scripts/verify --public                           PASS: 66 Markdown, 80 sources, 25 raw sources
 scripts/bootstrap --check                         PASS: core.hooksPath=.githooks
 scripts/sources inbox                             PASS: inbox empty
 scripts/sources sync                              PASS: no missing direct-public dependency
 scripts/sources doctor                            PASS: 80/80 exact local dependencies
 CITATION.cff parse                                PASS
-prospective Git index                             PASS: 86 files, 0 PDFs, 0 raw files, 0 tmp files
+prospective Git index                             PASS: 87 files, 0 PDFs, 0 raw files, 0 tmp files
 secret/path/credential URL/email signature scan   PASS: no matches
 CLAUDE.md                                         PASS: mode 120000 -> AGENTS.md
 git diff --cached --check                         PASS
 ```
 
-The Git client does not clone or automatically enable repository-controlled hooks. Each clone therefore needs one explicit `scripts/bootstrap` invocation; the root `AGENTS.md` requires both Codex and Claude (through the `CLAUDE.md` symlink) to announce and run it before work, so the human does not need to remember the command. After that, configured checkout, merge and push hooks enforce the source and repository gates automatically. Duplicate tool-specific SessionStart Hooks are intentionally deferred unless real omission evidence appears. The existing GitHub Actions Workflow is retained for remote push/PR verification; it cannot bootstrap a local clone. See [`../research/agent-first-entry-bootstrap-audit.md`](../research/agent-first-entry-bootstrap-audit.md).
+The Git client does not clone or automatically enable repository-controlled hooks. Each clone therefore needs one explicit `scripts/bootstrap` invocation; the root `AGENTS.md` requires both Codex and Claude (through the `CLAUDE.md` symlink) to announce and run it before work, so the human does not need to remember the command. After that, configured checkout, merge and push hooks enforce the source and repository gates automatically. Duplicate tool-specific SessionStart Hooks are intentionally deferred unless real omission evidence appears. The existing GitHub Actions Workflow is retained for remote push/PR verification; it cannot bootstrap a local clone. See [`../../docs/project-management/AGENT_BOOTSTRAP.md`](../../docs/project-management/AGENT_BOOTSTRAP.md).
 
 ## Residual actions after publication
 

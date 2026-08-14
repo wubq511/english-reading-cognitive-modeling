@@ -22,10 +22,11 @@ scripts/verify
 | Path | Single responsibility |
 | --- | --- |
 | `CONTEXT.md` | 项目术语 |
+| `docs/project-management/` | Agent 启动、来源同步和仓库协作机制 |
 | `reports/project_state/` | 当前状态、研究问题、路线图和人工行动 |
 | `reports/synthesis/` | Baseline 系统与测量设计 |
 | `reports/protocols/` | 实验、AI、真人与数据治理 gate |
-| `reports/research/` | 有范围的一手来源专项审计 |
+| `reports/research/` | 针对科研问题、方法与材料的一手来源专项审计 |
 | `reports/provenance/` | 来源权威、知识 owner、矛盾和路径谱系 |
 | `reports/literature/` | 已沉淀的文献深读资产 |
 | `sources/` | 外部论文、标准、题目、第三方数据及其 catalog/checksum |

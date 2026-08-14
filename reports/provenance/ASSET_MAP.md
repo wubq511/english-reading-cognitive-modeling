@@ -3,10 +3,11 @@
 | Asset | Purpose | Authority/use | Public Git default |
 | --- | --- | --- | --- |
 | root `README.md`, `AGENTS.md`, `CONTEXT.md` | orientation, rules and terminology | canonical; `CLAUDE.md` symlinks to `AGENTS.md` | include |
+| `docs/project-management/` | Agent startup, source synchronization and repository collaboration | canonical project operations | include |
 | `reports/project_state/` | current status and plan | canonical | include |
 | `reports/synthesis/` | recovered system/research design | canonical with claim labels | include under CC BY 4.0 policy |
 | `reports/protocols/` | AI/human/experiment gates | canonical | include |
-| `reports/research/` | primary-source audits and exact acquisition queues | canonical scoped research | include |
+| `reports/research/` | scientific primary-source audits and exact research acquisition queues | canonical scoped research | include |
 | `reports/provenance/` | audit trail and crosswalk | canonical provenance | include, excluding sensitive content |
 | `reports/literature/a-e/` | detailed paper deep reads | derived research asset; verify against PDF for high-stakes claims | include after source-link cleanup |
 | `reports/literature/ui-interaction/` | UI paper notes | derived research asset | include after rename/link cleanup |
