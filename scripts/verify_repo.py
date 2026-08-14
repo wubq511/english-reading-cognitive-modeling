@@ -32,6 +32,15 @@ HISTORY_ALLOWLIST = {
     "scripts/verify_repo.py",
 }
 REQUIRED_HOOKS = ("post-checkout", "post-merge", "pre-commit", "pre-push")
+REQUIRED_WINDOWS_WRAPPERS = (
+    "bootstrap.cmd",
+    "logs.cmd",
+    "skills.cmd",
+    "sources.cmd",
+    "verify.cmd",
+    "workflow.cmd",
+    "skill-evals.cmd",
+)
 REQUIRED_SKELETON = (
     "src/README.md",
     "experiments/README.md",
@@ -43,6 +52,9 @@ REQUIRED_SKELETON = (
     "data/derived/README.md",
     "artifacts/README.md",
     "scripts/README.md",
+    "docs/agents/README.md",
+    "docs/agents/research-workflow.md",
+    "docs/agents/issue-tracker.md",
 )
 
 
@@ -92,19 +104,17 @@ def check_stale_current_paths() -> list[str]:
     return errors
 
 
-def check_agent_rule_link() -> list[str]:
+def check_agent_rule_import() -> list[str]:
     agents = ROOT / "AGENTS.md"
     claude = ROOT / "CLAUDE.md"
     errors: list[str] = []
     if not agents.is_file():
         errors.append("missing-agent-rules AGENTS.md")
-    if not claude.is_symlink():
-        errors.append("claude-rules-must-be-symlink CLAUDE.md -> AGENTS.md")
+    if claude.is_symlink() or not claude.is_file():
+        errors.append("claude-rules-must-be-import-shim CLAUDE.md")
         return errors
-    if os.readlink(claude) != "AGENTS.md":
-        errors.append(f"claude-rules-wrong-target CLAUDE.md -> {os.readlink(claude)}")
-    if claude.resolve(strict=False) != agents.resolve(strict=False):
-        errors.append("claude-rules-resolve-mismatch CLAUDE.md != AGENTS.md")
+    if claude.read_text(encoding="utf-8") != "@AGENTS.md\n":
+        errors.append("claude-rules-wrong-import expected=@AGENTS.md_only")
     return errors
 
 
@@ -120,7 +130,50 @@ def check_hook_files() -> list[str]:
         hook = ROOT / ".githooks" / name
         if not hook.is_file() or not os.access(hook, os.X_OK):
             errors.append(f"missing-or-nonexecutable .githooks/{name}")
+    for name in (
+        "bootstrap.py",
+        "skill-evals",
+        "skill_evals.py",
+        "skills",
+        "skills.py",
+        "workflow",
+        "workflow.py",
+    ):
+        path = ROOT / "scripts" / name
+        if not path.is_file() or (not name.endswith(".py") and not os.access(path, os.X_OK)):
+            errors.append(f"missing-or-nonexecutable scripts/{name}")
+    for name in REQUIRED_WINDOWS_WRAPPERS:
+        if not (ROOT / "scripts" / name).is_file():
+            errors.append(f"missing-windows-wrapper scripts/{name}")
     return errors
+
+
+def run_skill_doctor() -> list[str]:
+    result = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "skills.py"), "doctor"],
+        cwd=ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    if result.returncode:
+        return ["skills-doctor-failed\n" + result.stdout.rstrip()]
+    return []
+
+
+def run_skill_eval_doctor() -> list[str]:
+    result = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "skill_evals.py"), "doctor"],
+        cwd=ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    if result.returncode:
+        return ["skill-evals-doctor-failed\n" + result.stdout.rstrip()]
+    return []
 
 
 def run_activity_log_check(command: str) -> list[str]:
@@ -275,8 +328,10 @@ def main(argv: list[str] | None = None) -> int:
     errors = []
     errors.extend(check_links())
     errors.extend(check_stale_current_paths())
-    errors.extend(check_agent_rule_link())
+    errors.extend(check_agent_rule_import())
     errors.extend(check_hook_files())
+    errors.extend(run_skill_doctor())
+    errors.extend(run_skill_eval_doctor())
     errors.extend(check_workspace_skeleton())
     errors.extend(check_knowledge_ownership())
     errors.extend(check_source_crosswalk())

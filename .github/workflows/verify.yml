@@ -21,7 +21,43 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.13"
+      - name: Install platform skill mappings
+        run: python scripts/skills.py install
       - name: Run unit tests
         run: python3 -m unittest discover -s tests -v
       - name: Verify tracked public snapshot
         run: scripts/verify --public
+
+  skill-portability:
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - macos-latest
+          - windows-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+      - name: Install platform skill mappings
+        run: python scripts/skills.py install
+      - name: Verify platform skill mappings
+        run: python scripts/skills.py doctor
+      - name: Confirm mapping installation keeps checkout clean
+        run: >-
+          python -c "import subprocess,sys;
+          output=subprocess.run(['git','status','--porcelain'],text=True,stdout=subprocess.PIPE,check=True).stdout;
+          print(output,end='');
+          sys.exit(1 if output.strip() else 0)"
+      - name: Verify Windows wrapper
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: scripts\skills.cmd doctor
+      - name: Run skill mapping tests
+        run: python -m unittest tests.test_skills_cli tests.test_skill_evals -v

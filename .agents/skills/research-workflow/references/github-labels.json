@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "labels": [
+    {"name": "wayfinder:map", "color": "5319e7", "description": "Parent decision map for a large effort"},
+    {"name": "wayfinder:research", "color": "1d76db", "description": "Primary-source investigation for a decision"},
+    {"name": "wayfinder:prototype", "color": "a2eeef", "description": "Disposable prototype for a human decision"},
+    {"name": "wayfinder:grilling", "color": "d4c5f9", "description": "Human-owned decision conversation"},
+    {"name": "wayfinder:task", "color": "c5def5", "description": "Manual or access prerequisite for a decision"},
+    {"name": "workflow:spec", "color": "0052cc", "description": "Specification publication or tracking issue"},
+    {"name": "spec:implementation", "color": "006b75", "description": "Implementation or instrument behavior contract"},
+    {"name": "spec:experiment", "color": "0e8a16", "description": "Tracking surface for a canonical EXP spec"},
+    {"name": "spec:hybrid", "color": "fbca04", "description": "Parent linking implementation and experiment contracts"},
+    {"name": "workflow:ticket", "color": "0366d6", "description": "Executable evidence-slice ticket"},
+    {"name": "work:research", "color": "1d76db", "description": "Research evidence slice"},
+    {"name": "work:source", "color": "bfdadc", "description": "Source, item, data-rights, or catalog slice"},
+    {"name": "work:experiment", "color": "0e8a16", "description": "Experiment design, run, or analysis slice"},
+    {"name": "work:code", "color": "006b75", "description": "Executable implementation slice"},
+    {"name": "work:data", "color": "bfe5bf", "description": "Versioned dataset or transformation slice"},
+    {"name": "work:governance", "color": "6f42c1", "description": "Protocol, ADR, audit, or collaboration slice"},
+    {"name": "ready-for-agent", "color": "0e8a16", "description": "Specified for Agent work; dependencies and gates still apply"},
+    {"name": "workflow:in-progress", "color": "fbca04", "description": "Explicitly claimed execution ticket"},
+    {"name": "workflow:needs-review", "color": "d93f0b", "description": "Delivered work awaits review or merge"}
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "skill_name": "research-workflow",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "$research-workflow We need to decide how UI variants affect measurement, review literature, prototype alternatives, and eventually run code and data analyses. No decision map exists yet.",
+      "expected_output": "Routes to WAYFINDING because consequential decisions and fog remain; it does not split work into implementation tickets.",
+      "expectations": [
+        "State is WAYFINDING",
+        "Next names the explicit wayfinder command",
+        "It explains that mixed literature, code, and data do not determine the stage",
+        "It does not create a spec, ticket, or implementation plan"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "$research-workflow Map #40 is closed with no open children or fog. Decisions are linked, but no implementation or experiment contract exists.",
+      "expected_output": "Routes to SPEC and cites the closed-map gate.",
+      "expectations": [
+        "State is SPEC",
+        "Evidence cites the closed decision map",
+        "Next names the explicit to-spec command with the map"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "$research-workflow EXP-012 is frozen and its tracking issue is approved, but no evidence-slice child issues exist.",
+      "expected_output": "Routes to TICKETS rather than implementation.",
+      "expectations": [
+        "State is TICKETS",
+        "Next names the explicit to-tickets command",
+        "It does not choose or invent an implementation ticket"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "$research-workflow There are several ready execution tickets. Pick any one and start it.",
+      "expected_output": "Refuses to choose an execution ticket and asks the user to name one.",
+      "expectations": [
+        "It does not select a ready ticket",
+        "It states that implement requires one user-named GitHub ticket",
+        "It does not claim or execute work"
+      ]
+    }
+  ]
+}

@@ -14,8 +14,10 @@
 | --- | --- | --- |
 | 三份完整网页会话 + 两份 handoff | 本地文件与 SHA-256 已核对 | Frozen recovery evidence |
 | 公共协作仓库 | `wubq511/english-reading-cognitive-modeling`；首次 CI 通过，`main` 强制 PR + `verify`，管理员不可绕过 | Live and protected |
+| Baseline→H2 Wayfinder 协作地图 | [父地图 #2](https://github.com/wubq511/english-reading-cognitive-modeling/issues/2) + 12 个原生 sub-issues/dependency edges；当前只拆 decision tickets，未生成 execution tickets | **LIVE / DECISIONS OPEN** |
 | A/A+/B/C/D/E 深读 | 44 PDF + 6 份深读报告；均有页码 Evidence Index | Usable with provenance caveats |
 | UI 行为文献研究 | 18 PDF + 笔记；旧编号 crosswalk 已建立 | Usable |
+| UI 作为测量仪器的研究线 | 已确认需要独立考察 UI 对行为、缺失、可观测性和 estimand 的影响；尚无 variant 实验或结果 | **DESIGN REQUIREMENT / EXPERIMENT NOT STARTED** |
 | 外部来源目录 | 80 PDF/附件，均有稳定 ID、类型、路径与 SHA；论文、标准、题目附件已分层，逐版本权利在已审计范围内记录 | Locally ready; source gate automated |
 | 系统概念架构 | 聊天与 handoff 反复收敛，已恢复到 `synthesis/` | Research design, not implementation |
 | Phase 2A measurement/validation | 原始会话明确标记题目无关设计基本关闭 | Design closed; implementation open |
@@ -58,11 +60,14 @@
 
 ## Immediate next work
 
+以下工作由 [Wayfinder 父地图 #2](https://github.com/wubq511/english-reading-cognitive-modeling/issues/2) 协调；Phase 状态仍由本文件维护，Issue 不成为第二份状态真相。
+
 1. 闭合 Phase 0：获取或自建权利清晰的 passage/item 资产、建立独立答案键/evidence spans、Candidate Bank V1 与 pilot 选择协议。
 2. 向作者核对 2021 PELDiaG、2022 CSE、TSC 2026 与 J. Intell. 2026 的题本、answer key、Q-matrix 版本和响应数据谱系；2022 全文获取项已关闭。
 3. 实现 `BENCH-E0`：raw logging、确定性 state reconstruction 与 replay fidelity。
 4. 建立 engineering synthetic；它只验证 schema/invariants，不验证 cognition。
 5. 在 H2 获批并具备题目后，设计小规模真人 pilot；此前不采研究性真人数据。
+6. 在实现 baseline UI 时先冻结 instrument contract 并通过 `BENCH-E0`；UI variant 的优选/确认必须按 RQ0 和 H2 gate 独立设计。
 
 ## Open external dependencies
 

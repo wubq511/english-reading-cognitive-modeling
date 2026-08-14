@@ -43,11 +43,17 @@ class VerifyRepoTests(unittest.TestCase):
     def test_every_cataloged_source_is_in_crosswalk(self):
         self.assertEqual([], VERIFY.check_source_crosswalk())
 
-    def test_agent_rule_symlink_is_single_source(self):
-        self.assertEqual([], VERIFY.check_agent_rule_link())
+    def test_agent_rule_import_is_single_source(self):
+        self.assertEqual([], VERIFY.check_agent_rule_import())
 
     def test_source_hooks_and_bootstrap_are_present(self):
         self.assertEqual([], VERIFY.check_hook_files())
+
+    def test_repository_skill_doctor_passes(self):
+        self.assertEqual([], VERIFY.run_skill_doctor())
+
+    def test_repository_skill_eval_doctor_passes(self):
+        self.assertEqual([], VERIFY.run_skill_eval_doctor())
 
     def test_activity_logs_are_valid(self):
         self.assertEqual([], VERIFY.run_activity_log_check("validate"))

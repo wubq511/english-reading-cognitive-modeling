@@ -2,4 +2,12 @@
 set -eu
 
 script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-exec python3 "$script_dir/sources.py" "$@"
+if command -v python3 >/dev/null 2>&1; then
+    task_python=python3
+elif command -v python >/dev/null 2>&1; then
+    task_python=python
+else
+    echo "sources: FAIL reason=python_not_found" >&2
+    exit 127
+fi
+exec "$task_python" "$script_dir/sources.py" "$@"

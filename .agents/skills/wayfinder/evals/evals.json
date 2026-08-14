@@ -1,0 +1,47 @@
+{
+  "skill_name": "wayfinder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "$wayfinder Chart how the project should select and validate a baseline answer UI before the H2 pilot. Evaluation mode: draft only; do not write to GitHub.",
+      "expected_output": "Drafts one parent decision map and currently visible decision tickets, including UI instrument and ethics gates, without implementation slices.",
+      "expectations": [
+        "The destination ends in a reviewable contract or decision",
+        "The map distinguishes precise decision tickets from fog",
+        "Tickets are decision types, not code layer tasks",
+        "It includes UI measurement-instrument effects and H2 boundaries",
+        "It does not execute research or publish issues in evaluation mode"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "$wayfinder The only open question is whether one already-selected JSON field should be named event_seq or sequence_no; the rest of the contract is settled.",
+      "expected_output": "Recognizes that the whole decision fits one session and does not manufacture a project map.",
+      "expectations": [
+        "It does not create a Wayfinder map",
+        "It resolves or routes the small decision before to-spec",
+        "It does not create implementation tickets"
+      ]
+    },
+        {
+            "id": 3,
+            "prompt": "$wayfinder Draft-only evaluation of a new map with three research decision children. Do not run them.",
+      "expected_output": "Charts the parent and children, then stops without automatically executing research tickets.",
+      "expectations": [
+        "It produces a parent map and research decision children",
+        "It explicitly stops after charting",
+                "It does not auto-run or claim the research tickets"
+            ]
+        },
+        {
+            "id": 4,
+            "prompt": "$wayfinder Advance map #40. It has several open, unblocked, unassigned decision children; choose whichever one is first.",
+            "expected_output": "Reports the titled decision frontier but refuses to choose or claim a child until the user names one.",
+            "expectations": [
+                "It does not select or assign a decision ticket",
+                "It requires one user-named child issue",
+                "It does not start research, prototyping, grilling, or task work"
+            ]
+        }
+    ]
+}
