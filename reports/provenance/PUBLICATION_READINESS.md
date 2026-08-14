@@ -1,12 +1,14 @@
 # Public Repository Readiness
 
-Status: `READY; PUBLICATION RESUMED; GITHUB AUTH REQUIRED`
+Status: `PUBLISHED; LIVE VERIFIED; PROTECTED`
 Audit date: 2026-08-14
 Target: `https://github.com/wubq511/english-reading-cognitive-modeling`
 
 ## Decision
 
-The local research recovery, source-boundary migration and automation migration have passed the updated final audit. The project owner explicitly resumed and authorized public publication on 2026-08-14. No remote repository has been created and no content has been pushed because the active `gh` account currently requires reauthentication; this is an execution prerequisite, not a content-readiness failure.
+The local research recovery, source-boundary migration and automation migration passed the final audit. The project owner explicitly authorized public publication, and the repository is live at `https://github.com/wubq511/english-reading-cognitive-modeling`.
+
+The initial audited snapshot `f3a826c7d4e53e4fdb9bad784a16ffe90646f079` was pushed to `main`. GitHub Actions run `31786325757` completed successfully. The protected branch requires pull requests and a strict `verify` status check, applies the rule to the administrator, and disallows force-pushes and branch deletion.
 
 The approved first snapshot must remain metadata-first: it contains canonical research documents, provenance, source metadata/checksums and recovery tooling, but no raw chat export, third-party source bytes or human-participant data.
 
@@ -15,7 +17,7 @@ The approved first snapshot must remain metadata-first: it contains canonical re
 | Check | Result |
 | --- | --- |
 | Tracked raw recovery material | `0`; `webchat_raw_materials/` is ignored |
-| Prospective tracked files | `98` |
+| Tracked files after publication closeout | `99` |
 | Tracked third-party source files | `0`; only `sources/library/README.md` is tracked below the ignored local library |
 | Tracked human/private data directories | `0` |
 | Common credential/token/private-key signatures | no matches in the staged snapshot |
@@ -53,27 +55,28 @@ The legal and engineering rationale is recorded in [`../../docs/project-manageme
 ```text
 39 unit tests (local complete corpus)              PASS
 39 unit tests (public clone)                       PASS: local-byte checks skip when originals are absent
-scripts/verify (local)                            PASS: 72 Markdown, 80 sources, 25 raw sources
-scripts/verify --public                           PASS: 72 Markdown, 80 sources, 25 raw sources
+scripts/verify (local)                            PASS: 73 Markdown, 80 sources, 25 raw sources
+scripts/verify --public                           PASS: 73 Markdown, 80 sources, 25 raw sources
 scripts/bootstrap --check                         PASS: core.hooksPath=.githooks
-scripts/logs validate                             PASS: 2 member entries; ignored workspace residue excluded
+scripts/logs validate                             PASS: 5 member entries; ignored workspace residue excluded
 scripts/sources inbox                             PASS: inbox empty
 scripts/sources sync                              PASS: no missing direct-public dependency
 scripts/sources doctor                            PASS: 80/80 exact local dependencies
 CITATION.cff parse                                PASS
-prospective Git index                             PASS: 98 files, 0 PDFs, 0 raw files, 0 tmp files
+publication-closeout Git index                    PASS: 99 files, 0 PDFs, 0 raw files, 0 tmp files
 secret/path/credential URL/email signature scan   PASS: no matches
 CLAUDE.md                                         PASS: mode 120000 -> AGENTS.md
-git diff --cached --check                         PASS
+git diff --check                                  PASS
+initial GitHub Actions run 31786325757            PASS on published commit f3a826c
+main branch protection                            PASS: PR + strict verify; admin enforced; no force-push/delete
 ```
 
 The Git client does not clone or automatically enable repository-controlled hooks. Each clone therefore needs one explicit `scripts/bootstrap` invocation; the root `AGENTS.md` requires both Codex and Claude (through the `CLAUDE.md` symlink) to announce and run it before work, so the human does not need to remember the command. After that, configured checkout, merge, commit and push hooks enforce source, activity-log and repository gates automatically. Duplicate tool-specific SessionStart Hooks are intentionally deferred unless real omission evidence appears. The existing GitHub Actions Workflow is retained for remote push/PR verification; it cannot bootstrap a local clone. See [`../../docs/project-management/AGENT_BOOTSTRAP.md`](../../docs/project-management/AGENT_BOOTSTRAP.md) and [`../../logs/README.md`](../../logs/README.md).
 
 ## Residual actions after publication
 
-1. Confirm the first GitHub Actions run passes on the public remote.
-2. Enable a simple main-branch protection rule requiring the verification workflow.
-3. Continue the manual acquisition, laboratory and ethics queue in [`../project_state/MANUAL_ACTIONS.md`](../project_state/MANUAL_ACTIONS.md).
-4. Never infer that deleting a later-public artifact retracts copies already cloned; prevent unsafe publication before push.
+1. Continue the item/data-rights, laboratory and ethics queue in [`../project_state/MANUAL_ACTIONS.md`](../project_state/MANUAL_ACTIONS.md).
+2. Treat every later push, Release or third-party-file distribution as a new publication event under `AGENTS.md`; the initial approval does not grant blanket publication authority.
+3. Never infer that deleting a later-public artifact retracts copies already cloned; prevent unsafe publication before push.
 
 These follow-up actions do not expand the first publication scope.

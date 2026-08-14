@@ -55,7 +55,7 @@
 - no runtime system/code implementation；
 - no benchmark or empirical result；
 - no human recruitment/data collection；
-- no GitHub remote/publication；
+- GitHub remote/publication was not performed during this local-recovery checkpoint; it was completed later on 2026-08-14 and is recorded in `PUBLICATION_READINESS.md`；
 - no destructive cleanup of raw materials；
 - no claim that all cited method papers or item assets are locally complete；
 - historical `interation`/`chatgpt_A-E` directories were physically reorganized only after catalog and crosswalk creation; this item is now complete。
