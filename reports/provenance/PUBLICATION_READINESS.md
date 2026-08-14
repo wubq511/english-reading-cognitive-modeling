@@ -15,7 +15,7 @@ The approved first snapshot must remain metadata-first: it contains canonical re
 | Check | Result |
 | --- | --- |
 | Tracked raw recovery material | `0`; `webchat_raw_materials/` is ignored |
-| Prospective tracked files | `95` |
+| Prospective tracked files | `96` |
 | Tracked third-party source files | `0`; only `sources/library/README.md` is tracked below the ignored local library |
 | Tracked human/private data directories | `0` |
 | Common credential/token/private-key signatures | no matches in the staged snapshot |
@@ -52,15 +52,15 @@ The legal and engineering rationale is recorded in [`../../docs/project-manageme
 
 ```text
 39 unit tests                                      PASS
-scripts/verify (local)                            PASS: 69 Markdown, 80 sources, 25 raw sources
-scripts/verify --public                           PASS: 69 Markdown, 80 sources, 25 raw sources
+scripts/verify (local)                            PASS: 70 Markdown, 80 sources, 25 raw sources
+scripts/verify --public                           PASS: 70 Markdown, 80 sources, 25 raw sources
 scripts/bootstrap --check                         PASS: core.hooksPath=.githooks
-scripts/logs validate                             PASS: 1 member entry
+scripts/logs validate                             PASS: 2 member entries; ignored workspace residue excluded
 scripts/sources inbox                             PASS: inbox empty
 scripts/sources sync                              PASS: no missing direct-public dependency
 scripts/sources doctor                            PASS: 80/80 exact local dependencies
 CITATION.cff parse                                PASS
-prospective Git index                             PASS: 95 files, 0 PDFs, 0 raw files, 0 tmp files
+prospective Git index                             PASS: 96 files, 0 PDFs, 0 raw files, 0 tmp files
 secret/path/credential URL/email signature scan   PASS: no matches
 CLAUDE.md                                         PASS: mode 120000 -> AGENTS.md
 git diff --cached --check                         PASS

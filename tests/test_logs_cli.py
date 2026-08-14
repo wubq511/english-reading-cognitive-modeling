@@ -237,6 +237,14 @@ class NewEntryTests(unittest.TestCase):
                 [],
                 logs_cli.validate_entry(relative, entries[0].read_text(encoding="utf-8"), policy),
             )
+            (root / ".gitignore").write_text(".DS_Store\n", encoding="utf-8")
+            (root / "logs" / "members" / ".DS_Store").write_bytes(b"\xffignored")
+            validate_out, validate_err = StringIO(), StringIO()
+            self.assertEqual(
+                0,
+                logs_cli.run_validate(root, validate_out, validate_err),
+                validate_err.getvalue(),
+            )
 
 
 if __name__ == "__main__":

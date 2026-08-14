@@ -409,10 +409,17 @@ def run_validate(root: Path, out: TextIO, err: TextIO) -> int:
     if not entries_root.is_dir():
         errors.append(f"missing entry root: {policy['entry_root']}")
     else:
-        for path in sorted(entries_root.rglob("*")):
-            if not path.is_file():
-                continue
-            relative = path.relative_to(root).as_posix()
+        candidates = git(
+            root,
+            "ls-files",
+            "--cached",
+            "--others",
+            "--exclude-standard",
+            "--",
+            policy["entry_root"],
+        ).stdout.splitlines()
+        for relative in sorted(candidates):
+            path = root / relative
             checked += 1
             try:
                 text = path.read_text(encoding="utf-8")

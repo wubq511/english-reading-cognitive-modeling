@@ -40,7 +40,7 @@ The following evidence was re-run from the committed workspace:
 
 ```text
 39 unit tests                                      PASS
-scripts/verify (local)                            PASS: 69 Markdown, 80 sources, 25 raw sources
+scripts/verify (local)                            PASS: 70 Markdown, 80 sources, 25 raw sources
 scripts/verify --public                           PASS: public snapshot boundary
 scripts/sources doctor                             PASS: 80/80 exact local dependencies
 scripts/sources sync                               PASS: no missing direct-public dependency
