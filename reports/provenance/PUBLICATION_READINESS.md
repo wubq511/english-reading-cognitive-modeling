@@ -15,7 +15,7 @@ The approved first snapshot must remain metadata-first: it contains canonical re
 | Check | Result |
 | --- | --- |
 | Tracked raw recovery material | `0`; `webchat_raw_materials/` is ignored |
-| Prospective tracked files | `97` |
+| Prospective tracked files | `98` |
 | Tracked third-party source files | `0`; only `sources/library/README.md` is tracked below the ignored local library |
 | Tracked human/private data directories | `0` |
 | Common credential/token/private-key signatures | no matches in the staged snapshot |
@@ -33,7 +33,7 @@ The credential scan is a bounded signature scan, not a proof that arbitrary pros
 ## Source and rights state
 
 - 80 required PDF/attachment files are present locally and pass exact SHA-256 and media-signature checks.
-- 12 catalog records have a verified `DIRECT_PUBLIC` acquisition route; 6 are `MANUAL_ONLY`; 62 remain `UNKNOWN`.
+- 11 catalog records have a currently hash-reproducible `DIRECT_PUBLIC` acquisition route; 7 are `MANUAL_ONLY`; 62 remain `UNKNOWN`. `METHOD-003` was downgraded after its official endpoint returned bytes that differed from the catalog lock during a fresh-clone audit.
 - Eight specific versions are conservatively marked `REDISTRIBUTION_ALLOWED`, ten `RESTRICTED`, and 62 `UNKNOWN`.
 - Despite the permissions, **zero source originals may enter the first Git history**. Any later release is a separate file-level audit and public-approval event.
 - Collaborators run `scripts/bootstrap` once. Human downloads go to `tmp/pdfs/`; Agents update metadata and use `scripts/sources inbox`, which removes only verified migrated copies.
@@ -53,15 +53,15 @@ The legal and engineering rationale is recorded in [`../../docs/project-manageme
 ```text
 39 unit tests (local complete corpus)              PASS
 39 unit tests (public clone)                       PASS: local-byte checks skip when originals are absent
-scripts/verify (local)                            PASS: 71 Markdown, 80 sources, 25 raw sources
-scripts/verify --public                           PASS: 71 Markdown, 80 sources, 25 raw sources
+scripts/verify (local)                            PASS: 72 Markdown, 80 sources, 25 raw sources
+scripts/verify --public                           PASS: 72 Markdown, 80 sources, 25 raw sources
 scripts/bootstrap --check                         PASS: core.hooksPath=.githooks
 scripts/logs validate                             PASS: 2 member entries; ignored workspace residue excluded
 scripts/sources inbox                             PASS: inbox empty
 scripts/sources sync                              PASS: no missing direct-public dependency
 scripts/sources doctor                            PASS: 80/80 exact local dependencies
 CITATION.cff parse                                PASS
-prospective Git index                             PASS: 97 files, 0 PDFs, 0 raw files, 0 tmp files
+prospective Git index                             PASS: 98 files, 0 PDFs, 0 raw files, 0 tmp files
 secret/path/credential URL/email signature scan   PASS: no matches
 CLAUDE.md                                         PASS: mode 120000 -> AGENTS.md
 git diff --cached --check                         PASS

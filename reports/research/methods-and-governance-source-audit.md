@@ -49,6 +49,7 @@
 - 可公开再分发：是，须署名并保留许可；单独 credit line 排除的第三方材料除外。
 - 本地文件：`sources/library/papers/methods/2024_Bisbee_Synthetic_Replacements.pdf`
 - SHA-256：`36a0d04cacac5bdb2f24e7022bcbc6fd01493dfcbc6104c588123eb0c7f3b744`
+- 2026-08-14 全新 clone 获取复核：上述官方 PDF endpoint 当时返回的字节 SHA-256 为 `2ebb67846ae525c35cf3f79b3e568bb68331e975a6c74494f8717bef920d888a`，与 catalog 锁定的本地版本不同。这只证明获取端点字节漂移，不证明任一版本内容错误。为避免 Agent 静默接受新字节，`METHOD-003` 的 acquisition 已降为 `MANUAL_ONLY`，直到两个 PDF 完成版本差异核对；CC BY 4.0 权利判断不因此改变。
 
 ### A4. AI models collapse when trained on recursively generated data
 

@@ -1280,9 +1280,9 @@ sources:
     doi: "10.1017/pan.2024.5"
     needs_metadata: []
     required: true
-    acquisition_status: "DIRECT_PUBLIC"
+    acquisition_status: "MANUAL_ONLY"
     source_url: "https://doi.org/10.1017/pan.2024.5"
-    download_url: "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/B92267DC26195C7F36E63EA04A47D2FE/S1047198724000056a.pdf/div-class-title-synthetic-replacements-for-human-survey-data-the-perils-of-large-language-models-div.pdf"
+    download_url: null
     redistribution_status: "REDISTRIBUTION_ALLOWED"
     license: "CC BY 4.0; third-party materials excluded unless separately licensed"
     local_path: "sources/library/papers/methods/2024_Bisbee_Synthetic_Replacements.pdf"
