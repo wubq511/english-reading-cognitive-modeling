@@ -51,14 +51,11 @@ Until written answers exist:
 - H2/H3 systematic logs, performance, interviews, cognitive labels or publishable data must not start;
 - Webcam/eye tracking remains an optional M1 amendment, not a baseline dependency.
 
-## Before public GitHub publication
+## Public GitHub publication completed on 2026-08-14
 
-The project owner explicitly resumed and authorized public publication on 2026-08-14 after the local recovery and collaboration audit. Execution is no longer paused. The remaining machine-level prerequisite is GitHub authentication: the active `gh` account `wubq511` currently has an invalid keyring token, so the owner must run `gh auth refresh -h github.com` before the Agent can create or push the repository.
+The owner authorized publication, refreshed GitHub authentication, and the Agent completed the audited release at `https://github.com/wubq511/english-reading-cognitive-modeling`. The initial `main` snapshot passed GitHub Actions run `31786325757`; branch protection now requires a pull request and the strict `verify` check, applies to the repository administrator, and forbids force-pushes and branch deletion.
 
-- Confirm the tracked file list contains no raw chats, PDF bytes, human/private data, secrets or machine-local artifacts.
-- Publish only catalog/checksums/source/right metadata for third-party files; do not upload the local `sources/library/` tree.
-- If any rights-cleared PDF is later distributed, review the exact version, third-party credit lines and attribution; publish it through a separate approved release, never a directory-wide rule.
-- After repository creation, enable branch protection/required verification as a simple follow-up; no complex deployment or data infrastructure is needed initially.
+No initial-publication action remains. Future GitHub pushes, Releases or third-party-file distribution are new publication events and still require the project approval and file-level rights gates in `AGENTS.md` and `SOURCE_DISTRIBUTION.md`.
 
 ## Recording completion
 

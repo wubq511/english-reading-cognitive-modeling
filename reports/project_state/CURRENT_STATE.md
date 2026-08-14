@@ -1,7 +1,7 @@
 # Current Research State
 
 > As of: 2026-08-14
-> Status type: canonical local recovery
+> Status type: canonical recovery + public collaboration
 > Runtime implementation: not started
 
 ## One-sentence state
@@ -13,6 +13,7 @@
 | Asset | Current evidence | Status |
 | --- | --- | --- |
 | 三份完整网页会话 + 两份 handoff | 本地文件与 SHA-256 已核对 | Frozen recovery evidence |
+| 公共协作仓库 | `wubq511/english-reading-cognitive-modeling`；首次 CI 通过，`main` 强制 PR + `verify`，管理员不可绕过 | Live and protected |
 | A/A+/B/C/D/E 深读 | 44 PDF + 6 份深读报告；均有页码 Evidence Index | Usable with provenance caveats |
 | UI 行为文献研究 | 18 PDF + 笔记；旧编号 crosswalk 已建立 | Usable |
 | 外部来源目录 | 80 PDF/附件，均有稳定 ID、类型、路径与 SHA；论文、标准、题目附件已分层，逐版本权利在已审计范围内记录 | Locally ready; source gate automated |
@@ -54,7 +55,6 @@
 - “模型输出已具有构念效度”；
 - “已有真人 pilot 或正式样本”；
 - “Phase 0/3/4 已关闭”；
-- “公开 GitHub 仓库已经建立”。
 
 ## Immediate next work
 

@@ -1,8 +1,8 @@
 # Recovery Goal Completion Audit
 
-Status: `LOCAL OBJECTIVE PROVEN; PUBLICATION RESUMED; GITHUB AUTH REQUIRED`
+Status: `COMPLETE; LIVE VERIFIED`
 Audit date: 2026-08-14
-Audited base snapshot: commits through `b7bf686` plus the current fresh-clone compatibility and publication-resumption update; final commit is reported in the handoff
+Published base snapshot: `f3a826c7d4e53e4fdb9bad784a16ffe90646f079`; publication-closeout changes proceed through the protected pull-request workflow
 
 ## Audit method
 
@@ -23,8 +23,8 @@ This audit derives requirements from the user's recovery objective and later dec
 | `R-09` | Keep the baseline system architecture free of AI/Agent while allowing important AI use in research/experiments | ADR 0002, `AI_RESEARCH_TOOLING_POLICY.md`, `SYSTEM_DESIGN.md` | **PROVEN** — runtime and research planes are separated; synthetic/LLM outputs cannot establish human truth or construct validity |
 | `R-10` | Preserve AI vertical-deepening and horizontal-extension as later research directions | `ROADMAP.md`, `RESEARCH_QUESTIONS.md`, `AI_RESEARCH_TOOLING_POLICY.md` | **PROVEN** — later AI comparisons/extensions remain gated research directions, not baseline implementation assumptions |
 | `R-11` | Handle preliminary acquaintances/students tests and later formal studies scientifically | ADR 0004, `HUMAN_RESEARCH_GATES.md`, `MANUAL_ACTIONS.md` | **PROVEN AS GOVERNANCE** — H1 debug-only and H2/H3 research are physically/semantically separated; institutional and recruitment questions are retained for the later phase |
-| `R-12` | Prepare a public collaborative repository without leaking raw evidence, source originals, secrets or human data | `PUBLICATION_READINESS.md`, staged tree, `.gitignore`, public verification mode | **PROVEN LOCALLY** — the prospective 98-file Git snapshot contains zero PDFs, raw recovery files, inbox files or third-party source originals; source, secret, path, citation and public-mode checks pass |
-| `R-13` | Actually create and publish the public GitHub repository | current user authorization, local `git remote` and `gh auth status` | **AUTHORIZED AND RESUMED; AUTH PENDING** — content is ready and the pause is lifted, but the active GitHub CLI token is invalid; no remote exists and no push can occur until the owner refreshes authentication |
+| `R-12` | Prepare a public collaborative repository without leaking raw evidence, source originals, secrets or human data | `PUBLICATION_READINESS.md`, public tree, `.gitignore`, public verification mode | **PROVEN** — the 98-file initial snapshot and 99-file publication closeout contain zero PDFs, raw recovery files, inbox files or third-party source originals; source, secret, path, citation and public-mode checks pass |
+| `R-13` | Actually create and publish the public GitHub repository | `https://github.com/wubq511/english-reading-cognitive-modeling`, GitHub Actions run `31786325757`, live `main` protection API | **PROVEN** — the repository is public; the initial snapshot passed `verify`; `main` requires PR + strict `verify`, applies protection to the administrator, and rejects force-pushes/deletion |
 
 ## Scientific state established by the recovery
 
@@ -40,7 +40,7 @@ The following evidence was re-run from the committed workspace:
 
 ```text
 39 unit tests                                      PASS locally; public clone skips only absent-byte checks
-scripts/verify (local)                            PASS: 72 Markdown, 80 sources, 25 raw sources
+scripts/verify (local)                            PASS: 73 Markdown, 80 sources, 25 raw sources
 scripts/verify --public                           PASS: public snapshot boundary
 scripts/sources doctor                             PASS: 80/80 exact local dependencies
 scripts/sources sync                               PASS: no missing direct-public dependency
@@ -50,6 +50,6 @@ prospective forbidden-path and secret signatures  no matches
 
 The verifier does not claim that every sentence in the six legacy literature reports has been independently re-read against its PDF. That broader claim would exceed the performed audit. Major conclusion classes were sampled in `existing-literature-validation-audit.md`, and future consequential use must cite stable source IDs plus page/section evidence.
 
-## Remaining completion gate
+## Goal conclusion
 
-Only execution of `R-13` remains outside the local workspace. Publication permission is active. Refresh GitHub CLI authentication, create the public repository, push the audited commit, observe the first CI result and apply the agreed simple branch protection; do not mark the recovery goal complete until those live checks pass.
+Requirements `R-01` through `R-13` are proven at their stated scope. The recovery goal is complete: canonical research assets, provenance, source-recovery gates, collaborator/Agent onboarding, public-repository boundaries, live CI and protected collaboration are all established. Open item/data-rights, implementation, ethics and empirical-validation work remains future research, not incomplete recovery.
