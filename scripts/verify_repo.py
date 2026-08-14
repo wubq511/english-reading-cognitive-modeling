@@ -31,7 +31,7 @@ HISTORY_ALLOWLIST = {
     "reports/provenance/CONFLICT_REGISTER.md",
     "scripts/verify_repo.py",
 }
-REQUIRED_HOOKS = ("post-checkout", "post-merge", "pre-push")
+REQUIRED_HOOKS = ("post-checkout", "post-merge", "pre-commit", "pre-push")
 REQUIRED_SKELETON = (
     "src/README.md",
     "experiments/README.md",
@@ -113,11 +113,28 @@ def check_hook_files() -> list[str]:
     bootstrap = ROOT / "scripts" / "bootstrap"
     if not bootstrap.is_file() or not os.access(bootstrap, os.X_OK):
         errors.append("missing-or-nonexecutable scripts/bootstrap")
+    logs = ROOT / "scripts" / "logs"
+    if not logs.is_file() or not os.access(logs, os.X_OK):
+        errors.append("missing-or-nonexecutable scripts/logs")
     for name in REQUIRED_HOOKS:
         hook = ROOT / ".githooks" / name
         if not hook.is_file() or not os.access(hook, os.X_OK):
             errors.append(f"missing-or-nonexecutable .githooks/{name}")
     return errors
+
+
+def run_activity_log_check(command: str) -> list[str]:
+    result = subprocess.run(
+        [str(ROOT / "scripts" / "logs"), command],
+        cwd=ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    if result.returncode:
+        return [f"activity-logs-{command}-failed\n" + result.stdout.rstrip()]
+    return []
 
 
 def check_bootstrap_configuration() -> list[str]:
@@ -263,6 +280,8 @@ def main(argv: list[str] | None = None) -> int:
     errors.extend(check_workspace_skeleton())
     errors.extend(check_knowledge_ownership())
     errors.extend(check_source_crosswalk())
+    errors.extend(run_activity_log_check("validate"))
+    errors.extend(run_activity_log_check("check-history"))
     if args.public:
         errors.extend(check_manifest_format("reports/provenance/RAW_SOURCE_MANIFEST.sha256"))
         errors.extend(check_manifest_format("sources/checksums.sha256"))

@@ -13,8 +13,8 @@ Therefore the recommended **current** design is the minimal contract already pre
 ```text
 AGENTS.md: first task step is scripts/bootstrap
 CLAUDE.md -> AGENTS.md: same rule reaches Claude Code
-scripts/bootstrap: idempotent setup and source preflight
-tracked Git hooks: continuity after bootstrap
+scripts/bootstrap: idempotent setup, source preflight and activity-log identity notice
+tracked Git hooks: source continuity plus staged activity-log enforcement
 ```
 
 The only remaining probabilistic layer is whether a model follows the loaded instruction. Project `SessionStart` hooks remove that model-choice dependency, but add first-use trust, vendor-specific configuration, repeat execution and maintenance cost. No failure evidence currently shows that the instruction route is insufficient. Do **not** add `.codex/hooks.json` or `.claude/settings.json` only for architectural completeness; add them if bootstrap omission is observed or if initialization must occur independently of the Agent's reasoning.
@@ -40,7 +40,7 @@ Yes, for an Agent-mediated workflow and the current evidence.
 2. `CLAUDE.md -> AGENTS.md` removes rule drift: both Agents receive the same first step.
 3. `scripts/bootstrap` is idempotent, so “run at the start of every task” safely covers first clone, later pull, resume and a newly discovered inbox file.
 4. The Agent can explain the result in ordinary conversation, including an exact `tmp/pdfs/` action. A human does not have to inspect hook logs or remember a recovery command.
-5. After the first successful bootstrap, tracked Git hooks cover checkout, merge and pre-push continuity.
+5. After the first successful bootstrap, tracked Git hooks cover checkout, merge, pre-commit activity logs and pre-push continuity.
 
 The instruction route is not a hostile-client enforcement mechanism. An Agent can ignore instructions, a different product might not load either rule filename, and a user can bypass local Git hooks. Those are real limitations, but a repository `SessionStart` hook is also not universal: it is vendor-specific, may be disabled, and cannot run silently before workspace/hook trust. For this research repository, source-dependent tools already fail closed, so there is no current justification for paying the additional complexity merely to remove a residual model-compliance risk.
 

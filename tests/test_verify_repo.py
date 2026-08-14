@@ -39,6 +39,12 @@ class VerifyRepoTests(unittest.TestCase):
     def test_source_hooks_and_bootstrap_are_present(self):
         self.assertEqual([], VERIFY.check_hook_files())
 
+    def test_activity_logs_are_valid(self):
+        self.assertEqual([], VERIFY.run_activity_log_check("validate"))
+
+    def test_activity_log_history_gate_passes(self):
+        self.assertEqual([], VERIFY.run_activity_log_check("check-history"))
+
     def test_bootstrap_is_configured_for_this_clone(self):
         self.assertEqual([], VERIFY.check_bootstrap_configuration())
 

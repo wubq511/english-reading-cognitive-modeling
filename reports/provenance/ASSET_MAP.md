@@ -4,6 +4,7 @@
 | --- | --- | --- | --- |
 | root `README.md`, `AGENTS.md`, `CONTEXT.md` | orientation, rules and terminology | canonical; `CLAUDE.md` symlinks to `AGENTS.md` | include |
 | `docs/project-management/` | Agent startup, source synchronization and repository collaboration | canonical project operations | include |
+| `logs/` | per-member research/change intent, verification and follow-ups | canonical append-only collaboration history; exact diffs remain in Git | include; exclude sensitive or licensed payloads |
 | `reports/project_state/` | current status and plan | canonical | include |
 | `reports/synthesis/` | recovered system/research design | canonical with claim labels | include under CC BY 4.0 policy |
 | `reports/protocols/` | AI/human/experiment gates | canonical | include |

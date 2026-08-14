@@ -42,6 +42,13 @@
 - 不移动或改名已有来源，除非同一变更更新 catalog、checksum、crosswalk、链接和验证。
 - `webchat_raw_materials/` 本地冻结且不删除；它是追溯证据，不是研究资产。
 
+## Member activity logs
+
+- 任何日志目录之外的改动在 commit 前必须同时新增 `logs/members/<member-id>/` 条目；Agent 负责创建、填写、验证并 stage，不把流程转给用户记忆。
+- 日志只记录工作结果、研究/决策影响、验证和遗留项；Git 已记录精确 diff，不复制 diff，不写 Agent 思维过程或敏感数据。
+- 已提交日志 append-only；更正时新建 `supersedes` 条目，不修改、删除或改名旧记录。
+- 首次 commit 前配置 `scripts/logs init <member-id>`；生成命令、schema、category 和门禁唯一说明见 `logs/README.md`。
+
 ## AI, human data, and publication
 
 - Baseline runtime 不调用 AI/Agent；研究外环遵守 `AI_RESEARCH_TOOLING_POLICY.md`。
@@ -60,5 +67,6 @@
 - 文档/来源/知识变更：运行 `scripts/verify`。
 - 来源变更：另运行 `scripts/sources inbox`、`scripts/sources doctor` 和 catalog/checksum 检查。
 - 代码变更：运行相关测试与 lint；实验变更验证 manifest、split、metric 与 source lock。
+- 提交前：确保本次成员日志与改动同时 staged；`pre-commit` 和远端 `verify` 会 fail closed。
 - 失败、未运行或缺证据的项目保持 `pending/open`，不得报告完成。
 - `AGENTS.md` 是唯一规则正文；根级 `CLAUDE.md` 必须保持为指向它的相对软链，禁止复制成第二份规则。

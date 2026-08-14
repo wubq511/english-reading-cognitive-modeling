@@ -17,12 +17,15 @@ scripts/verify
 
 `bootstrap` 是克隆后的唯一初始化命令：安装仓库 hooks，处理人工下载收件箱，恢复允许自动获取的外部来源并 fail closed 地验证本地研究环境。随后按 [AGENTS.md](AGENTS.md) 的顺序阅读项目上下文；Claude Code 通过根级 `CLAUDE.md` 软链读取同一规则。
 
+第一次准备提交时，Agent 会为当前 clone 绑定稳定的 `member-id`，并为每个实质改动同步维护 [成员活动日志](logs/README.md)。本地 hook 和公共验证会阻止缺少日志的提交/合并。
+
 ## Canonical navigation
 
 | Path | Single responsibility |
 | --- | --- |
 | `CONTEXT.md` | 项目术语 |
 | `docs/project-management/` | Agent 启动、来源同步和仓库协作机制 |
+| `logs/` | 按成员组织的 append-only 研究/修改活动日志与提交门禁 |
 | `reports/project_state/` | 当前状态、研究问题、路线图和人工行动 |
 | `reports/synthesis/` | Baseline 系统与测量设计 |
 | `reports/protocols/` | 实验、AI、真人与数据治理 gate |

@@ -39,8 +39,8 @@ This audit derives requirements from the user's recovery objective and later dec
 The following evidence was re-run from the committed workspace:
 
 ```text
-28 unit tests                                      PASS
-scripts/verify (local)                            PASS: 66 Markdown, 80 sources, 25 raw sources
+39 unit tests                                      PASS
+scripts/verify (local)                            PASS: 69 Markdown, 80 sources, 25 raw sources
 scripts/verify --public                           PASS: public snapshot boundary
 scripts/sources doctor                             PASS: 80/80 exact local dependencies
 scripts/sources sync                               PASS: no missing direct-public dependency

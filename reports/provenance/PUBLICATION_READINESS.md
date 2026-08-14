@@ -15,7 +15,7 @@ The approved first snapshot must remain metadata-first: it contains canonical re
 | Check | Result |
 | --- | --- |
 | Tracked raw recovery material | `0`; `webchat_raw_materials/` is ignored |
-| Prospective tracked files | `87` |
+| Prospective tracked files | `95` |
 | Tracked third-party source files | `0`; only `sources/library/README.md` is tracked below the ignored local library |
 | Tracked human/private data directories | `0` |
 | Common credential/token/private-key signatures | no matches in the staged snapshot |
@@ -25,6 +25,7 @@ The approved first snapshot must remain metadata-first: it contains canonical re
 | Largest tracked blob | 277,815 bytes; no GitHub large-file boundary is approached |
 | Citation metadata | `CITATION.cff` parses successfully |
 | Workflow supply-chain pins | checkout `v7.0.1` and setup-python `v7.0.0` commit hashes verified against upstream tags |
+| Member activity logs | append-only schema, staged gate and post-boundary history gate covered by repository tests; CI fetches full history |
 | Diff hygiene | `git diff --cached --check` passes |
 
 The credential scan is a bounded signature scan, not a proof that arbitrary prose can never encode sensitive information. The stronger structural protection is that the raw, PDF, AI-payload and human-data trees are excluded by path and verified before publication.
@@ -50,21 +51,22 @@ The legal and engineering rationale is recorded in [`../../docs/project-manageme
 ## Verification evidence
 
 ```text
-28 unit tests                                      PASS
-scripts/verify (local)                            PASS: 66 Markdown, 80 sources, 25 raw sources
-scripts/verify --public                           PASS: 66 Markdown, 80 sources, 25 raw sources
+39 unit tests                                      PASS
+scripts/verify (local)                            PASS: 69 Markdown, 80 sources, 25 raw sources
+scripts/verify --public                           PASS: 69 Markdown, 80 sources, 25 raw sources
 scripts/bootstrap --check                         PASS: core.hooksPath=.githooks
+scripts/logs validate                             PASS: 1 member entry
 scripts/sources inbox                             PASS: inbox empty
 scripts/sources sync                              PASS: no missing direct-public dependency
 scripts/sources doctor                            PASS: 80/80 exact local dependencies
 CITATION.cff parse                                PASS
-prospective Git index                             PASS: 87 files, 0 PDFs, 0 raw files, 0 tmp files
+prospective Git index                             PASS: 95 files, 0 PDFs, 0 raw files, 0 tmp files
 secret/path/credential URL/email signature scan   PASS: no matches
 CLAUDE.md                                         PASS: mode 120000 -> AGENTS.md
 git diff --cached --check                         PASS
 ```
 
-The Git client does not clone or automatically enable repository-controlled hooks. Each clone therefore needs one explicit `scripts/bootstrap` invocation; the root `AGENTS.md` requires both Codex and Claude (through the `CLAUDE.md` symlink) to announce and run it before work, so the human does not need to remember the command. After that, configured checkout, merge and push hooks enforce the source and repository gates automatically. Duplicate tool-specific SessionStart Hooks are intentionally deferred unless real omission evidence appears. The existing GitHub Actions Workflow is retained for remote push/PR verification; it cannot bootstrap a local clone. See [`../../docs/project-management/AGENT_BOOTSTRAP.md`](../../docs/project-management/AGENT_BOOTSTRAP.md).
+The Git client does not clone or automatically enable repository-controlled hooks. Each clone therefore needs one explicit `scripts/bootstrap` invocation; the root `AGENTS.md` requires both Codex and Claude (through the `CLAUDE.md` symlink) to announce and run it before work, so the human does not need to remember the command. After that, configured checkout, merge, commit and push hooks enforce source, activity-log and repository gates automatically. Duplicate tool-specific SessionStart Hooks are intentionally deferred unless real omission evidence appears. The existing GitHub Actions Workflow is retained for remote push/PR verification; it cannot bootstrap a local clone. See [`../../docs/project-management/AGENT_BOOTSTRAP.md`](../../docs/project-management/AGENT_BOOTSTRAP.md) and [`../../logs/README.md`](../../logs/README.md).
 
 ## Residual actions after publication
 

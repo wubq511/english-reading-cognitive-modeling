@@ -1,0 +1,3 @@
+# Require append-only member activity logs for every substantive commit
+
+Git remains the byte-level change record, while `logs/members/<member-id>/` records the accountable member's work outcome, research/decision impact, verification and follow-ups in one new Markdown entry per substantive commit. Entries are append-only and corrections supersede rather than rewrite history. A tracked `pre-commit` hook prevents ordinary local omissions, full-history verification catches skipped hooks, and the existing GitHub Actions check becomes the remote hard gate once branch protection marks it required. This creates useful research continuity without duplicating diffs, storing Agent chain-of-thought or pretending client-side hooks are unbypassable.

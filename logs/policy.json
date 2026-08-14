@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "entry_schema_version": 1,
+  "enforcement_after": "c71dd0ec4bd4db30901ff4df7a512b43bcdf0f4e",
+  "entry_root": "logs/members",
+  "categories": [
+    "research",
+    "experiment",
+    "source",
+    "code",
+    "data",
+    "documentation",
+    "governance",
+    "maintenance"
+  ]
+}
