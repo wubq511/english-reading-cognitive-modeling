@@ -1,6 +1,6 @@
 # Project Skill Evaluation
 
-Status: `LOCAL PASS / REMOTE PORTABILITY PENDING`
+Status: `PASS`
 Evaluation date: 2026-08-14
 
 ## Scope
@@ -22,7 +22,7 @@ Committed eval definitions use the `skill-creator` `evals/evals.json` schema und
 | Check | Result |
 | --- | --- |
 | Physical skills under `.agents/skills/` | PASS — 13 |
-| Generated Claude mappings resolving to the same directories | PASS — 13/13 on macOS; mapping paths are Git-ignored |
+| Generated Claude mappings resolving to the same directories | PASS — 13/13 on macOS and Windows; mapping paths are Git-ignored |
 | Explicit entry skills with both platform invocation controls | PASS — 5/5 |
 | Supporting skills left available on demand | PASS — 8/8 |
 | `skill-creator` eval suites | PASS — 5 skills / 16 cases |
@@ -77,6 +77,6 @@ After dry-run validation, the user-authorized tracker path was exercised against
 
 This proves the map/sub-issue/dependency operations on the configured repository. Spec publication, execution-ticket creation and Implement mutation remain intentionally unexercised on the public tracker until their real decisions/contracts exist.
 
-## Remaining external proof
+## Remote portability proof
 
-The local macOS implementation and model dry runs pass. Windows uses a directory-junction generation path that cannot be executed on macOS; the `skill-portability` GitHub Actions matrix is the acceptance evidence for both `macos-latest` and `windows-latest`. The mappings are generated under a Git-ignored root so installation must leave the checkout clean. Until the branch is published and both jobs pass, cross-platform status remains `PENDING`, not complete.
+Draft [PR #15](https://github.com/wubq511/english-reading-cognitive-modeling/pull/15) published commit `06c63bb` and triggered [GitHub Actions run 31795159885](https://github.com/wubq511/english-reading-cognitive-modeling/actions/runs/31795159885). The normal public `verify` job, `skill-portability (macos-latest)` and `skill-portability (windows-latest)` all passed. The matrix ran bootstrap/install, mapping doctor, checkout-cleanliness checks, platform wrapper checks and the repository unit suite. This closes the Windows directory-junction uncertainty without treating the local macOS simulation as proof.
