@@ -65,8 +65,8 @@
 ## Project workflow skills
 
 - Wayfinder → Spec → Tickets → Implement 的状态机只由 `docs/agents/research-workflow.md` 定义；GitHub 操作只由 `docs/agents/issue-tracker.md` 定义。
-- 五个对外入口 `research-workflow`、`wayfinder`、`to-spec`、`to-tickets`、`implement` 都必须由用户显式调用；Codex 使用 `$skill-name`，Claude Code 使用 `/skill-name`。
-- Wayfinder 和 Implement 都不得自动选择/领取 frontier ticket；`/wayfinder`/`$wayfinder` 推进地图时必须带用户指定的 decision child，`/implement`/`$implement` 必须带用户指定的 execution ticket。
+- 五个对外入口 `ercm-workflow`、`ercm-wayfinder`、`ercm-to-spec`、`ercm-to-tickets`、`ercm-implement` 都必须由用户显式调用；Codex 使用 `$skill-name`，Claude Code 使用 `/skill-name`。所有项目适配技能统一使用 `ercm-` 前缀，避免与全局上游技能混淆。
+- ERCM Wayfinder 和 Implement 都不得自动领取 frontier ticket；用户未点名时，Agent 必须只读展示候选、给出有理由的推荐与取舍，再等待用户用 `/ercm-wayfinder <decision-child>`/`$ercm-wayfinder <decision-child>` 或 `/ercm-implement <execution-ticket>`/`$ercm-implement <execution-ticket>` 明确选择；推荐不得触发分配、改标签或执行。
 - `.agents/skills/` 是唯一物理技能源；`.claude/skills/<name>` 只能是 bootstrap 管理并指向它的映射，不得复制技能正文。
 - GitHub Issue 是协作入口；科学实验 spec、run 和 reviewed claim 仍分别由 `EXP-*`、run manifest 和 canonical report 所有，禁止把 Issue 变成竞争真相源。
 

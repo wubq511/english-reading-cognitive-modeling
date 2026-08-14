@@ -83,7 +83,8 @@ Read relationships back with the corresponding `GET` endpoints. Native relations
 
 - Wayfinder frontier: open sub-issue, all native blockers closed, no assignee.
 - Execution frontier: open `workflow:ticket` + `ready-for-agent`, all native blockers closed, every external gate satisfied, no assignee.
-- Wayfinder requires one user-named decision frontier ticket. If only a map is supplied, report the titled frontier and stop without assignment.
+- If no ticket is named, query the relevant frontier read-only, report at most three titled URLs, and recommend one using downstream unlocks, evidence/gate readiness and the user's stated goal. Explain when another option is preferable. Do not mutate GitHub or the worktree.
+- Wayfinder requires one user-named decision frontier ticket before assignment or work.
 - Implement requires the user to name one execution ticket. After validation, assignment to `@me` is the claim; remove `ready-for-agent` and add `workflow:in-progress`.
 - Never reassign a ticket owned by another member without an explicit human decision recorded on the Issue.
 

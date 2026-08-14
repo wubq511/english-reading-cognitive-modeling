@@ -7,7 +7,7 @@ scripts/bootstrap
 scripts/verify
 ```
 
-Windows 使用 `.\scripts\bootstrap.cmd` 与 `.\scripts\verify.cmd`。若工作来自团队规划，先用 `research-workflow` 判断阶段；只领取用户明确指定的 GitHub evidence-slice ticket。完整状态机和 tracker 规则见 `docs/agents/`。
+Windows 使用 `.\scripts\bootstrap.cmd` 与 `.\scripts\verify.cmd`。若工作来自团队规划，先用 `ercm-workflow` 判断阶段；只领取用户明确指定的 GitHub evidence-slice ticket。完整状态机和 tracker 规则见 `docs/agents/`。
 
 Read `AGENTS.md`, `CONTEXT.md`, `reports/project_state/CURRENT_STATE.md` and the protocol relevant to the work. Do not use `webchat_raw_materials/` as the normal continuation point.
 

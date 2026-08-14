@@ -15,22 +15,23 @@ This audit tests the user-approved objective against current evidence. “Implem
 | Adapt Wayfinder for the research repository | Repository skill creates decision maps/sub-issues, preserves fog, evidence states, human gates and no-auto-research behavior | PASS |
 | Adapt To Spec for implementation, experiment and hybrid contracts | GitHub implementation spec, canonical `EXP-*`, experiment tracking Issue, and hybrid parent rules are explicit | PASS |
 | Adapt To Tickets for scientific and engineering work | Evidence-slice template covers types, provenance, claims, gates, null results, blockers and one-context sizing | PASS |
-| Adapt Implement without automatic ticket selection | Skill requires one user-named Issue, checks eligibility before claim, dispatches by work type, reviews/logs/commits locally, and stops before push | PASS |
+| Adapt Implement without automatic ticket selection | Without an Issue it gives bounded read-only recommendations and waits; with one user-named Issue it checks eligibility before claim, dispatches by work type, reviews/logs/commits locally, and stops before push | PASS |
 | Distribute every required skill in the repository | 13 physical skill directories under `.agents/skills/`, including all transitive support skills | PASS |
+| Distinguish project adaptations from upstream/global skills | All 13 project variants use the `ercm-` directory/frontmatter/display namespace; bootstrap migrates obsolete generated mappings | PASS |
 | Preserve user-only invocation for public entry skills | Five entry skills have Claude `disable-model-invocation: true` and Codex `allow_implicit_invocation: false`; supporting skills retain on-demand invocation | PASS |
 | Claude Code uses the same skill source | 13 generated, Git-ignored `.claude/skills/` mappings resolve to the tracked `.agents/skills/` directories on macOS | PASS |
 | Windows and macOS support | macOS symlink install/doctor passes; Windows junction generation, `.cmd` wrappers and a Windows CI job exist | **PENDING — Windows runner not executed before publication** |
 | GitHub Issues for all workflow artifacts | Tracker contract requires Issues for maps, decisions, all spec forms and evidence slices while preserving scientific canonical owners | PASS |
 | Native parent/dependency collaboration | 19 labels plus parent map #2, 12 native sub-issues and all dependency counts were created and read back on the configured repository | PASS |
-| Full isolated behavioral path | 16 committed evals plus Claude/Codex read-only dry runs cover every stage, refusals, hybrid routing, H2 gate and no-auto-execution-ticket invariant; Wayfinder frontier selection is additionally fail-closed in its contract/eval | PASS |
+| Full isolated behavioral path | 16 committed evals plus Claude/Codex read-only dry runs cover every stage, refusals, hybrid routing, H2 gate and recommendation-without-claim invariants | PASS after current recommendation eval reruns |
 | UI research is not omitted | RQ0, ROADMAP instrument lane, CURRENT_STATE, workflow contract and real map decisions cover UI reliability, variants, H2 and held-out confirmation | PASS |
 | Single-source maintenance | Workflow/tracker owners added to `SOURCE_POLICY`; stage skills point to them; root Claude rules use one `@AGENTS.md` import | PASS |
-| Repository verification | 52 unit tests, local `scripts/verify`, source doctor, skill doctor, eval doctor and diff check pass | PASS |
-| Public push boundary | No code/document branch was pushed; map/labels were separately authorized. The branch remains local pending explicit approval | PASS |
+| Repository verification | 55 unit tests, local and public `scripts/verify`, source doctor, skill doctor, eval doctor, label read-back and diff check pass | PASS |
+| Public push boundary | The user explicitly approved pushing this branch and opening a PR; no merge or Release is implied by that approval | PASS |
 
 ## Remaining acceptance action
 
-After explicit publication approval:
+Approved publication closeout:
 
 1. push `codex/research-workflow-skills` and open a PR;
 2. require the normal public `verify` job plus `skill-portability` on `macos-latest` and `windows-latest`;

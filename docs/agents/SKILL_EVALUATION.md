@@ -5,11 +5,11 @@ Evaluation date: 2026-08-14
 
 ## Scope
 
-The repository skill set was evaluated against the explicit workflow contract rather than generic prose quality. The evaluated path is:
+The repository skill set was evaluated against the explicit workflow contract rather than generic prose quality. All adapted skills use the `ercm-` namespace so project variants remain distinct from globally installed upstream skills. The evaluated path is:
 
 ```text
-research-workflow router
-  -> wayfinder decision map
+ercm-workflow router
+  -> ercm-wayfinder decision map
   -> implementation / EXP / hybrid spec routing
   -> evidence-slice tickets
   -> one user-selected ticket implementation contract
@@ -41,23 +41,25 @@ All dynamic prompts explicitly disabled commands, file changes, network and GitH
 | Claude Code 2.1.228 | chart UI instrument decision map | parent + typed decision children + fog; no execution | PASS |
 | Claude Code 2.1.228 | hybrid UI + H2 contract | Issue implementation spec + canonical `EXP-*` + tracking Issue | PASS |
 | Claude Code 2.1.228 | `PROPOSED` EXP to tickets | refuse before frozen review | PASS |
-| Claude Code 2.1.228 | Implement without exact ticket | refuse automatic selection | PASS |
+| Claude Code 2.1.228 | `/ercm-implement` without exact ticket | recommend with tradeoffs; wait for explicit selection | PASS — recommended #201, explained #202/#203, required a new explicit invocation, and made no mutation |
 | Claude Code 2.1.228 | Implement with open H2 blocker | refuse participant activity | PASS |
 | Codex 0.148.0-alpha.9 / GPT-5.6-sol | frozen EXP without slices | route to Tickets | PASS |
-| Codex 0.148.0-alpha.9 / GPT-5.6-sol | several ready tickets | refuse automatic selection | PASS |
+| Codex 0.148.0-alpha.9 / GPT-5.6-sol | several ready tickets | recommend with tradeoffs; wait for explicit selection | PASS — earlier no-claim routing case retained |
 | Codex 0.148.0-alpha.9 / GPT-5.6-sol | hybrid contract with unresolved estimand/detail | classify hybrid and return to Wayfinder | PASS |
 | Codex 0.148.0-alpha.9 / GPT-5.6-sol | frozen hybrid decomposition | evidence slices, blockers, claim bounds, approval gate | PASS |
-| Codex 0.148.0-alpha.9 / GPT-5.6-sol | Wayfinder map with several decision-frontier children but no named child | refuse selection and assignment | PASS |
-| Codex 0.148.0-alpha.9 / GPT-5.6-sol | Implement without exact ticket | refuse automatic selection | PASS |
+| Codex 0.148.0-alpha.9 / GPT-5.6-sol | `$ercm-wayfinder` map with several decision-frontier children but no named child | recommend with tradeoffs; wait for explicit selection | PASS — recommended #11, explained #7/#5, and made no assignment or work change |
+| Codex 0.148.0-alpha.9 / GPT-5.6-sol | Implement without exact ticket | recommend with tradeoffs; wait for explicit selection | PASS — earlier no-claim routing case retained |
 | Codex 0.148.0-alpha.9 / GPT-5.6-sol | ready code ticket contract | eligibility before claim; TDD; dual review; log; local commit; stop before publication | PASS |
 
 One initial Codex batch incorrectly passed `$skill-name` inside shell double quotes, causing shell variable expansion. Those runs were excluded. The batch was rerun with single-quoted prompts and the explicit skill name was confirmed in the Codex input transcript before grading.
+
+The namespace migration was also exercised through both discovery surfaces: Codex loaded `$ercm-wayfinder` from `.agents/skills/`, and Claude Code loaded `/ercm-implement` through the generated `.claude/skills/` mapping. The old unprefixed generated mappings were absent after bootstrap.
 
 ## Flow-level assertions
 
 - Mixed activities never decide the stage; missing decision/contract/slice/evidence does.
 - Wayfinder produces decision tickets and stops; it does not auto-run research children.
-- Wayfinder reports but never auto-selects or claims a decision frontier; the user names the child.
+- Wayfinder and Implement provide bounded, reasoned selection assistance but never convert a recommendation into assignment, labels, branches, work, or a state transition; the user names the ticket.
 - Scientific experiment prose has one owner in `EXP-*`; GitHub remains the collaboration/publication surface.
 - To Tickets refuses an unfrozen experiment and produces typed evidence slices for a frozen hybrid.
 - Implement never chooses a ready ticket, never converts an H2-blocked activity into a smoke test, and never equates local completion with public completion.

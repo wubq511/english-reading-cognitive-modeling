@@ -15,6 +15,8 @@ Every collaboration artifact has a GitHub Issue. Scientific experiment specs rem
 
 Store one tracked physical skill set under `.agents/skills/`. The five public entry points are explicit-only on both platforms. Bootstrap generates ignored, platform-native Claude Code mappings under `.claude/skills/` that resolve to the same physical directories; mappings are never a second tracked skill copy. Supporting skills retain on-demand model invocation.
 
+Namespace every adapted project skill with `ercm-` (English Reading Cognitive Modeling), including support skills. This prevents the project variants from colliding with globally installed upstream skills while keeping one memorable router, `ercm-workflow`.
+
 ## Consequences
 
 - Phase names remain roadmap/navigation units; members claim bounded decision or evidence-slice Issues.

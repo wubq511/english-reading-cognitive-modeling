@@ -11,18 +11,18 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ENTRY_SKILLS = (
-    "research-workflow",
-    "wayfinder",
-    "to-spec",
-    "to-tickets",
-    "implement",
+    "ercm-workflow",
+    "ercm-wayfinder",
+    "ercm-to-spec",
+    "ercm-to-tickets",
+    "ercm-implement",
 )
 MIN_EVALS = {
-    "research-workflow": 4,
-    "wayfinder": 4,
-    "to-spec": 2,
-    "to-tickets": 2,
-    "implement": 4,
+    "ercm-workflow": 4,
+    "ercm-wayfinder": 4,
+    "ercm-to-spec": 2,
+    "ercm-to-tickets": 2,
+    "ercm-implement": 4,
 }
 
 

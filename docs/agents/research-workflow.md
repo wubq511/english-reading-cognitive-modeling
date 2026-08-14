@@ -23,9 +23,9 @@ Phase 是依赖与 exit gate 的导航层，不是可直接领取的工作单元
 
 | State | What is missing | Canonical artifact | Exit gate | Next explicit skill |
 | --- | --- | --- | --- | --- |
-| `WAYFINDING` | 路径中仍有高代价未知、分歧或不可逆选择 | GitHub parent map + decision sub-issues | frontier 与 in-scope fog 均为空；每个决定有证据、替代项和边界 | `to-spec` |
-| `SPEC` | 已知决定尚未成为可审查契约 | Implementation spec Issue、`EXP-*`，或 hybrid parent | 行为/estimand、输入、输出、gate、验证和 out-of-scope 已冻结 | `to-tickets` |
-| `TICKETS` | 契约尚未分解为单上下文、独立可验的结果 | GitHub evidence-slice sub-issues + native dependencies | spec 覆盖完整；每个 slice 有 owner、claim boundary、gate 和验收 | `implement <issue>` |
+| `WAYFINDING` | 路径中仍有高代价未知、分歧或不可逆选择 | GitHub parent map + decision sub-issues | frontier 与 in-scope fog 均为空；每个决定有证据、替代项和边界 | `ercm-to-spec` |
+| `SPEC` | 已知决定尚未成为可审查契约 | Implementation spec Issue、`EXP-*`，或 hybrid parent | 行为/estimand、输入、输出、gate、验证和 out-of-scope 已冻结 | `ercm-to-tickets` |
+| `TICKETS` | 契约尚未分解为单上下文、独立可验的结果 | GitHub evidence-slice sub-issues + native dependencies | spec 覆盖完整；每个 slice 有 owner、claim boundary、gate 和验收 | `ercm-implement <issue>` |
 | `IMPLEMENT` | 一个明确 ready slice 尚未产生可审查证据 | 指定 ticket + branch/commit/run/report/data artifact | ticket 验收、项目 gate、review、日志、CI/merge 条件满足 | close or next ticket |
 | `BLOCKED` | 外部权利、来源、伦理、权限或上游证据缺失 | Issue blocker + canonical gate owner | 明确 unblock evidence 到位 | return to prior state |
 | `DONE` | 无 | merged artifact + required CI + reviewed result | 证据可复现；状态 owner 已更新（若改变项目状态） | none |
@@ -71,6 +71,18 @@ An Issue may summarize what its audience needs, but it must link the owner and m
 - External gates are satisfied, not merely documented.
 - Parent contract remains current and approved/frozen.
 
+### Selection assistance before assignment
+
+When the user invokes Wayfinder with only a map or Implement without one exact ticket, the Agent provides a read-only decision aid rather than silently choosing or merely refusing:
+
+1. derive the verified decision or execution frontier using [`issue-tracker.md`](issue-tracker.md);
+2. show at most three titled Issue URLs with readiness, gates, downstream unlocks and fit with the user's stated goal;
+3. recommend one option and explain when an alternative is the better choice;
+4. stop before assignment, labels, branches, artifact changes or execution;
+5. continue only after the user explicitly names the ticket in a new invocation.
+
+The recommendation is advisory evidence for the human choice. It is not a ticket claim, workflow transition or authorization to execute.
+
 ### Implement → Evidence or reopen Wayfinder
 
 - Expected, null, negative and invalid outcomes are all recorded honestly.
@@ -97,5 +109,5 @@ Visual preference alone, completion time alone, or model accuracy alone cannot e
 
 - Every map, decision, spec publication and evidence slice has a GitHub Issue so members can discover, discuss and assign it.
 - Native sub-issues/dependencies define topology; labels define role/status, not scientific truth.
-- Neither Wayfinder nor Implement chooses a ticket from a frontier. The user must name one decision child for Wayfinder or one execution ticket for Implement before assignment or work.
+- Wayfinder and Implement may rank and recommend a verified frontier, but neither assigns or works a ticket from that recommendation. The user must name one decision child for Wayfinder or one execution ticket for Implement before any mutation.
 - Creating Issues and labels follows the user's standing decision for this workflow. Public push, PR, Release or third-party-file distribution still requires the authorization stated in `AGENTS.md`.

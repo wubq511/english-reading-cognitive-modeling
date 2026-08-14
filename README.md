@@ -19,7 +19,7 @@ Windows PowerShell / Command Prompt 使用 `.\scripts\bootstrap.cmd` 与 `.\scri
 
 `bootstrap` 是克隆后的唯一初始化命令：安装仓库 hooks，恢复 Codex/Claude Code 的项目技能映射，处理人工下载收件箱，恢复允许自动获取的外部来源并 fail closed 地验证本地研究环境。随后按 [AGENTS.md](AGENTS.md) 的顺序阅读项目上下文；Claude Code 通过根级 `CLAUDE.md` 的 `@AGENTS.md` 导入读取同一规则正文。
 
-团队研究通过 [`research-workflow`](docs/agents/research-workflow.md) 协作：Wayfinder 解决决策不确定性，Spec 冻结实现或实验契约，Tickets 拆成可独立验证的证据切片，Implement 只执行用户明确指定的一个 ticket。项目技能实体统一位于 `.agents/skills/`，Claude Code 使用 `.claude/skills/` 映射，无需成员另行安装。
+团队研究通过 [`ercm-workflow`](docs/agents/research-workflow.md) 协作：Wayfinder 解决决策不确定性，Spec 冻结实现或实验契约，Tickets 拆成可独立验证的证据切片，Implement 只执行用户明确指定的一个 ticket。所有项目适配技能使用 `ercm-` 前缀，实体统一位于 `.agents/skills/`；Claude Code 使用 `.claude/skills/` 映射，无需成员另行安装。
 
 第一次准备提交时，Agent 会为当前 clone 绑定稳定的 `member-id`，并为每个实质改动同步维护 [成员活动日志](logs/README.md)。本地 hook 和公共验证会阻止缺少日志的提交/合并。
 

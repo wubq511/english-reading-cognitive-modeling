@@ -11,7 +11,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / ".agents" / "skills" / "research-workflow" / "references" / "github-labels.json"
+MANIFEST = ROOT / ".agents" / "skills" / "ercm-workflow" / "references" / "github-labels.json"
 
 
 def run_gh(args: list[str]) -> subprocess.CompletedProcess[str]:

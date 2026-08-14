@@ -20,12 +20,12 @@ class SkillEvalTests(unittest.TestCase):
     def test_implicit_prompt_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            target = EVALS.eval_path("implement", root)
+            target = EVALS.eval_path("ercm-implement", root)
             target.parent.mkdir(parents=True)
             target.write_text(
                 json.dumps(
                     {
-                        "skill_name": "implement",
+                        "skill_name": "ercm-implement",
                         "evals": [
                             {
                                 "id": index,
@@ -39,7 +39,7 @@ class SkillEvalTests(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
-            errors = EVALS.validate_eval_suite("implement", root)
+            errors = EVALS.validate_eval_suite("ercm-implement", root)
             self.assertEqual(4, sum("eval-must-explicitly-invoke-skill" in error for error in errors))
 
 

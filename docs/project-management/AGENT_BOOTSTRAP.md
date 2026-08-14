@@ -21,6 +21,8 @@ Codex and Claude Code Agents are instructed to announce and run bootstrap before
 
 Repository skills are now required because multiple research members need the same explicit Wayfinder → Spec → Tickets → Implement workflow without installing personal copies. They are not startup hooks and do not replace `AGENTS.md` or `scripts/bootstrap`.
 
+All adapted project skills use the `ercm-` namespace. Bootstrap removes only obsolete generated mappings that point into `.agents/skills/`; it preserves unknown real files and directories.
+
 ## First entry
 
 macOS/Linux:
@@ -84,7 +86,7 @@ If a supported Agent demonstrably begins project work without preflight, use one
 Repository changes to this mechanism are complete only when:
 
 1. `scripts/skills doctor` passes on macOS/Linux;
-2. the Windows CI job repairs symlink placeholders to junctions and passes doctor;
+2. the Windows CI job generates ignored junction mappings and passes doctor with a clean checkout;
 3. all five explicit entry skills carry both platform invocation controls;
 4. every Claude mapping resolves to the corresponding physical Codex skill;
 5. bootstrap is idempotent and `--check` is non-mutating;

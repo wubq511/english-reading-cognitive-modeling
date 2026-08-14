@@ -1,0 +1,5 @@
+interface:
+  display_name: "ERCM To Tickets"
+  short_description: "Split a frozen spec into evidence tickets"
+policy:
+  allow_implicit_invocation: false
