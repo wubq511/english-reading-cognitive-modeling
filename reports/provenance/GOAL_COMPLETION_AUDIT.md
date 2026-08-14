@@ -1,8 +1,8 @@
 # Recovery Goal Completion Audit
 
-Status: `LOCAL OBJECTIVE PROVEN; PUBLICATION AUTHORIZED BUT PUSH PAUSED`
+Status: `LOCAL OBJECTIVE PROVEN; PUBLICATION RESUMED; GITHUB AUTH REQUIRED`
 Audit date: 2026-08-14
-Audited base snapshot: commit `8a0b32e` plus the current source and bootstrap-governance update; final local commit is reported in the handoff
+Audited base snapshot: commits through `b7bf686` plus the current fresh-clone compatibility and publication-resumption update; final commit is reported in the handoff
 
 ## Audit method
 
@@ -23,8 +23,8 @@ This audit derives requirements from the user's recovery objective and later dec
 | `R-09` | Keep the baseline system architecture free of AI/Agent while allowing important AI use in research/experiments | ADR 0002, `AI_RESEARCH_TOOLING_POLICY.md`, `SYSTEM_DESIGN.md` | **PROVEN** — runtime and research planes are separated; synthetic/LLM outputs cannot establish human truth or construct validity |
 | `R-10` | Preserve AI vertical-deepening and horizontal-extension as later research directions | `ROADMAP.md`, `RESEARCH_QUESTIONS.md`, `AI_RESEARCH_TOOLING_POLICY.md` | **PROVEN** — later AI comparisons/extensions remain gated research directions, not baseline implementation assumptions |
 | `R-11` | Handle preliminary acquaintances/students tests and later formal studies scientifically | ADR 0004, `HUMAN_RESEARCH_GATES.md`, `MANUAL_ACTIONS.md` | **PROVEN AS GOVERNANCE** — H1 debug-only and H2/H3 research are physically/semantically separated; institutional and recruitment questions are retained for the later phase |
-| `R-12` | Prepare a public collaborative repository without leaking raw evidence, source originals, secrets or human data | `PUBLICATION_READINESS.md`, staged tree, `.gitignore`, public verification mode | **PROVEN LOCALLY** — the prospective 87-file Git snapshot contains zero PDFs, raw recovery files, inbox files or third-party source originals; source, secret, path, citation and public-mode checks pass |
-| `R-13` | Actually create and publish the public GitHub repository | user decision and local `git remote` state | **AUTHORIZED, PAUSED** — the owner approved publication, then instructed the Agent to finish locally and not push yet; no remote is configured and no remote/publication action is permitted while the pause remains active |
+| `R-12` | Prepare a public collaborative repository without leaking raw evidence, source originals, secrets or human data | `PUBLICATION_READINESS.md`, staged tree, `.gitignore`, public verification mode | **PROVEN LOCALLY** — the prospective 97-file Git snapshot contains zero PDFs, raw recovery files, inbox files or third-party source originals; source, secret, path, citation and public-mode checks pass |
+| `R-13` | Actually create and publish the public GitHub repository | current user authorization, local `git remote` and `gh auth status` | **AUTHORIZED AND RESUMED; AUTH PENDING** — content is ready and the pause is lifted, but the active GitHub CLI token is invalid; no remote exists and no push can occur until the owner refreshes authentication |
 
 ## Scientific state established by the recovery
 
@@ -39,8 +39,8 @@ This audit derives requirements from the user's recovery objective and later dec
 The following evidence was re-run from the committed workspace:
 
 ```text
-39 unit tests                                      PASS
-scripts/verify (local)                            PASS: 70 Markdown, 80 sources, 25 raw sources
+39 unit tests                                      PASS locally; public clone skips only absent-byte checks
+scripts/verify (local)                            PASS: 71 Markdown, 80 sources, 25 raw sources
 scripts/verify --public                           PASS: public snapshot boundary
 scripts/sources doctor                             PASS: 80/80 exact local dependencies
 scripts/sources sync                               PASS: no missing direct-public dependency
@@ -52,4 +52,4 @@ The verifier does not claim that every sentence in the six legacy literature rep
 
 ## Remaining completion gate
 
-Only execution of `R-13` remains outside the local workspace. Publication permission has been granted, but the owner's later `do not push yet` instruction is the active gate. When the owner resumes publication, create the public repository, push the audited commit, observe the first CI result and apply the agreed simple branch protection; until then, do none of those external actions.
+Only execution of `R-13` remains outside the local workspace. Publication permission is active. Refresh GitHub CLI authentication, create the public repository, push the audited commit, observe the first CI result and apply the agreed simple branch protection; do not mark the recovery goal complete until those live checks pass.

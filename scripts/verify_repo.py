@@ -137,10 +137,10 @@ def run_activity_log_check(command: str) -> list[str]:
     return []
 
 
-def check_bootstrap_configuration() -> list[str]:
+def check_bootstrap_configuration(root: Path = ROOT) -> list[str]:
     result = subprocess.run(
         ["git", "config", "--local", "--get", "core.hooksPath"],
-        cwd=ROOT,
+        cwd=root,
         text=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,

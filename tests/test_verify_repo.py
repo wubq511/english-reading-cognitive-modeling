@@ -1,5 +1,7 @@
 from pathlib import Path
 import importlib.util
+import subprocess
+import tempfile
 import unittest
 
 
@@ -11,6 +13,12 @@ SPEC.loader.exec_module(VERIFY)
 
 
 class VerifyRepoTests(unittest.TestCase):
+    def require_local_manifest_payload(self, relative_manifest: str) -> None:
+        first_line = (ROOT / relative_manifest).read_text(encoding="utf-8").splitlines()[0]
+        first_target = first_line.split("  ", 1)[1]
+        if not (ROOT / first_target).is_file():
+            self.skipTest("local-only manifest payloads are intentionally absent")
+
     def test_local_markdown_links_resolve(self):
         self.assertEqual([], VERIFY.check_links())
 
@@ -18,6 +26,7 @@ class VerifyRepoTests(unittest.TestCase):
         self.assertEqual([], VERIFY.check_stale_current_paths())
 
     def test_raw_manifest_matches(self):
+        self.require_local_manifest_payload("reports/provenance/RAW_SOURCE_MANIFEST.sha256")
         self.assertEqual([], VERIFY.check_manifest("reports/provenance/RAW_SOURCE_MANIFEST.sha256"))
 
     def test_public_manifest_formats_are_valid(self):
@@ -28,6 +37,7 @@ class VerifyRepoTests(unittest.TestCase):
         self.assertEqual([], VERIFY.check_manifest_format("sources/checksums.sha256"))
 
     def test_source_manifest_matches(self):
+        self.require_local_manifest_payload("sources/checksums.sha256")
         self.assertEqual([], VERIFY.check_manifest("sources/checksums.sha256"))
 
     def test_every_cataloged_source_is_in_crosswalk(self):
@@ -45,8 +55,23 @@ class VerifyRepoTests(unittest.TestCase):
     def test_activity_log_history_gate_passes(self):
         self.assertEqual([], VERIFY.run_activity_log_check("check-history"))
 
-    def test_bootstrap_is_configured_for_this_clone(self):
-        self.assertEqual([], VERIFY.check_bootstrap_configuration())
+    def test_bootstrap_configuration_check_is_portable(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            subprocess.run(
+                ["git", "init"],
+                cwd=root,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=True,
+            )
+            self.assertTrue(VERIFY.check_bootstrap_configuration(root))
+            subprocess.run(
+                ["git", "config", "--local", "core.hooksPath", ".githooks"],
+                cwd=root,
+                check=True,
+            )
+            self.assertEqual([], VERIFY.check_bootstrap_configuration(root))
 
     def test_research_workspace_skeleton_is_complete(self):
         self.assertEqual([], VERIFY.check_workspace_skeleton())

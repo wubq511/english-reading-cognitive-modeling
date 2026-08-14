@@ -1,12 +1,12 @@
 # Public Repository Readiness
 
-Status: `READY; PUBLICATION AUTHORIZED; PUSH PAUSED BY OWNER`
+Status: `READY; PUBLICATION RESUMED; GITHUB AUTH REQUIRED`
 Audit date: 2026-08-14
 Target: `https://github.com/wubq511/english-reading-cognitive-modeling`
 
 ## Decision
 
-The local research recovery, source-boundary migration and automation migration have passed the updated final audit. The project owner explicitly approved public publication on 2026-08-14, then instructed the Agent to finish local work and not push yet. No remote repository has been created and no content has been pushed; the later pause is the active execution gate.
+The local research recovery, source-boundary migration and automation migration have passed the updated final audit. The project owner explicitly resumed and authorized public publication on 2026-08-14. No remote repository has been created and no content has been pushed because the active `gh` account currently requires reauthentication; this is an execution prerequisite, not a content-readiness failure.
 
 The approved first snapshot must remain metadata-first: it contains canonical research documents, provenance, source metadata/checksums and recovery tooling, but no raw chat export, third-party source bytes or human-participant data.
 
@@ -15,7 +15,7 @@ The approved first snapshot must remain metadata-first: it contains canonical re
 | Check | Result |
 | --- | --- |
 | Tracked raw recovery material | `0`; `webchat_raw_materials/` is ignored |
-| Prospective tracked files | `96` |
+| Prospective tracked files | `97` |
 | Tracked third-party source files | `0`; only `sources/library/README.md` is tracked below the ignored local library |
 | Tracked human/private data directories | `0` |
 | Common credential/token/private-key signatures | no matches in the staged snapshot |
@@ -51,16 +51,17 @@ The legal and engineering rationale is recorded in [`../../docs/project-manageme
 ## Verification evidence
 
 ```text
-39 unit tests                                      PASS
-scripts/verify (local)                            PASS: 70 Markdown, 80 sources, 25 raw sources
-scripts/verify --public                           PASS: 70 Markdown, 80 sources, 25 raw sources
+39 unit tests (local complete corpus)              PASS
+39 unit tests (public clone)                       PASS: local-byte checks skip when originals are absent
+scripts/verify (local)                            PASS: 71 Markdown, 80 sources, 25 raw sources
+scripts/verify --public                           PASS: 71 Markdown, 80 sources, 25 raw sources
 scripts/bootstrap --check                         PASS: core.hooksPath=.githooks
 scripts/logs validate                             PASS: 2 member entries; ignored workspace residue excluded
 scripts/sources inbox                             PASS: inbox empty
 scripts/sources sync                              PASS: no missing direct-public dependency
 scripts/sources doctor                            PASS: 80/80 exact local dependencies
 CITATION.cff parse                                PASS
-prospective Git index                             PASS: 96 files, 0 PDFs, 0 raw files, 0 tmp files
+prospective Git index                             PASS: 97 files, 0 PDFs, 0 raw files, 0 tmp files
 secret/path/credential URL/email signature scan   PASS: no matches
 CLAUDE.md                                         PASS: mode 120000 -> AGENTS.md
 git diff --cached --check                         PASS

@@ -53,7 +53,7 @@ Until written answers exist:
 
 ## Before public GitHub publication
 
-The project owner explicitly approved public publication on 2026-08-14, then instructed the Agent to finish local work and **not push yet**. Authorization is recorded; execution is `PAUSED` until the owner resumes it. Do not create the remote, push, publish a Release or change live repository settings while this pause is active.
+The project owner explicitly resumed and authorized public publication on 2026-08-14 after the local recovery and collaboration audit. Execution is no longer paused. The remaining machine-level prerequisite is GitHub authentication: the active `gh` account `wubq511` currently has an invalid keyring token, so the owner must run `gh auth refresh -h github.com` before the Agent can create or push the repository.
 
 - Confirm the tracked file list contains no raw chats, PDF bytes, human/private data, secrets or machine-local artifacts.
 - Publish only catalog/checksums/source/right metadata for third-party files; do not upload the local `sources/library/` tree.
