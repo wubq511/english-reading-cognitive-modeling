@@ -20,10 +20,10 @@ Phase 0 只有在以下四类交付都可本地验收时才能关闭：
 | Candidate | Intended role | Current verified local status |
 | --- | --- | --- |
 | PELDiaG | 大学英语阅读诊断题/属性映射候选 | `DOMAIN-003` 全文已核实 5 passages、43 原题/41 分析题、N=740、专家/学生 Q-matrix 与 verbal-report 流程；完整题本、答案键、响应矩阵和复用权利仍未取得 |
-| 2022 CSE reading inference study | CSE 阅读推理构念与题目谱系 | 官方摘要已核实 N=1083、6 推理+2 字面理解属性；CNKI 全文、题本、Q-matrix 与数据未取得 |
+| 2022 CSE reading inference study | CSE 阅读推理构念与题目谱系 | `DOMAIN-004` 全文已核实 28→20 题、5 校 `1200→1083`、7 专家+16 学生过程验证、6+2 属性和完整 `20×8` Q-matrix；完整题本文字、独立答案键、原始编码/响应数据与再部署权仍未取得 |
 | 2026 J. Intell. Q-matrix study | 新一代题目/Q-matrix 候选 | `ITEM-001/002` 已落地；S2 含 20 题，但无独立官方 answer key 和逐题权利/来源清单，故不能直接进 Candidate Bank |
-| TSC 2026 | J. Intell. 明确承接的属性/Q-matrix 来源 | `DOMAIN-002` 全文已核实 28→20 题、pilot 382/360、主测 975/886 与 6 推理+2 字面属性；完整题本/响应数据/复用权利仍未取得。2022→TSC/J. Intell. 的题本与数据映射为 `NOT FOUND` |
-| Zhang et al. 2024 CSE-based CDM | CSE 阅读能力属性与 G-DINA 设计参考 | `DOMAIN-001` 出版商 VOR 已落地；是独立研究，不是缺失的 Ma & Du 2022，也不提供本项目可直接部署题库 |
+| TSC 2026 | J. Intell. 明确承接的属性/Q-matrix 来源 | `DOMAIN-002` 全文已核实 28→20 题、pilot 382/360、主测 975/886 与 6 推理+2 字面属性；其最终 `20×8` Q-matrix 与 2022 表 2 逐单元格相同，故共享研发谱系已确认。完整题本/响应数据/复用权利仍未取得，J. Intell. S2 题本文字身份与数据映射仍未确认 |
+| Zhang et al. 2024 CSE-based CDM | CSE 阅读能力属性与 G-DINA 设计参考 | `DOMAIN-001` 出版商 VOR 已落地；它与 `DOMAIN-004` Ma & Du 2022 是不同研究，不可互换，也不提供本项目可直接部署题库 |
 | Jin & Liu difficulty pilot | 文本预筛 + 真人 item pilot 方法参考 | `ITEM-003` 作者稿已落地；n=47、CSE 分层与 33 篇 TOEFL 已核实；TOEFL 材料不随论文许可再分发 |
 | PISA 2012 digital reading logs | 外部行为分布/字段参考 | OECD 官方可下载；只用于 ETL、序列特征和分布校准，不作本项目认知真值 |
 | ePIRLS 2016 | 外部任务/统计参考 | 公开数据可得，但未确认公开原始 clickstream；item 复制/部署受 IEA/第三方权利限制 |
@@ -61,7 +61,6 @@ verified_at: null
 
 ## Next acquisition actions
 
-1. 实验室通过 CNKI 或作者渠道合法获取 `10.19360/j.cnki.11-3303/g4.2022.12.001`；人工下载统一放 `tmp/pdfs/` 交由 Agent 入库。
-2. 向 Wenbo Du/Xiaomei Ma 请求 PELDiaG/2022/TSC/J. Intell. 的 instrument/data lineage、题本/answer key、响应数据、data dictionary 与允许用途；请求数据前先完成实验室数据治理审批。
-3. 对 S2 做逐题 provenance/rights audit，由至少两名内容专家独立作答并裁决 answer key/evidence spans；豆包 S3 不得作 gold key。
-4. 只在权利、答案和 evidence metadata 足够时进入 Candidate Bank。Candidate Bank 必须覆盖 local/detail 到 cross-paragraph/global 的 observability gradient，不能只选容易从轨迹识别的题。
+1. 向 Wenbo Du/Xiaomei Ma 请求 PELDiaG/2022/TSC/J. Intell. 的 instrument/data lineage、题本/answer key、响应数据、data dictionary 与允许用途；请求数据前先完成实验室数据治理审批。
+2. 对 S2 做逐题 provenance/rights audit，由至少两名内容专家独立作答并裁决 answer key/evidence spans；豆包 S3 不得作 gold key。
+3. 只在权利、答案和 evidence metadata 足够时进入 Candidate Bank。Candidate Bank 必须覆盖 local/detail 到 cross-paragraph/global 的 observability gradient，不能只选容易从轨迹识别的题。

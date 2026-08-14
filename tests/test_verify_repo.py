@@ -58,7 +58,7 @@ class VerifyRepoTests(unittest.TestCase):
         )
         self.assertGreaterEqual(
             VERIFY.manifest_entry_count("sources/checksums.sha256"),
-            79,
+            80,
         )
 
 

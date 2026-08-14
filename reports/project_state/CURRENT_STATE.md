@@ -15,7 +15,7 @@
 | 三份完整网页会话 + 两份 handoff | 本地文件与 SHA-256 已核对 | Frozen recovery evidence |
 | A/A+/B/C/D/E 深读 | 44 PDF + 6 份深读报告；均有页码 Evidence Index | Usable with provenance caveats |
 | UI 行为文献研究 | 18 PDF + 笔记；旧编号 crosswalk 已建立 | Usable |
-| 外部来源目录 | 79 PDF/附件，均有稳定 ID、类型、路径与 SHA；论文、标准、题目附件已分层，逐版本权利在已审计范围内记录 | Locally ready; source gate automated |
+| 外部来源目录 | 80 PDF/附件，均有稳定 ID、类型、路径与 SHA；论文、标准、题目附件已分层，逐版本权利在已审计范围内记录 | Locally ready; source gate automated |
 | 系统概念架构 | 聊天与 handoff 反复收敛，已恢复到 `synthesis/` | Research design, not implementation |
 | Phase 2A measurement/validation | 原始会话明确标记题目无关设计基本关闭 | Design closed; implementation open |
 | AI 与真人研究治理 | 2026-08-14 经专项研究和用户确认 | Active policy |
@@ -24,7 +24,7 @@
 
 | Historical phase | Current evidence | Canonical status |
 | --- | --- | --- |
-| Phase 0 — Item & data sources | 已落地 2026 J. Intell. 正文+S2、Jin & Liu 作者稿、PELDiaG 2021、TSC 2026 和 Zhang et al. 2024；但 2022 CSE 仍缺，S2 无独立官方答案键/逐题权利，题本/响应数据谱系未闭合，Candidate Bank V1 和 pilot 规则未冻结 | **OPEN / core full text improved, usable item bank absent** |
+| Phase 0 — Item & data sources | 已落地 2026 J. Intell. 正文+S2、Jin & Liu 作者稿、PELDiaG 2021、Ma & Du 2022、TSC 2026 和 Zhang et al. 2024；2022/TSC 的共享测验/Q-matrix 研发谱系已由逐单元格相同的 `20 × 8` 矩阵确认，但完整题本、独立答案键、逐题权利与响应数据关系未闭合，Candidate Bank V1 和 pilot 规则未冻结 | **OPEN / core full text acquired, usable item bank absent** |
 | Phase 1 — Cognitive target & observability | 目标矩阵、不可识别边界和 `UNKNOWN` 原则在聊天/handoff 中已形成 | **SOURCE-RECOVERED DESIGN**；未做真人效度实验 |
 | Phase 2A — Measurement & validation framework | Raw event、replay、recall、annotation、provenance 等题目无关框架被明确标记 `RESEARCH DESIGN CLOSED` | **DESIGN CLOSED**；未实现 |
 | Phase 2B — Item-specific instantiation | 明确等待具体题目和 pilot | **NOT STARTED / BLOCKED BY ITEMS + PILOT** |
@@ -59,14 +59,14 @@
 ## Immediate next work
 
 1. 闭合 Phase 0：获取或自建权利清晰的 passage/item 资产、建立独立答案键/evidence spans、Candidate Bank V1 与 pilot 选择协议。
-2. 通过实验室/CNKI 获取 2022 CSE 全文，并向作者核对 2021 PELDiaG、2022 CSE、TSC 2026 与 J. Intell. 2026 的题本、Q-matrix 和响应数据谱系。
+2. 向作者核对 2021 PELDiaG、2022 CSE、TSC 2026 与 J. Intell. 2026 的题本、answer key、Q-matrix 版本和响应数据谱系；2022 全文获取项已关闭。
 3. 实现 `BENCH-E0`：raw logging、确定性 state reconstruction 与 replay fidelity。
 4. 建立 engineering synthetic；它只验证 schema/invariants，不验证 cognition。
 5. 在 H2 获批并具备题目后，设计小规模真人 pilot；此前不采研究性真人数据。
 
 ## Open external dependencies
 
-- 2022 CSE 全文仍需实验室/CNKI 或作者渠道；PELDiaG 与 TSC 全文已取得，但其题本、响应数据、answer key 与再部署权仍需作者/实验室协调。
-- 2026 J. Intell. S2 已本地可得，但无独立官方 answer key/逐题来源与权利清单；2022→2026 “同题本/同响应矩阵”未被证实，只能标为研发谱系推论。
+- 2022 CSE、PELDiaG 与 TSC 全文均已取得，但其完整题本、响应数据、answer key 与再部署权仍需作者/实验室协调。
+- 2026 J. Intell. S2 已本地可得，但无独立官方 answer key/逐题来源与权利清单；2022/TSC 的共享研发谱系已确认，J. Intell. 的题本文字身份与 2022/J. Intell. 是否复用同一响应矩阵仍未证实。
 - 实验室/学校伦理流程、PI 资格、学生招募和敏感模态要求需书面确认。
 - 公开分发任何第三方 PDF 前必须逐篇取得再分发依据。

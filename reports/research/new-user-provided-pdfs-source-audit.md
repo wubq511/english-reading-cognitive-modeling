@@ -1,5 +1,7 @@
 # 用户提供的五份 PDF 来源、版本与权利审计
 
+> Follow-up: this report preserves the five-file batch audit. Later on 2026-08-14, the user separately provided Ma & Du 2022, now registered as `DOMAIN-004`; its current findings and 2022/TSC/J. Intell. lineage ruling are owned by [`phase-0-item-data-source-audit.md`](phase-0-item-data-source-audit.md). Therefore statements below that the *five-file batch itself* did not contain Ma & Du 2022 remain historically correct, but no current full-text acquisition gap remains.
+
 - 审计日期：2026-08-14
 - 输入：tmp/pdfs 中用户提供的 5 份 PDF
 - 范围：书目身份、版本、官方来源、直接获取与再分发权利

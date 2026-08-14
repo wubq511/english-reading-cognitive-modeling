@@ -3,7 +3,7 @@
 schema_version: 2
 generated_on: "2026-08-14"
 source_policy: LOCAL_SOURCE_AND_PRIMARY_METADATA
-source_count: 79
+source_count: 80
 
 source_defaults: &source_defaults
   asset_type: "PAPER"
@@ -1462,6 +1462,25 @@ sources:
     sha256: "e0df9daf7f73e2381403d88102bb89b5a2c95f0ee7d02b2693f97c4b008ae7bc"
     same_work: null
     cited_by_reports: ["reports/research/phase-0-item-data-source-audit.md","reports/research/new-user-provided-pdfs-source-audit.md"]
+  - id: "DOMAIN-004"
+    <<: *source_defaults
+    aliases: ["基于《量表》的英语阅读推理能力认知诊断模型构建与成绩报告_马晓梅.pdf","Ma_Du_2022_CSE_Reading_Inference_Cognitive_Diagnosis.pdf"]
+    title: "基于《量表》的英语阅读推理能力认知诊断模型构建与成绩报告"
+    authors: ["Xiaomei Ma","Wenbo Du"]
+    year: 2022
+    venue: "Journal of China Examinations 2022(12):1-9"
+    doi: "10.19360/j.cnki.11-3303/g4.2022.12.001"
+    needs_metadata: []
+    required: true
+    acquisition_status: "MANUAL_ONLY"
+    source_url: "https://cse.neea.edu.cn/html1/report/2403/249-1.htm"
+    download_url: null
+    redistribution_status: "RESTRICTED"
+    license: "CNKI version of record; all rights reserved; local research copy only"
+    local_path: "sources/library/papers/domain/2022_Ma_Du_CSE_Reading_Inference_Cognitive_Diagnosis.pdf"
+    sha256: "5ae10da81b781942a4a4eed6b079e7295b92740cd6bcf582b9d196c76e00f705"
+    same_work: null
+    cited_by_reports: ["reports/research/phase-0-item-data-source-audit.md"]
   - id: "METHOD-008"
     <<: *source_defaults
     aliases: ["Computer Assisted Learning - 2025 - Shin - Co‐Coding Classroom Dialogue  A Single Researcher Case Study of ChatGPT‐Assisted.pdf"]

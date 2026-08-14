@@ -6,13 +6,11 @@ Rule: these actions require credentials, institutional authority, author contact
 
 ## Now: source acquisition that improves Phase 0
 
-| Priority | Action | Exact target | Why manual | Completion evidence |
-| ---: | --- | --- | --- | --- |
-| P0 | Use laboratory/CNKI access or request author copy | Ma & Du 2022, DOI [`10.19360/j.cnki.11-3303/g4.2022.12.001`](https://doi.org/10.19360/j.cnki.11-3303/g4.2022.12.001) | official full text is access-controlled | lawful PDF imported with SHA/version; methods, item count and data statement audited |
+No full-text acquisition action is currently open. The remaining Phase 0 manual work concerns author-provided item/data assets and their permitted use, not another paper PDF.
 
 ## Source acquisitions completed on 2026-08-14
 
-TSC 2026、PELDiaG 2021、GRRAS 2011 和 Shin 2025 已由用户提供并分别登记为 `DOMAIN-002`、`DOMAIN-003`、`METHOD-009`、`METHOD-008`；另新增 Zhang et al. 2024 `DOMAIN-001`。规范路径、SHA、版本和权利只以 `sources/catalog.yaml` 为准，审计证据见 [`../research/new-user-provided-pdfs-source-audit.md`](../research/new-user-provided-pdfs-source-audit.md)。这些完成项不再留在行动队列中。
+TSC 2026、PELDiaG 2021、Ma & Du 2022、GRRAS 2011 和 Shin 2025 已由用户提供并分别登记为 `DOMAIN-002`、`DOMAIN-003`、`DOMAIN-004`、`METHOD-009`、`METHOD-008`；另新增 Zhang et al. 2024 `DOMAIN-001`。规范路径、SHA、版本和权利只以 `sources/catalog.yaml` 为准；五文件批次的证据见 [`../research/new-user-provided-pdfs-source-audit.md`](../research/new-user-provided-pdfs-source-audit.md)，2022 的当前结论见 [`../research/phase-0-item-data-source-audit.md`](../research/phase-0-item-data-source-audit.md)。这些完成项不再留在行动队列中。
 
 The arXiv preprint `2306.00176` is intentionally **not** a missing requirement: the catalog keeps the formal ICWSM successor (`METHOD-007`) to avoid duplicate versions. Add the preprint only if a version-comparison question arises.
 
@@ -55,7 +53,7 @@ Until written answers exist:
 
 ## Before public GitHub publication
 
-This step is intentionally pending explicit user approval after the final local audit.
+The project owner explicitly approved public publication on 2026-08-14, then instructed the Agent to finish local work and **not push yet**. Authorization is recorded; execution is `PAUSED` until the owner resumes it. Do not create the remote, push, publish a Release or change live repository settings while this pause is active.
 
 - Confirm the tracked file list contains no raw chats, PDF bytes, human/private data, secrets or machine-local artifacts.
 - Publish only catalog/checksums/source/right metadata for third-party files; do not upload the local `sources/library/` tree.

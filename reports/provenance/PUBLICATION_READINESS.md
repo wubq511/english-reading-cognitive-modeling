@@ -1,12 +1,12 @@
 # Public Repository Readiness
 
-Status: `READY FOR EXPLICIT PUBLICATION APPROVAL`
+Status: `READY; PUBLICATION AUTHORIZED; PUSH PAUSED BY OWNER`
 Audit date: 2026-08-14
 Target: `https://github.com/wubq511/english-reading-cognitive-modeling`
 
 ## Decision
 
-The local research recovery, source-boundary migration and automation migration have passed the updated final audit. The staged snapshot is suitable for the first public repository snapshot after the project owner gives explicit publication approval. No remote repository has been created and no content has been pushed.
+The local research recovery, source-boundary migration and automation migration have passed the updated final audit. The project owner explicitly approved public publication on 2026-08-14, then instructed the Agent to finish local work and not push yet. No remote repository has been created and no content has been pushed; the later pause is the active execution gate.
 
 The approved first snapshot must remain metadata-first: it contains canonical research documents, provenance, source metadata/checksums and recovery tooling, but no raw chat export, third-party source bytes or human-participant data.
 
@@ -15,7 +15,7 @@ The approved first snapshot must remain metadata-first: it contains canonical re
 | Check | Result |
 | --- | --- |
 | Tracked raw recovery material | `0`; `webchat_raw_materials/` is ignored |
-| Prospective tracked files | `85` |
+| Prospective tracked files | `86` |
 | Tracked third-party source files | `0`; only `sources/library/README.md` is tracked below the ignored local library |
 | Tracked human/private data directories | `0` |
 | Common credential/token/private-key signatures | no matches in the staged snapshot |
@@ -31,9 +31,9 @@ The credential scan is a bounded signature scan, not a proof that arbitrary pros
 
 ## Source and rights state
 
-- 79 required PDF/attachment files are present locally and pass exact SHA-256 and media-signature checks.
-- 12 catalog records have a verified `DIRECT_PUBLIC` acquisition route; 5 are `MANUAL_ONLY`; 62 remain `UNKNOWN`.
-- Eight specific versions are conservatively marked `REDISTRIBUTION_ALLOWED`, nine `RESTRICTED`, and 62 `UNKNOWN`.
+- 80 required PDF/attachment files are present locally and pass exact SHA-256 and media-signature checks.
+- 12 catalog records have a verified `DIRECT_PUBLIC` acquisition route; 6 are `MANUAL_ONLY`; 62 remain `UNKNOWN`.
+- Eight specific versions are conservatively marked `REDISTRIBUTION_ALLOWED`, ten `RESTRICTED`, and 62 `UNKNOWN`.
 - Despite the permissions, **zero source originals may enter the first Git history**. Any later release is a separate file-level audit and public-approval event.
 - Collaborators run `scripts/bootstrap` once. Human downloads go to `tmp/pdfs/`; Agents update metadata and use `scripts/sources inbox`, which removes only verified migrated copies.
 
@@ -51,20 +51,20 @@ The legal and engineering rationale is recorded in [`../research/public-reposito
 
 ```text
 28 unit tests                                      PASS
-scripts/verify (local)                            PASS: 64 Markdown, 79 sources, 25 raw sources
-scripts/verify --public                           PASS: 64 Markdown, 79 sources, 25 raw sources
+scripts/verify (local)                            PASS: 65 Markdown, 80 sources, 25 raw sources
+scripts/verify --public                           PASS: 65 Markdown, 80 sources, 25 raw sources
 scripts/bootstrap --check                         PASS: core.hooksPath=.githooks
 scripts/sources inbox                             PASS: inbox empty
 scripts/sources sync                              PASS: no missing direct-public dependency
-scripts/sources doctor                            PASS: 79/79 exact local dependencies
+scripts/sources doctor                            PASS: 80/80 exact local dependencies
 CITATION.cff parse                                PASS
-prospective Git index                             PASS: 85 files, 0 PDFs, 0 raw files, 0 tmp files
+prospective Git index                             PASS: 86 files, 0 PDFs, 0 raw files, 0 tmp files
 secret/path/credential URL/email signature scan   PASS: no matches
 CLAUDE.md                                         PASS: mode 120000 -> AGENTS.md
 git diff --cached --check                         PASS
 ```
 
-The Git client does not clone or automatically enable repository-controlled hooks. Each clone therefore needs one explicit `scripts/bootstrap`; after that, the configured checkout, merge and push hooks enforce the source and repository gates automatically.
+The Git client does not clone or automatically enable repository-controlled hooks. Each clone therefore needs one explicit `scripts/bootstrap` invocation; the root `AGENTS.md` requires both Codex and Claude (through the `CLAUDE.md` symlink) to announce and run it before work, so the human does not need to remember the command. After that, configured checkout, merge and push hooks enforce the source and repository gates automatically. Duplicate tool-specific SessionStart Hooks are intentionally deferred unless real omission evidence appears. The existing GitHub Actions Workflow is retained for remote push/PR verification; it cannot bootstrap a local clone. See [`../research/agent-first-entry-bootstrap-audit.md`](../research/agent-first-entry-bootstrap-audit.md).
 
 ## Residual actions after publication
 

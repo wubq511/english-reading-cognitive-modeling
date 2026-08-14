@@ -12,9 +12,9 @@
 
 ## 结论先行
 
-1. **2022 → 2026 的“单一直线谱系”没有被证实。** 2026 *Journal of Intelligence* 论文明确承接的是 Du & Ma 2026 *Thinking Skills and Creativity*（TSC），不是 2022 《中国考试》；其参考文献没有列 2022 论文。2022 与 2026 J. Intell. 都出现 `N=1083`、同一组六项推理技能，这是很强的 **INFERENCE**，但不能据此声称同一响应矩阵。TSC 本地全文 `DOMAIN-002` 明确记录独立的 975 名入组、删除 89 名未完成者、最终 `N=886`（PDF pp.5–6），所以三篇必须使用不同 dataset/instrument version。[J. Intell. DOI](https://doi.org/10.3390/jintelligence14050079)；[TSC 出版商页](https://www.sciencedirect.com/science/article/pii/S1871187125002706)；[2022 CSE 官方页](https://cse.neea.edu.cn/html1/report/2403/249-1.htm)
+1. **2022 与 TSC 2026 已确认属于同一测验/Q-matrix 研发谱系，但数据复用关系仍未证实。** 新落地的 2022 原文 `DOMAIN-004` 与 TSC `DOMAIN-002` 均报告初始 28 题、删 8 后保留 20 题、同一组 6+2 属性、7 名专家、16 名学生，以及完全逐行相同的 `20 × 8` 最终 Q-matrix（2022 PDF pp.2–5；TSC PDF pp.4–6）。这已经超过“作者与样本量相似”的弱推论。另一方面，2022 的 `1200 -> 1083`、TSC 的 `975 -> 886` 是不同主测排除链；J. Intell. 虽也报告 5 校 `N=1083`，仍无 subject IDs、数据字典或作者声明证明它复用了 2022 响应矩阵。三篇继续使用不同 `dataset_id` / `instrument_version_id`。[J. Intell. DOI](https://doi.org/10.3390/jintelligence14050079)；[TSC 出版商页](https://www.sciencedirect.com/science/article/pii/S1871187125002706)；[2022 CSE 官方页](https://cse.neea.edu.cn/html1/report/2403/249-1.htm)
 2. **目前唯一取得“完整 20 题试卷”的是 2026 J. Intell. 补充材料 S2。** 该补充包还含 S1 prompts 与 S3 豆包输出示例；S3 中的答案属于模型输出，不是出版社或测验作者单独发布的官方答案键。[MDPI supplement](https://www.mdpi.com/article/10.3390/jintelligence14050079/s1)
-3. **PELDiaG 与 2022 CSE 都不是可直接复用的公开题库。** 元数据、样本和构念可核验，但完整 passages/items、官方 answer key、逐题来源、响应矩阵和明确再部署许可均未找到。
+3. **PELDiaG 与 2022 CSE 都不是可直接复用的公开题库。** 两篇全文、样本、构念与 Q-matrix 方法已可核验，但完整 passages/items、官方 answer key、逐题来源、响应矩阵和明确再部署许可均未取得。
 4. **Jin & Liu 支持的是“自动难度预筛 + 目标群体真人 pilot”的方法，不提供可复用题库。** 其 33 篇材料来自 ETS TOEFL iBT；文章开放不等于第三方 TOEFL 刺激材料可再分发。
 5. 外部大规模过程数据只应作为**字段设计、分布校准和分析方法参考**，不能代替本项目目标人群的真实性验证或效标标签。PISA 2012 与 PIAAC 有可下载过程日志；ePIRLS 有公开数据库但题目受限；NAEP 微观过程数据需要 NCES restricted-use license。
 
@@ -44,21 +44,20 @@
 ### 元数据与可核验事实
 
 - **CONFIRMED — 题名与引文：** 马晓梅、杜文博，《基于〈量表〉的英语阅读推理能力认知诊断模型构建与成绩报告》，《中国考试》2022(12): 1–9，DOI [`10.19360/j.cnki.11-3303/g4.2022.12.001`](https://doi.org/10.19360/j.cnki.11-3303/g4.2022.12.001)。DOI 可解析到 CHNDOI；西安交通大学作者主页也列出同一 DOI。[杜文博主页](https://faculty.xjtu.edu.cn/wenbo/zh_CN/zdylm/1004718/list/index.htm)；[马晓梅主页](https://faculty.xjtu.edu.cn/xiaomei/zh_CN/zdylm/1011383/list/index.htm)
-- **CONFIRMED — 研究设计：** 教育部教育考试院 CSE 官方页明确写明在线阅读推理试卷、G-DINA、`N=1083`，以及主旨、时间、词汇、前提-结论、因果、回指六项推理技能。[中文官方页](https://cse.neea.edu.cn/html1/report/2403/249-1.htm)
-- **CONFIRMED — 更详细的英文摘要：** CSE 官方英文页写明六项推理技能经 7 名专家和 16 名学生即时作答记录验证，并从学生过程数据增加“句子字面意义理解”和“语篇字面意义理解”两项语言知识属性；第二阶段分析 1,083 份有效响应。[英文官方页](https://cse.neea.edu.cn/html1/report/2505/31-1.htm)
+- **CONFIRMED — 研究设计与题本：** `DOMAIN-004` 报告从 5 所高校招募 1,200 名低年级本科生；初始 28 题经小范围试测和文本难度调整后删除 8 题，形成 CSE 5–6、在线呈现的 20 题试卷（PDF pp.2–3）。
+- **CONFIRMED — 构念过程证据：** 7 名专家参与构念与 Q-matrix；16 名本科生完成逐题即时记录和回溯访谈，2 名编码者的 Cohen κ=.89；学生过程证据在六项推理技能之外增加句子和篇章字面意义两项属性（PDF pp.3–4）。
+- **CONFIRMED — Q-matrix 与模型：** 表 2 给出完整 `20 × 8` Q-matrix；专家 Fleiss κ=.569，第 6/9 题分别仅 .332/.302，讨论后再用 PVAF 修订。1,200 份实测数据剔除 117 份后得到 `N=1083`；G-DINA 在五种候选中拟合最佳，测试层面分类准确率 `P(a)=.718`（PDF pp.4–5）。这些是论文内结果，不是本项目的独立复现或效度确认。
 
 ### 资产状态
 
-- **NOT FOUND — 正文/附件：** 未找到出版社或作者机构公开的合法全文 PDF、supplement、完整在线试卷、answer key、Q-matrix 文件。
+- **CONFIRMED — 正文：** 用户合法提供的 CNKI Version of Record 已登记为 `DOMAIN-004`；PDF 9 页、SHA-256 与规范路径见 `sources/catalog.yaml`。该具体版本标示“版权所有”，只作为本地研究副本，不进入公开 Git/Release。
+- **NOT FOUND — 独立附件：** 论文正文给出最终 Q-matrix 和成绩报告示例，但没有完整 passage/item 文本、独立 answer key、逐题来源清单或可导入的数据文件。
 - **NOT FOUND — 数据：** 未找到 1,083 份响应、16 名学生即时作答记录、专家编码或个性化报告样例的开放仓储。
-- **NOT FOUND — 权利说明：** 官方摘要页未给出题目、数据或再部署许可。CNKI/CHNDOI 落地页的受限访问不能被绕过。
+- **NOT FOUND — 再部署权利：** 合法取得论文不自动授予题目、过程记录或数据的部署/共享权；仍需作者或权利方逐项确认。
 
-### 人工获取队列
+### 当前获取边界
 
-- 建议文件名：`Ma_Du_2022_CSE_Reading_Inference_Cognitive_Diagnosis.pdf`
-- 官方入口：[DOI](https://doi.org/10.19360/j.cnki.11-3303/g4.2022.12.001)；[CSE 中文官方摘要](https://cse.neea.edu.cn/html1/report/2403/249-1.htm)
-- 获取方式：实验室 CNKI 机构访问或作者索取。
-- 请求内容：论文 PDF、20 题与否的准确题本结构、Q-matrix、answer key、1083 份响应、16 人过程记录、刺激材料来源和允许的研究用途。
+全文获取项已关闭；后续只请求 20 题完整题本、answer key、1,083 份响应、16 人过程记录、专家原始编码、刺激材料来源、三篇谱系声明及允许的研究/共享用途。论文内 Q-matrix 可以审计，不等于题本可部署。
 
 ## 3. Du, Shen & Ma (2026) GenAI Q-matrix
 
@@ -82,19 +81,21 @@
 
 - **CONFIRMED — J. Intell. 的直接前序是 TSC 2026：** 其方法写明八属性 “adopted from Du and Ma (2026)”，Qmat-E/Qmat-S “adapted from a previous study (see Du & Ma, 2026)”；参考文献对应 *From coarse to fine: A cognitive diagnosis of EFL learners’ inferential ability in EFL reading*, *Thinking Skills and Creativity* 59, 102022，DOI [`10.1016/j.tsc.2025.102022`](https://doi.org/10.1016/j.tsc.2025.102022)。J. Intell. 的参考文献没有列 2022 《中国考试》。[J. Intell. full text](https://www.mdpi.com/2079-3200/14/5/79)
 - **CONFIRMED — TSC 测验与样本：** `DOMAIN-002` 报告初始 28 题；382 人 pilot 中 360 份有效响应，随后删除 8 题形成 20 题；主测 975 人中删除 89 名未完成者，最终 886 人（PDF pp.4–6）。题目来自/改编自 CET4、CET6 和既有推理测验，因此全文可读不等于题目可重新部署。
+- **CONFIRMED — 2022/TSC 共享研发骨架：** `DOMAIN-004` 和 `DOMAIN-002` 的初始/最终题数、6+2 属性、7 名专家、16 名学生、专家 Fleiss κ=.569 与编码者 Cohen κ=.89 全部一致；最强的直接文件证据是 2022 表 2 与 TSC 表 2 的 20 行、8 列数值逐单元格相同。可表述为“共享测验与 Q-matrix 研发谱系”，但两篇主测样本与分析模型不同。
 
 ### 可写与不可写的结论
 
-- **INFERENCE — 构念/测验家族关系：** 2022 与 2026 J. Intell. 作者重叠、均为 1,083、六项推理属性一致，2022 英文摘要还报告同样的两个字面理解属性。最合理的工作假设是它们来自同一研发项目或高度重叠的测验家族。
+- **CONFIRMED — 2022/TSC 测验家族关系：** 上述结构与逐单元格 Q-matrix 一致性足以确认两者不是偶然相似的独立测验；TSC 自称其 constrained cross-matching 方法来自更大的相关项目。这里确认的是研发/版本关系，不是题目文本身份、样本身份或数据复用。
+- **INFERENCE (strong) — 2022/J. Intell. 经验资产复用：** 两篇均为 5 所高校、20 题、`N=1083`，题型和 6+2 属性相同；最可能使用了同一或高度重叠的测验/响应资产。但 J. Intell. 的专家 Q-matrix 在部分 A7/A8 单元与 2022/TSC 最终矩阵不同，且其正文只显式引用 TSC 作为 Q-matrix 前序，因此仍不能把两份响应矩阵写成同一数据集。
 - **NOT FOUND — 同一题本：** 未有一手来源直接写明 2026 S2 就是 2022 的原题本。
 - **NOT FOUND — 同一响应矩阵：** 未有一手来源直接写明两篇的 1,083 是同一批记录；相同 `N` 不是行级身份或数据版本证明。
 - **NOT FOUND — 2022 → TSC 2026 的映射：** TSC 已明确自己的 `975 -> 886` 排除链，但没有把这些参与者或题本逐行映射到 2022 的 `N=1083`；不能把 TSC 解释为 2022 数据的清洗子集。
 
-**论文写作约束：** 在获得作者声明、数据字典/subject IDs 或两篇全文的明确方法说明前，只能写“可能属于同一研发谱系”，不得写“2022 数据被 2026 复用”。
+**论文写作约束：** 可以写“2022 与 TSC 共享测验/Q-matrix 研发谱系，并报告相同的最终 `20 × 8` Q-matrix”；在获得作者声明、数据字典或 subject IDs 前，不得写“2022 数据被 TSC/J. Intell. 复用”或“J. Intell. S2 与 2022 题本文字完全相同”。
 
 ### 仍需作者确认
 
-全文已作为 `DOMAIN-002` 落地。仍应向作者请求 2022、TSC 2026、J. Intell. 2026 三者的 `instrument_version_id`、采集批次、原始 N、排除规则、最终 N、item mapping 和数据复用声明。
+三篇正文已分别作为 `DOMAIN-004`、`DOMAIN-002` 与 `ITEM-001` 落地。仍应向作者请求三者的 `instrument_version_id`、采集批次、原始 N、排除规则、最终 N、item mapping 和数据复用声明。
 
 ## 5. Jin & Liu hybrid computerised dynamic assessment
 
@@ -137,12 +138,13 @@
 | `sources/library/papers/domain/Jin_Liu_2024_Hybrid_CDA_Accepted_Manuscript.pdf` | [Cambridge Apollo bitstream](https://api.repository.cam.ac.uk/server/api/core/bitstreams/933b2e88-bb15-474d-839f-e9a7c46aa450/content)，Accepted Manuscript | 41 | `55f52afe131980a3a474e32e57c3939ddf1f4eea086ad17b4694ff4246462181` | **CONDITIONAL**：仓储条目标 CC BY 4.0，但文中 TOEFL 材料为第三方；不得抽取/再部署 TOEFL passages/items。 |
 | `sources/library/papers/domain/2026_Du_Ma_From_Coarse_to_Fine.pdf` | 用户合法提供的 Elsevier VOR，catalog `DOMAIN-002` | 13 | 见 `sources/catalog.yaml` | **NO PUBLIC REDISTRIBUTION**；本地研究副本。 |
 | `sources/library/papers/domain/2021_Du_Ma_Multi_CDM_EFL_Reading.pdf` | 用户合法提供的 Springer VOR，catalog `DOMAIN-003` | 27 | 见 `sources/catalog.yaml` | **NO PUBLIC REDISTRIBUTION**；本地研究副本。 |
+| `sources/library/papers/domain/2022_Ma_Du_CSE_Reading_Inference_Cognitive_Diagnosis.pdf` | 用户合法提供的 CNKI VOR，catalog `DOMAIN-004` | 9 | 见 `sources/catalog.yaml` | **NO PUBLIC REDISTRIBUTION**；本地研究副本。 |
 
 ## 8. 未取得资产与下一步
 
 | 优先级 | 需要的文件/资产 | 官方入口 | 未取得原因 | 下一步 |
 |---:|---|---|---|---|
-| P0 | `Ma_Du_2022_CSE_Reading_Inference_Cognitive_Diagnosis.pdf` + items/Q/data | [DOI](https://doi.org/10.19360/j.cnki.11-3303/g4.2022.12.001) | CNKI/CHNDOI 受限；未发现授权 OA | 实验室 CNKI 或作者请求；先问清 1083 数据与 2026 的关系。 |
+| P0 | 2022 CSE items/answer/data/lineage | [DOI](https://doi.org/10.19360/j.cnki.11-3303/g4.2022.12.001) | 正文已取得；未取得完整题本、独立答案、原始编码/响应数据和允许用途 | 向作者请求，并先问清 1,083 数据与 TSC/J. Intell. 的关系。 |
 | P0 | TSC 2026 supplement/items/data | [DOI](https://doi.org/10.1016/j.tsc.2025.102022) | 正文已取得；未取得完整可部署题本、响应数据和权利 | 向作者请求 item mapping、数据字典和允许用途。 |
 | P1 | PELDiaG answer key/items/data | [DOI](https://doi.org/10.1007/s11145-021-10124-x) | 正文已取得；未取得完整刺激材料、响应矩阵和复用许可 | 向作者请求资产与逐题权利，不重复请求正文。 |
 | P1 | 2026 J. Intell. empirical response data + expert/student raw coding | [article](https://www.mdpi.com/2079-3200/14/5/79) | data on reasonable request | 通过文章页联系通讯作者，同时请求 data dictionary、伦理/DUA 条件、行级谱系说明。 |

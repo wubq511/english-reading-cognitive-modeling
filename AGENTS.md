@@ -12,7 +12,7 @@
 
 ## Start every task
 
-1. 运行 `scripts/bootstrap`；若 sources gate 未通过，停止依赖缺失原件的工作并输出精确人工获取项。
+1. 在首个进度更新中告知用户正在执行项目预检，运行 `scripts/bootstrap`，并报告 `OK` 或精确未决项；若 sources gate 未通过，停止依赖缺失原件的工作。
 2. 依次阅读 `CONTEXT.md`、`reports/project_state/CURRENT_STATE.md`、`reports/project_state/RESEARCH_QUESTIONS.md`。
 3. 系统设计读 `reports/synthesis/SYSTEM_DESIGN.md`；来源/结论冲突读 `reports/provenance/SOURCE_POLICY.md`。
 4. 涉及 AI、真人、实验或数据时，分别读取对应 `reports/protocols/`、`experiments/README.md` 或 `data/README.md`。

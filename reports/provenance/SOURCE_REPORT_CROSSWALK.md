@@ -129,6 +129,7 @@ A+ 报告第 4 行的历史 baseline `gpt-add-group-A-deep-reading.md` 当前解
 | `DOMAIN-001` | CSE-based reading cognitive diagnostic model | `sources/library/papers/domain/2024_Zhang_Cognitive_Diagnostic_CSE_Reading.pdf` | `reports/research/new-user-provided-pdfs-source-audit.md` |
 | `DOMAIN-002` | TSC 2026 inferential-reading cognitive diagnosis | `sources/library/papers/domain/2026_Du_Ma_From_Coarse_to_Fine.pdf` | `reports/research/phase-0-item-data-source-audit.md` |
 | `DOMAIN-003` | PELDiaG multi-CDM reading study | `sources/library/papers/domain/2021_Du_Ma_Multi_CDM_EFL_Reading.pdf` | `reports/research/phase-0-item-data-source-audit.md` |
+| `DOMAIN-004` | 2022 CSE 阅读推理认知诊断与成绩报告 | `sources/library/papers/domain/2022_Ma_Du_CSE_Reading_Inference_Cognitive_Diagnosis.pdf` | `reports/research/phase-0-item-data-source-audit.md` |
 
 ## 同一作品的不同本地版本
 
