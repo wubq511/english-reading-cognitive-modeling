@@ -1,7 +1,7 @@
 # Literature Synthesis: What the Existing Corpus Supports
 
 > Corpus: 44 A–E PDFs + 18 UI-interaction PDFs
-> Full paper mapping: `papers/catalog.yaml`
+> Full paper mapping: `sources/catalog.yaml`
 > Detailed evidence: existing deep-reading reports and their Evidence Indexes
 
 本文件不重写 8,000+ 行深读报告，只固定各文献组在系统中的证据角色及不能外推的边界。
@@ -46,7 +46,7 @@ E 组支持 process data 在特定设计下增加 diagnostic information，也�
 
 UIB 语料提供 object-centric logging、interaction abstraction、grammar/task-level events、trace clustering、process mining 与动态 focus 的跨领域方法词汇。
 
-它们主要支持系统设计和候选方法，不直接验证英语阅读 cognition。旧“论文 1–18”与 UIB ID 的映射见 `PAPER_REPORT_CROSSWALK.md`。
+它们主要支持系统设计和候选方法，不直接验证英语阅读 cognition。旧“论文 1–18”与 UIB ID 的映射见 `SOURCE_REPORT_CROSSWALK.md`。
 
 ## Integrated evidence chain
 

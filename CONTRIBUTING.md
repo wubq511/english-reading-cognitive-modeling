@@ -3,7 +3,7 @@
 ## Before research or changes
 
 ```bash
-scripts/papers doctor
+scripts/bootstrap
 scripts/verify
 ```
 
@@ -11,21 +11,20 @@ Read `AGENTS.md`, `CONTEXT.md`, `reports/project_state/CURRENT_STATE.md` and the
 
 ## Evidence discipline
 
-- Use stable paper IDs from `papers/catalog.yaml` and cite PDF page/section/table/figure for consequential claims.
+- Use stable source IDs from `sources/catalog.yaml` and cite page/section/table/figure for consequential claims.
 - Label project synthesis as `PROJECT-INFERENCE`; do not present it as a paper's original conclusion.
 - Preserve negative, ambiguous and unknown results. Do not tune away `UNKNOWN` for a cleaner narrative.
 - A method choice that depends on local data remains an `EXPERIMENT-GATE` until compared under frozen data, splits, metrics and budget.
 - AI-assisted work follows `reports/protocols/AI_RESEARCH_TOOLING_POLICY.md`; human-participant work follows `reports/protocols/HUMAN_RESEARCH_GATES.md`.
 
-## Adding a paper
+## Adding an external source
 
-1. Determine the exact work and version; record DOI/title/authors/year/venue.
-2. Record `source_url`, `download_url`, `redistribution_status`, SHA-256, parser QA and reports that use it.
-3. Use `scripts/papers import ID FILE`; do not manually overwrite an existing PDF.
-4. Update crosswalks if an old report basename or numbering system refers to the work.
-5. Run `scripts/papers doctor` and `scripts/verify`.
+1. Human-acquired papers go only to `tmp/pdfs/`; do not rename or place them in the canonical library manually.
+2. The Agent determines exact work/version/type and records DOI/title/authors/year/venue, acquisition, rights, SHA and parser QA.
+3. Update `sources/catalog.yaml` and `sources/checksums.sha256`, then run `scripts/sources inbox`.
+4. Update crosswalks or reports that use the source; run `scripts/sources doctor` and `scripts/verify`.
 
-Public Git does not automatically include paper PDFs. A PDF requires version-specific redistribution evidence and separate release approval; local access or “free to read” is not enough.
+Public Git does not include source originals by default. Any file requires version-specific redistribution evidence and separate release approval; local access or “free to read” is not enough.
 
 ## Adding a claim or experiment
 
@@ -38,7 +37,7 @@ Each major claim should identify:
 - what would falsify it;
 - the artifact or command that reproduces it.
 
-Experiment outputs should preserve code commit, environment, data/catalog hash, split manifest, config, seeds, metric version and result hashes.
+Experiment design and run outputs follow `experiments/README.md`; do not invent a parallel manifest format.
 
 ## Data safety
 

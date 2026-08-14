@@ -1,0 +1,29 @@
+schema_version: 1
+experiment_id: EXP-000
+run_id: null
+status: PLANNED
+started_at: null
+finished_at: null
+git:
+  commit: null
+  dirty: null
+sources:
+  catalog_sha256: null
+  checksums_manifest_sha256: null
+data:
+  dataset_ids: []
+  manifest_sha256: null
+  role: null
+configuration:
+  path: null
+  sha256: null
+split:
+  manifest_sha256: null
+seeds: []
+environment:
+  lockfile_sha256: null
+  container_or_runtime: null
+metrics:
+  registry_version: null
+outputs: []
+failure_reason: null

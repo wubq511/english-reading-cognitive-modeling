@@ -1,0 +1,3 @@
+# Separate external sources, project data, run artifacts, and canonical reports
+
+External inputs live in `sources/`, project-generated or participant data in `data/`, machine run outputs in `artifacts/`, experiment specifications in `experiments/`, and reviewed scientific conclusions in `reports/`. Runtime implementation will live in `src/`, but no language package or candidate algorithm is created before the implementation phase. This prevents item supplements and datasets from being mislabeled as papers, keeps rebuildable outputs out of the knowledge layer, and lets each lifecycle have its own provenance, privacy, rights and reproducibility gate.

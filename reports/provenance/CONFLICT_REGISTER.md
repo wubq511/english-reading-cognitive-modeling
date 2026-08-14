@@ -14,11 +14,12 @@
 | `C-010` | Package timezone says Asia/Tokyo | current environment Asia/Shanghai | **Resolved**: Asia/Shanghai for current project; package field treated erroneous |
 | `C-011` | “No AI” could be read as banning AI from all experiments | user clarification | **Resolved**: only runtime baseline excluded; policy recorded |
 | `C-012` | Casual acquaintances/students proposed for early validation | user preference vs ethics rules | **Resolved**: H1 debug-only; retained/analyzed data requires H2 prior review |
-| `C-013` | Public collaboration needs PDFs, but public redistribution may lack rights | collaboration need vs copyright/platform limits | **Resolved in design**: manifest/local cache/legal sync/manual acquisition/rights-cleared release |
+| `C-013` | Public collaboration needs source originals, but public redistribution may lack rights | collaboration need vs copyright/platform limits | **Resolved in design**: typed manifest/local library/legal sync/`tmp/pdfs` inbox/automatic hooks/rights-cleared file release |
 | `C-014` | `UIB-088` looks like a possible `UIB-018` typo | current reports/files only | **Open**: preserve stable ID until external numbering provenance is known |
 | `C-015` | D5/UIB-005 and D6/UIB-007 appear duplicated | same title/DOI, different SHA/pages/producer | **Resolved**: retain as same-work versions; preferred version open |
 | `C-016` | Migration package introduces ADEMP/DOE/OC-Bench/T0–T18 and tool stack | absent from substantive raw discussion | **Resolved**: package-origin proposals only; ADEMP independently supported later only for simulation planning |
-| `C-017` | Historical directory names contained `interation` typo and migration-origin `chatgpt_A-E` | old local paths | **Resolved 2026-08-14**: moved to `reports/literature/*` and `papers/library/*`; catalog/checksums/crosswalk updated, old aliases preserved |
+| `C-017` | Historical directory names contained `interation` typo and migration-origin `chatgpt_A-E` | old local paths | **Resolved 2026-08-14**: reports moved to `reports/literature/*`; source files retain old aliases in crosswalk/catalog |
+| `C-018` | `papers/` mixed papers, standards, item supplements and future datasets | actual asset types vs directory semantics | **Resolved 2026-08-14**: external inputs moved under typed `sources/library/`; project-generated data, run artifacts and reports have separate lifecycles |
 
 ## Closure rule
 

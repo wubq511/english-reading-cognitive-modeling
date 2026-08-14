@@ -2,7 +2,7 @@
 
 Status: `LOCAL OBJECTIVE PROVEN; PUBLICATION PENDING EXPLICIT AUTHORIZATION`
 Audit date: 2026-08-14
-Audited base snapshot: commit `55b1c87` plus this audit record and its provenance index link
+Audited base snapshot: commit `42d60a9` plus the current source-boundary migration; final local commit is reported in the handoff
 
 ## Audit method
 
@@ -17,13 +17,13 @@ This audit derives requirements from the user's recovery objective and later dec
 | `R-03` | Resolve contradictions and avoid blindly inheriting ChatGPT conclusions | `CONFLICT_REGISTER.md`, `CLAIM_LEDGER.md`, `RECOVERY_LOG.md`, `CURRENT_STATE.md` | **PROVEN** — package phase inflation and source upgrades are explicitly downgraded; alternatives and `UNKNOWN` are retained |
 | `R-04` | Recover current results, plans and prior solutions into durable project assets | `reports/project_state/`, `reports/synthesis/`, `reports/protocols/`, `reports/literature/` | **PROVEN** — current status, questions, roadmap, architecture, measurement design, benchmark draft and literature assets have canonical homes and READMEs |
 | `R-05` | Make the project understandable to researchers and Agents | root `README.md`, `AGENTS.md`, `CONTEXT.md`, `CONTRIBUTING.md`, directory READMEs | **PROVEN** — required reading order, terms, evidence rules, verification commands, manual gates and publication boundary are explicit |
-| `R-06` | Organize papers, connect claims to originals and preserve old numbering/path provenance | `papers/catalog.yaml`, `papers/checksums.sha256`, `PAPER_REPORT_CROSSWALK.md`, `LEGACY_REPORT_PROVENANCE.md` | **PROVEN** — 74 stable records match 74 local PDF/attachment files; original and legacy IDs/paths are cross-walked; same-work versions are preserved |
-| `R-07` | Download required scientific sources locally, or report access obstacles promptly | 74 local files; `phase-0-item-data-source-audit.md`; `methods-and-governance-source-audit.md`; `MANUAL_ACTIONS.md` | **PROVEN WITH OPEN RESEARCH DEPENDENCIES** — all claims treated as currently established have local/official evidence; five unavailable full texts are not promoted to verified evidence and have exact DOI/access actions for the user/lab |
-| `R-08` | Let collaborators and their Agents recover exact PDFs without putting the whole corpus in public Git | `scripts/papers`, CLI tests, `public-repository-paper-distribution-audit.md` | **PROVEN** — `doctor` fails closed, `sync` uses verified public HTTPS acquisition only, and `import` checks PDF magic plus frozen hash without overwriting |
+| `R-06` | Organize external sources, connect claims to originals and preserve old numbering/path provenance | `sources/catalog.yaml`, `sources/checksums.sha256`, `SOURCE_REPORT_CROSSWALK.md`, `LEGACY_REPORT_PROVENANCE.md` | **PROVEN** — 79 typed stable records match 79 local PDF/attachment files; papers, standards and study materials have separate paths; legacy IDs and same-work versions are preserved |
+| `R-07` | Download required scientific sources locally, or report access obstacles promptly | 79 local files; `phase-0-item-data-source-audit.md`; `methods-and-governance-source-audit.md`; `MANUAL_ACTIONS.md` | **PROVEN WITH OPEN RESEARCH DEPENDENCIES** — TSC, PELDiaG, Shin and GRRAS full texts are now local and audited; Ma & Du 2022 remains an exact CNKI/lab action; unavailable item/data rights are not promoted to verified assets |
+| `R-08` | Let collaborators and their Agents recover exact sources without putting the corpus in public Git | `scripts/bootstrap`, `scripts/sources`, `.githooks/`, CLI tests, `public-repository-source-distribution-audit.md` | **PROVEN** — one bootstrap installs automatic pull/push gates; `doctor`/`sync` fail closed; `tmp/pdfs` inbox imports by hash and deletes only post-verification copies |
 | `R-09` | Keep the baseline system architecture free of AI/Agent while allowing important AI use in research/experiments | ADR 0002, `AI_RESEARCH_TOOLING_POLICY.md`, `SYSTEM_DESIGN.md` | **PROVEN** — runtime and research planes are separated; synthetic/LLM outputs cannot establish human truth or construct validity |
 | `R-10` | Preserve AI vertical-deepening and horizontal-extension as later research directions | `ROADMAP.md`, `RESEARCH_QUESTIONS.md`, `AI_RESEARCH_TOOLING_POLICY.md` | **PROVEN** — later AI comparisons/extensions remain gated research directions, not baseline implementation assumptions |
 | `R-11` | Handle preliminary acquaintances/students tests and later formal studies scientifically | ADR 0004, `HUMAN_RESEARCH_GATES.md`, `MANUAL_ACTIONS.md` | **PROVEN AS GOVERNANCE** — H1 debug-only and H2/H3 research are physically/semantically separated; institutional and recruitment questions are retained for the later phase |
-| `R-12` | Prepare a public collaborative repository without leaking raw evidence, PDFs, secrets or human data | `PUBLICATION_READINESS.md`, committed tree, `.gitignore`, public verification mode | **PROVEN LOCALLY** — commit `55b1c87` contains 65 text/script files, 0 PDFs and 0 raw files; privacy/credential/path scans pass |
+| `R-12` | Prepare a public collaborative repository without leaking raw evidence, source originals, secrets or human data | `PUBLICATION_READINESS.md`, staged tree, `.gitignore`, public verification mode | **PROVEN LOCALLY** — the prospective 85-file Git snapshot contains zero PDFs, raw recovery files, inbox files or third-party source originals; source, secret, path, citation and public-mode checks pass |
 | `R-13` | Actually create and publish the public GitHub repository | live GitHub target and local `git remote` state | **PENDING EXPLICIT AUTHORIZATION** — the target repository is absent and no remote is configured; public publication is a user-defined red-line action |
 
 ## Scientific state established by the recovery
@@ -39,16 +39,16 @@ This audit derives requirements from the user's recovery objective and later dec
 The following evidence was re-run from the committed workspace:
 
 ```text
-17 unit tests                                      PASS
-scripts/verify (local)                            PASS: 50 Markdown, 74 papers, 25 raw sources
+28 unit tests                                      PASS
+scripts/verify (local)                            PASS: 64 Markdown, 79 sources, 25 raw sources
 scripts/verify --public                           PASS: public snapshot boundary
-scripts/papers doctor                             PASS: 74/74 exact local dependencies
-scripts/papers sync                               PASS: no missing direct-public dependency
+scripts/sources doctor                             PASS: 79/79 exact local dependencies
+scripts/sources sync                               PASS: no missing direct-public dependency
 git diff --cached --check (before commit)         PASS
-post-commit forbidden-path and secret signatures  no matches
+prospective forbidden-path and secret signatures  no matches
 ```
 
-The verifier does not claim that every sentence in the six legacy literature reports has been independently re-read against its PDF. That broader claim would exceed the performed audit. Major conclusion classes were sampled in `existing-literature-validation-audit.md`, and future consequential use must cite stable paper IDs plus page/section evidence.
+The verifier does not claim that every sentence in the six legacy literature reports has been independently re-read against its PDF. That broader claim would exceed the performed audit. Major conclusion classes were sampled in `existing-literature-validation-audit.md`, and future consequential use must cite stable source IDs plus page/section evidence.
 
 ## Remaining completion gate
 

@@ -1,10 +1,13 @@
-# Canonical local paper catalog. Metadata is limited to evidence in the PDFs and existing reports.
-schema_version: 1
+# Canonical local external-source catalog. Metadata is limited to inspected files,
+# primary source records, and existing evidence audits.
+schema_version: 2
 generated_on: "2026-08-14"
-source_policy: LOCAL_PDF_AND_EXISTING_REPORTS_ONLY
-paper_count: 74
+source_policy: LOCAL_SOURCE_AND_PRIMARY_METADATA
+source_count: 79
 
-paper_defaults: &paper_defaults
+source_defaults: &source_defaults
+  asset_type: "PAPER"
+  media_type: "application/pdf"
   access_status: LOCAL_FILE_AVAILABLE
   license_status: UNKNOWN
   parse_status: PASS
@@ -27,9 +30,9 @@ report_sets:
     - reports/literature/ui-interaction/README.md
     - reports/literature/ui-interaction/A_tier_notes.md
 
-papers:
+sources:
   - id: "A1"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["A1_2025_Han_MSRM.pdf"]
     title: "Assessing multiple abilities through process data in computer-based assessments: The multidimensional state response measurement model"
     authors: ["Yuting Han","Feng Ji","Pujue Wang","Jin Liu"]
@@ -42,12 +45,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/A/A1_2025_Han_MSRM.pdf"
+    local_path: "sources/library/papers/literature/a-e/A/A1_2025_Han_MSRM.pdf"
     sha256: "96484f786975221bb5a69666fbb185962a11cdcdd5e4833a124aa92ab14f2a76"
     same_work: null
     cited_by_reports: *report_a
   - id: "A2"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["A2_2024_Liu_HMM_NetworkAnalysis.pdf"]
     title: "Uncovering adults' problem-solving patterns from process data with hidden Markov model and network analysis"
     authors: ["Jin Liu","Okan Bulut","Ying Cui","Ruoyi Gao"]
@@ -60,12 +63,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/A/A2_2024_Liu_HMM_NetworkAnalysis.pdf"
+    local_path: "sources/library/papers/literature/a-e/A/A2_2024_Liu_HMM_NetworkAnalysis.pdf"
     sha256: "81923084318e8bf0364805b372c5ea2f038c4dbc0c06ce32cdb78eebe0944314"
     same_work: null
     cited_by_reports: *report_a
   - id: "A3"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["A3_2025_Xiao_MixtureModeling.pdf"]
     title: "A Mixture Modeling Approach to Detect Different Behavioral Patterns for Process Data"
     authors: ["Yue Xiao","Jin Liu"]
@@ -78,12 +81,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/A/A3_2025_Xiao_MixtureModeling.pdf"
+    local_path: "sources/library/papers/literature/a-e/A/A3_2025_Xiao_MixtureModeling.pdf"
     sha256: "bd474715493bb3acca55f2e1877bbc6b2de84c2122e9faf51c40826a0516dfec"
     same_work: null
     cited_by_reports: *report_a
   - id: "A4"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["A4_2024_Xiao_StateResponseMM.pdf"]
     title: "A state response measurement model for problem-solving process data"
     authors: ["Yue Xiao","Jin Liu"]
@@ -96,12 +99,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/A/A4_2024_Xiao_StateResponseMM.pdf"
+    local_path: "sources/library/papers/literature/a-e/A/A4_2024_Xiao_StateResponseMM.pdf"
     sha256: "bbb18f24aee026b3c169cbba9c69c5f9dfce1da7835bcb05f36372af38386ffb"
     same_work: null
     cited_by_reports: *report_a
   - id: "A5"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["A5_2020_Chen_CTDCM.pdf"]
     title: "A Continuous-Time Dynamic Choice Measurement Model for Problem-Solving Process Data"
     authors: ["Yunxiao Chen"]
@@ -114,12 +117,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/A/A5_2020_Chen_CTDCM.pdf"
+    local_path: "sources/library/papers/literature/a-e/A/A5_2020_Chen_CTDCM.pdf"
     sha256: "2128db05eead85c94f67eb514c6e07e7857a455d5fad11108d01cf9aa748bdeb"
     same_work: null
     cited_by_reports: *report_a
   - id: "A_PLUS_1"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["A+1_2026_Wang_TEM.pdf","A+1"]
     title: "A transition evaluation model with probability-based effectiveness indicators - a new measurement model for problem-solving process data"
     authors: ["Pujue Wang","Yuting Han","Hongyun Liu"]
@@ -132,12 +135,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/A/A+1_2026_Wang_TEM.pdf"
+    local_path: "sources/library/papers/literature/a-e/A/A+1_2026_Wang_TEM.pdf"
     sha256: "e4a2d27f4df54e4cc1822da9009e17cb44e7ffb7add7674096dd6c1e63837caf"
     same_work: null
     cited_by_reports: *report_ap
   - id: "A_PLUS_2"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["A+2_2024_Wang_PolytomousEffInd.pdf","A+2"]
     title: "Polytomous Effectiveness Indicators in Complex Problem-Solving Tasks and Their Applications in Developing Measurement Model"
     authors: ["Pujue Wang","Hongyun Liu"]
@@ -150,12 +153,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/A/A+2_2024_Wang_PolytomousEffInd.pdf"
+    local_path: "sources/library/papers/literature/a-e/A/A+2_2024_Wang_PolytomousEffInd.pdf"
     sha256: "7acd0f67c2f862bb1c3b33e2e6ee4182ffbb0ac41e7e0092efd8543b3b5963d3"
     same_work: null
     cited_by_reports: *report_ap
   - id: "A_PLUS_3"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["A+3_2024_Fu_ActionSeqTime.pdf","A+3"]
     title: "Joint modeling of action sequences and action time in computer-based interactive tasks"
     authors: ["Yanbin Fu","Peida Zhan","Qipeng Chen","Hong Jiao"]
@@ -168,12 +171,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/A/A+3_2024_Fu_ActionSeqTime.pdf"
+    local_path: "sources/library/papers/literature/a-e/A/A+3_2024_Fu_ActionSeqTime.pdf"
     sha256: "b1580cd95b933e89fa3a35dc115f1f3df2c236c526c8aef9fc667a1e48784aef"
     same_work: null
     cited_by_reports: *report_ap
   - id: "A_PLUS_4"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["A+4_2026_Han_SRM_Growth.pdf","A+4"]
     title: "A Sequential Response Model With Growth Parameters for Process Data in Complex Problem Solving"
     authors: ["Yuting Han","Pujue Wang","Feng Ji","Hongyun Liu"]
@@ -186,12 +189,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/A/A+4_2026_Han_SRM_Growth.pdf"
+    local_path: "sources/library/papers/literature/a-e/A/A+4_2026_Han_SRM_Growth.pdf"
     sha256: "7f2f201e188a1da7a435cb0fbc695251e9a45eb860ef73349b46b0f77611f7e4"
     same_work: null
     cited_by_reports: *report_ap
   - id: "A_PLUS_5"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["A+5_2026_Xu_RLMM.pdf","A+5"]
     title: "Reinforcement Learning Measurement Model"
     authors: ["Wenqian Xu","Feng Ji"]
@@ -204,12 +207,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/A/A+5_2026_Xu_RLMM.pdf"
+    local_path: "sources/library/papers/literature/a-e/A/A+5_2026_Xu_RLMM.pdf"
     sha256: "c88a968cba16118e661091d7c57fc44a59701a2b327fad5f92860992105db0c6"
     same_work: null
     cited_by_reports: *report_ap
   - id: "B1"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["B1_2025_Maimaiti_GamifiedSRL.pdf","B_2025_Maimaiti_GamifiedSRL.pdf"]
     title: "Gamified self-regulated learning improves EFL reading comprehension, motivation, self-regulation skills and process patterns: Quasi-experiment with process mining"
     authors: ["Gulipari Maimaiti","Khe Foon Hew"]
@@ -222,12 +225,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/B/B1_2025_Maimaiti_GamifiedSRL.pdf"
+    local_path: "sources/library/papers/literature/a-e/B/B1_2025_Maimaiti_GamifiedSRL.pdf"
     sha256: "57c26047b3ba8fd6a05654e1663fae45780e3a0b5638fc6dcaade99534dd5413"
     same_work: null
     cited_by_reports: *report_b
   - id: "B2"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["B2_2022_He_DTW_Navigation.pdf","B_2022_He_DTW_Navigation.pdf"]
     title: "Clustering sequential navigation patterns in multiple-source reading tasks with dynamic time warping method"
     authors: ["Qian He","Francesca Borgonovi","Javier Suarez-Alvarez"]
@@ -240,12 +243,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/B/B2_2022_He_DTW_Navigation.pdf"
+    local_path: "sources/library/papers/literature/a-e/B/B2_2022_He_DTW_Navigation.pdf"
     sha256: "6cbc47db73cd902c9ed3ece0bc326fd4d0fd61bc1bd241c7a04cab4cc83c692a"
     same_work: null
     cited_by_reports: *report_b
   - id: "B3"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["B3_2015_Naumann_OnlineReadingEngagement.pdf","B_2015_Naumann_OnlineReadingEngagement.pdf"]
     title: "A Model of Online Reading Engagement: Linking Engagement, Navigation, and Performance in Digital Reading"
     authors: ["Johannes Naumann"]
@@ -258,12 +261,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/B/B3_2015_Naumann_OnlineReadingEngagement.pdf"
+    local_path: "sources/library/papers/literature/a-e/B/B3_2015_Naumann_OnlineReadingEngagement.pdf"
     sha256: "b5da59fdac2b54e4fc818e8d544fac8d9390316418516962a860b7809df7f3b5"
     same_work: null
     cited_by_reports: *report_b
   - id: "B4"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["B4_2023_Soyoye_SequenceMining.pdf","B_2023_Soyoye_SequenceMining.pdf"]
     title: "Using Sequence Mining to Explore Students' Behaviors in Digital Reading Assessments"
     authors: ["Soyoye"]
@@ -276,12 +279,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/B/B4_2023_Soyoye_SequenceMining.pdf"
+    local_path: "sources/library/papers/literature/a-e/B/B4_2023_Soyoye_SequenceMining.pdf"
     sha256: "1c527f2f71f1e2d1f96c44a04170edb17b99a8004532e5a990987138a94cdb4d"
     same_work: null
     cited_by_reports: *report_b
   - id: "B5"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["B5_2022_Naumann_StrategyKnowledge.pdf","B_2022_Naumann_StrategyKnowledge.pdf"]
     title: "Indirect Effects of Strategy Knowledge and Comprehension Skills on Navigation and Performance in Digital Reading"
     authors: ["Johannes Naumann","Anna Pucite","Ladislao Salmeron","Julia Eichmann"]
@@ -294,12 +297,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/B/B5_2022_Naumann_StrategyKnowledge.pdf"
+    local_path: "sources/library/papers/literature/a-e/B/B5_2022_Naumann_StrategyKnowledge.pdf"
     sha256: "fea82b623cbc511c87d6a1bd2cf16c6524110261fd8ba5042913acaaf22a8dd7"
     same_work: null
     cited_by_reports: *report_b
   - id: "B6"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["B6_2025_Naumann_SkilledComprehenders.pdf","B_2025_Naumann_SkilledComprehenders.pdf"]
     title: "For Skilled Comprehenders Digital Reading Is a Routine Task, for Unskilled Comprehenders It Is a Problem"
     authors: ["Johannes Naumann et al."]
@@ -312,12 +315,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/B/B6_2025_Naumann_SkilledComprehenders.pdf"
+    local_path: "sources/library/papers/literature/a-e/B/B6_2025_Naumann_SkilledComprehenders.pdf"
     sha256: "5a3f375227109a8e617c4bdf81a941c944b9d1d968faf26e2590e4fc1ba31f2d"
     same_work: null
     cited_by_reports: *report_b
   - id: "B7"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["B7_2026_Arslan_ResponseFormatsCognitiveProcesses.pdf","B_2026_Arslan_ResponseFormatsCognitiveProcesses.pdf"]
     title: "Leveraging process data to investigate the interplay between response formats and cognitive processes in digital assessment and learning environments"
     authors: ["Burcu Arslan et al."]
@@ -330,12 +333,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/B/B7_2026_Arslan_ResponseFormatsCognitiveProcesses.pdf"
+    local_path: "sources/library/papers/literature/a-e/B/B7_2026_Arslan_ResponseFormatsCognitiveProcesses.pdf"
     sha256: "efe821cb2f5f20a07ba984c0ec91bb69221a5ceb58bb66647c62aa545c9642ad"
     same_work: null
     cited_by_reports: *report_b
   - id: "B8"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["B8_2023_Tenison_SearchBehaviorsSimulatedEnvironments.pdf","B_2023_Tenison_SearchBehaviorsSimulatedEnvironments.pdf"]
     title: "Combining cognitive theory and data driven approaches to examine students' search behaviors in simulated digital environments"
     authors: ["Caitlin Tenison","Jesse Sparks"]
@@ -348,12 +351,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/B/B8_2023_Tenison_SearchBehaviorsSimulatedEnvironments.pdf"
+    local_path: "sources/library/papers/literature/a-e/B/B8_2023_Tenison_SearchBehaviorsSimulatedEnvironments.pdf"
     sha256: "cc295dbbd927aafc5ad32f22792542d19c0f60ffed1afc141573b668e3f808e6"
     same_work: null
     cited_by_reports: *report_b
   - id: "B9"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["B9_2023_Arslan_InterpretingPausesProcessData.pdf","B_2023_Arslan_InterpretingPausesProcessData.pdf"]
     title: "Going Beyond Observable Actions: A Cognition-Centered Approach to Interpreting Pauses Represented in Process Data"
     authors: ["Burcu Arslan","Caitlin Tenison","Bridgid Finn"]
@@ -366,12 +369,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/B/B9_2023_Arslan_InterpretingPausesProcessData.pdf"
+    local_path: "sources/library/papers/literature/a-e/B/B9_2023_Arslan_InterpretingPausesProcessData.pdf"
     sha256: "6b9524ae612c1f8ce37c9404b20aa2e35fb470b97f6b3d1a037b01481a4bfd59"
     same_work: null
     cited_by_reports: *report_b
   - id: "B10"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["B10_2026_Lyu_PurposeInstructionsTaskModels.pdf","B_2026_Lyu_PurposeInstructionsTaskModels.pdf"]
     title: "Purpose Instructions and Task Models in Multiple-Text Reading"
     authors: ["Bailing Lyu","Yao Yao","Matthew T. McCrudden"]
@@ -384,12 +387,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/B/B10_2026_Lyu_PurposeInstructionsTaskModels.pdf"
+    local_path: "sources/library/papers/literature/a-e/B/B10_2026_Lyu_PurposeInstructionsTaskModels.pdf"
     sha256: "2a1c789928d50c11b4ecc6c7a1f13b8c44426f43f2fc9a0a0073392868f4110c"
     same_work: null
     cited_by_reports: *report_b
   - id: "B11"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["B11_2025_Wijerathne_RereadBeforeAnswer.pdf","B_2025_Wijerathne_RereadBeforeAnswer.pdf"]
     title: "Quantifying the Benefits of the Reread-Before-Answer Strategy in Japanese High-School EFL"
     authors: ["Isanka Wijerathne","Brendan Flanagan","Hiroaki Ogata"]
@@ -402,14 +405,14 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/B/B11_2025_Wijerathne_RereadBeforeAnswer.pdf"
+    local_path: "sources/library/papers/literature/a-e/B/B11_2025_Wijerathne_RereadBeforeAnswer.pdf"
     sha256: "42ccde3f093b67df8d040e599a517125d2fa9ab87d8df57b49c34e2ac7b72695"
     parse_status: PASS_WITH_WARNINGS
     parse_warnings: ["pypdf reported wrong-pointing-object references; pdfinfo and pdftotext passed"]
     same_work: null
     cited_by_reports: *report_b
   - id: "C1"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["C1_2020_Arapakis_MouseAttention.pdf","C_2020_Arapakis_MouseAttention.pdf"]
     title: "Learning Efficient Representations of Mouse Movements to Predict User Attention"
     authors: ["Ioannis Arapakis","Luis A. Leiva"]
@@ -422,12 +425,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/C/C1_2020_Arapakis_MouseAttention.pdf"
+    local_path: "sources/library/papers/literature/a-e/C/C1_2020_Arapakis_MouseAttention.pdf"
     sha256: "512218122cfee121c68ca655ca9f3353b146a6c8f3c06b90431cfe71b9814c9f"
     same_work: null
     cited_by_reports: *report_c
   - id: "C2"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["C2_2012_Huang_UserSeeUserPoint.pdf","C_2012_Huang_UserSeeUserPoint.pdf"]
     title: "User See, User Point: Gaze and Cursor Alignment in Web Search"
     authors: ["Jeff Huang","Ryen White","Georg Buscher"]
@@ -440,12 +443,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/C/C2_2012_Huang_UserSeeUserPoint.pdf"
+    local_path: "sources/library/papers/literature/a-e/C/C2_2012_Huang_UserSeeUserPoint.pdf"
     sha256: "0914b9fffedfd5a98d198812f12dd12f15720fe8c3077cf09c1d6afe719a1516"
     same_work: null
     cited_by_reports: *report_c
   - id: "C3"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["C3_2020_FernandezFontelo_QuestionDifficulty.pdf","C_2020_FernandezFontelo_QuestionDifficulty.pdf"]
     title: "Predicting respondent difficulty in web surveys: A machine-learning approach based on mouse movement features"
     authors: ["Alberto Fernandez-Fontelo","Pascal J. Kieslich","Felix Henninger","Frauke Kreuter","Sonja Greven"]
@@ -458,14 +461,14 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/C/C3_2020_FernandezFontelo_QuestionDifficulty.pdf"
+    local_path: "sources/library/papers/literature/a-e/C/C3_2020_FernandezFontelo_QuestionDifficulty.pdf"
     sha256: "6ebfd6d3caec5b3271ab2fcc065a5e82bbb6d2d3c80c853185da94dbf9286ac1"
     parse_status: PASS_WITH_WARNINGS
     parse_warnings: ["pypdf reported wrong-pointing-object references; pdfinfo and pdftotext passed"]
     same_work: null
     cited_by_reports: *report_c
   - id: "C4"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["C4_2024_Wilcox_MouseTrackingReading.pdf","C_2024_Wilcox_MouseTrackingReading.pdf"]
     title: "Mouse Tracking for Reading (MoTR): A new naturalistic incremental processing measurement tool"
     authors: ["Ethan Gotlieb Wilcox","Yiding Ding","Mrinmaya Sachan","Gerhard Jager"]
@@ -478,12 +481,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/C/C4_2024_Wilcox_MouseTrackingReading.pdf"
+    local_path: "sources/library/papers/literature/a-e/C/C4_2024_Wilcox_MouseTrackingReading.pdf"
     sha256: "7bb0b8217a5a8fa3106ca0f9d0de44a3d057e4fc33df61775d094dca56b9185c"
     same_work: null
     cited_by_reports: *report_c
   - id: "C5"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["C5_2022_Kirsh_VirtualFingerPointReading.pdf","C_2022_Kirsh_VirtualFingerPointReading.pdf"]
     title: "Virtual Finger-Point Reading Behaviors: A Case Study of Mouse Cursor Movements on a Website"
     authors: ["David Kirsh"]
@@ -496,12 +499,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/C/C5_2022_Kirsh_VirtualFingerPointReading.pdf"
+    local_path: "sources/library/papers/literature/a-e/C/C5_2022_Kirsh_VirtualFingerPointReading.pdf"
     sha256: "3851a8ffae30a7910abd057561203393ea44bf9fe974775827422903fbcb77f9"
     same_work: null
     cited_by_reports: *report_c
   - id: "C6"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["C6_2025_Latifzadeh_SERPDataset.pdf","C_2025_Latifzadeh_SERPDataset.pdf"]
     title: "A Versatile Dataset of Mouse and Eye Movements on Search Engine Results Pages"
     authors: ["Kayhan Latifzadeh","Jacek Gwizdka","Luis A. Leiva"]
@@ -514,12 +517,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/C/C6_2025_Latifzadeh_SERPDataset.pdf"
+    local_path: "sources/library/papers/literature/a-e/C/C6_2025_Latifzadeh_SERPDataset.pdf"
     sha256: "f565a08b6c7bbf1400c2653646efc2ba9e549c7224f29358fa8467201e7fdaa7"
     same_work: null
     cited_by_reports: *report_c
   - id: "C7"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["C7_2025_Villaizan_AdSight.pdf","C_2025_Villaizan_AdSight.pdf"]
     title: "AdSight: Scalable and Accurate Quantification of User Attention in Multi-Slot Sponsored Search"
     authors: ["Mario Villaizan-Vallelado et al."]
@@ -532,12 +535,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/C/C7_2025_Villaizan_AdSight.pdf"
+    local_path: "sources/library/papers/literature/a-e/C/C7_2025_Villaizan_AdSight.pdf"
     sha256: "d37057b6f6074f21642dab26f2284e793ba8d82509411df53c744ff8c8a7675b"
     same_work: null
     cited_by_reports: *report_c
   - id: "C8"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["C8_2022_Meidenbauer_MouseMovementsPersonality.pdf","C_2022_Meidenbauer_MouseMovementsPersonality.pdf"]
     title: "Mouse movements reflect personality traits and task attentiveness in online experiments"
     authors: ["Krista L. Meidenbauer","Yue Niu","Andrew J. Stier","Marc G. Berman"]
@@ -550,12 +553,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/C/C8_2022_Meidenbauer_MouseMovementsPersonality.pdf"
+    local_path: "sources/library/papers/literature/a-e/C/C8_2022_Meidenbauer_MouseMovementsPersonality.pdf"
     sha256: "33a3c00dcbed979209fa31e321d5b0fa5c08a2a1b51fe8e57de8f851cca60322"
     same_work: null
     cited_by_reports: *report_c
   - id: "D1"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["D1_2025_Wang_MMAD.pdf","D_2025_Wang_MMAD.pdf"]
     title: "MMAD: Markov Model-Based Adaptive Denoising Method for User Interaction Logs"
     authors: ["Wang","Zhou","Tu","Shi","Hu","Yu","Zhang"]
@@ -568,12 +571,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/D/D1_2025_Wang_MMAD.pdf"
+    local_path: "sources/library/papers/literature/a-e/D/D1_2025_Wang_MMAD.pdf"
     sha256: "b583762207046bd7060d0a0cf59ff0f74c82deb9995098323b9b9437e91789ae"
     same_work: null
     cited_by_reports: *report_d
   - id: "D2"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["D2_2022_Thakur_ChangePointDetection.pdf","D_2022_Thakur_ChangePointDetection.pdf"]
     title: "Online Change Point Detection in Application With Transition-Aware Activity Recognition"
     authors: ["Thakur","Biswas"]
@@ -586,12 +589,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/D/D2_2022_Thakur_ChangePointDetection.pdf"
+    local_path: "sources/library/papers/literature/a-e/D/D2_2022_Thakur_ChangePointDetection.pdf"
     sha256: "6a7223cde99f197525914b6c57e027e38f03a27e03dcc250f274e39b310d7982"
     same_work: null
     cited_by_reports: *report_d
   - id: "D3"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["D3_2017_Aminikhanghahi_ChangePointSurvey.pdf","D_2017_Aminikhanghahi_ChangePointSurvey.pdf"]
     title: "A Survey of Methods for Time Series Change Point Detection"
     authors: ["Samaneh Aminikhanghahi","Diane J. Cook"]
@@ -604,12 +607,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/D/D3_2017_Aminikhanghahi_ChangePointSurvey.pdf"
+    local_path: "sources/library/papers/literature/a-e/D/D3_2017_Aminikhanghahi_ChangePointSurvey.pdf"
     sha256: "8dfd678e9353017ecc1b33d46c5a58136bb1764a3369cbb891fd5100fef587d1"
     same_work: null
     cited_by_reports: *report_d
   - id: "D4"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["D4_2012_LapuyadeLahorgue_HSMM_Segmentation.pdf","D_2012_LapuyadeLahorgue_HSMM_Segmentation.pdf"]
     title: "Unsupervised Segmentation of Hidden Semi-Markov Non-Stationary Chains"
     authors: ["Lapuyade-Lahorgue","Pieczynski"]
@@ -622,12 +625,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/D/D4_2012_LapuyadeLahorgue_HSMM_Segmentation.pdf"
+    local_path: "sources/library/papers/literature/a-e/D/D4_2012_LapuyadeLahorgue_HSMM_Segmentation.pdf"
     sha256: "570ec1ebfb8db5d5b62881c0b7130971a7c40680e7a02edb6c0a9601460ed674"
     same_work: null
     cited_by_reports: *report_d
   - id: "D5"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["D5_2024_Rebmann_TaskLevelEvents.pdf","D_2024_Rebmann_TaskLevelEvents.pdf"]
     title: "Recognizing Task-Level Events from User Interaction Data"
     authors: ["Adrian Rebmann","Boudewijn F. van der Aa"]
@@ -640,7 +643,7 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/D/D5_2024_Rebmann_TaskLevelEvents.pdf"
+    local_path: "sources/library/papers/literature/a-e/D/D5_2024_Rebmann_TaskLevelEvents.pdf"
     sha256: "638044177090ab5bd3013f3dadf24a0f6d3bdaa17b6b7455ca56e01a61631d18"
     same_work:
       key: "recognizing-task-level-events-2024"
@@ -648,7 +651,7 @@ papers:
       relationship: ALTERNATE_LOCAL_PDF_VERSION
     cited_by_reports: *report_d
   - id: "D6"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["D6_2022_Gathani_GrammarVisualizationTaxonomies.pdf","D_2022_Gathani_GrammarVisualizationTaxonomies.pdf"]
     title: "A Grammar-Based Approach for Applying Visualization Taxonomies to Interaction Logs"
     authors: ["Sneha Gathani","Shayan Monadjemi","Alvitta Ottley","Leilani Battle"]
@@ -661,7 +664,7 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/D/D6_2022_Gathani_GrammarVisualizationTaxonomies.pdf"
+    local_path: "sources/library/papers/literature/a-e/D/D6_2022_Gathani_GrammarVisualizationTaxonomies.pdf"
     sha256: "49219f6e24a9faa4056aef1ad8424bc3e7e43b79f9356eb92de6c56bbf4f9bfc"
     same_work:
       key: "grammar-visualization-taxonomies-2022"
@@ -669,7 +672,7 @@ papers:
       relationship: ALTERNATE_LOCAL_PDF_VERSION
     cited_by_reports: *report_d
   - id: "D7"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["D7_2024_Wang_UnsupervisedSegmentationSurvey.pdf","D_2024_Wang_UnsupervisedSegmentationSurvey.pdf"]
     title: "Unsupervised Time Series Segmentation: A Survey on Recent Advances"
     authors: ["Wang","Li","Zhou","Cai"]
@@ -682,12 +685,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/D/D7_2024_Wang_UnsupervisedSegmentationSurvey.pdf"
+    local_path: "sources/library/papers/literature/a-e/D/D7_2024_Wang_UnsupervisedSegmentationSurvey.pdf"
     sha256: "310760f5d20fb6f755050bf8882509b6f5e6ae39c280617d4eee6ef8550e9ab9"
     same_work: null
     cited_by_reports: *report_d
   - id: "E1"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["E1_2018_Jiao_ProcessData_CognitiveDiagnosis.pdf","E_2018_Jiao_ProcessData_CognitiveDiagnosis.pdf"]
     title: "Utilizing Process Data for Cognitive Diagnosis"
     authors: ["Hong Jiao","Dandan Liao","Peida Zhan"]
@@ -700,12 +703,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/E/E1_2018_Jiao_ProcessData_CognitiveDiagnosis.pdf"
+    local_path: "sources/library/papers/literature/a-e/E/E1_2018_Jiao_ProcessData_CognitiveDiagnosis.pdf"
     sha256: "f06056e74c4dbffb26abb3d028877aab1eaac4776b2150e4a0c8910dc1636276"
     same_work: null
     cited_by_reports: *report_e
   - id: "E2"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["E2_2025_詹沛达_迷思概念编码.pdf","E_2025_詹沛达_迷思概念编码.pdf"]
     title: "引入迷思概念的关键行动编码及其在过程数据诊断分类分析中的应用"
     authors: ["詹沛达","高方方","陈琦鹏"]
@@ -718,14 +721,14 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/E/E2_2025_詹沛达_迷思概念编码.pdf"
+    local_path: "sources/library/papers/literature/a-e/E/E2_2025_詹沛达_迷思概念编码.pdf"
     sha256: "42021f709130a8721827fd666417edb0b92f55e4a65ce2f9171c7a3fc0a22530"
     parse_status: PASS_WITH_WARNINGS
     parse_warnings: ["pypdf reported duplicate /MediaBox definitions; pdfinfo and pdftotext passed"]
     same_work: null
     cited_by_reports: *report_e
   - id: "E3"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["E3_2022_Zhan_ItemExpansionMethod.pdf","E_2022_Zhan_ItemExpansionMethod.pdf"]
     title: "Diagnostic Classification Analysis of Problem-Solving Competence Using Process Data: An Item Expansion Method"
     authors: ["Peida Zhan","Xin Qiao"]
@@ -738,12 +741,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/E/E3_2022_Zhan_ItemExpansionMethod.pdf"
+    local_path: "sources/library/papers/literature/a-e/E/E3_2022_Zhan_ItemExpansionMethod.pdf"
     sha256: "52a64335216b98df6f82df5feebc7277dc2ec9d161ebc8c358f42538e0bdea53"
     same_work: null
     cited_by_reports: *report_e
   - id: "E4"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["E4_2022_Zhan_ResponseTimesFixationCounts.pdf","E_2022_Zhan_ResponseTimesFixationCounts.pdf"]
     title: "Cognitive Diagnosis Modeling Incorporating Response Times and Fixation Counts: Providing Comprehensive Feedback and Accurate Diagnosis"
     authors: ["Peida Zhan","Kaiwen Man","Stefanie A. Wind","Jonathan Malone"]
@@ -756,12 +759,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/E/E4_2022_Zhan_ResponseTimesFixationCounts.pdf"
+    local_path: "sources/library/papers/literature/a-e/E/E4_2022_Zhan_ResponseTimesFixationCounts.pdf"
     sha256: "732e25d51aa52425c8852002da7efd7d0ab73bed83bf8a687577c0bbc08bebb4"
     same_work: null
     cited_by_reports: *report_e
   - id: "E5"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["E5_2026_Rajeb_FourComponentJointModeling.pdf","E_2026_Rajeb_FourComponentJointModeling.pdf"]
     title: "Incorporating Process Information Into Cognitive Diagnostic Models: A Four-Component Joint Modeling Approach"
     authors: ["Mehdi Rajeb","Wenchao Ma","Qiwei He","Qingzhou Shi"]
@@ -774,12 +777,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/E/E5_2026_Rajeb_FourComponentJointModeling.pdf"
+    local_path: "sources/library/papers/literature/a-e/E/E5_2026_Rajeb_FourComponentJointModeling.pdf"
     sha256: "963b24b6cfe63f3d29b4db799ece40130352d21ebd2576181de35f3925845ce6"
     same_work: null
     cited_by_reports: *report_e
   - id: "E6"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["E6_2023_Lindner_ProcessDataBlackBox.pdf","E_2023_Lindner_ProcessDataBlackBox.pdf"]
     title: "Process Data in Computer-Based Assessment: Challenges and Opportunities in Opening the Black Box"
     authors: ["Marlit Annalena Lindner","Samuel Greiff"]
@@ -792,12 +795,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/E/E6_2023_Lindner_ProcessDataBlackBox.pdf"
+    local_path: "sources/library/papers/literature/a-e/E/E6_2023_Lindner_ProcessDataBlackBox.pdf"
     sha256: "0d35ca2185257a3ca6b1adc39ac4e6971e07628a65a06064cbd4c085c5a9fc29"
     same_work: null
     cited_by_reports: *report_e
   - id: "E7"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["E7_2023_Fan_SRLTraceThinkAloud.pdf","E_2023_Fan_SRLTraceThinkAloud.pdf"]
     title: "Towards a Fuller Picture: Triangulation and Integration of the Measurement of Self-Regulated Learning Based on Trace and Think Aloud Data"
     authors: ["Yizhou Fan","Mladen Rakovic","Joep van der Graaf","Lyn Lim","Shaveen Singh","Johanna Moore","Inge Molenaar","Maria Bannert","Dragan Gasevic"]
@@ -810,12 +813,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/E/E7_2023_Fan_SRLTraceThinkAloud.pdf"
+    local_path: "sources/library/papers/literature/a-e/E/E7_2023_Fan_SRLTraceThinkAloud.pdf"
     sha256: "88a04cf368508a70cc73dca9d968bb87df58e5b882d0e80d8f432d2506916d31"
     same_work: null
     cited_by_reports: *report_e
   - id: "E8"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["E8_2018_Severino_ReadingComprehensionValidation.pdf","E_2018_Severino_ReadingComprehensionValidation.pdf"]
     title: "A Validation Study of a Middle Grades Reading Comprehension Assessment"
     authors: ["Lori Severino","Mary Jean Tecce DeCarlo","Toni Sondergeld","Meltem Izzetoglu","Alia Ammar"]
@@ -828,12 +831,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/a-e/E/E8_2018_Severino_ReadingComprehensionValidation.pdf"
+    local_path: "sources/library/papers/literature/a-e/E/E8_2018_Severino_ReadingComprehensionValidation.pdf"
     sha256: "613667d89057599c4f648ae66c71f4c73c5b39a52e0aed83f851e42597043454"
     same_work: null
     cited_by_reports: *report_e
   - id: "UIB-001"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-001-amused-a-multi-modal-dataset-for-usability-smell-identification.pdf","论文18"]
     title: "AMUSED: A Multi-Modal Dataset for Usability Smell Identification"
     authors: null
@@ -846,12 +849,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-001-amused-a-multi-modal-dataset-for-usability-smell-identification.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-001-amused-a-multi-modal-dataset-for-usability-smell-identification.pdf"
     sha256: "f93c31fb6cb85d44a2ba51de7415797805d328712aab64c325b17277b336caf6"
     same_work: null
     cited_by_reports: *report_uib
   - id: "UIB-002"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-002-analyzing-the-shifts-in-users-data-focus-in-exploratory-visual-analysis.pdf","论文17"]
     title: "Analyzing the Shifts in Users' Data Focus in Exploratory Visual Analysis"
     authors: null
@@ -864,12 +867,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-002-analyzing-the-shifts-in-users-data-focus-in-exploratory-visual-analysis.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-002-analyzing-the-shifts-in-users-data-focus-in-exploratory-visual-analysis.pdf"
     sha256: "2818d72bc1e26a8346144cdd4a3b256078389045f0e2afc2e2cc305c6d153e5f"
     same_work: null
     cited_by_reports: *report_uib
   - id: "UIB-003"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-003-process-related-user-interaction-logs-state-of-the-art-reference-model-and-object.pdf","论文1"]
     title: "Process-related User Interaction Logs: State of the Art, Reference Model, and Object-Centric Implementation"
     authors: ["Luka Abb et al."]
@@ -882,12 +885,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-003-process-related-user-interaction-logs-state-of-the-art-reference-model-and-object.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-003-process-related-user-interaction-logs-state-of-the-art-reference-model-and-object.pdf"
     sha256: "0fb33c5ad37439f50782fa19f3505a4b5c760cf9605a056fb3ef6685843f4c14"
     same_work: null
     cited_by_reports: *report_uib
   - id: "UIB-004"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-004-a-screenshot-based-task-mining-framework-for-disclosing-the-drivers-behind-variabl.pdf","论文2"]
     title: "A Screenshot-Based Task Mining Framework for Disclosing the Drivers Behind Variable Human Actions"
     authors: ["A. Martinez-Rojas et al."]
@@ -900,12 +903,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-004-a-screenshot-based-task-mining-framework-for-disclosing-the-drivers-behind-variabl.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-004-a-screenshot-based-task-mining-framework-for-disclosing-the-drivers-behind-variabl.pdf"
     sha256: "0c48ba1cb7ed762be676051c692e3a096644c681028d65ce06f05e1ce7cbf342"
     same_work: null
     cited_by_reports: *report_uib
   - id: "UIB-005"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-005-recognizing-task-level-events-from-user-interaction-data.pdf","论文13"]
     title: "Recognizing Task-Level Events from User Interaction Data"
     authors: ["Adrian Rebmann","Boudewijn F. van der Aa"]
@@ -918,7 +921,7 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-005-recognizing-task-level-events-from-user-interaction-data.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-005-recognizing-task-level-events-from-user-interaction-data.pdf"
     sha256: "39c367f721eb99de535087a91a6e2893b9f633b313e3157a67e136b06999c500"
     parse_status: PASS_WITH_WARNINGS
     parse_warnings: ["pypdf reported an object-cache overwrite; pdfinfo and pdftotext passed"]
@@ -928,7 +931,7 @@ papers:
       relationship: ALTERNATE_LOCAL_PDF_VERSION
     cited_by_reports: *report_uib
   - id: "UIB-006"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-006-user-behavior-mining-a-research-agenda.pdf","论文3"]
     title: "User Behavior Mining: A Research Agenda"
     authors: ["Jana-Rebecca Rehse et al."]
@@ -941,12 +944,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-006-user-behavior-mining-a-research-agenda.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-006-user-behavior-mining-a-research-agenda.pdf"
     sha256: "6720cf11f367d20790c508f0db7f6b831cf71e69dc8d1693bb6045c188a52746"
     same_work: null
     cited_by_reports: *report_uib
   - id: "UIB-007"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-007-a-grammar-based-approach-for-applying-visualization-taxonomies-to-interaction-logs.pdf","论文4"]
     title: "A Grammar-Based Approach for Applying Visualization Taxonomies to Interaction Logs"
     authors: ["Sneha Gathani","Shayan Monadjemi","Alvitta Ottley","Leilani Battle"]
@@ -959,7 +962,7 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-007-a-grammar-based-approach-for-applying-visualization-taxonomies-to-interaction-logs.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-007-a-grammar-based-approach-for-applying-visualization-taxonomies-to-interaction-logs.pdf"
     sha256: "66473bdc85ab1b5fcb84ea6afe28986f4f5e6b4717d114d9b95b70bbf504c493"
     same_work:
       key: "grammar-visualization-taxonomies-2022"
@@ -967,7 +970,7 @@ papers:
       relationship: ALTERNATE_LOCAL_PDF_VERSION
     cited_by_reports: *report_uib
   - id: "UIB-008"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-008-trace-clustering-for-user-behavior-mining.pdf","论文5"]
     title: "Trace Clustering for User Behavior Mining"
     authors: null
@@ -980,14 +983,14 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-008-trace-clustering-for-user-behavior-mining.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-008-trace-clustering-for-user-behavior-mining.pdf"
     sha256: "852980e5162d11d7a7560d68cecf9038b8d211bf4ba52f5d181c7e737480153a"
     parse_status: PASS_WITH_WARNINGS
     parse_warnings: ["pypdf reported an object-cache overwrite; pdfinfo and pdftotext passed"]
     same_work: null
     cited_by_reports: *report_uib
   - id: "UIB-009"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-009-detecting-usability-problems-in-mobile-applications-on-the-basis-of-dissimilarity.pdf","论文15"]
     title: "Detecting Usability Problems in Mobile Applications on the Basis of Dissimilarity in User Behaviour"
     authors: null
@@ -1000,12 +1003,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-009-detecting-usability-problems-in-mobile-applications-on-the-basis-of-dissimilarity.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-009-detecting-usability-problems-in-mobile-applications-on-the-basis-of-dissimilarity.pdf"
     sha256: "0af7484764e012260877f0853277a50c50efe1ba83173ef1b6daaa898196bba3"
     same_work: null
     cited_by_reports: *report_uib
   - id: "UIB-010"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-010-gui-information-based-interaction-logging-and-visualization-for-asynchronous-usabi.pdf","论文6"]
     title: "GUI information-based interaction logging and visualization for asynchronous usability testing"
     authors: ["JongWook Jeong et al."]
@@ -1018,12 +1021,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-010-gui-information-based-interaction-logging-and-visualization-for-asynchronous-usabi.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-010-gui-information-based-interaction-logging-and-visualization-for-asynchronous-usabi.pdf"
     sha256: "48de5f44705ed8d4b9086ba393490c102ed6abf68c1f9cd2d02c17f8f5588b0d"
     same_work: null
     cited_by_reports: *report_uib
   - id: "UIB-011"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-011-an-analysis-of-automated-visual-analysis-classification-interactive-visualization.pdf","论文7"]
     title: "An Analysis of Automated Visual Analysis Classification: Interactive Visualization Task Inference of Cancer Genomics Domain Experts"
     authors: null
@@ -1036,12 +1039,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-011-an-analysis-of-automated-visual-analysis-classification-interactive-visualization.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-011-an-analysis-of-automated-visual-analysis-classification-interactive-visualization.pdf"
     sha256: "b69c3f72a49827ab891e984e6dd8d12d6363d6d720456aa8e38818be11820c18"
     same_work: null
     cited_by_reports: *report_uib
   - id: "UIB-012"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-012-unsupervised-clickstream-clustering-for-user-behavior-analysis.pdf","论文8"]
     title: "Unsupervised Clickstream Clustering for User Behavior Analysis"
     authors: null
@@ -1054,14 +1057,14 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-012-unsupervised-clickstream-clustering-for-user-behavior-analysis.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-012-unsupervised-clickstream-clustering-for-user-behavior-analysis.pdf"
     sha256: "46e8b10be764857b7c8a18b16044e8ba8f7087462852dd2d5357123367bf947f"
     parse_status: PASS_WITH_WARNINGS
     parse_warnings: ["pypdf used object-stream recovery; pdfinfo and pdftotext passed"]
     same_work: null
     cited_by_reports: *report_uib
   - id: "UIB-013"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-013-understanding-users-behavior-with-software-operation-data-mining.pdf","论文16"]
     title: "Understanding Users' Behavior with Software Operation Data Mining"
     authors: ["Stella Pachidi et al."]
@@ -1074,12 +1077,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-013-understanding-users-behavior-with-software-operation-data-mining.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-013-understanding-users-behavior-with-software-operation-data-mining.pdf"
     sha256: "fcdd98a25c140f8ffd3a3cd8b8e9eb403853a436aeedb7432eea0238d028ab3e"
     same_work: null
     cited_by_reports: *report_uib
   - id: "UIB-014"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-014-mining-problem-solving-strategies-from-hci-data.pdf","论文14"]
     title: "Mining Problem-Solving Strategies from HCI Data"
     authors: ["Xiaoli Fern","Chaitanya Komireddy","Valentina Grigoreanu","Margaret Burnett"]
@@ -1092,12 +1095,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-014-mining-problem-solving-strategies-from-hci-data.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-014-mining-problem-solving-strategies-from-hci-data.pdf"
     sha256: "808f90e41a1b1bb81238427e72f58b105917161ad06b7047e08a3547d7a1141a"
     same_work: null
     cited_by_reports: *report_uib
   - id: "UIB-015"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-015-recovering-reasoning-processes-from-user-interactions.pdf","论文9"]
     title: "Recovering Reasoning Processes from User Interactions"
     authors: null
@@ -1110,12 +1113,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-015-recovering-reasoning-processes-from-user-interactions.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-015-recovering-reasoning-processes-from-user-interactions.pdf"
     sha256: "72e48540323e98d59628f9d50abd5727586fea55eb4daf20a9a3af2c22d21007"
     same_work: null
     cited_by_reports: *report_uib
   - id: "UIB-016"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-016-using-web-browser-interactions-to-predict-task.pdf","论文10"]
     title: "Using Web Browser Interactions to Predict Task"
     authors: null
@@ -1128,12 +1131,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-016-using-web-browser-interactions-to-predict-task.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-016-using-web-browser-interactions-to-predict-task.pdf"
     sha256: "1c287b43971e33a70ed259060d8f15cc5567627773ab0476f4c87f8d13be04fe"
     same_work: null
     cited_by_reports: *report_uib
   - id: "UIB-017"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-017-mining-system-user-interaction-traces-for-use-case-models.pdf","论文11"]
     title: "Mining System-User Interaction Traces for Use Case Models"
     authors: null
@@ -1146,12 +1149,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-017-mining-system-user-interaction-traces-for-use-case-models.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-017-mining-system-user-interaction-traces-for-use-case-models.pdf"
     sha256: "2a8b3f47b4e8d40b7b510631139ccc9e5b724b791a1150671be235451e5c0768"
     same_work: null
     cited_by_reports: *report_uib
   - id: "UIB-088"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["UIB-088-automatic-macro-mining-from-interaction-traces-at-scale.pdf","论文12"]
     title: "Automatic Macro Mining from Interaction Traces at Scale"
     authors: null
@@ -1164,12 +1167,12 @@ papers:
     source_url: null
     download_url: null
     redistribution_status: "UNKNOWN"
-    local_path: "papers/library/ui-interaction/UIB-088-automatic-macro-mining-from-interaction-traces-at-scale.pdf"
+    local_path: "sources/library/papers/literature/ui-interaction/UIB-088-automatic-macro-mining-from-interaction-traces-at-scale.pdf"
     sha256: "5c634b6fff6db7ddd5d8ff0bfdccb36ed289bf47a4f26520a3b9e25355b2b356"
     same_work: null
     cited_by_reports: *report_uib
   - id: "ITEM-001"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["Du_Shen_Ma_2026_GenAI_Q_Matrix_EFL_Reading.pdf"]
     title: "Applying GenAI to Optimize Q-Matrix Construction for Cognitive Diagnostic Assessment in EFL Reading"
     authors: ["Wenbo Du","Jiayi Shen","Xiaomei Ma"]
@@ -1183,12 +1186,13 @@ papers:
     download_url: "https://pmc-oa-opendata.s3.amazonaws.com/PMC13208814.1/PMC13208814.1.pdf"
     redistribution_status: "REDISTRIBUTION_ALLOWED"
     license: "CC BY 4.0; third-party materials excluded unless separately licensed"
-    local_path: "papers/library/item-and-data-sources/Du_Shen_Ma_2026_GenAI_Q_Matrix_EFL_Reading.pdf"
+    local_path: "sources/library/papers/domain/Du_Shen_Ma_2026_GenAI_Q_Matrix_EFL_Reading.pdf"
     sha256: "416f4156aedae7e846e3d05d389d74fd51a638708019d582aed81159cb8b554a"
     same_work: null
     cited_by_reports: ["reports/research/phase-0-item-data-source-audit.md"]
   - id: "ITEM-002"
-    <<: *paper_defaults
+    <<: *source_defaults
+    asset_type: "STUDY_MATERIAL"
     aliases: ["Du_Shen_Ma_2026_GenAI_Q_Matrix_Supplement.pdf"]
     title: "Supplementary Materials for Applying GenAI to Optimize Q-Matrix Construction for Cognitive Diagnostic Assessment in EFL Reading"
     authors: ["Wenbo Du","Jiayi Shen","Xiaomei Ma"]
@@ -1202,7 +1206,7 @@ papers:
     download_url: null
     redistribution_status: "RESTRICTED"
     license: "CC BY 4.0 container; item-level third-party rights unresolved"
-    local_path: "papers/library/item-and-data-sources/Du_Shen_Ma_2026_GenAI_Q_Matrix_Supplement.pdf"
+    local_path: "sources/library/study-materials/items/Du_Shen_Ma_2026_GenAI_Q_Matrix_Supplement.pdf"
     sha256: "55032acdaa101bf3fa3b035c4a43f091649de9b8dd88cd41294cf71d8ed1ef12"
     same_work:
       key: "jintelligence-2026-qmatrix"
@@ -1210,7 +1214,7 @@ papers:
       relationship: SUPPLEMENT
     cited_by_reports: ["reports/research/phase-0-item-data-source-audit.md"]
   - id: "ITEM-003"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["Jin_Liu_2024_Hybrid_CDA_Accepted_Manuscript.pdf"]
     title: "Diagnosing and promoting learners' L2 inferential reading development through hybrid computerised dynamic assessment in the Chinese EFL classroom"
     authors: ["Can Jin","Yongcan Liu"]
@@ -1224,12 +1228,12 @@ papers:
     download_url: "https://api.repository.cam.ac.uk/server/api/core/bitstreams/933b2e88-bb15-474d-839f-e9a7c46aa450/content"
     redistribution_status: "RESTRICTED"
     license: "Accepted manuscript record says CC BY 4.0; third-party TOEFL rights excluded"
-    local_path: "papers/library/item-and-data-sources/Jin_Liu_2024_Hybrid_CDA_Accepted_Manuscript.pdf"
+    local_path: "sources/library/papers/domain/Jin_Liu_2024_Hybrid_CDA_Accepted_Manuscript.pdf"
     sha256: "55f52afe131980a3a474e32e57c3939ddf1f4eea086ad17b4694ff4246462181"
     same_work: null
     cited_by_reports: ["reports/research/phase-0-item-data-source-audit.md"]
   - id: "METHOD-001"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["2019_Morris_Using_Simulation_Studies.pdf"]
     title: "Using simulation studies to evaluate statistical methods"
     authors: ["Tim P. Morris","Ian R. White","Michael J. Crowther"]
@@ -1243,12 +1247,12 @@ papers:
     download_url: "https://discovery.ucl.ac.uk/10066118/1/2019%20-%20Morris%20-%20simulation%20studies%20tutorial%20-%20stat%20med.pdf"
     redistribution_status: "REDISTRIBUTION_ALLOWED"
     license: "CC BY 4.0"
-    local_path: "papers/library/methods/2019_Morris_Using_Simulation_Studies.pdf"
+    local_path: "sources/library/papers/methods/2019_Morris_Using_Simulation_Studies.pdf"
     sha256: "3aec72851ec6dc1e61a8921c4e0fa69b4b7722b73d26a764b423e53d0e6f106d"
     same_work: null
     cited_by_reports: ["reports/protocols/AI_RESEARCH_TOOLING_POLICY.md","reports/research/methods-and-governance-source-audit.md"]
   - id: "METHOD-002"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["2023_Ashwin_LLM_Qualitative_Analysis_Bias_WPS10597.pdf"]
     title: "Using Large Language Models for Qualitative Analysis can Introduce Serious Bias"
     authors: ["Julian Ashwin","Aditya Chhabra","Vijayendra Rao"]
@@ -1262,12 +1266,12 @@ papers:
     download_url: "https://openknowledge.worldbank.org/bitstreams/301eff0a-c936-456f-bb0b-af6f5bf7e4f4/download"
     redistribution_status: "RESTRICTED"
     license: "Redistribution permission not verified for this working-paper version"
-    local_path: "papers/library/methods/2023_Ashwin_LLM_Qualitative_Analysis_Bias_WPS10597.pdf"
+    local_path: "sources/library/papers/methods/2023_Ashwin_LLM_Qualitative_Analysis_Bias_WPS10597.pdf"
     sha256: "6ba35401c1d22e0442b0ec841c5c922617656019d5a34af088f1582d6de1959e"
     same_work: null
     cited_by_reports: ["reports/protocols/AI_RESEARCH_TOOLING_POLICY.md","reports/research/methods-and-governance-source-audit.md"]
   - id: "METHOD-003"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["2024_Bisbee_Synthetic_Replacements.pdf"]
     title: "Synthetic Replacements for Human Survey Data? The Perils of Large Language Models"
     authors: ["James Bisbee","Joshua D. Clinton","Cassy Dorff","Brenton Kenkel","Jennifer M. Larson"]
@@ -1281,12 +1285,12 @@ papers:
     download_url: "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/B92267DC26195C7F36E63EA04A47D2FE/S1047198724000056a.pdf/div-class-title-synthetic-replacements-for-human-survey-data-the-perils-of-large-language-models-div.pdf"
     redistribution_status: "REDISTRIBUTION_ALLOWED"
     license: "CC BY 4.0; third-party materials excluded unless separately licensed"
-    local_path: "papers/library/methods/2024_Bisbee_Synthetic_Replacements.pdf"
+    local_path: "sources/library/papers/methods/2024_Bisbee_Synthetic_Replacements.pdf"
     sha256: "36a0d04cacac5bdb2f24e7022bcbc6fd01493dfcbc6104c588123eb0c7f3b744"
     same_work: null
     cited_by_reports: ["reports/protocols/AI_RESEARCH_TOOLING_POLICY.md","reports/research/methods-and-governance-source-audit.md"]
   - id: "METHOD-004"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["2024_Shumailov_AI_Models_Collapse.pdf"]
     title: "AI models collapse when trained on recursively generated data"
     authors: ["Ilia Shumailov","Zakhar Shumaylov","Yiren Zhao","Nicolas Papernot","Ross Anderson","Yarin Gal"]
@@ -1300,12 +1304,12 @@ papers:
     download_url: "https://www.nature.com/articles/s41586-024-07566-y.pdf"
     redistribution_status: "REDISTRIBUTION_ALLOWED"
     license: "CC BY 4.0; linked correction not bundled; third-party materials may be excluded"
-    local_path: "papers/library/methods/2024_Shumailov_AI_Models_Collapse.pdf"
+    local_path: "sources/library/papers/methods/2024_Shumailov_AI_Models_Collapse.pdf"
     sha256: "474c820b5224b6bfa337e98a0ff942eca4b7808b44236121af828c6122a860ae"
     same_work: null
     cited_by_reports: ["reports/protocols/AI_RESEARCH_TOOLING_POLICY.md","reports/research/methods-and-governance-source-audit.md"]
   - id: "METHOD-005"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["2024_Wachinger_Prompts_Pearls_Imperfections.pdf"]
     title: "Prompts, Pearls, Imperfections: Comparing ChatGPT and a Human Researcher in Qualitative Data Analysis"
     authors: ["Jonas Wachinger","Kate Barnighausen","Louis N. Schafer","Kerry Scott","Shannon A. McMahon"]
@@ -1319,12 +1323,12 @@ papers:
     download_url: "https://wiredspace.wits.ac.za/bitstreams/0b9061ee-889f-4043-bb2f-a100cd5036ec/download"
     redistribution_status: "REDISTRIBUTION_ALLOWED"
     license: "CC BY 4.0"
-    local_path: "papers/library/methods/2024_Wachinger_Prompts_Pearls_Imperfections.pdf"
+    local_path: "sources/library/papers/methods/2024_Wachinger_Prompts_Pearls_Imperfections.pdf"
     sha256: "ce7f0c37874658254d07af82ed16057c73591928f25763c201f0fb34b0f5f15f"
     same_work: null
     cited_by_reports: ["reports/protocols/AI_RESEARCH_TOOLING_POLICY.md","reports/research/methods-and-governance-source-audit.md"]
   - id: "METHOD-006"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["2025_Atreja_Whats_in_a_Prompt.pdf"]
     title: "What's in a Prompt?: A Large-Scale Experiment to Assess the Impact of Prompt Design on the Compliance and Accuracy of LLM-Generated Text Annotations"
     authors: ["Shubham Atreja","Joshua Ashkinaze","Lingyao Li","Julia Mendelsohn","Libby Hemphill"]
@@ -1338,12 +1342,12 @@ papers:
     download_url: "https://ojs.aaai.org/index.php/ICWSM/article/download/35807/37961"
     redistribution_status: "RESTRICTED"
     license: "AAAI copyright; public download but redistribution permission not verified"
-    local_path: "papers/library/methods/2025_Atreja_Whats_in_a_Prompt.pdf"
+    local_path: "sources/library/papers/methods/2025_Atreja_Whats_in_a_Prompt.pdf"
     sha256: "4563d8c92978d81a2f038664e71522d3ec254270cf5e18c54abd7f4b953d40c7"
     same_work: null
     cited_by_reports: ["reports/protocols/AI_RESEARCH_TOOLING_POLICY.md","reports/research/methods-and-governance-source-audit.md"]
   - id: "METHOD-007"
-    <<: *paper_defaults
+    <<: *source_defaults
     aliases: ["2025_Pangakis_Keeping_Humans_in_the_Loop.pdf"]
     title: "Keeping Humans in the Loop: Human-Centered Automated Annotation with Generative AI"
     authors: ["Nick Pangakis","Sam Wolken"]
@@ -1357,12 +1361,13 @@ papers:
     download_url: "https://ojs.aaai.org/index.php/ICWSM/article/download/35883/38037"
     redistribution_status: "RESTRICTED"
     license: "AAAI copyright; public download but redistribution permission not verified"
-    local_path: "papers/library/methods/2025_Pangakis_Keeping_Humans_in_the_Loop.pdf"
+    local_path: "sources/library/papers/methods/2025_Pangakis_Keeping_Humans_in_the_Loop.pdf"
     sha256: "b1b11280862c25e87ede674e464dc1cda10b51ce54afc8add57f2b696d36843b"
     same_work: null
     cited_by_reports: ["reports/protocols/AI_RESEARCH_TOOLING_POLICY.md","reports/research/methods-and-governance-source-audit.md"]
   - id: "STANDARD-001"
-    <<: *paper_defaults
+    <<: *source_defaults
+    asset_type: "STANDARD"
     aliases: ["2014_AERA_APA_NCME_Testing_Standards.pdf"]
     title: "Standards for Educational and Psychological Testing"
     authors: ["American Educational Research Association","American Psychological Association","National Council on Measurement in Education"]
@@ -1376,12 +1381,13 @@ papers:
     download_url: "https://www.testingstandards.net/uploads/7/6/6/4/76643089/standards_2014edition.pdf"
     redistribution_status: "RESTRICTED"
     license: "All rights reserved; official open-access reading copy does not grant redistribution"
-    local_path: "papers/library/standards/2014_AERA_APA_NCME_Testing_Standards.pdf"
+    local_path: "sources/library/standards/2014_AERA_APA_NCME_Testing_Standards.pdf"
     sha256: "78182353e8cd877535f6f3c8967da52d4d3af64725146c08606d38825941ac61"
     same_work: null
     cited_by_reports: ["reports/protocols/AI_RESEARCH_TOOLING_POLICY.md","reports/research/methods-and-governance-source-audit.md"]
   - id: "STANDARD-002"
-    <<: *paper_defaults
+    <<: *source_defaults
+    asset_type: "STANDARD"
     aliases: ["2024_NIST_AI_600-1_Generative_AI_Profile.pdf"]
     title: "Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile"
     authors: ["National Institute of Standards and Technology"]
@@ -1395,7 +1401,107 @@ papers:
     download_url: "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf"
     redistribution_status: "REDISTRIBUTION_ALLOWED"
     license: "NIST publication policy; courtesy attribution required; third-party materials excluded"
-    local_path: "papers/library/standards/2024_NIST_AI_600-1_Generative_AI_Profile.pdf"
+    local_path: "sources/library/standards/2024_NIST_AI_600-1_Generative_AI_Profile.pdf"
     sha256: "6e73620ab6b64e90ef2c04bf0e0d6246185a2f4b1b13cab0df494496cff89b6a"
     same_work: null
     cited_by_reports: ["reports/protocols/AI_RESEARCH_TOOLING_POLICY.md","reports/research/methods-and-governance-source-audit.md"]
+  - id: "DOMAIN-001"
+    <<: *source_defaults
+    aliases: ["A Cognitive Diagnostic Model of Reading Ability based on China’s Standards of English Language Ability.pdf"]
+    title: "A Cognitive Diagnostic Model of Reading Ability Based on China’s Standards of English Language Ability"
+    authors: ["Zhe Zhang","Mohd Isa Hamzah","Khairul Azhar Jamaludin"]
+    year: 2024
+    venue: "Forum for Linguistic Studies 6(6):800-815"
+    doi: "10.30564/fls.v6i6.7551"
+    needs_metadata: []
+    required: true
+    acquisition_status: "DIRECT_PUBLIC"
+    source_url: "https://journals.bilpubgroup.com/index.php/fls/article/view/7551"
+    download_url: "https://journals.bilpubgroup.com/index.php/fls/article/download/7551/5664/36220"
+    redistribution_status: "REDISTRIBUTION_ALLOWED"
+    license: "CC BY-NC 4.0; non-commercial redistribution with attribution; third-party materials require separate review"
+    local_path: "sources/library/papers/domain/2024_Zhang_Cognitive_Diagnostic_CSE_Reading.pdf"
+    sha256: "4598cbaacef18759b37986c1cfcc8ec9e923bd3aa7c6a090d82322f3f9f4fd55"
+    same_work: null
+    cited_by_reports: ["reports/research/new-user-provided-pdfs-source-audit.md"]
+  - id: "DOMAIN-002"
+    <<: *source_defaults
+    aliases: ["From coarse to fine.pdf"]
+    title: "From Coarse to Fine: A Cognitive Diagnosis of EFL Learners’ Inferential Ability in EFL Reading"
+    authors: ["Wenbo Du","Xiaomei Ma"]
+    year: 2026
+    venue: "Thinking Skills and Creativity 59:102022"
+    doi: "10.1016/j.tsc.2025.102022"
+    needs_metadata: []
+    required: true
+    acquisition_status: "MANUAL_ONLY"
+    source_url: "https://www.sciencedirect.com/science/article/pii/S1871187125002706"
+    download_url: null
+    redistribution_status: "RESTRICTED"
+    license: "Elsevier version of record; all rights reserved"
+    local_path: "sources/library/papers/domain/2026_Du_Ma_From_Coarse_to_Fine.pdf"
+    sha256: "d62d4273c249e294e93d09224a21baa77bb26d1c7d0d8e568b6ea29f1e7565fe"
+    same_work: null
+    cited_by_reports: ["reports/research/phase-0-item-data-source-audit.md","reports/research/new-user-provided-pdfs-source-audit.md"]
+  - id: "DOMAIN-003"
+    <<: *source_defaults
+    aliases: ["Probing_whats_behind_the_test_score_application_o.pdf"]
+    title: "Probing What’s Behind the Test Score: Application of Multi-CDM to Diagnose EFL Learners’ Reading Performance"
+    authors: ["Wenbo Du","Xiaomei Ma"]
+    year: 2021
+    venue: "Reading and Writing 34:1441-1466"
+    doi: "10.1007/s11145-021-10124-x"
+    needs_metadata: []
+    required: true
+    acquisition_status: "MANUAL_ONLY"
+    source_url: "https://link.springer.com/article/10.1007/s11145-021-10124-x"
+    download_url: null
+    redistribution_status: "RESTRICTED"
+    license: "Springer version of record; exclusive licence; all rights reserved"
+    local_path: "sources/library/papers/domain/2021_Du_Ma_Multi_CDM_EFL_Reading.pdf"
+    sha256: "e0df9daf7f73e2381403d88102bb89b5a2c95f0ee7d02b2693f97c4b008ae7bc"
+    same_work: null
+    cited_by_reports: ["reports/research/phase-0-item-data-source-audit.md","reports/research/new-user-provided-pdfs-source-audit.md"]
+  - id: "METHOD-008"
+    <<: *source_defaults
+    aliases: ["Computer Assisted Learning - 2025 - Shin - Co‐Coding Classroom Dialogue  A Single Researcher Case Study of ChatGPT‐Assisted.pdf"]
+    title: "Co-Coding Classroom Dialogue: A Single Researcher Case Study of ChatGPT-Assisted Analysis in Science Education"
+    authors: ["Eunhye Shin"]
+    year: 2025
+    venue: "Journal of Computer Assisted Learning 41(4):e70089"
+    doi: "10.1111/jcal.70089"
+    needs_metadata: []
+    required: true
+    acquisition_status: "MANUAL_ONLY"
+    source_url: "https://onlinelibrary.wiley.com/doi/10.1111/jcal.70089"
+    download_url: null
+    redistribution_status: "REDISTRIBUTION_ALLOWED"
+    license: "CC BY-NC-ND; preserve the unmodified work and attribution; local container provenance requires review before any release"
+    local_path: "sources/library/papers/methods/2025_Shin_Co_Coding_Classroom_Dialogue.pdf"
+    sha256: "60a83dda506a0491baa33a8be8bcd1f9b1524c5367d7518174887c6c1b0fa62b"
+    parse_status: PASS_WITH_WARNINGS
+    parse_warnings: ["PDF metadata records iText post-processing; content/format match the Wiley VOR but bitstream identity was not established"]
+    same_work: null
+    cited_by_reports: ["reports/protocols/AI_RESEARCH_TOOLING_POLICY.md","reports/research/methods-and-governance-source-audit.md","reports/research/new-user-provided-pdfs-source-audit.md"]
+  - id: "METHOD-009"
+    <<: *source_defaults
+    aliases: ["Guidelines for Reporting Reliability and Agreement Studies (GRRAS) were proposed.pdf","DOI:10.1016/j.jclinepi.2010.03.002"]
+    title: "Guidelines for Reporting Reliability and Agreement Studies (GRRAS) Were Proposed"
+    authors: ["Jan Kottner","Laurent Audigé","Stig Brorson","Allan Donner","Byron J. Gajewski","Asbjørn Hróbjartsson","Chris Roberts","Mohamed Shoukri","David L. Streiner"]
+    year: 2011
+    venue: "International Journal of Nursing Studies 48:661-671"
+    doi: "10.1016/j.ijnurstu.2011.01.016"
+    needs_metadata: []
+    required: true
+    acquisition_status: "MANUAL_ONLY"
+    source_url: "https://www.sciencedirect.com/science/article/pii/S0020748911000368"
+    download_url: null
+    redistribution_status: "RESTRICTED"
+    license: "Elsevier IJNS republication version of record; no open redistribution license verified"
+    local_path: "sources/library/papers/methods/2011_Kottner_GRRAS_IJNS.pdf"
+    sha256: "a8dbb6a808e510aa534f1e583eda90ec04e2677b252f19bbe3bda1045a762cfc"
+    same_work:
+      key: "kottner-grras-2011"
+      related_ids: []
+      relationship: "IJNS_REPUBLICATION_OF_UNCATALOGED_JCE_VERSION"
+    cited_by_reports: ["reports/protocols/AI_RESEARCH_TOOLING_POLICY.md","reports/research/methods-and-governance-source-audit.md","reports/research/new-user-provided-pdfs-source-audit.md"]

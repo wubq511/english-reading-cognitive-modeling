@@ -1,0 +1,63 @@
+#!/bin/sh
+set -u
+
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+HOOKS_PATH=.githooks
+
+usage() {
+  echo "usage: scripts/bootstrap [--check|--hook]" >&2
+  exit 2
+}
+
+mode=${1:-install}
+case "$mode" in
+  install|--check|--hook) ;;
+  *) usage ;;
+esac
+
+cd "$REPO_ROOT"
+
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  echo "bootstrap: FAIL reason=not_a_git_worktree" >&2
+  exit 1
+fi
+
+check_hook_contract() {
+  configured=$(git config --local --get core.hooksPath 2>/dev/null || true)
+  if [ "$configured" != "$HOOKS_PATH" ]; then
+    echo "bootstrap: FAIL core.hooksPath=${configured:-UNSET} expected=$HOOKS_PATH" >&2
+    return 1
+  fi
+  for hook in post-checkout post-merge pre-push; do
+    if [ ! -x "$HOOKS_PATH/$hook" ]; then
+      echo "bootstrap: FAIL hook=$HOOKS_PATH/$hook reason=missing_or_not_executable" >&2
+      return 1
+    fi
+  done
+  return 0
+}
+
+if [ "$mode" = "install" ]; then
+  git config --local core.hooksPath "$HOOKS_PATH"
+  echo "bootstrap: CONFIGURED core.hooksPath=$HOOKS_PATH"
+elif [ "$mode" = "--check" ]; then
+  check_hook_contract || exit 1
+  echo "bootstrap: OK core.hooksPath=$HOOKS_PATH"
+  exit 0
+fi
+
+status=0
+"$SCRIPT_DIR/sources" inbox || status=1
+"$SCRIPT_DIR/sources" sync || status=1
+"$SCRIPT_DIR/sources" doctor || status=1
+
+if [ "$status" -ne 0 ]; then
+  echo "bootstrap: INCOMPLETE action=resolve_reported_source_requirements_then_rerun" >&2
+  exit 1
+fi
+
+if [ "$mode" = "install" ]; then
+  check_hook_contract || exit 1
+fi
+echo "bootstrap: OK sources=ready hooks=$HOOKS_PATH"

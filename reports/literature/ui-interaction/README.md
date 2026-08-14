@@ -22,4 +22,4 @@
 | UIB-088 | 2024 |  | Automatic Macro Mining from Interaction Traces at Scale | CHI |
 
 
-**论文原文在 `/papers/library/ui-interaction`**
+**论文原文以 `sources/catalog.yaml` 的 `UIB-*` 稳定 ID 为准；当前集合位于 `sources/library/papers/literature/ui-interaction/`。**

@@ -38,15 +38,16 @@
 - system, observability, measurement, benchmark and literature synthesis；
 - source policy, conflict register, claim ledger, asset map and raw checksum manifest；
 - AI tooling and human research protocols；
-- paper catalog, checksum file and report crosswalk（初始 62 份，专项审计后 74 份）；
-- local paper collaboration CLI（完成后由其自身测试记录证明）。
+- typed source catalog, checksum file and source/report crosswalk（初始 62 份，首轮专项审计后 74 份，本轮用户原文补齐后 79 份）；
+- local source collaboration CLI、`tmp/pdfs` 收件箱和自动 Git hooks（由测试与 verifier 证明）。
 
 ### Primary-source augmentation after recovery
 
 - Phase 0 审计回到 J. Intell./TSC/CSE/PELDiaG/Jin & Liu 及 OECD/IEA/NCES 官方来源，将“2022→2026 同题本/同数据”裁决为 `NOT FOUND`，只保留研发谱系 `INFERENCE`；
 - 新增 3 份 Phase 0 本地全文/附件；S2 虽含 20 题，但无独立官方 answer key 与 item-level rights，不升级为可用 Candidate Bank；
 - 方法/治理审计覆盖两份协议的 25/25 个外部来源，新增 7 份方法原文和 2 份标准；
-- 当前 catalog 为 74 份；每份区分 `acquisition_status` 与 `redistribution_status`，免费可下载不再被误当成可公开再分发；
+- 当前 catalog 为 79 份；每份区分 `asset_type`、`acquisition_status` 与 `redistribution_status`，免费可下载不再被误当成可公开再分发；
+- 用户补齐 TSC 2026、PELDiaG 2021、Shin 2025 与 GRRAS，并新增 Zhang et al. 2024；只有 Ma & Du 2022 全文仍在人工获取队列；
 - 高杠杆文献主张已对 7 份本地 PDF 作重点复核，固定 `SUPPORTED/PARTIAL/PROJECT-INFERENCE/OVERSTATED` 边界。
 
 ### Explicitly not done yet

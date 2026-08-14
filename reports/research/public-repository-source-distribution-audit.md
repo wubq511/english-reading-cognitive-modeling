@@ -1,18 +1,18 @@
-# Public Repository Paper Distribution Audit
+# Public Repository Source Distribution Audit
 
 Status: `CURRENT`
 Audit date: 2026-08-14
-Decision scope: how public-repository collaborators and their Agents obtain the same paper originals
+Decision scope: how public-repository collaborators and their Agents obtain the same external-source originals
 
 This is a research-engineering and rights-governance design, not legal advice.
 
 ## Conclusion
 
-The public Git repository should **not** contain the current third-party PDF corpus by default, and Git LFS does not solve the underlying problem. The correct default is:
+The public Git repository should **not** contain the current third-party source corpus by default, and Git LFS does not solve the underlying problem. The correct default is:
 
 ```text
-public Git: catalog + version identity + source/license evidence + SHA-256 + tooling
-local machine: verified PDF originals
+public Git: catalog + type/version identity + source/license evidence + SHA-256 + tooling
+local machine: verified external-source originals
 acquisition: rights-cleared direct sync, otherwise exact human acquisition request
 optional distribution: only version-specific rights-cleared PDFs, after separate release approval
 ```
@@ -23,19 +23,19 @@ This preserves Agent research quality without converting every local research co
 
 A viable design must satisfy all five properties:
 
-1. **Identity**: two researchers can prove they used the same paper version.
+1. **Identity**: two researchers can prove they used the same source version.
 2. **Availability**: an Agent immediately detects missing originals rather than silently researching from metadata or memory.
 3. **Legality**: the project does not infer redistribution permission from “downloadable,” “open to read,” DOI presence or local possession.
-4. **Reproducibility**: the paper set used for a claim or run is machine-checkable.
+4. **Reproducibility**: the source set used for a claim or run is machine-checkable.
 5. **Operational simplicity**: a new collaborator has one preflight command and one exact recovery path.
 
 A DOI alone satisfies bibliographic identity only partially; it does not guarantee version identity, full-text access or redistribution rights. A PDF committed to Git improves availability but may fail legality and makes immutable binary history a permanent maintenance burden.
 
 ## Current corpus facts
 
-The current 74-file local corpus is 171,855,215 bytes (163.89 MiB); the largest PDF is 27.81 MiB. Therefore ordinary Git's single-file hard limit is not the immediate blocker. GitHub nevertheless warns on files above 50 MiB, blocks ordinary Git objects above 100 MiB, and recommends keeping repositories small, ideally below 1 GiB ([GitHub large-file guidance](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github)).
+The current 79-file local corpus is 176,582,839 bytes (168.40 MiB); the largest PDF is 29,164,168 bytes. Therefore ordinary Git's single-file hard limit is not the immediate blocker. GitHub nevertheless warns on files above 50 MiB, blocks ordinary Git objects above 100 MiB, and recommends keeping repositories small, ideally below 1 GiB ([GitHub large-file guidance](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github)).
 
-The decisive blocker is rights provenance: the original 62 recovered records still have `redistribution_status: UNKNOWN`; the 12 newly audited files split into six conservatively marked `REDISTRIBUTION_ALLOWED` and six `RESTRICTED`. Local access is not evidence of public redistribution permission.
+The decisive blocker is rights provenance: 62 records remain `UNKNOWN`, 8 are conservatively marked `REDISTRIBUTION_ALLOWED`, and 9 are `RESTRICTED`. Local access is not evidence of public redistribution permission; even the allowed files remain outside the first public snapshot pending file-level approval.
 
 ## Why the obvious options fail
 
@@ -79,28 +79,29 @@ For this project, a PDF is publicly redistributable only when the **specific loc
 
 ## Implemented collaboration contract
 
-The repository now treats papers as content-addressed research dependencies:
+The repository now treats external sources as typed, content-addressed research dependencies:
 
-1. `papers/catalog.yaml` records stable ID, work/version metadata, expected local path, SHA-256, requirement state, source URL, direct-download URL and redistribution status.
-2. `papers/checksums.sha256` freezes the exact local bytes used by the project.
-3. `scripts/papers doctor` fails closed if a required PDF is missing, not a PDF, or has different bytes. The error contains ID, DOI/source, target path and import command.
-4. `scripts/papers sync` auto-downloads only HTTPS files marked `acquisition_status: DIRECT_PUBLIC`. Acquisition status is independent of redistribution status: an official free-download endpoint may support a lawful local copy while its PDF remains `RESTRICTED` from public redistribution. Redirects are revalidated and credentials are never embedded.
-5. `scripts/papers import ID FILE` verifies the PDF magic and expected SHA-256, installs atomically and never overwrites different content.
-6. `scripts/verify` checks the catalog-backed paper state together with project links and provenance manifests.
+1. `sources/catalog.yaml` records stable ID, work/version metadata, expected local path, SHA-256, requirement state, source URL, direct-download URL and redistribution status.
+2. `sources/checksums.sha256` freezes the exact local bytes used by the project.
+3. `scripts/sources doctor` fails closed if a required file is missing, has the wrong format signature, or differs from the catalog hash.
+4. `scripts/sources sync` auto-downloads only HTTPS files marked `acquisition_status: DIRECT_PUBLIC`. Acquisition status is independent of redistribution status; redirects are revalidated and credentials are never embedded.
+5. Human downloads go only to `tmp/pdfs/`. `scripts/sources inbox` matches by SHA, imports atomically and deletes an inbox copy only after the canonical target passes format/hash verification. Unknown files remain for Agent review.
+6. `scripts/bootstrap` installs tracked Git hooks once. Post-checkout/post-merge automatically run inbox/sync/doctor; pre-push fails closed on incomplete sources and then runs full repository verification.
+7. `scripts/verify` checks the catalog-backed source state together with project links and provenance manifests; public CI validates the metadata contract without pretending untracked local originals exist.
+
+One explicit `scripts/bootstrap` after clone is irreducible: Git does not transfer or enable client-side hooks when a repository is cloned. The bootstrap records repository-local `core.hooksPath=.githooks`; tracked executable hooks then provide the automatic path. Hooks remain bypassable by a user with control of the clone, so this is a hard project workflow gate, not a hostile-client security proof ([Git hooks reference](https://git-scm.com/docs/githooks); [Pro Git, client-side hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)).
 
 This means an Agent starting from a clone cannot silently continue without the full corpus:
 
 ```bash
-scripts/papers doctor
-scripts/papers sync
-scripts/papers doctor
+scripts/bootstrap
 ```
 
-If an item remains unavailable, the Agent must stop the full-text-dependent task and ask its user to lawfully obtain the exact work/version, then run:
+If an item remains unavailable, the Agent must stop the source-dependent task and ask its user to lawfully obtain the exact work/version and place it in `tmp/pdfs/`. The Agent then updates metadata if needed and runs:
 
 ```bash
-scripts/papers import PAPER_ID /path/to/downloaded.pdf
-scripts/papers doctor
+scripts/sources inbox
+scripts/sources doctor
 ```
 
 ## Acquisition state machine
@@ -109,7 +110,7 @@ scripts/papers doctor
 | --- | --- | --- | --- |
 | `OPEN_ACCESS` / `PUBLIC_DOMAIN` / `REDISTRIBUTION_ALLOWED` with verified HTTPS download | `sync` downloads and validates | none | only if the recorded license also covers redistribution of this exact version and publication is separately approved |
 | Free-to-read or author manuscript, rights not yet verified | fail closed / manual list | verify source, version and license; then update catalog | no |
-| Subscription/paywalled but lawfully accessible to collaborator | fail closed / manual list | download through own authorized institutional access and `import` | no |
+| Subscription/paywalled but lawfully accessible to collaborator | fail closed / manual list | download through authorized access into `tmp/pdfs/`; Agent performs inbox migration | no |
 | No lawful access channel found | fail closed | request author/library/lab assistance or replace the dependency with an explicitly justified source | no |
 | Different PDF version obtained | hash mismatch | register as a distinct version or obtain the expected version; never silently substitute | depends on that version's rights |
 
@@ -128,9 +129,10 @@ If collaboration scale makes manual acquisition burdensome, add an institution-c
 
 ## Decision
 
-The user's proposed “PDFs remain on each member's computer; pull triggers immediate download or a human request” is retained, with two corrections:
+The user's proposed “source originals remain on each member's computer; pull triggers immediate download or a human request” is retained, with three corrections:
 
 1. a DOI is not enough—the manifest freezes the exact version, expected bytes, source and rights state;
-2. an Agent does not merely receive a reminder—the preflight fails closed until required originals are present and verified.
+2. an Agent does not merely receive a reminder—the preflight fails closed until required originals are present and verified;
+3. human downloads have one inbox; classification, canonical placement and post-verification cleanup belong to the Agent and tooling.
 
 No third-party PDF will enter the first public Git history. Rights-cleared PDFs may later be published as a separately reviewed release or dataset, never by blanket rule.

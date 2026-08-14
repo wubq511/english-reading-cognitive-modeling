@@ -12,7 +12,7 @@
 
 ## 结论先行
 
-1. **2022 → 2026 的“单一直线谱系”没有被证实。** 2026 *Journal of Intelligence* 论文明确承接的是 Du & Ma 2026 *Thinking Skills and Creativity*（TSC），不是 2022 《中国考试》；其参考文献没有列 2022 论文。2022 与 2026 J. Intell. 都出现 `N=1083`、同一组六项推理技能，这是很强的 **INFERENCE**，但不能据此声称同一响应矩阵。更重要的是，TSC 论文公开摘要报告 `N=886`，所以三篇不能被合并为一个未经区分的数据集。[J. Intell. DOI](https://doi.org/10.3390/jintelligence14050079)；[TSC 出版商页](https://www.sciencedirect.com/science/article/pii/S1871187125002706)；[2022 CSE 官方页](https://cse.neea.edu.cn/html1/report/2403/249-1.htm)
+1. **2022 → 2026 的“单一直线谱系”没有被证实。** 2026 *Journal of Intelligence* 论文明确承接的是 Du & Ma 2026 *Thinking Skills and Creativity*（TSC），不是 2022 《中国考试》；其参考文献没有列 2022 论文。2022 与 2026 J. Intell. 都出现 `N=1083`、同一组六项推理技能，这是很强的 **INFERENCE**，但不能据此声称同一响应矩阵。TSC 本地全文 `DOMAIN-002` 明确记录独立的 975 名入组、删除 89 名未完成者、最终 `N=886`（PDF pp.5–6），所以三篇必须使用不同 dataset/instrument version。[J. Intell. DOI](https://doi.org/10.3390/jintelligence14050079)；[TSC 出版商页](https://www.sciencedirect.com/science/article/pii/S1871187125002706)；[2022 CSE 官方页](https://cse.neea.edu.cn/html1/report/2403/249-1.htm)
 2. **目前唯一取得“完整 20 题试卷”的是 2026 J. Intell. 补充材料 S2。** 该补充包还含 S1 prompts 与 S3 豆包输出示例；S3 中的答案属于模型输出，不是出版社或测验作者单独发布的官方答案键。[MDPI supplement](https://www.mdpi.com/article/10.3390/jintelligence14050079/s1)
 3. **PELDiaG 与 2022 CSE 都不是可直接复用的公开题库。** 元数据、样本和构念可核验，但完整 passages/items、官方 answer key、逐题来源、响应矩阵和明确再部署许可均未找到。
 4. **Jin & Liu 支持的是“自动难度预筛 + 目标群体真人 pilot”的方法，不提供可复用题库。** 其 33 篇材料来自 ETS TOEFL iBT；文章开放不等于第三方 TOEFL 刺激材料可再分发。
@@ -24,7 +24,8 @@
 
 - **CONFIRMED — 题名与版本：** Wenbo Du & Xiaomei Ma, “Probing what’s behind the test score: application of multi-CDM to diagnose EFL learners’ reading performance,” *Reading and Writing* 34, 1441–1466 (2021), DOI [`10.1007/s11145-021-10124-x`](https://doi.org/10.1007/s11145-021-10124-x)；online 2021-01-22，issue date 2021-06。[Springer 版本记录](https://link.springer.com/article/10.1007/s11145-021-10124-x)
 - **CONFIRMED — PELDiaG 含义与基本用途：** Springer 与 ERIC 摘要直接写明 PELDiaG 为 “Personalized English Learning: Diagnosis & Guidance”，研究使用该团队设计的 reading comprehension test 诊断 740 名大学新生。[Springer 摘要](https://link.springer.com/article/10.1007/s11145-021-10124-x)；[ERIC EJ1295478](https://eric.ed.gov/?id=EJ1295478)
-- **CONFIRMED — 附录类型：** 出版商页面列出 expert Q-matrix、student verbal-report Q-matrix、revised Q-matrix 与 verbal-report coding guide 四个附录表。[Springer appendices](https://link.springer.com/article/10.1007/s11145-021-10124-x)
+- **CONFIRMED — 题本结构与分析样本：** 本地全文 `DOMAIN-003` 报告 5 passages、43 个四选一题；items 9/10 因询问前题策略被剔除，正式分数和分析使用 41 题，样本为 740 名大学新生（PDF p.7）。
+- **CONFIRMED — Q-matrix 证据链：** 7 名专家编码；12 名学生参与 verbal report，排除不完整/含混材料后保留 9 份；附录给出 expert Q-matrix、student Q-matrix、revised Q-matrix 与 coding guide（PDF pp.7–8 及 Appendices）。
 - **CONFIRMED — 访问/权利：** 出版商页面将正文标为 subscription content；页面版权元数据为 “The Author(s), under exclusive licence to Springer Nature”。因此 DOI 页面、摘要和可见表格可引用，但不能把文章或题目视作 OA/可再分发资产。[Springer access/permissions](https://link.springer.com/article/10.1007/s11145-021-10124-x)
 
 ### 资产状态
@@ -32,14 +33,11 @@
 - **NOT FOUND — 完整题本：** 未在出版商、ERIC、作者机构页或可信 OA 仓储找到完整 passages/items、官方 answer key、逐题刺激材料来源。
 - **NOT FOUND — 数据：** 未找到 740 人 item-response matrix、逐题过程数据、公开数据仓储或 data availability statement。
 - **NOT FOUND — 复用许可：** 未找到允许把题目部署到本项目或公开仓库的明确许可。Q-matrix 的可见性不等于题目文本有再部署许可。
-- **未升级为 CONFIRMED 的迁移包数字：** `5 passages / 43 items / 41 analyzed items / 740×41` 等细节应待取得原文后逐项复核；本审计不以迁移包为证据。
+- **CONFIRMED — 原迁移包数字已由原文复核：** `5 passages / 43 items / 41 analyzed items / N=740` 现由 `DOMAIN-003` 支持；这只升级书目/方法事实，不升级题目复用权或数据可得性。
 
-### 人工获取队列
+### 当前获取边界
 
-- 建议文件名：`Du_Ma_2021_Probing_Whats_Behind_the_Test_Score.pdf`
-- 官方入口：[Springer article](https://link.springer.com/article/10.1007/s11145-021-10124-x)
-- 获取方式：实验室机构订阅、作者提供的合法版本，或购买；不要从非授权聚合站下载。
-- 另向作者请求：完整题本、answer key、Q-matrix 原始表、去标识响应矩阵、逐题来源与研究/再部署许可。Springer 页面列出的通讯作者为 Wenbo Du / Xiaomei Ma。
+全文已作为 `DOMAIN-003` 落地；仍需向作者请求完整题本、answer key、Q-matrix 原始表、去标识响应矩阵、逐题来源与研究/再部署许可。获得论文原文不等于获得这些资产的使用权。
 
 ## 2. Ma & Du (2022) CSE 阅读推理研究
 
@@ -83,23 +81,20 @@
 ### 直接证据
 
 - **CONFIRMED — J. Intell. 的直接前序是 TSC 2026：** 其方法写明八属性 “adopted from Du and Ma (2026)”，Qmat-E/Qmat-S “adapted from a previous study (see Du & Ma, 2026)”；参考文献对应 *From coarse to fine: A cognitive diagnosis of EFL learners’ inferential ability in EFL reading*, *Thinking Skills and Creativity* 59, 102022，DOI [`10.1016/j.tsc.2025.102022`](https://doi.org/10.1016/j.tsc.2025.102022)。J. Intell. 的参考文献没有列 2022 《中国考试》。[J. Intell. full text](https://www.mdpi.com/2079-3200/14/5/79)
-- **CONFIRMED — 数据量并不一致：** TSC 出版商摘要报告 886 名中国大学生；J. Intell. 报 1,083；2022 《中国考试》也报 1,083。[TSC 出版商页](https://www.sciencedirect.com/science/article/pii/S1871187125002706)；[CSE 官方页](https://cse.neea.edu.cn/html1/report/2403/249-1.htm)
+- **CONFIRMED — TSC 测验与样本：** `DOMAIN-002` 报告初始 28 题；382 人 pilot 中 360 份有效响应，随后删除 8 题形成 20 题；主测 975 人中删除 89 名未完成者，最终 886 人（PDF pp.4–6）。题目来自/改编自 CET4、CET6 和既有推理测验，因此全文可读不等于题目可重新部署。
 
 ### 可写与不可写的结论
 
 - **INFERENCE — 构念/测验家族关系：** 2022 与 2026 J. Intell. 作者重叠、均为 1,083、六项推理属性一致，2022 英文摘要还报告同样的两个字面理解属性。最合理的工作假设是它们来自同一研发项目或高度重叠的测验家族。
 - **NOT FOUND — 同一题本：** 未有一手来源直接写明 2026 S2 就是 2022 的原题本。
 - **NOT FOUND — 同一响应矩阵：** 未有一手来源直接写明两篇的 1,083 是同一批记录；相同 `N` 不是行级身份或数据版本证明。
-- **NOT FOUND — 2022 → TSC 2026 的变换规则：** TSC 的 886 是否是 1,083 的清洗子集、重新招募样本或不同数据，公开摘要无法判断。
+- **NOT FOUND — 2022 → TSC 2026 的映射：** TSC 已明确自己的 `975 -> 886` 排除链，但没有把这些参与者或题本逐行映射到 2022 的 `N=1083`；不能把 TSC 解释为 2022 数据的清洗子集。
 
 **论文写作约束：** 在获得作者声明、数据字典/subject IDs 或两篇全文的明确方法说明前，只能写“可能属于同一研发谱系”，不得写“2022 数据被 2026 复用”。
 
-### 人工获取队列
+### 仍需作者确认
 
-- 建议文件名：`Du_Ma_2026_From_Coarse_to_Fine.pdf`
-- 官方入口：[ScienceDirect](https://www.sciencedirect.com/science/article/pii/S1871187125002706)；[DOI](https://doi.org/10.1016/j.tsc.2025.102022)
-- 原因：出版商页面为 abstract-only，未找到作者机构 OA 版本。
-- 向作者发一个可判定的问题：请提供 2022、TSC 2026、J. Intell. 2026 三者的 `instrument_version_id`、采集批次、原始 N、排除规则、最终 N、item mapping 和数据复用声明。
+全文已作为 `DOMAIN-002` 落地。仍应向作者请求 2022、TSC 2026、J. Intell. 2026 三者的 `instrument_version_id`、采集批次、原始 N、排除规则、最终 N、item mapping 和数据复用声明。
 
 ## 5. Jin & Liu hybrid computerised dynamic assessment
 
@@ -137,17 +132,19 @@
 
 | 本地文件 | 来源与版本 | 页数 | SHA-256 | 可再分发判断 |
 |---|---|---:|---|---|
-| `papers/library/item-and-data-sources/Du_Shen_Ma_2026_GenAI_Q_Matrix_EFL_Reading.pdf` | [PMC OA article PDF](https://pmc-oa-opendata.s3.amazonaws.com/PMC13208814.1/PMC13208814.1.pdf)，Version of Record | 23 | `416f4156aedae7e846e3d05d389d74fd51a638708019d582aed81159cb8b554a` | **YES, CC BY 4.0**，需署名/链接许可/标注修改。 |
-| `papers/library/item-and-data-sources/Du_Shen_Ma_2026_GenAI_Q_Matrix_Supplement.pdf` | [MDPI official supplement archive](https://mdpi-res.com/d_attachment/jintelligence/jintelligence-14-00079/article_deploy/jintelligence-14-00079-s001.zip) 内 `jintelligence-4193271-supplementary.pdf` | 39 | `55032acdaa101bf3fa3b035c4a43f091649de9b8dd88cd41294cf71d8ed1ef12` | **CONDITIONAL**：补充材料容器为 CC BY；逐题第三方刺激材料权利仍未核清，公开部署前做 item-level audit。 |
-| `papers/library/item-and-data-sources/Jin_Liu_2024_Hybrid_CDA_Accepted_Manuscript.pdf` | [Cambridge Apollo bitstream](https://api.repository.cam.ac.uk/server/api/core/bitstreams/933b2e88-bb15-474d-839f-e9a7c46aa450/content)，Accepted Manuscript | 41 | `55f52afe131980a3a474e32e57c3939ddf1f4eea086ad17b4694ff4246462181` | **CONDITIONAL**：仓储条目标 CC BY 4.0，但文中 TOEFL 材料为第三方；不得抽取/再部署 TOEFL passages/items。 |
+| `sources/library/papers/domain/Du_Shen_Ma_2026_GenAI_Q_Matrix_EFL_Reading.pdf` | [PMC OA article PDF](https://pmc-oa-opendata.s3.amazonaws.com/PMC13208814.1/PMC13208814.1.pdf)，Version of Record | 23 | `416f4156aedae7e846e3d05d389d74fd51a638708019d582aed81159cb8b554a` | **YES, CC BY 4.0**，需署名/链接许可/标注修改。 |
+| `sources/library/study-materials/items/Du_Shen_Ma_2026_GenAI_Q_Matrix_Supplement.pdf` | [MDPI official supplement archive](https://mdpi-res.com/d_attachment/jintelligence/jintelligence-14-00079/article_deploy/jintelligence-14-00079-s001.zip) 内 `jintelligence-4193271-supplementary.pdf` | 39 | `55032acdaa101bf3fa3b035c4a43f091649de9b8dd88cd41294cf71d8ed1ef12` | **CONDITIONAL**：补充材料容器为 CC BY；逐题第三方刺激材料权利仍未核清，公开部署前做 item-level audit。 |
+| `sources/library/papers/domain/Jin_Liu_2024_Hybrid_CDA_Accepted_Manuscript.pdf` | [Cambridge Apollo bitstream](https://api.repository.cam.ac.uk/server/api/core/bitstreams/933b2e88-bb15-474d-839f-e9a7c46aa450/content)，Accepted Manuscript | 41 | `55f52afe131980a3a474e32e57c3939ddf1f4eea086ad17b4694ff4246462181` | **CONDITIONAL**：仓储条目标 CC BY 4.0，但文中 TOEFL 材料为第三方；不得抽取/再部署 TOEFL passages/items。 |
+| `sources/library/papers/domain/2026_Du_Ma_From_Coarse_to_Fine.pdf` | 用户合法提供的 Elsevier VOR，catalog `DOMAIN-002` | 13 | 见 `sources/catalog.yaml` | **NO PUBLIC REDISTRIBUTION**；本地研究副本。 |
+| `sources/library/papers/domain/2021_Du_Ma_Multi_CDM_EFL_Reading.pdf` | 用户合法提供的 Springer VOR，catalog `DOMAIN-003` | 27 | 见 `sources/catalog.yaml` | **NO PUBLIC REDISTRIBUTION**；本地研究副本。 |
 
 ## 8. 未取得资产与下一步
 
 | 优先级 | 需要的文件/资产 | 官方入口 | 未取得原因 | 下一步 |
 |---:|---|---|---|---|
 | P0 | `Ma_Du_2022_CSE_Reading_Inference_Cognitive_Diagnosis.pdf` + items/Q/data | [DOI](https://doi.org/10.19360/j.cnki.11-3303/g4.2022.12.001) | CNKI/CHNDOI 受限；未发现授权 OA | 实验室 CNKI 或作者请求；先问清 1083 数据与 2026 的关系。 |
-| P0 | `Du_Ma_2026_From_Coarse_to_Fine.pdf` + supplement/data | [DOI](https://doi.org/10.1016/j.tsc.2025.102022) | Elsevier abstract-only；未发现授权 OA | 机构订阅或作者请求；获得后核对 `N=886` 的筛选规则和 item mapping。 |
-| P1 | `Du_Ma_2021_Probing_Whats_Behind_the_Test_Score.pdf` + PELDiaG assets | [DOI](https://doi.org/10.1007/s11145-021-10124-x) | Springer subscription；未发现授权 OA | 机构订阅或作者请求；核对 43/41 items 等迁移包数字。 |
+| P0 | TSC 2026 supplement/items/data | [DOI](https://doi.org/10.1016/j.tsc.2025.102022) | 正文已取得；未取得完整可部署题本、响应数据和权利 | 向作者请求 item mapping、数据字典和允许用途。 |
+| P1 | PELDiaG answer key/items/data | [DOI](https://doi.org/10.1007/s11145-021-10124-x) | 正文已取得；未取得完整刺激材料、响应矩阵和复用许可 | 向作者请求资产与逐题权利，不重复请求正文。 |
 | P1 | 2026 J. Intell. empirical response data + expert/student raw coding | [article](https://www.mdpi.com/2079-3200/14/5/79) | data on reasonable request | 通过文章页联系通讯作者，同时请求 data dictionary、伦理/DUA 条件、行级谱系说明。 |
 | P2 | Jin & Liu 33 passages、mediations、HTML5 包、数据 | [publisher](https://www.tandfonline.com/doi/full/10.1080/09588221.2024.2421521) | 未附 supplement/data；TOEFL 第三方权利 | 只请求研究方法/去标识数据；除非 ETS 明确授权，不请求公开再分发 TOEFL 题本。 |
 

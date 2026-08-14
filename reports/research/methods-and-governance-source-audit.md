@@ -8,13 +8,13 @@
 
 ## 结论先行
 
-本轮新增 9 个经格式、页数、文本可读性和首屏渲染核验的 PDF：7 个方法论文/作者机构版本，2 个标准或治理文件。另有 3 个论文链接没有重复或强行下载：GRRAS 没有找到经出版商或作者机构验证的 OA 全文；Shin (2025) 虽有出版商登记的 OA PDF，但官方端点在本环境持续返回 HTTP 403；arXiv:2306.00176 与正式 ICWSM 后继版本属于同一研究链，本地只保留正式版。
+初始审计取得 9 个方法/标准 PDF；2026-08-14 用户又合法提供 Shin (2025) 和 GRRAS 的期刊版本，现共 11 个本地原件。两份新增文件已经过格式、文本、首屏、版本和权利审计；arXiv:2306.00176 与正式 ICWSM 后继版本属于同一研究链，本地仍只保留正式版。
 
 对计划公开的 GitHub 仓库，当前文件不能“一刀切”提交：
 
 - 可公开再分发（按许可署名并保留许可信息）：Morris 2019、Bisbee et al. 2024、Shumailov et al. 2024、Wachinger et al. 2024/2025、NIST AI 600-1（须遵守 NIST courtesy attribution，并检查第三方材料的单独 credit line）。
 - 仅可本地研究使用、不要默认随公开仓库发布：AERA/APA/NCME 2014 Standards（PDF 内写明 all rights reserved 且禁止复制/分发）、两篇 ICWSM 2025 PDF（PDF 内写明 AAAI copyright / all rights reserved，页面未给出适用于该文件的开放许可）、World Bank WPS10597 本地副本（公开可下载，但本次未在文件或作品记录中验证到足以支持仓库再分发的明确许可）。
-- 尚无本地文件：Shin 2025、Kottner et al. 2011 GRRAS、arXiv:2306.00176。Shin 的 CC BY-NC-ND 允许的是未经改动、署名、非商业条件下的再分发；但本轮没有取得文件，因此不纳入仓库 allowlist。
+- 新增本地受控文件：Shin 2025 为 `METHOD-008`，载明 CC BY-NC-ND，但本地容器存在 iText 后处理记录，任何公开分发前必须先确认未改动版本；GRRAS IJNS 再发表版为 `METHOD-009`，未核验开放再分发许可。两者均不进入首个公共 Git 快照。
 
 ## A. AI_RESEARCH_TOOLING_POLICY 来源逐项审计
 
@@ -25,7 +25,7 @@
 - OA / 许可证据：官方页面明确 2014 English edition “now open access”并提供 PDF；但 PDF 版权页同时写明 copyright 2014、all rights reserved，未经书面许可不得 reproduction or distribution。这里的 open access 是免费读取，不是开放再分发许可。
 - 可本地研究使用：是。
 - 可公开再分发：否；不要把该 PDF 提交到公开仓库，除非三家出版组织另行书面授权。
-- 本地文件：`papers/library/standards/2014_AERA_APA_NCME_Testing_Standards.pdf`
+- 本地文件：`sources/library/standards/2014_AERA_APA_NCME_Testing_Standards.pdf`
 - SHA-256：`78182353e8cd877535f6f3c8967da52d4d3af64725146c08606d38825941ac61`
 
 ### A2. Using simulation studies to evaluate statistical methods
@@ -36,7 +36,7 @@
 - OA / 许可证据：PDF 首页声明 Creative Commons Attribution License；出版商登记元数据指向 CC BY 4.0。
 - 可本地研究使用：是。
 - 可公开再分发：是，须保留署名、来源、DOI 与许可信息。
-- 本地文件：`papers/library/methods/2019_Morris_Using_Simulation_Studies.pdf`
+- 本地文件：`sources/library/papers/methods/2019_Morris_Using_Simulation_Studies.pdf`
 - SHA-256：`3aec72851ec6dc1e61a8921c4e0fa69b4b7722b73d26a764b423e53d0e6f106d`
 
 ### A3. Synthetic Replacements for Human Survey Data? The Perils of Large Language Models
@@ -47,7 +47,7 @@
 - OA / 许可证据：出版商页面和 PDF 均声明 CC BY 4.0，可在正确署名条件下 re-use、distribution、reproduction。
 - 可本地研究使用：是。
 - 可公开再分发：是，须署名并保留许可；单独 credit line 排除的第三方材料除外。
-- 本地文件：`papers/library/methods/2024_Bisbee_Synthetic_Replacements.pdf`
+- 本地文件：`sources/library/papers/methods/2024_Bisbee_Synthetic_Replacements.pdf`
 - SHA-256：`36a0d04cacac5bdb2f24e7022bcbc6fd01493dfcbc6104c588123eb0c7f3b744`
 
 ### A4. AI models collapse when trained on recursively generated data
@@ -59,7 +59,7 @@
 - 可本地研究使用：是。
 - 可公开再分发：是，须署名、链接许可并标明改动。
 - 版本提醒：Crossmark/Crossref 已关联后续 correction DOI [10.1038/s41586-025-08905-3](https://doi.org/10.1038/s41586-025-08905-3)；正式引用或复现实验前应同步核对 correction。本轮不额外下载未被 canonical 协议引用的 correction。
-- 本地文件：`papers/library/methods/2024_Shumailov_AI_Models_Collapse.pdf`
+- 本地文件：`sources/library/papers/methods/2024_Shumailov_AI_Models_Collapse.pdf`
 - SHA-256：`474c820b5224b6bfa337e98a0ff942eca4b7808b44236121af828c6122a860ae`
 
 ### A5. Co-Coding Classroom Dialogue: A Single Researcher Case Study of ChatGPT-Assisted Analysis in Science Education
@@ -67,9 +67,10 @@
 - 类型：期刊研究论文；Eunhye Shin；*Journal of Computer Assisted Learning* 41(4), e70089 (2025)。
 - DOI：[10.1111/jcal.70089](https://doi.org/10.1111/jcal.70089)。
 - OA / 许可证据：出版商登记的 OA endpoint 为 `https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/jcal.70089`，许可为 CC BY-NC-ND 4.0。
-- 可本地研究使用：理论上是；但本轮没有取得文件。
-- 可公开再分发：若之后从官方入口取得原始未改动文件，仅可在署名、非商业、禁止演绎的条件下再分发；公开仓库的用途与构建流程需先确认不构成商业使用或派生修改。
-- 未下载原因：出版商 `pdf` 与 `pdfdirect` 两个官方端点均持续返回 HTTP 403；没有找到作者机构的另一条已验证 PDF，不使用代理缓存或非授权镜像绕过。
+- 可本地研究使用：是；用户提供的本地文件已核验为 Wiley VOR 内容与版式。
+- 可公开再分发：许可为 CC BY-NC-ND，但本地 PDF metadata 记录 iText 后处理，不能仅凭版式相同断言 bitstream 未改动；公开前应从正常浏览器重取官方原件并逐字节/内容比较。
+- 本地文件：`sources/library/papers/methods/2025_Shin_Co_Coding_Classroom_Dialogue.pdf`（catalog `METHOD-008`）。
+- 获取限制：官方 `pdf` 与 `pdfdirect` 对自动化环境返回 HTTP 403，因此 catalog 保持 `MANUAL_ONLY`。
 
 ### A6. Guidelines for Reporting Reliability and Agreement Studies (GRRAS) were proposed
 
@@ -77,9 +78,9 @@
 - DOI：[10.1016/j.ijnurstu.2011.01.016](https://doi.org/10.1016/j.ijnurstu.2011.01.016)。
 - 辅助正式入口：[EQUATOR Network 指南记录](https://www.equator-network.org/reporting-guidelines/guidelines-for-reporting-reliability-and-agreement-studies-grras-were-proposed/)。
 - OA / 许可证据：DOI 元数据只给出 Elsevier text-and-data-mining 条款，不是 OA / 再分发许可；未找到出版商或作者机构提供的该 DOI 完整 OA PDF。
-- 可本地研究使用：可通过有权访问的机构订阅阅读；本轮无本地全文。
+- 可本地研究使用：是；用户提供的 IJNS 再发表 VOR 已本地核验。
 - 可公开再分发：否 / 未获授权。
-- 未下载原因：出版商全文受访问控制；搜索到的非官方副本和另一刊物的并行发表版本不作为该 DOI 的替代原文。
+- 本地文件：`sources/library/papers/methods/2011_Kottner_GRRAS_IJNS.pdf`（catalog `METHOD-009`）。它是 IJNS 对 JCE 版本的经许可再发表，必须保留 IJNS DOI；两个 DOI 不得合并为同一版本记录。
 
 ### A7. Automated Annotation with Generative AI Requires Validation
 
@@ -98,7 +99,7 @@
 - OA / 许可证据：官方页面免费直接下载；PDF 版权页写明 copyright 2025 AAAI, all rights reserved，作品页未显示适用于本文 PDF 的 Creative Commons 许可。
 - 可本地研究使用：是。
 - 可公开再分发：否 / 未验证到授权；免费获取不能替代再分发许可。
-- 本地文件：`papers/library/methods/2025_Pangakis_Keeping_Humans_in_the_Loop.pdf`
+- 本地文件：`sources/library/papers/methods/2025_Pangakis_Keeping_Humans_in_the_Loop.pdf`
 - SHA-256：`b1b11280862c25e87ede674e464dc1cda10b51ce54afc8add57f2b696d36843b`
 
 ### A9. Using Large Language Models for Qualitative Analysis can Introduce Serious Bias
@@ -110,7 +111,7 @@
 - 本地替代版本：作者所在机构 World Bank 的 *Policy Research Working Paper 10597* (2023)，同题名但早于期刊 VOR；官方记录 DOI [10.1596/1813-9450-10597](https://doi.org/10.1596/1813-9450-10597)，[World Bank 官方记录](https://documents.worldbank.org/en/publication/documents-reports/documentdetail/099433311072326082)，[官方机构 PDF](https://openknowledge.worldbank.org/bitstreams/301eff0a-c936-456f-bb0b-af6f5bf7e4f4/download)。
 - 可本地研究使用：是。分析时须把 WPS 视为早期版本，引用期刊结论前回到 SAGE 当前 VOR 核对。
 - 可公开再分发：期刊 VOR 是 CC BY 4.0，但本地保存的不是 VOR；本次未在 WPS PDF 或作品记录中验证到足以支持 GitHub 再分发的明确许可，故本地 WPS 文件判为“否 / 待权利确认”。
-- 本地文件：`papers/library/methods/2023_Ashwin_LLM_Qualitative_Analysis_Bias_WPS10597.pdf`
+- 本地文件：`sources/library/papers/methods/2023_Ashwin_LLM_Qualitative_Analysis_Bias_WPS10597.pdf`
 - SHA-256：`6ba35401c1d22e0442b0ec841c5c922617656019d5a34af088f1582d6de1959e`
 
 ### A10. What's in a Prompt?: A Large-Scale Experiment to Assess the Impact of Prompt Design on the Compliance and Accuracy of LLM-Generated Text Annotations
@@ -121,7 +122,7 @@
 - OA / 许可证据：官方页面免费直接下载；PDF 版权页写明 copyright 2025 AAAI, all rights reserved，作品页未显示适用于本文 PDF 的开放许可。
 - 可本地研究使用：是。
 - 可公开再分发：否 / 未验证到授权。
-- 本地文件：`papers/library/methods/2025_Atreja_Whats_in_a_Prompt.pdf`
+- 本地文件：`sources/library/papers/methods/2025_Atreja_Whats_in_a_Prompt.pdf`
 - SHA-256：`4563d8c92978d81a2f038664e71522d3ec254270cf5e18c54abd7f4b953d40c7`
 
 ### A11. Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile
@@ -132,7 +133,7 @@
 - OA / 许可证据：[NIST Technical Series 政策](https://www.nist.gov/nist-research-library/nist-publications)说明 NIST 员工作品在美国不受版权保护，并对其可主张的境外权利授予 worldwide、royalty-free 的重印和衍生使用权；同时警告第三方作品可能仍受版权保护。
 - 可本地研究使用：是。
 - 可公开再分发：是，但须使用推荐引文，并加注 “Republished courtesy of the National Institute of Standards and Technology”；第三方材料按各自 credit line 处理。
-- 本地文件：`papers/library/standards/2024_NIST_AI_600-1_Generative_AI_Profile.pdf`
+- 本地文件：`sources/library/standards/2024_NIST_AI_600-1_Generative_AI_Profile.pdf`
 - SHA-256：`6e73620ab6b64e90ef2c04bf0e0d6246185a2f4b1b13cab0df494496cff89b6a`
 
 ### A12. Prompts, Pearls, Imperfections: Comparing ChatGPT and a Human Researcher in Qualitative Data Analysis
@@ -143,7 +144,7 @@
 - OA / 许可证据：SAGE 官方页面明确 CC BY 4.0，允许署名后的 use、reproduction、distribution；机构库文件与 SAGE VOR 的题名、卷页、DOI 和版式一致。
 - 可本地研究使用：是。
 - 可公开再分发：是，须署名、保留 DOI 与 CC BY 4.0 信息。
-- 本地文件：`papers/library/methods/2024_Wachinger_Prompts_Pearls_Imperfections.pdf`
+- 本地文件：`sources/library/papers/methods/2024_Wachinger_Prompts_Pearls_Imperfections.pdf`
 - SHA-256：`ce7f0c37874658254d07af82ed16057c73591928f25763c201f0fb34b0f5f15f`
 
 ## B. HUMAN_RESEARCH_GATES 来源逐项审计
@@ -261,8 +262,8 @@
 ## D. 自查记录
 
 - 外链覆盖：`AI_RESEARCH_TOOLING_POLICY.md` 12/12；`HUMAN_RESEARCH_GATES.md` 13/13。
-- 下载来源：9/9 均来自出版商、作者机构、联合标准官网或 NIST 官方域名。
+- 来源记录：初始 9 个文件来自出版商、作者机构、联合标准官网或 NIST；新增 2 个由用户通过合法渠道提供并经出版商元数据核验。
 - 重复控制：未同时保存 arXiv:2306.00176 与 ICWSM 35883；Ashwin 只保存 World Bank WPS，未同时保存 SAGE VOR。
-- 文件真实性：9/9 由 `file` 识别为 PDF；`pdfinfo` 可读取页数与元数据；`pdftotext` 可抽取正文；首页渲染无黑页、截断或登录页伪装。
-- 完整性：本报告记录每个本地文件的 SHA-256；没有修改 `papers/catalog.yaml` 或项目级 checksum catalog。
-- 待办：公开仓库建立发布 allowlist / denylist 时，应直接复用 C 节，而不是按 `papers/library/methods/` 或 `papers/library/standards/` 目录整体上传。
+- 文件真实性：11/11 由 `file` 识别为 PDF；`pdfinfo` 可读取页数与元数据；`pdftotext` 可抽取正文；首页渲染无黑页、截断或登录页伪装。
+- 完整性：所有文件现由 `sources/catalog.yaml` 和 `sources/checksums.sha256` 锁定；规范元数据以 catalog 为准。
+- 待办：公开仓库建立发布 allowlist / denylist 时，应直接复用 C 节和 catalog，而不是按 `sources/library/papers/methods/` 或 `sources/library/standards/` 目录整体上传。

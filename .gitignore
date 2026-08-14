@@ -3,10 +3,11 @@
 # Private recovery evidence. Keep locally; never add to public Git history.
 webchat_raw_materials/
 
-# Third-party full text is local by default. Rights-cleared release assets are
-# published separately only after a recorded license audit.
-papers/**/*.pdf
-papers/.staging/
+# External source originals are local by default. Rights-cleared release assets
+# are published separately only after a recorded file-level license audit.
+sources/library/**
+!sources/library/README.md
+sources/.staging/
 tmp/
 
 # Human-participant and sensitive research data never belongs in public Git.
@@ -17,6 +18,11 @@ artifacts/human/
 
 # Raw AI provider payloads may contain licensed or human-derived inputs.
 artifacts/ai/raw/
+artifacts/runs/
+
+# Generated research data is rebuilt from frozen inputs and manifests.
+data/synthetic/generated/
+data/derived/generated/
 
 # Secrets and local environments.
 .env

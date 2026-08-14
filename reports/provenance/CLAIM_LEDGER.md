@@ -5,7 +5,7 @@ Source IDs:
 - `CHAT-1/2/3`: complete transcript and turn number;
 - `HO-1/2`: handoff files;
 - `USER-LOCAL-2026-08-14`: decisions made during local recovery;
-- paper IDs resolve through `papers/catalog.yaml`.
+- external source IDs resolve through `sources/catalog.yaml`.
 
 Line numbers refer to the frozen local recovery files and are protected by `RAW_SOURCE_MANIFEST.sha256`.
 

@@ -9,10 +9,10 @@ Rule: these actions require credentials, institutional authority, author contact
 | Priority | Action | Exact target | Why manual | Completion evidence |
 | ---: | --- | --- | --- | --- |
 | P0 | Use laboratory/CNKI access or request author copy | Ma & Du 2022, DOI [`10.19360/j.cnki.11-3303/g4.2022.12.001`](https://doi.org/10.19360/j.cnki.11-3303/g4.2022.12.001) | official full text is access-controlled | lawful PDF imported with SHA/version; methods, item count and data statement audited |
-| P0 | Use institutional access or request author manuscript | Du & Ma, *Thinking Skills and Creativity* 59, 102022, DOI [`10.1016/j.tsc.2025.102022`](https://doi.org/10.1016/j.tsc.2025.102022) | publisher page is abstract-only | lawful version imported; N=886 selection, instrument and Q-matrix lineage checked |
-| P1 | Use institutional access or request author manuscript | Du & Ma 2021 PELDiaG, DOI [`10.1007/s11145-021-10124-x`](https://doi.org/10.1007/s11145-021-10124-x) | subscription full text, no verified OA copy | lawful version imported; 43/41-item claims, appendices, data/access and rights audited |
-| P1 | Obtain through library subscription or corresponding author | Kottner et al. 2011 GRRAS, DOI [`10.1016/j.ijnurstu.2011.01.016`](https://doi.org/10.1016/j.ijnurstu.2011.01.016) | no verified OA full text found | PDF imported as a distinct catalog item; reporting-rule passages checked |
-| P2 | Download official OA copy in a normal browser or request author copy | Shin 2025, DOI [`10.1111/jcal.70089`](https://doi.org/10.1111/jcal.70089) | official Wiley PDF endpoints returned HTTP 403 to the research environment | official/author PDF imported; version/license verified; AI-vs-human agreement claims checked |
+
+## Source acquisitions completed on 2026-08-14
+
+TSC 2026、PELDiaG 2021、GRRAS 2011 和 Shin 2025 已由用户提供并分别登记为 `DOMAIN-002`、`DOMAIN-003`、`METHOD-009`、`METHOD-008`；另新增 Zhang et al. 2024 `DOMAIN-001`。规范路径、SHA、版本和权利只以 `sources/catalog.yaml` 为准，审计证据见 [`../research/new-user-provided-pdfs-source-audit.md`](../research/new-user-provided-pdfs-source-audit.md)。这些完成项不再留在行动队列中。
 
 The arXiv preprint `2306.00176` is intentionally **not** a missing requirement: the catalog keeps the formal ICWSM successor (`METHOD-007`) to avoid duplicate versions. Add the preprint only if a version-comparison question arises.
 
@@ -58,7 +58,7 @@ Until written answers exist:
 This step is intentionally pending explicit user approval after the final local audit.
 
 - Confirm the tracked file list contains no raw chats, PDF bytes, human/private data, secrets or machine-local artifacts.
-- Publish only catalog/checksums/source/right metadata for third-party PDFs; do not upload the local `papers/library/**/*.pdf` tree.
+- Publish only catalog/checksums/source/right metadata for third-party files; do not upload the local `sources/library/` tree.
 - If any rights-cleared PDF is later distributed, review the exact version, third-party credit lines and attribution; publish it through a separate approved release, never a directory-wide rule.
 - After repository creation, enable branch protection/required verification as a simple follow-up; no complex deployment or data infrastructure is needed initially.
 

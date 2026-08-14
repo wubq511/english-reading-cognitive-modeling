@@ -1,0 +1,3 @@
+# Use a rights-aware external-source manifest instead of blanket binary Git storage
+
+Public Git tracks typed source metadata, exact hashes, acquisition instructions and version-specific rights; third-party papers, standards, item materials and datasets remain in each collaborator's verified local library unless a specific file has approved redistribution rights. Human-downloaded PDFs enter only through `tmp/pdfs/`; an Agent classifies them and a fail-closed inbox imports by hash, then deletes only the verified temporary copy. One bootstrap installs automatic checkout/merge/push gates. This preserves source availability for research Agents without treating Git LFS, Releases or an accessible URL as a substitute for copyright permission.

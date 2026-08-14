@@ -16,7 +16,7 @@ Labels:
 - `OVERSTATED`: the current wording exceeds the evidence and must not be used as a factual premise;
 - `UNRESOLVED`: the local source is insufficient for a decision.
 
-Page locators below refer to PDF pages unless explicitly described as printed pages. The authoritative file identity is the SHA-256 in `papers/catalog.yaml`.
+Page locators below refer to PDF pages unless explicitly described as printed pages. The authoritative file identity is the SHA-256 in `sources/catalog.yaml`.
 
 ## Findings
 
@@ -52,14 +52,14 @@ The high-level synthesis is scientifically conservative and remains usable with 
 
 ## Files checked
 
-- `papers/library/a-e/A/A1_2025_Han_MSRM.pdf`
-- `papers/library/a-e/A/A+1_2026_Wang_TEM.pdf`
-- `papers/library/a-e/B/B11_2025_Wijerathne_RereadBeforeAnswer.pdf`
-- `papers/library/a-e/C/C2_2012_Huang_UserSeeUserPoint.pdf`
-- `papers/library/a-e/D/D5_2024_Rebmann_TaskLevelEvents.pdf`
-- `papers/library/a-e/E/E7_2023_Fan_SRLTraceThinkAloud.pdf`
-- `papers/library/ui-interaction/UIB-015-recovering-reasoning-processes-from-user-interactions.pdf`
+- `sources/library/papers/literature/a-e/A/A1_2025_Han_MSRM.pdf`
+- `sources/library/papers/literature/a-e/A/A+1_2026_Wang_TEM.pdf`
+- `sources/library/papers/literature/a-e/B/B11_2025_Wijerathne_RereadBeforeAnswer.pdf`
+- `sources/library/papers/literature/a-e/C/C2_2012_Huang_UserSeeUserPoint.pdf`
+- `sources/library/papers/literature/a-e/D/D5_2024_Rebmann_TaskLevelEvents.pdf`
+- `sources/library/papers/literature/a-e/E/E7_2023_Fan_SRLTraceThinkAloud.pdf`
+- `sources/library/papers/literature/ui-interaction/UIB-015-recovering-reasoning-processes-from-user-interactions.pdf`
 
 ## Remaining audit debt
 
-This is a high-leverage claim audit, not a re-review of all 62 PDFs. Before a claim becomes a frozen model assumption or primary study hypothesis, its exact source passage, study design, population, task, estimator and limitations must be registered in the claim ledger. `needs_metadata` and rights fields in `papers/catalog.yaml` remain separate acquisition-governance debt and do not change the scientific verdicts above.
+This is a high-leverage claim audit, not a re-review of all 62 PDFs. Before a claim becomes a frozen model assumption or primary study hypothesis, its exact source passage, study design, population, task, estimator and limitations must be registered in the claim ledger. `needs_metadata` and rights fields in `sources/catalog.yaml` remain separate acquisition-governance debt and do not change the scientific verdicts above.
