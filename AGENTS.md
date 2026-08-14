@@ -12,7 +12,7 @@
 
 ## Start every task
 
-1. 在首个进度更新中告知用户正在执行项目预检，运行 `scripts/bootstrap`，并报告 `OK` 或精确未决项；若 sources gate 未通过，停止依赖缺失原件的工作。
+1. 在首个进度更新中告知用户正在执行项目预检；macOS/Linux 运行 `scripts/bootstrap`，Windows 运行 `.\scripts\bootstrap.cmd`，并报告 `OK` 或精确未决项。若 skills 或 sources gate 未通过，停止依赖缺失能力/原件的工作。
 2. 依次阅读 `CONTEXT.md`、`reports/project_state/CURRENT_STATE.md`、`reports/project_state/RESEARCH_QUESTIONS.md`。
 3. 系统设计读 `reports/synthesis/SYSTEM_DESIGN.md`；来源/结论冲突读 `reports/provenance/SOURCE_POLICY.md`。
 4. 涉及 AI、真人、实验或数据时，分别读取对应 `reports/protocols/`、`experiments/README.md` 或 `data/README.md`。
@@ -62,11 +62,20 @@
 - 实验规范、状态和 run manifest 见 `experiments/README.md`；大体积输出写 `artifacts/runs/`，审查后的结论才进入 `reports/`。
 - 代码变更增加对应测试；不得靠注释报错、跳过 gate 或修改指标定义来制造通过。
 
+## Project workflow skills
+
+- Wayfinder → Spec → Tickets → Implement 的状态机只由 `docs/agents/research-workflow.md` 定义；GitHub 操作只由 `docs/agents/issue-tracker.md` 定义。
+- 五个对外入口 `ercm-workflow`、`ercm-wayfinder`、`ercm-to-spec`、`ercm-to-tickets`、`ercm-implement` 都必须由用户显式调用；Codex 使用 `$skill-name`，Claude Code 使用 `/skill-name`。所有项目适配技能统一使用 `ercm-` 前缀，避免与全局上游技能混淆。
+- ERCM Wayfinder 和 Implement 都不得自动领取 frontier ticket；用户未点名时，Agent 必须只读展示候选、给出有理由的推荐与取舍，再等待用户用 `/ercm-wayfinder <decision-child>`/`$ercm-wayfinder <decision-child>` 或 `/ercm-implement <execution-ticket>`/`$ercm-implement <execution-ticket>` 明确选择；推荐不得触发分配、改标签或执行。
+- `.agents/skills/` 是唯一物理技能源；`.claude/skills/<name>` 只能是 bootstrap 管理并指向它的映射，不得复制技能正文。
+- GitHub Issue 是协作入口；科学实验 spec、run 和 reviewed claim 仍分别由 `EXP-*`、run manifest 和 canonical report 所有，禁止把 Issue 变成竞争真相源。
+
 ## Completion contract
 
 - 文档/来源/知识变更：运行 `scripts/verify`。
 - 来源变更：另运行 `scripts/sources inbox`、`scripts/sources doctor` 和 catalog/checksum 检查。
 - 代码变更：运行相关测试与 lint；实验变更验证 manifest、split、metric 与 source lock。
+- Skill/Agent 工作流变更：运行 `scripts/skills doctor`（Windows 用 `.\scripts\skills.cmd doctor`）和对应 eval，再运行 `scripts/verify`。
 - 提交前：确保本次成员日志与改动同时 staged；`pre-commit` 和远端 `verify` 会 fail closed。
 - 失败、未运行或缺证据的项目保持 `pending/open`，不得报告完成。
-- `AGENTS.md` 是唯一规则正文；根级 `CLAUDE.md` 必须保持为指向它的相对软链，禁止复制成第二份规则。
+- `AGENTS.md` 是唯一规则正文；根级 `CLAUDE.md` 必须保持为只含 `@AGENTS.md` 的跨平台导入 shim，禁止复制成第二份规则。

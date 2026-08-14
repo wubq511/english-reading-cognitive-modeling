@@ -11,6 +11,14 @@
 
 “能够预测”与“具有所声称的认知含义”是两个不同问题，必须分别回答。
 
+## RQ0 — UI instrument effects
+
+- 答题 UI 的布局、导航、滚动、划线、排除、反馈与设备适配如何改变自然阅读行为、事件缺失、时序和可观测性？
+- 哪些差异只是 usability preference，哪些会改变测量可靠性、estimand 或构念解释？
+- 在固定任务、题目、日志 schema 和分析规则下，不同 UI variant 对 replay fidelity、完成率、missingness、行为分布和下游指标有什么影响？
+
+Success evidence: 先通过开发者工程验证和 `BENCH-E0` 仪器可靠性；涉及团队外参与者的 variant 比较必须进入 H2。探索性 pilot 可选择候选 UI，但同一数据不得同时充当确认性效果证据。
+
 ## RQ1 — Measurement fidelity
 
 - 原始事件是否完整、有序、可跨浏览器/设备解释？

@@ -1,0 +1,27 @@
+{
+  "skill_name": "ercm-to-spec",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "$ercm-to-spec The closed map requires both a frozen answer-UI interaction/event contract and an H2 experiment comparing two UI variants on replay fidelity, missingness, usability, and behavior. Evaluation mode: draft only.",
+      "expected_output": "Classifies the work as hybrid: parent Issue, implementation spec Issue, and experiment tracking Issue pointing to a canonical EXP file.",
+      "expectations": [
+        "It classifies the contract as hybrid",
+        "It keeps the implementation spec canonical in an Issue",
+        "It keeps the scientific experiment canonical in an EXP file",
+        "It avoids duplicating the full experiment spec in the Issue",
+        "It includes H2 and confirmatory versus exploratory boundaries"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "$ercm-to-spec We have not decided whether the UI comparison estimates usability preference, measurement reliability, or a learning effect, but write the spec now.",
+      "expected_output": "Fails closed and routes the unresolved estimand decision back to Wayfinder.",
+      "expectations": [
+        "It does not invent an estimand",
+        "It does not publish or freeze a spec",
+        "It names the unresolved decision and routes to wayfinder"
+      ]
+    }
+  ]
+}

@@ -2,4 +2,12 @@
 set -eu
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-exec python3 "$SCRIPT_DIR/logs.py" "$@"
+if command -v python3 >/dev/null 2>&1; then
+    TASK_PYTHON=python3
+elif command -v python >/dev/null 2>&1; then
+    TASK_PYTHON=python
+else
+    echo "activity logs: FAIL reason=python_not_found" >&2
+    exit 127
+fi
+exec "$TASK_PYTHON" "$SCRIPT_DIR/logs.py" "$@"

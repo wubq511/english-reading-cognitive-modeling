@@ -2,8 +2,9 @@
 
 | Asset | Purpose | Authority/use | Public Git default |
 | --- | --- | --- | --- |
-| root `README.md`, `AGENTS.md`, `CONTEXT.md` | orientation, rules and terminology | canonical; `CLAUDE.md` symlinks to `AGENTS.md` | include |
+| root `README.md`, `AGENTS.md`, `CONTEXT.md` | orientation, rules and terminology | canonical; `CLAUDE.md` imports `AGENTS.md` through the cross-platform `@AGENTS.md` shim | include |
 | `docs/project-management/` | Agent startup, source synchronization and repository collaboration | canonical project operations | include |
+| `docs/agents/` + `.agents/skills/` | research workflow state machine, GitHub tracker contract and repository-distributed Agent procedures | canonical workflow docs + executable Agent guidance; Claude mappings contain no second copy | include |
 | `logs/` | per-member research/change intent, verification and follow-ups | canonical append-only collaboration history; exact diffs remain in Git | include; exclude sensitive or licensed payloads |
 | `reports/project_state/` | current status and plan | canonical | include |
 | `reports/synthesis/` | recovered system/research design | canonical with claim labels | include under CC BY 4.0 policy |

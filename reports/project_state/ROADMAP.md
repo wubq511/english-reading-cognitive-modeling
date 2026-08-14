@@ -74,6 +74,20 @@ Top-level families:
 - `BENCH-E5`: student cognitive/skill model；
 - `BENCH-E6`: end-to-end ablation。
 
+## Cross-cutting lane — UI as a measurement instrument
+
+UI 不是 Phase 4 的普通前端子任务，而是贯穿 Phase 1/2A/4/5/6 的实验仪器：
+
+1. Phase 1 明确 natural-reading constraints、可观测性、accessibility、设备/浏览器范围和可能改变 estimand 的 UI 因素；
+2. Phase 2A 冻结 interaction/state/event contract，使 variant 之间的 logging、replay 和 provenance 可比；
+3. Phase 4 通过 `BENCH-E0` 验证各支持环境的日志完整性、确定性重建和 replay fidelity；
+4. H1 smoke 只排工程缺陷，数据不得用于选择“更优”UI；
+5. Phase 5 在 H2 批准后，以预先声明的 variant、分配、outcome 和分析比较 usability、missingness、行为改变与测量可靠性；
+6. 探索性 pilot 选出的 UI 必须在 held-out 样本或后续预注册研究中确认，之后才能冻结为 main-study baseline instrument；
+7. UI 引起的测量变化与真正的认知/学习效果分开估计，视觉偏好、完成时间或预测准确率不能单独决定 instrument 优劣。
+
+本 lane 的研究问题由 [`RESEARCH_QUESTIONS.md`](RESEARCH_QUESTIONS.md) 的 RQ0 所有；工作流与 artifact gate 见 [`docs/agents/research-workflow.md`](../../docs/agents/research-workflow.md)。
+
 ## Phase 5 / Phase 2B — Pilot then item-specific freeze
 
 Phase 5 cannot start until H2 approval, item assets and data-management arrangements exist. The pilot estimates feasibility, distributions, item difficulty, recall/annotation usability and measurement failures. After pilot, Phase 2B freezes item EvidenceMaps, probes, taxonomy, thresholds, sample size and main-study analysis.

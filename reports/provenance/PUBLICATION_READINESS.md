@@ -65,13 +65,13 @@ scripts/sources doctor                            PASS: 80/80 exact local depend
 CITATION.cff parse                                PASS
 publication-closeout Git index                    PASS: 99 files, 0 PDFs, 0 raw files, 0 tmp files
 secret/path/credential URL/email signature scan   PASS: no matches
-CLAUDE.md                                         PASS: mode 120000 -> AGENTS.md
+CLAUDE.md in initial snapshot                     PASS: mode 120000 -> AGENTS.md; historical, superseded locally by ADR 0007
 git diff --check                                  PASS
 initial GitHub Actions run 31786325757            PASS on published commit f3a826c
 main branch protection                            PASS: PR + strict verify; admin enforced; no force-push/delete
 ```
 
-The Git client does not clone or automatically enable repository-controlled hooks. Each clone therefore needs one explicit `scripts/bootstrap` invocation; the root `AGENTS.md` requires both Codex and Claude (through the `CLAUDE.md` symlink) to announce and run it before work, so the human does not need to remember the command. After that, configured checkout, merge, commit and push hooks enforce source, activity-log and repository gates automatically. Duplicate tool-specific SessionStart Hooks are intentionally deferred unless real omission evidence appears. The existing GitHub Actions Workflow is retained for remote push/PR verification; it cannot bootstrap a local clone. See [`../../docs/project-management/AGENT_BOOTSTRAP.md`](../../docs/project-management/AGENT_BOOTSTRAP.md) and [`../../logs/README.md`](../../logs/README.md).
+The Git client does not clone or automatically enable repository-controlled hooks. Each clone therefore needs one explicit bootstrap invocation; root `AGENTS.md` requires Codex and Claude (through the `CLAUDE.md` `@AGENTS.md` import) to announce and run it, so the human does not need to remember the command. `scripts/bootstrap` on POSIX and `.\scripts\bootstrap.cmd` on Windows configure hooks, validate/repair repository skill mappings, restore sources and check log identity. Checkout, merge, commit and push hooks then enforce continuity. Duplicate tool-specific SessionStart hooks remain deferred unless real omission evidence appears. The current local branch proposes macOS/Windows skill-mapping CI, but that remote acceptance evidence remains pending until an explicitly approved push/PR. See [`../../docs/project-management/AGENT_BOOTSTRAP.md`](../../docs/project-management/AGENT_BOOTSTRAP.md), [`../../docs/agents/SKILL_EVALUATION.md`](../../docs/agents/SKILL_EVALUATION.md), and [`../../logs/README.md`](../../logs/README.md).
 
 ## Residual actions after publication
 
