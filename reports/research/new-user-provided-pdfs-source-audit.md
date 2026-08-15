@@ -1,6 +1,6 @@
 # 用户提供的五份 PDF 来源、版本与权利审计
 
-> Follow-up: this report preserves the five-file batch audit. Later on 2026-08-14, the user separately provided Ma & Du 2022, now registered as `DOMAIN-004`; its current findings and 2022/TSC/J. Intell. lineage ruling are owned by [`phase-0-item-data-source-audit.md`](phase-0-item-data-source-audit.md). Therefore statements below that the *five-file batch itself* did not contain Ma & Du 2022 remain historically correct, but no current full-text acquisition gap remains.
+> 后续说明：本报告保留五文件批量审计。此后于 2026-08-14，用户另行提供了 Ma & Du 2022，现已登记为 `DOMAIN-004`；其当前结论与 2022/TSC/J. Intell. 谱系判定归 [`phase-0-item-data-source-audit.md`](phase-0-item-data-source-audit.md) 所有。因此，下文关于*五文件批次本身*不含 Ma & Du 2022 的表述在历史上仍然正确，但当前不再存在全文获取缺口。
 
 - 审计日期：2026-08-14
 - 输入：tmp/pdfs 中用户提供的 5 份 PDF
@@ -10,7 +10,7 @@
 
 ## 当前登记
 
-| 临时 ID | Stable source ID | Canonical path |
+| 临时 ID | 稳定 source ID | 规范路径 |
 | --- | --- | --- |
 | USERPDF-01 | `DOMAIN-001` | `sources/library/papers/domain/2024_Zhang_Cognitive_Diagnostic_CSE_Reading.pdf` |
 | USERPDF-02 | `METHOD-008` | `sources/library/papers/methods/2025_Shin_Co_Coding_Classroom_Dialogue.pdf` |
@@ -45,9 +45,9 @@ USERPDF-02/03/04/05 分别补齐原人工获取队列中的 Shin、TSC、GRRAS �
 
 ## USERPDF-01
 
-- Local input filename: A Cognitive Diagnostic Model of Reading Ability based on China’s Standards of English Language Ability.pdf
+- 本地输入文件名：A Cognitive Diagnostic Model of Reading Ability based on China’s Standards of English Language Ability.pdf
 - SHA-256: 4598cbaacef18759b37986c1cfcc8ec9e923bd3aa7c6a090d82322f3f9f4fd55
-- Pages: 16
+- 页数：16
 - 正式题名：A Cognitive Diagnostic Model of Reading Ability Based on China’s Standards of English Language Ability
 - 作者：Zhe Zhang, Mohd Isa Hamzah, Khairul Azhar Jamaludin
 - 出版：Forum for Linguistic Studies 6(6), 800-815 (2024)；online 2024-12-11
@@ -61,9 +61,9 @@ USERPDF-02/03/04/05 分别补齐原人工获取队列中的 Shin、TSC、GRRAS �
 
 ## USERPDF-02
 
-- Local input filename: Computer Assisted Learning - 2025 - Shin - Co‐Coding Classroom Dialogue  A Single Researcher Case Study of ChatGPT‐Assisted.pdf
+- 本地输入文件名：Computer Assisted Learning - 2025 - Shin - Co‐Coding Classroom Dialogue  A Single Researcher Case Study of ChatGPT‐Assisted.pdf
 - SHA-256: 60a83dda506a0491baa33a8be8bcd1f9b1524c5367d7518174887c6c1b0fa62b
-- Pages: 16
+- 页数：16
 - 正式题名：Co-Coding Classroom Dialogue: A Single Researcher Case Study of ChatGPT-Assisted Analysis in Science Education
 - 作者：Eunhye Shin
 - 出版：Journal of Computer Assisted Learning 41(4), e70089 (2025)；first published 2025-07-02
@@ -77,9 +77,9 @@ USERPDF-02/03/04/05 分别补齐原人工获取队列中的 Shin、TSC、GRRAS �
 
 ## USERPDF-03
 
-- Local input filename: From coarse to fine.pdf
+- 本地输入文件名：From coarse to fine.pdf
 - SHA-256: d62d4273c249e294e93d09224a21baa77bb26d1c7d0d8e568b6ea29f1e7565fe
-- Pages: 13
+- 页数：13
 - 正式题名：From Coarse to Fine: A Cognitive Diagnosis of EFL Learners’ Inferential Ability in EFL Reading
 - 作者：Wenbo Du, Xiaomei Ma
 - 出版：Thinking Skills and Creativity 59, 102022 (March 2026)；available online 2025-09-26
@@ -93,9 +93,9 @@ USERPDF-02/03/04/05 分别补齐原人工获取队列中的 Shin、TSC、GRRAS �
 
 ## USERPDF-04
 
-- Local input filename: Guidelines for Reporting Reliability and Agreement Studies (GRRAS) were proposed.pdf
+- 本地输入文件名：Guidelines for Reporting Reliability and Agreement Studies (GRRAS) were proposed.pdf
 - SHA-256: a8dbb6a808e510aa534f1e583eda90ec04e2677b252f19bbe3bda1045a762cfc
-- Pages: 11
+- 页数：11
 - 正式题名：Guidelines for Reporting Reliability and Agreement Studies (GRRAS) Were Proposed
 - 作者：Jan Kottner, Laurent Audigé, Stig Brorson, Allan Donner, Byron J. Gajewski, Asbjørn Hróbjartsson, Chris Roberts, Mohamed Shoukri, David L. Streiner
 - 出版：International Journal of Nursing Studies 48, 661-671 (2011)
@@ -110,9 +110,9 @@ USERPDF-02/03/04/05 分别补齐原人工获取队列中的 Shin、TSC、GRRAS �
 
 ## USERPDF-05
 
-- Local input filename: Probing_whats_behind_the_test_score_application_o.pdf
+- 本地输入文件名：Probing_whats_behind_the_test_score_application_o.pdf
 - SHA-256: e0df9daf7f73e2381403d88102bb89b5a2c95f0ee7d02b2693f97c4b008ae7bc
-- Pages: 27
+- 页数：27
 - 正式题名：Probing What’s Behind the Test Score: Application of Multi-CDM to Diagnose EFL Learners’ Reading Performance
 - 作者：Wenbo Du, Xiaomei Ma
 - 出版：Reading and Writing 34, 1441-1466 (2021)；online 2021-01-22

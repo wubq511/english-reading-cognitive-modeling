@@ -1,4 +1,4 @@
-# Provenance
+# 溯源（Provenance）
 
 - [SOURCE_POLICY.md](SOURCE_POLICY.md)：恢复来源与科学事实的双轴权威顺序。
 - [RECOVERY_LOG.md](RECOVERY_LOG.md)：本轮恢复做了什么、没有做什么。

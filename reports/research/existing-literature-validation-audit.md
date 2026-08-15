@@ -1,56 +1,56 @@
-# Existing Literature Validation Audit
+# 既有文献验证审计
 
 Status: `CURRENT`
-Audit date: 2026-08-14
-Scope: high-leverage claims sampled from the existing A/A+/B/C/D/E/UIB corpus
+审计日期：2026-08-14
+范围：从既有 A/A+/B/C/D/E/UIB 语料中抽样的高杠杆（high-leverage）主张
 
-## Purpose and decision rule
+## 目的与判定规则
 
-This audit checks the restored reports against the locally held paper originals. It does not treat either the prior ChatGPT analysis or the migration package as evidence. The unit of review is a project claim, not a paper summary.
+本审计用本地持有的论文原件核验恢复后的报告。先前的 ChatGPT 分析与迁移包均不作为证据。审查单元是项目主张（claim），不是论文摘要。
 
-Labels:
+标签：
 
-- `SUPPORTED`: the local paper directly supports the claim within the paper's studied population, task, variables and design;
-- `PARTIAL`: the paper supports only part of the claim or only a narrower setting;
-- `PROJECT-INFERENCE`: a defensible design inference made by this project, but not a finding reported by the cited paper;
-- `OVERSTATED`: the current wording exceeds the evidence and must not be used as a factual premise;
-- `UNRESOLVED`: the local source is insufficient for a decision.
+- `SUPPORTED`：本地论文在论文所研究的群体、任务、变量与设计范围内直接支持该主张；
+- `PARTIAL`：论文只支持主张的一部分，或只在更窄的情境中成立；
+- `PROJECT-INFERENCE`：本项目做出的可辩护的设计推断，但不是被引论文报告的发现；
+- `OVERSTATED`：现行表述超出证据，不得用作事实前提；
+- `UNRESOLVED`：本地来源不足以做出判定。
 
-Page locators below refer to PDF pages unless explicitly described as printed pages. The authoritative file identity is the SHA-256 in `sources/catalog.yaml`.
+下文页码定位除非明确标注为印刷页，均指 PDF 页。权威文件身份以 `sources/catalog.yaml` 中的 SHA-256 为准。
 
-## Findings
+## 审计发现
 
-| ID | Claim under audit | Evidence checked | Verdict | Canonical boundary |
+| ID | 被审计主张 | 已核验证据 | 判定 | 规范边界 |
 | --- | --- | --- | --- | --- |
-| LIT-A1-01 | MSRM can estimate multiple latent dimensions from process sequences. | `A1`, Eq. 2 and the simulation plus two empirical studies; see pp. 3–4 and the discussion. | `SUPPORTED` for a pre-specified finite-state task. | The transition→dimension relation and correct/incorrect sign are inputs fixed before analysis. The paper does not validate a reading-skill map, discover dimensions from raw UI events, or establish that scrolling and annotation actions have cognitive correctness. Calling the relation a "process-data analogue of a Q-matrix" is a `PROJECT-INFERENCE`. |
-| LIT-AP1-01 | Probability-based transition effectiveness avoids all expert judgment and gives a non-circular cognitive truth. | `A_PLUS_1`, Eq. 1–2 and empirical application; pp. 7–9. State effectiveness is the fraction of sequences containing the state that end in success; transition effectiveness is the change between successor and current state effectiveness. | `OVERSTATED` if used as construct truth; `SUPPORTED` only as an outcome-conditioned indicator. | The indicator reduces one form of manual step scoring, but still inherits the terminal success definition and observed task distribution. It may support engineering comparison or predictive measurement; it cannot by itself prove that an action is cognitively effective. The circularity warning in the synthesis is a project measurement critique, not an author-reported result. |
-| LIT-B11-01 | An answer-preceding reread pattern is associated with higher immediate quiz accuracy after measured covariate adjustment. | `B11`, methods, Results 3.1–3.2 and limitations; pp. 1–8. The study reports 263 Japanese high-school EFL learners, 56 units, adjusted OR 1.28 (95% CI 1.07–1.53), and explicitly describes the design as correlational. | `SUPPORTED` within the BookRoll/open-book setting. | This is not causal evidence and does not identify learner intent. The authors say revisits may reflect confusion or distraction; long-term retention and cross-context generalization were not established. In this project, a backward scroll is therefore a candidate reread/evidence-search event, never a strategy label by itself. |
-| LIT-C2-01 | Cursor position can be treated as gaze or point-level attention truth. | `C2`, temporal alignment, cursor-behaviour table and conclusion; pp. 4–9. Cursor lagged gaze by at least about 250 ms and about 700 ms on average; inactive behaviour occupied 58.8% of time and had much larger gaze–cursor distance than action behaviour. | `OVERSTATED`; the negation is `SUPPORTED`. | Cursor is contextual auxiliary evidence whose value varies by action and user. It cannot replace eye tracking or justify a global fixed attention weight. Transferring web-search figures to this project's dual-pane English-reading UI would itself require a local study. |
-| LIT-D5-01 | Low-level UI events benefit from task/object abstraction before process analysis. | `D5`, abstract, §1 and method; pp. 1–6. The paper explicitly treats raw interaction events as unsuitable for direct process use and proposes online task identification, categorisation and object-instance relations. | `SUPPORTED` as an architecture/method precedent. | The evaluated domains are organizational application tasks, not English reading or cognition. The paper supports separating raw events from higher-level task events; it does not validate this project's semantic labels, reading boundaries or psychological interpretation. |
-| LIT-E7-01 | Trace data and think-aloud are interchangeable ground truth channels. | `E7`, abstract, Table 5 and discussion; pp. 1, 12–19. The study involved 44 university students; matched processes occurred for 17.18% of identified time segments, either one channel alone contributed around 45%, and different co-occurring processes appeared for 27.17%. | `OVERSTATED`; non-interchangeability and complementarity are `SUPPORTED`. | Neither channel is an error-free view of cognition. Exact percentages are task- and coding-specific and must not become priors for this project. They support independent-channel triangulation, preserved disagreement and abstention, not forced adjudication. |
-| LIT-UIB15-01 | Interaction logs alone recover general human reasoning with approximately 60–79% accuracy. | `UIB-015`, study setup, coding comparison and limitations. The study used WireVis, ten financial analysts and four coders, with a transcript derived from instrumented sessions as the comparison reference. | `PARTIAL` and domain-bound. | Reported recovery rates concern findings, methods and strategies in a highly instrumented visual-analytics task. The paper notes that the reference may not perfectly reflect internal reasoning and that visually inferred methods can remain invisible to coders. The percentages cannot be generalized to natural reading or treated as cognitive-label accuracy. |
+| LIT-A1-01 | MSRM 能从过程序列估计多个潜在维度。 | `A1`，公式 2 以及仿真加两项实证研究；见 pp. 3–4 与讨论部分。 | 对预先指定的有限状态任务为 `SUPPORTED`。 | 转移→维度关系与正确/错误符号是分析前固定的输入。论文未验证阅读技能映射、未从原始 UI 事件发现维度，也未确立滚动与标注动作具有认知正确性。把该关系称为「Q-matrix 的过程数据类比」是 `PROJECT-INFERENCE`。 |
+| LIT-AP1-01 | 基于概率的转移有效性避免一切专家判断，并给出非循环的认知真值。 | `A_PLUS_1`，公式 1–2 与实证应用；pp. 7–9。状态有效性是包含该状态且以成功收尾的序列所占比例；转移有效性是后继状态与当前状态有效性之差。 | 若用作构念真值则为 `OVERSTATED`；仅作为结果条件化指标时为 `SUPPORTED`。 | 该指标减少了一种人工步骤计分，但仍继承最终成功定义与观测到的任务分布。它可以支持工程比较或预测性测量；其本身不能证明某动作在认知上有效。综合报告中的循环性警告是本项目的测量批评，不是作者报告的结论。 |
+| LIT-B11-01 | 在控制已测协变量后，作答前重读模式与更高的即时测验正确率相关。 | `B11`，方法、结果 3.1–3.2 与局限；pp. 1–8。该研究报告 263 名日本高中 EFL 学习者、56 个单元、调整后 OR 1.28（95% CI 1.07–1.53），并明确将设计描述为相关研究。 | 在 BookRoll/开卷情境内为 `SUPPORTED`。 | 这不是因果证据，也不识别学习者意图。作者认为重访可能反映困惑或分心；长期保持与跨情境泛化未得到确立。因此在本项目中，向后滚动只是候选的重读/查找证据事件，其本身永远不是策略标签。 |
+| LIT-C2-01 | 光标位置可被当作注视或点级注意力真值。 | `C2`，时间对齐、光标行为表与结论；pp. 4–9。光标滞后于注视至少约 250 ms，平均约 700 ms；非活动行为占 58.8% 的时间，其注视–光标距离远大于活动行为。 | `OVERSTATED`；其否定命题为 `SUPPORTED`。 | 光标是情境性辅助证据，其价值随动作和用户而变化。它不能替代眼动追踪，也不能为全局固定注意力权重提供依据。把网页搜索数据迁移到本项目双栏英语阅读 UI 本身就需要另行开展本地研究。 |
+| LIT-D5-01 | 低层 UI 事件在过程分析前宜先进行任务/对象抽象。 | `D5`，摘要、§1 与方法；pp. 1–6。论文明确认为原始交互事件不宜直接用于过程分析，并提出在线任务识别、分类与对象实例关系。 | 作为架构/方法先例为 `SUPPORTED`。 | 被评估的领域是组织应用任务，不是英语阅读或认知。论文支持把原始事件与高层任务事件分离；它不验证本项目的语义标签、阅读边界或心理学解释。 |
+| LIT-E7-01 | 痕迹数据与出声思维是可互换的真值通道。 | `E7`，摘要、表 5 与讨论；pp. 1, 12–19。研究涉及 44 名大学生；在识别出的时间段中，17.18% 出现匹配过程，仅其中一个通道单独贡献约 45%，另有 27.17% 出现不同的共现过程。 | `OVERSTATED`；不可互换性与互补性为 `SUPPORTED`。 | 两个通道都不是无错误的认知视图。具体百分比依赖任务与编码方案，不得成为本项目的先验。它们支持独立通道三角验证、保留分歧与弃权，而不是强制裁决。 |
+| LIT-UIB15-01 | 仅凭交互日志即可约以 60–79% 的准确率恢复一般人类推理。 | `UIB-015`，研究设置、编码比较与局限。该研究使用 WireVis、十名金融分析师和四名编码者，以仪器化会话生成的转录稿作为比较参照。 | `PARTIAL`，且受领域约束。 | 报告的恢复率涉及高度仪器化视觉分析任务中的发现、方法与策略。论文指出参照可能无法完美反映内在推理，且视觉推断的方法可能对编码者不可见。这些百分比不能推广到自然阅读，也不能当作认知标签准确率。 |
 
-## Corrections fixed for canonical use
+## 供规范用途的修正
 
-The high-level synthesis is scientifically conservative and remains usable with these clarifications:
+高层综合在科学上保持保守，经下列澄清后仍可继续使用：
 
-1. `raw event -> semantic behavior` is an engineering abstraction boundary, not a cognition claim.
-2. `behavior -> process evidence` remains probabilistic and task-conditioned.
-3. Reading-skill mappings, correct/incorrect transitions and Q-matrices are hypotheses requiring independent expert and empirical validation; they are not learned truths merely because a model fits.
-4. Outcome-conditioned effectiveness is allowed as a benchmark target, but must be named as such and separated from construct validity.
-5. Cursor, viewport, dwell, reread and trace/verbal channels are partial observations. The system must retain competing interpretations and `UNKNOWN`.
-6. All quoted effect sizes and percentages remain source-specific descriptive evidence, not default parameters for the new system.
+1. `raw event -> semantic behavior` 是工程抽象边界，不是认知主张。
+2. `behavior -> process evidence` 仍是概率性的且受任务条件约束。
+3. 阅读技能映射、正确/错误转移与 Q-matrix 是需要独立专家与实证验证的假设；不能仅因模型拟合就当作习得真值。
+4. 结果条件化有效性可作基准目标，但必须如实命名，并与构念效度（construct validity）分开。
+5. 光标、视口、驻留、重读与痕迹/言语通道都是部分观测。系统必须保留相互竞争的解读与 `UNKNOWN`。
+6. 所有引用的效应量与百分比仍是特定来源的描述性证据，不是新系统的默认参数。
 
-## Consequences for the baseline experiment
+## 对 baseline 实验的影响
 
-- Start with deterministic semantic events whose meaning is fixed by the UI contract, such as `question_opened`, `answer_selected`, `option_eliminated` and paragraph visibility intervals.
-- Benchmark segmentation and replay recovery before fitting a latent model.
-- Evaluate reread-like and pointer-derived features by ablation against response-only and viewport-only baselines.
-- Build a blinded human reference set for any cognitive annotation. Keep the participant account, each coder's label and model output separate.
-- Report predictive increment, calibration and cross-item/cross-person generalization separately from construct-validity evidence.
-- Treat a model that recovers synthetic generator parameters as a software/statistical recovery result, not evidence of human cognition.
+- 从含义由 UI 契约固定的确定性语义事件入手，例如 `question_opened`、`answer_selected`、`option_eliminated` 与段落可见性区间。
+- 在拟合潜在模型前，先对分段与回放恢复进行基准测试。
+- 通过消融实验，将类重读特征与指针派生特征对照仅响应与仅视口 baseline 评估。
+- 为任何认知标注建立盲法人工参照集。将参与者记录、每位编码者的标签与模型输出分开保存。
+- 把预测增量、校准与跨题/跨人泛化与构念效度证据分开报告。
+- 把能恢复合成生成器参数的模型视为软件/统计恢复结果，而不是人类认知的证据。
 
-## Files checked
+## 已核验文件
 
 - `sources/library/papers/literature/a-e/A/A1_2025_Han_MSRM.pdf`
 - `sources/library/papers/literature/a-e/A/A+1_2026_Wang_TEM.pdf`
@@ -60,6 +60,6 @@ The high-level synthesis is scientifically conservative and remains usable with 
 - `sources/library/papers/literature/a-e/E/E7_2023_Fan_SRLTraceThinkAloud.pdf`
 - `sources/library/papers/literature/ui-interaction/UIB-015-recovering-reasoning-processes-from-user-interactions.pdf`
 
-## Remaining audit debt
+## 未竟审计事项
 
-This is a high-leverage claim audit, not a re-review of all 62 PDFs. Before a claim becomes a frozen model assumption or primary study hypothesis, its exact source passage, study design, population, task, estimator and limitations must be registered in the claim ledger. `needs_metadata` and rights fields in `sources/catalog.yaml` remain separate acquisition-governance debt and do not change the scientific verdicts above.
+这是一次高杠杆主张审计，不是对全部 62 份 PDF 的复审。任何主张在被冻结为模型假设或主要研究假设之前，其确切来源段落、研究设计、群体、任务、估计量与局限都必须登记到主张台账（claim ledger）。`sources/catalog.yaml` 中的 `needs_metadata` 与权利字段是独立的获取治理欠账，不改变上述科学判定。

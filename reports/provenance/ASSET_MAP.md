@@ -1,37 +1,37 @@
-# Asset Map
+# 资产地图（Asset Map）
 
-| Asset | Purpose | Authority/use | Public Git default |
+| 资产 | 用途 | 权威性/使用方式 | 公开 Git 默认 |
 | --- | --- | --- | --- |
-| root `README.md`, `AGENTS.md`, `CONTEXT.md` | orientation, rules and terminology | canonical; `CLAUDE.md` imports `AGENTS.md` through the cross-platform `@AGENTS.md` shim | include |
-| `docs/project-management/` | Agent startup, source synchronization and repository collaboration | canonical project operations | include |
-| `docs/agents/` + `.agents/skills/` | research workflow state machine, GitHub tracker contract and repository-distributed Agent procedures | canonical workflow docs + executable Agent guidance; Claude mappings contain no second copy | include |
-| `logs/` | per-member research/change intent, verification and follow-ups | canonical append-only collaboration history; exact diffs remain in Git | include; exclude sensitive or licensed payloads |
-| `reports/project_state/` | current status and plan | canonical | include |
-| `reports/synthesis/` | recovered system/research design | canonical with claim labels | include under CC BY 4.0 policy |
-| `reports/protocols/` | AI/human/experiment gates | canonical | include |
-| `reports/research/` | scientific primary-source audits and exact research acquisition queues | canonical scoped research | include |
-| `reports/provenance/` | audit trail and crosswalk | canonical provenance | include, excluding sensitive content |
-| `reports/literature/a-e/` | detailed paper deep reads | derived research asset; verify against PDF for high-stakes claims | include after source-link cleanup |
-| `reports/literature/ui-interaction/` | UI paper notes | derived research asset | include after rename/link cleanup |
-| `sources/catalog.yaml` | stable external-source identity, type, version, path, acquisition channel, rights and exact bytes | canonical machine index | include under the metadata license scope in `LICENSES/README.md` |
-| `sources/checksums.sha256` | exact local source versions | integrity | include |
-| `sources/library/` | third-party papers, standards, study materials and datasets | primary external evidence/input | exclude unless individually rights-cleared and separately approved |
-| `src/` | baseline runtime implementation boundary | future code; currently normative skeleton only | include |
-| `experiments/` | experiment specifications and run-manifest templates | canonical experiment design layer | include |
-| `data/` | project-generated, derived or human data | governed by data role | include documentation; generated/human data excluded by policy |
-| `artifacts/` | reproducible run outputs | non-canonical machine output | exclude bulk/sensitive runs; include reviewed small manifests only |
-| `webchat_raw_materials/chatgpt_chathistory/` | full recovery transcript | highest historic project-state evidence | exclude; local frozen |
-| `webchat_raw_materials/handoff/` | compact session handoff | historic derivative evidence | exclude; local frozen |
-| `webchat_raw_materials/chatgpt_migration_package/` | GPT-produced migration proposal/reference | lowest recovery authority | exclude; local frozen |
-| future `data/human/` | H2/H3 participant data | restricted research data | always exclude |
-| future `data/synthetic/` | engineering/simulation data | simulation-only, provenance required | include selectively after license/size review |
+| 根目录 `README.md`、`AGENTS.md`、`CONTEXT.md` | 定位、规则与术语 | canonical；`CLAUDE.md` 导入 `AGENTS.md`，经由跨平台 `@AGENTS.md` shim | 包含 |
+| `docs/project-management/` | Agent 启动、来源同步与仓库协作 | canonical 项目操作 | 包含 |
+| `docs/agents/` + `.agents/skills/` | 研究工作流状态机、GitHub tracker 契约与随仓库分发的 Agent 流程 | canonical 工作流文档 + 可执行的 Agent 指南；Claude 映射不含第二份副本 | 包含 |
+| `logs/` | 各成员的研究/变更意图、验证与后续事项 | canonical 的 append-only 协作历史；精确 diff 保留在 Git | 包含；排除敏感或受许可的内容 |
+| `reports/project_state/` | 当前状态与计划 | canonical | 包含 |
+| `reports/synthesis/` | 恢复的系统/研究设计 | canonical，带主张标签 | 按 CC BY 4.0 政策包含 |
+| `reports/protocols/` | AI/真人/实验门禁 | canonical | 包含 |
+| `reports/research/` | 科学一手来源审计与精确的研究获取队列（acquisition queue） | canonical 范围内的研究 | 包含 |
+| `reports/provenance/` | 审计轨迹与 crosswalk | canonical 溯源 | 包含，排除敏感内容 |
+| `reports/literature/a-e/` | 详细的论文深读 | 派生研究资产；高风险主张需对照 PDF 核验 | 来源链接清理后包含 |
+| `reports/literature/ui-interaction/` | UI 论文笔记 | 派生研究资产 | 重命名/链接清理后包含 |
+| `sources/catalog.yaml` | 稳定的外部来源身份、类型、版本、路径、获取渠道、权利与精确字节 | canonical 机器索引 | 在 `LICENSES/README.md` 的元数据许可范围内包含 |
+| `sources/checksums.sha256` | 精确的本地来源版本 | 完整性 | 包含 |
+| `sources/library/` | 第三方论文、标准、研究材料与数据集 | 一手外部证据/输入 | 排除，除非逐项完成权利清除并单独批准 |
+| `src/` | baseline runtime 实现边界 | 未来代码；目前仅为规范性骨架 | 包含 |
+| `experiments/` | 实验规范与 run manifest 模板 | canonical 实验设计层 | 包含 |
+| `data/` | 项目生成、派生或真人数据 | 由数据角色治理 | 包含文档；生成/真人数据按政策排除 |
+| `artifacts/` | 可复现的 run 输出 | 非 canonical 的机器输出 | 排除大批量/敏感 runs；仅包含经审阅的小型 manifest |
+| `webchat_raw_materials/chatgpt_chathistory/` | 完整恢复 transcript | 最高等级的历史项目状态证据 | 排除；本地冻结 |
+| `webchat_raw_materials/handoff/` | 精简的会话 handoff | 历史派生证据 | 排除；本地冻结 |
+| `webchat_raw_materials/chatgpt_migration_package/` | GPT 生成的迁移提案/参考 | 最低等级的恢复权威 | 排除；本地冻结 |
+| 未来的 `data/human/` | H2/H3 参与者数据 | 受限研究数据 | 始终排除 |
+| 未来的 `data/synthetic/` | 工程/仿真数据 | 仅限仿真（simulation-only），需溯源 | 许可/体积审查后有选择地包含 |
 
-## Completed physical reorganizations
+## 已完成的物理重组
 
-On 2026-08-14 the historical report paths were moved to `reports/literature/*`; the historical `papers/chatgpt_A-E` and `papers/ui_interation_behavior` names first became a neutral local library. A later confirmed source-boundary migration replaced the misleading `papers/` root with typed `sources/library/{papers,standards,study-materials,datasets}` paths. Catalog, checksums, crosswalk, navigation and tooling were updated together; existing source bytes were preserved.
+2026-08-14 历史报告路径被移至 `reports/literature/*`；历史名称 `papers/chatgpt_A-E` 与 `papers/ui_interation_behavior` 先成为中立的本地库。之后一次经确认的来源边界迁移把容易误导的 `papers/` 根目录替换为类型化的 `sources/library/{papers,standards,study-materials,datasets}` 路径。catalog、校验值、crosswalk、导航与工具一并更新；既有来源字节得到保留。
 
-Human-acquired paper PDFs now enter only through `tmp/pdfs/`. After catalog identity and target bytes are verified, `scripts/sources inbox` removes the temporary duplicate; unresolved files stay in the inbox.
+人工获取的论文 PDF 现在只通过 `tmp/pdfs/` 进入。catalog 身份与目标字节核验通过后，`scripts/sources inbox` 移除临时副本；未解决的文件留在收件箱。
 
-Still open: determine UIB-088 origin and preferred same-work PDF versions before any deletion.
+仍开放：任何删除之前先确定 UIB-088 的来源与首选同作品 PDF 版本。
 
-No canonical source is deleted as part of a rename migration. Inbox cleanup is separately authorized and only occurs after verified import.
+重命名迁移不会删除任何 canonical 来源。收件箱清理需单独授权，且只在核验导入后发生。

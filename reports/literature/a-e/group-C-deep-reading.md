@@ -1,4 +1,4 @@
-# Group C — Mouse / Cursor → Attention / Focus / Intent
+# C 组 — 鼠标 / 光标 → 注意 / 焦点 / 意图
 
 > 本文档为 C 组 8 篇论文（[C1]–[C8]）的深度阅读报告。C 组回答的核心问题：**在传统方法（不使用 LLM / AI Agent）框架下，加入 pointer/cursor 后，我们对「学生 attention/focus 在哪里」的概率判断究竟能提高多少；以及什么时候 pointer 可以作为 attention/focus 的 weak evidence、什么时候几乎没有信息。**
 >
@@ -16,13 +16,13 @@
 
 | 任务文件章节 | 任务要求 | 本报告完成位置 |
 |---|---|---|
-| §0 | 严格锁定 C1–C8 编号（禁止重排） | §0 PDF Mapping（8/8 在位；C2 标题歧义已核查、C3/C8 年份差异已说明） |
+| §0 | 严格锁定 C1–C8 编号（禁止重排） | §0 PDF 映射（8/8 在位；C2 标题歧义已核查、C3/C8 年份差异已说明） |
 | §1 | 传统方法上限研究，完全不使用 LLM/AI Agent | 全文未引入 LLM/Agent 方案（任务 §28-2） |
-| §2 | 以双栏阅读界面为落点 | 各章 §x.16 Transfer 小节均按该界面分析 |
+| §2 | 以双栏阅读界面为落点 | 各章 §x.16 迁移小节均按该界面分析 |
 | §3 | 继承 viewport≠attention、pointer≠gaze≠reading、行为依赖上下文、raw dwell 不能解释认知 | 报告头注 + §13/§20/§23/§26 |
 | §4 | 回答「pointer 何时是 weak evidence、何时几乎无信息」 | §1(11)、§13、§25 Q1–Q3、§26 |
-| §5 | 严格区分 5 个概念（Cursor Position/Behavior、Gaze、Task Attentiveness、Difficulty） | §11 Ground Truth Matrix、§16/§17、§26 逐命题分级 |
-| §6 | 三轴评价（GT Quality / Ecological Validity / Domain Similarity） | §10 Comparison Matrix（Axis B/C 列 + GT 列） |
+| §5 | 严格区分 5 个概念（Cursor Position/Behavior、Gaze、Task Attentiveness、Difficulty） | §11 注意真值矩阵、§16/§17、§26 逐命题分级 |
+| §6 | 三轴评价（GT Quality / Ecological Validity / Domain Similarity） | §10 跨论文对比矩阵（B/C 轴列 + GT 列） |
 | §7 | 每篇统一拆解模板（§7.1–§7.17） | §2–§9 每篇 17 小节逐项覆盖 |
 | §8 | 专题一 Mouse ≠ Gaze | §13（10 问逐答） |
 | §9 | 专题二 Forced Coupling vs Natural Cursor | §14（C4 上限 vs C5 生态证据，禁止直接比较 performance） |
@@ -49,7 +49,7 @@
 
 ---
 
-## 0. PDF Mapping
+## 0. PDF 映射
 
 | 编号 | 论文 | 本地 PDF 文件 | 期刊/场合 | 出版年份（文件名年份） |
 |---|---|---|---|---|
@@ -69,9 +69,9 @@
 
 ---
 
-## 1. Executive Findings
+## 1. 最高层结论
 
-以下为 C 组跨 8 篇论文的最高层结论（详细证据见各章与 §29 Evidence Index）。
+以下为 C 组跨 8 篇论文的最高层结论（详细证据见各章与 §29 证据索引）。
 
 1. **`cursor ≠ gaze` 在点级上是被 C 组直接验证的，不是假设。** [C2] 用 36 被试/32 任务的受控眼动研究给出：cursor 平均滞后 gaze 约 700 ms（个体 250 ms–>1 s），且不存在反向（"gaze lagging behind the cursor—did not occur"，PDF p.5）；inactive（cursor 静止 ≥1s）时段占 58.8%，此时对齐距离 233 px（"the eye is still roaming the SERP"）。[C6] 在真实 Google SERP 上测到 eye–mouse 平均欧氏距离 **372.89 px——几乎是 [C2] 引用的 Huang et al. 数值（178 px）的两倍**。**点级 cursor 位置不能当作 gaze 位置。**
 
@@ -101,73 +101,73 @@
 
 **定位：raw mouse trajectory / representation learning → attention prediction（预测对 SERP 广告的注意）。**
 
-### 2.1 Research Question
+### 2.1 研究问题
 用 raw mouse cursor 轨迹（不经手工特征）的多种表示训练 RNN/CNN，预测用户对 SERP 上**直接展示（direct display）广告**的注意。论文明确动机是避免手工特征工程："previous work has relied heavily on handcrafted features, which is a time-consuming approach that often requires domain expertise"（Abstract）。
 
-### 2.2 Task / Environment
+### 2.2 任务 / 环境
 - 众包**事务性搜索任务**：给预定义查询 + 静态 Google SERP，要求"点击页面上最能回答该查询的元素"（例："You want to buy a Rolex watch ... click on the element that you would normally select"）。
 - **natural interaction**（非强制 mouse 指向）；但页面被仪器化：**只保留一个广告**（single-slot auction 情形）、要求关闭 ad-blocker、行为偏快（众包）。
 - 每个条件 1 个广告：organic 广告（左上/左下）、direct display 广告（右上或左上）；SERP 静态抓取、英语。
 
-### 2.3 Participants
+### 2.3 被试
 **N = 3,206**，年龄 18–66、国籍混合，Figure Eight 众包平台，Level 3 经验贡献者，报酬 $0.20。每人只做一次（一个 query×广告条件）。未报告性别/设备。
 
-### 2.4 Raw Mouse Data
+### 2.4 原始鼠标数据
 - 工具：EvTrack（JS 事件追踪库）。**mousemove 用 event polling 每 150 ms 采样一次**；其他事件（load/click/scroll）用 event listener。
 - 字段：`(x, y), timestamp, event name, XPath of DOM element`。
 - 过滤后 **2,289 个 sessions / 45,082 个鼠标坐标**（organic 763 / left-display 793 / right-display 733）。
 - 坐标系：浏览器像素；水平坐标按 viewport 宽度归一化（垂直未归一化，因 SERP 固定宽）。
 
-### 2.5 Eye-Tracking Data
+### 2.5 眼动数据
 **NO EYE-TRACKING GROUND TRUTH。** 本实验完全没有眼动。论文仅综述转引 gaze-cursor 相关性（如 Huang et al.）。
 
-### 2.6 Attention Ground Truth（核查点 1：self-report）
+### 2.6 注意真值（核查点 1：自评）
 **GT = 任务后自评问卷**（非眼动）：
 > "we collected ground-truth labels through an online questionnaire, which was administered at post-task and asked the user to what extent they paid attention to the ad using a 5-point Likert-type scale: 'Not at all'(1)... 'Very much'(5)."
 - 二值化：Not at all / Not much → negative；Somewhat / Very much → positive；中性（I can't decide）丢弃。66% 正类。
 - 作答时**页面已不可见**——测量的是**事后广告知觉/记忆**，不是在线注视。
 
-### 2.7 Mouse Preprocessing
+### 2.7 鼠标预处理
 - 会话过滤：<5 个坐标（≈1s）丢弃；固定序列长度 50 timesteps（≈均值+1SD），短 pad / 长截断；水平坐标 viewport 归一化；无平滑/去噪/插值/pause 提取/personalization。
 
-### 2.8 Mouse Features
+### 2.8 鼠标特征
 **无手工特征**。输入两类表示：
 - **时间序列**：2D 坐标多元时间序列；
 - **视觉图像**（5 种编码 × 有无 ad placeholder）：heatmap（25px Gaussian kernel）、trajectories、colored trajectories（温度梯度）、trajectories with line thickness、colored+thickness；1280×900 PNG，viewport 归一化，无数据增强。
 
-### 2.9 Mouse ↔ Gaze Relationship
+### 2.9 Mouse ↔ Gaze 关系
 **不适用**（无 gaze 数据，无距离/lag/AOI 分析）。
 
-### 2.10 Model
+### 2.10 模型
 - RNN：SimpleRNN / LSTM / GRU / BLSTM；输入 50 神经元、隐藏层 n∈[16..128]、dropout q∈[0.1..0.5]、sigmoid 输出；binary crossentropy + Adam；random search 调参；3-fold CV on validation。
 - CNN：AlexNet / SqueezeNet / ResNet50 / VGG19，ImageNet 预训练 + transfer learning 微调。
 - 划分：60-10-30 分层（per ad format）。
 
-### 2.11 Prediction Target
+### 2.11 预测目标
 **逐字：二分类 "did the user notice the ad?"**——给定 cursor 轨迹判断"是否注意到（那个唯一的）广告"。**不是** spatial attention（哪个广告被看）、不是连续注意量，是 session 级 per-ad 的 noticed 标签（基于自评）。
 
-### 2.12 Evaluation
+### 2.12 评估
 - 指标：Adj. Precision/Recall/F-Measure + **AUC（关键指标）**。
 - 最优：ResNet50（trajectories 表示，right-aligned 广告）**AUC 0.739 / F1 0.731**；organic 最佳 0.690；left-display 最佳 0.708。
 - CNN 优于最佳 RNN：organic +3.24%(F1)/+9.35%(AUC)；left +13.91%/26.42%；right +18.65%/20.35%。
 - 广告位置效应显著（left vs right AUC p<.0001, r=−0.88；大效应量）。
 - 划分：per-format 分层 held-out；**无 within/cross-user 区分报告**（每 session=唯一被试）。
 
-### 2.13 Individual Differences
+### 2.13 个体差异
 **NOT REPORTED**（无 per-user 建模、无 personalization；每人只做一次）。
 
-### 2.14 Task Dependence
+### 2.14 任务依赖
 **是**：cursor→注意预测显著受 ad format 与 ad position 调节（大效应量）；ad placeholder 仅在 left-aligned 条件显著影响 F1（Mdn 0.718 vs 0.691, p=0.041）。
 
-### 2.15 Causality / Construct Validity
+### 2.15 因果性 / 构念效度
 predictive/correlational；**无因果论证**。论文自认 "While mouse tracking cannot substitute eye tracking technology"。GT 是事后自评，受记忆/期望影响；众包快节奏压低注意力。
 
-### 2.16 Transfer to Our English Reading System
+### 2.16 迁移到我们的英语阅读系统
 - **可直移**：raw trajectory→表示学习→二分类范式；时间序列+RNN 与图像+CNN transfer learning 技术栈；viewport 归一化；AUC 作为类别不平衡关键指标；60-10-30 分层。
 - **要改造**：GT 需重新定义（自评"是否注意到广告"不可移植为客观注意；我们可能需眼动或受控任务标签）；序列/布局（SERP 固定宽、90% 坐标在首屏，我们的 passage 独立滚动需建模垂直与滚动）；预测粒度（C1 是 session 级单广告，我们需要元素/区域级）。
 - **不可移**：自评 GT 的结论不能作为 cursor→客观视觉注意的证据；众包单任务快节奏场景与深度阅读差异大。
 
-### 2.17 What This Paper Does NOT Establish
+### 2.17 这篇论文不能确立什么
 - **不能证明 cursor→客观视觉注意（gaze）**：GT 是自评，无眼动，作者自认 mouse 不能替代眼动。
 - 不能声称预测了"空间注意"或"总注意量"：仅"唯一广告是否被注意到"的 session 级二分类。
 - 不能声称优于手工特征模型：论文只对比 CNN vs RNN，**无 638-feature 手工 baseline 的数字对比**。
@@ -180,34 +180,34 @@ predictive/correlational；**无因果论证**。论文自认 "While mouse track
 
 **定位：真实 gaze ↔ cursor alignment 的基础论文。这是判断 `cursor ≠ gaze` 与「cursor 在什么条件下才含 visual-attention 信息」的核心证据。**
 
-### 3.1 Research Question
+### 3.1 研究问题
 确定 gaze 与 cursor 何时对齐、何时 cursor 位置能作为 gaze 位置的好的代理；研究 time、behavior pattern、user、search task 四类因素对 alignment 的影响；并据此用 cursor 特征预测 gaze 位置。
 
-### 3.2 Task / Environment
+### 3.2 任务 / 环境
 - **N=36 被试（38 招募，2 剔除），32 个 web search 任务**，在 Bing 上完成；一半导航型（找特定网页）、一半信息型（找事实）。每个任务给描述 + 预定义 query，之后自由浏览 SERP/后续网页/继续搜索。**natural interaction**（受控实验室眼动研究，不强制"眼到鼠标到"）。
 - 显示器 1280×1024、17"；浏览器窗口 1040×996；每被试清除缓存/cookies。全程约 1 小时/人。
 
-### 3.3 Participants
+### 3.3 被试
 36 分析（21 F / 17 M，38 招募）；年龄 26–60（M=45.5, SD=8.2）；user study pool（背景多样）；国别未报告。
 
-### 3.4 Raw Mouse Data
+### 3.4 原始鼠标数据
 - cursor (x,y)、timestamp；行为（dwell/idle 由时间戳推、click 瞬时事件、scroll 提及）；**cursor 约每 100 ms 记录一次（≈10Hz）**。
 - 总量：1,210 个 search tasks 中 **87,227 个 cursor positions**（移动时才记）。
 
-### 3.5 Eye-Tracking Data
+### 3.5 眼动数据
 - **Tobii x50，50 Hz，accuracy 0.5°（≈16px）**；gaze 约每 20 ms；开头有 calibration。
 - 同步：以 cursor 时刻为基准对 gaze 线性插值（式 1）；cursor 位置仅在"相邻 gaze 间隔 ≤100ms"时被采用，减少插值噪声。
 - 总量 **1,336,647 个 gaze positions**。
 
-### 3.6 Attention Ground Truth
+### 3.6 注意真值
 GT = **眼动仪测得的连续 gaze 位置**（"the ground truth is the gaze position measured by the eye-tracking system"）。"attention" 作为动机构念（cursor 近似视觉注意），但实验目标始终是连续 gaze 位置预测。
 
-### 3.7 Mouse Preprocessing
+### 3.7 鼠标预处理
 - 滞后分析：cursor 与 gaze 在 50ms 间隔重插值，再在不同 shift 下算 RMSE。
 - 预测：特征取 log(dwell)、log(距上次移动时间)；无平滑/插值/去噪；无个人 baseline 归一化（作者明确不把 user/query 当特征，理由：部署时无 gaze 数据训练、查询级数据不足、query 影响小）。
 - 行为分类为启发式（"The process is ad-hoc"）。
 
-### 3.8 Mouse Features
+### 3.8 鼠标特征
 - Spatial：cursor position (cx, cy)。
 - Temporal：dwell `log(td)`（页载入后时间）、behavior `log(tm)`（距上次移动时间）。
 - 未来特征：fx（当前 gaze 最可能的后续 cursor 位置，仅当上次移动在目标未来时间 10s 内）。
@@ -215,38 +215,38 @@ GT = **眼动仪测得的连续 gaze 位置**（"the ground truth is the gaze po
 - 回归式（x 坐标）：`gx ~ cx + log(td) + log(tm) + cx×log(td) + cx×log(tm) + fx`（式 2）。
 - 行为分类规则：**Inactive**=静止≥1s；**Action**=click 前 1s；**Reading**=垂直≤50px + 右移≥150px + 回移≥50px；**Examining**=其余；Click=瞬时。
 
-### 3.9 Mouse ↔ Gaze Relationship
+### 3.9 Mouse ↔ Gaze 关系
 - 滞后：**cursor 滞后 gaze 平均 ~700ms**（个体 250ms–>1s；整体 700ms 时 RMSE 最低）。"the cursor lagged behind the gaze for each individual subject; the inverse situation—gaze lagging behind the cursor—did not occur"——**反驳"有人用 cursor 领跑视线"**。
 - 时间进程：页载入后 0.5–1s 对齐达峰 ~240px，约 2s 后收窄（先扫视、后细读/准备点击）。
 - 行为×对齐（Table 1）：inactive 233px/58.8%；examining 167px/32.9%；reading 150px/2.5%；action 77px/5.7%；click 74px。
 - 个体/任务：个体 SD=33.9、任务 SD=20.2（Levene p=0.037）；性别 t(34)=1.31,p=0.20；年龄 ρ=0.22,p=0.18；click entropy 无相关（ρ=0.01,N=27,p=0.96，未复现导航/信息型差异）。
 
-### 3.10 Model
+### 3.10 模型
 **多元线性回归**（x、y 分别回归；OLS）；baseline = 直接用 cursor 位置；**36-fold leave-one-subject-out CV**（用 35 人系数预测留出被试 gaze）。
 
-### 3.11 Prediction Target
+### 3.11 预测目标
 预测 **gaze 位置（x 与 y 坐标）**（连续回归），ground truth = 眼动 gaze。
 
-### 3.12 Evaluation
+### 3.12 评估
 - **RMSE（像素）**：baseline cursor 236.6 → +behavior+dwell 186.3（−21.3%）→ +future 181.1（−23.5%）；x 185.0→125.2→125.1；y 145.0→137.1→129.9。
 - ANOVA 显著：x 轴 F(2,105)=59.72, p<.001；Euclidean F(2,105)=41.31, p<.001。
 - **cross-user**（留出被试未见）、held-out。
 
-### 3.13 Individual Differences
+### 3.13 个体差异
 **本文最强效应**：个体对齐距离 SD=33.9；有人 ~130px、有人 ~280px；Levene 显示个体差异>任务差异；行为类别内个体差异依然很大（Subject 29 inactive 79%；Subject 12 examining 55%；reading≤2% 的有 22/36 人，最多 Subject 9 8%；Subject 33 全类距离都大）。作者："for each cursor behavior, gaze-cursor alignment still varied substantially among our subjects."
 
-### 3.14 Task Dependence
+### 3.14 任务依赖
 任务间差异适中但显著小于个体差异（SD=20.2）；click entropy 无相关；dwell time 与 behavior 调节对齐。导航/信息型差异未复现（contrast Guo & Agichtein）。
 
-### 3.15 Causality / Construct Validity
+### 3.15 因果性 / 构念效度
 correlate/predict；无操纵。唯一"时序因果"是 cross-correlation lag（cursor 跟随 gaze），支持假说 c（"user looks at something and then moves their cursor to interact with it"）。构念边界：lab 限制（休息/多任务、人为任务、SERP 外推广性）在 Discussion 明示。
 
-### 3.16 Transfer to Our English Reading System
+### 3.16 迁移到我们的英语阅读系统
 - **可直移**：行为标签大幅改善 gaze 代理的思想（cursor+behavior+dwell 把 RMSEd 236.6→186.3，再 +future 到 181.1）；**action/click 类行为对齐极近（77/74px）**——我们系统的划线/划选项动作可作为高置信 attention 锚点；个体差异大 → 需用户级 baseline。
 - **要改造**：Reading 阈值（150/50/50px）针对 SERP 字号需重标定；行为 taxonomy（inactive/examining/reading/action/click）需映射我们的交互（划线=action 延伸、划掉选项=新 action 子类、passage 内滚动独立信号）；dwell 需按区块载入时间重定义。
 - **不可移 / 边界**：仅 SERP 实验室搜索；58.8% inactive 时段 cursor 不携带注意信息；reading 型行为仅占 2.5%、22/36 人 ≤2%——**不能指望学生普遍"用 cursor 跟读"**。
 
-### 3.17 What This Paper Does NOT Establish
+### 3.17 这篇论文不能确立什么
 - **不能证明 cursor=gaze 或 cursor 能近似 gaze**："claiming that the cursor approximates the gaze is misguided"（p.9）；baseline RMSEd 236.6px。
 - 不能证明 cursor 停驻指示 attention："prolonged cursor fixation may not [be a positive signal of interest] ... the user's attention is probably elsewhere"（p.9）。
 - 不能证明 alignment 规律推广到非 SERP 页面（论文明确非 SERP 更差、留作 future work）。
@@ -260,34 +260,34 @@ correlate/predict；无操纵。唯一"时序因果"是 cross-correlation lag（
 
 **定位：mouse features → experimentally manipulated question difficulty。研究的是 difficulty/response burden，不是 spatial gaze。**
 
-### 4.1 Research Question
+### 4.1 研究问题
 "When predicting response difficulty, what do we gain beyond response time through mouse-tracking features, and can we further improve prediction through personalization?"（PDF p.7）。补充：哪些特征最重要、用哪种 ML 算法。
 
-### 4.2 Task / Environment
+### 4.2 任务 / 环境
 - 德国 IAB 就业面板的**在线问卷**（SoSciSurvey），多选题点选。非阅读/搜索/广告任务。
 - **natural interaction**（无强制 mouse）；每十秒向服务器上传 paradata。
 - 三个目标题：employment detail（9 选项，措辞操纵）、employee level（4 选项，顺序操纵）、education level（11 选项+开放文本，顺序操纵）；另有 8 个无操纵 baseline 题。
 
-### 4.3 Participants
+### 4.3 被试
 1,250 响应 / 1,213 完成；**886（73%）使用鼠标者纳入分析**；平均年龄 51（SD=10.8）、454 F/425 M。最终样本：employment detail 551、employee level 501、education level 548。国别：德国。
 
-### 4.4 Raw Mouse Data
+### 4.4 原始鼠标数据
 - 客户端脚本采集（mousetrap-web；Henninger & Kieslich 2020），**每十秒批量上传**；从 paradata 抽取轨迹。
 - **采样频率：NOT REPORTED**；click 数据未被使用（列为未来工作）。
 - 处理：mousetrap R 包计算指标。
 
-### 4.5 Eye-Tracking Data
+### 4.5 眼动数据
 **NO EYE-TRACKING GROUND TRUTH。**
 
-### 4.6 Attention Ground Truth
+### 4.6 注意真值
 不建模 attention。**GT = 实验操纵的难度条件（difficult vs easy）**："using the experimental condition (difficult or easy) as a target variable"（PDF p.17）。难度是操纵变量非测量变量（"we only manipulated but did not measure difficulty"）。
 
-### 4.7 Mouse Preprocessing
+### 4.7 鼠标预处理
 - 过滤：未作答、mouse 记录不完整、疑似重载、education 题自由文本者、age/gender 缺失/other、RT>7min。
 - hover 阈值：测试 250/500/2000/3000ms（无唯一最优）。
 - **personalization**：8 个 baseline 题回归取残差（baseline 校正）；再加答案位置校正（两步法 Eq.3–4）。
 
-### 4.8 Mouse Features（9 个 + age/gender）
+### 4.8 鼠标特征（9 个 + 年龄/性别）
 - time：response time、initiation time；
 - hovers：hover 次数、hover 总时长；
 - distance：total distance；
@@ -295,16 +295,16 @@ correlate/predict；无操纵。唯一"时序因果"是 cross-correlation lag（
 - flips：x-flips、y-flips。
 每模型共 11 个解释变量（9 mouse + age + gender）。
 
-### 4.9 Mouse ↔ Gaze Relationship
+### 4.9 Mouse ↔ Gaze 关系
 **不适用**（无眼动）。
 
-### 4.10 Model
+### 4.10 模型
 logistic regression、classification trees、random forest、gradient boosting、SVM（径向核）、单隐层 BP 神经网络。二分类 difficult vs easy；**嵌套 CV**（外环 10 折、内环 500 次 subsampling 75/25）；accuracy 评估；mlr/R 实现。
 
-### 4.11 Prediction Target
+### 4.11 预测目标
 **逐字：预测问卷问题的难度实验条件（difficult or easy 二分类）**——不是注意、不是 gaze 位置、不是难度评分。
 
-### 4.12 Evaluation（accuracy）
+### 4.12 评估（准确率）
 | 题目 | 未校正 full | baseline 校正 | baseline+position | RT-only（best） |
 |---|---|---|---|---|
 | employment detail（措辞） | 61.0% | **65.9%**（GB） | 65.0% | 64.8% |
@@ -314,21 +314,21 @@ logistic regression、classification trees、random forest、gradient boosting�
 - 特征重要性（permutation accuracy 下降）：措辞题 RT(−0.142)、y-flips(−0.028)、x-flips(−0.014)；顺序题 initiation(−0.113)、x-flips(−0.041)、hovers(−0.033)——**顺序题上 permuting RT 只降 0.009**；education 题 max acceleration(−0.224) 最重要。
 - 样本外（嵌套 CV）；被试间设计。
 
-### 4.13 Individual Differences
+### 4.13 个体差异
 **personal baseline 归一化有明确价值，但增益依任务而异（employment +4.9pp、employee/education +1.2–1.8pp）；选项位置校正在顺序操纵题再贡献 +0.9–2.4pp。** 动机：硬件/系统/交互习惯使 mouse 行为在受访者间系统性不同。**不同用户 mouse baseline 不同 → personalization 值得研究**（效果大小不能写死）。
 
-### 4.14 Task Dependence
+### 4.14 任务依赖
 **强调节**：不同操纵（措辞 vs 顺序）被不同 paradata 捕获——RT 对措辞题最重要，initiation/flips/hovers 对顺序题更重要；max acceleration 对 education 重要、对 employee 无用（选项数 11 vs 4 的差异）。答案位置影响指标（选项距提交按钮远时 RT/距离更大）。
 
-### 4.15 Causality / Construct Validity
+### 4.15 因果性 / 构念效度
 manipulated-difficulty + prediction 范式；难度是操纵的自变量、模型预测实验分组。坦诚混淆：只操纵未测量难度、不同操纵与不同题混淆。
 
-### 4.16 Transfer to Our English Reading System
+### 4.16 迁移到我们的英语阅读系统
 - **可直移**：9 项 mouse 指标 + mousetrap 管线；personalization 范式（baseline 回归取残差——增益依任务而异 +1.2~4.9pp，选项位置校正另有贡献）；嵌套 CV + 树模型优先；特征重要性分析。
 - **要改造**：难度 GT 需自定（我们的 ground truth 可用答题正确性/自报难度，比实验条件更硬）；hover 阈值需重调；右栏 question 面板独立滚动 → 选项位置/滚动距离的混淆需显式建模；我们可引入 click/划线/划掉（本文明确未用 click）。
 - **不可移**：任何 spatial attention / gaze location 推断——本文无眼动，结论只到 difficulty。
 
-### 4.17 What This Paper Does NOT Establish
+### 4.17 这篇论文不能确立什么
 - **不能证明 cursor=gaze / mouse→visual attention location**。
 - 不能证明实时干预有效（只离线预测）。
 - 不能证明 mouse 可"可靠"预测难度（最高 65.9%，作者自认操纵强度不足以可靠预测）。
@@ -340,69 +340,69 @@ manipulated-difficulty + prediction 范式；难度是操纵的自变量、模�
 
 **定位：reading-specific mouse tracking。核心：MoTR 通过界面设计人为强制 mouse 与当前阅读位置 coupling。**
 
-### 5.1 Research Question
+### 5.1 研究问题
 提出浏览器可部署的词级渐进加工测量工具 MoTR，验证其能否以低成本、可线上部署获得**词级阅读时间与 scanpath**，且效度接近眼动追踪：实验 1 问能否用于自然阅读（Provo 语料），实验 2 问能否测到句法附着偏好（定向心理语言学效应）。
 
-### 5.2 Task / Environment
+### 5.2 任务 / 环境
 - **强制耦合界面（核查点）**：文本模糊、仅 mouse 尖端附近小区域清晰——"text, which is blurred except for a small region around the tip of the mouse. **Participants must move the mouse to reveal and read the text.**"（Abstract, PDF p.1）。"The purpose of the text blur... the blur was necessary to obfuscate enough material so that the participant must move the mouse to reveal the text"（PDF p.4）。spotlight 模拟 foveal/parafoveal 视野（渐变模糊，右侧约 5 字母全清晰 + 4 字母部分；左侧约 2 字母）。
 - 读完后按底部按钮 → 移除 spotlight → 回答理解问题（必答）→ 下一屏。
 - 实验 1：Provo 语料，3 个 sub-experiment；实验 2：附着偏好材料（adverb/coordination/relative clause），3 个 sub-experiment，各 59 items、平均 14 分钟。
 - 界面参数：spotlight 宽 102px；光标偏置（左缘 39px/右缘 63px）；双倍行距；CSS blur 半径 3.5px；**sampling 20 Hz**（实测样本间隔 50.1±7.1ms）。
 
-### 5.3 Participants
+### 5.3 被试
 - 实验 1：MoTR 101 采集/9 剔除（理解题 <80%）→ 隐含 92；BSPR 90/13 剔除 → 隐含 77。Prolific 招募、英语母语、IP 美国、台式机。
 - 实验 2：240 招募→197 数据→187 分析；每条件 8×187=1496 obs。年龄/性别 NOT REPORTED。
 
-### 5.4 Raw Mouse Data
+### 5.4 原始鼠标数据
 时间戳 + spotlight（略偏置的 cursor）x/y 屏幕坐标；不记录 click/hover；采样 20Hz；单屏文本无滚动。
 
-### 5.5 Eye-Tracking Data
+### 5.5 眼动数据
 本论文**不采集**眼动，但复用既有眼动语料作对照：实验 1 用 Provo 语料先前 84 名英语母语者眼动数据；实验 2 对照 Witzel et al. (2012) 眼动数据。无同步眼动-鼠标联合采集。
 
-### 5.6 Attention Ground Truth
+### 5.6 注意真值
 GT 不是 "attention"，而是**词级阅读时间**与扫描路径。把 spotlight 覆盖某词的时间段称为 "attentional association"，"analyzed as a proxy for gaze"。验证真值 = 眼动阅读时间（gaze duration / go past / total duration / 回归/跳读概率）+ 实验 2 的操纵难度。
 
-### 5.7 Mouse Preprocessing
+### 5.7 鼠标预处理
 - association 提取：每个时间戳的 spotlight 位置关联最近词；连续同词样本合并为 association。
 - 阈值：fmin=160ms（探索 120–240）、fmax=4000ms；覆盖 <20% 词数的试次剔除（skim）；理解题 <80% 剔被试；无平滑/重采样细节、无个人归一化。
 - 度量族：gaze duration（首个 association）、total duration（全部 association）、go past time、FPAsc/FPReg（首遍关联/回归概率）。
 
-### 5.8 Mouse Features
+### 5.8 鼠标特征
 非 ML 特征；从 association 计算眼动类比度量（gaze/total/go past duration、回归/跳读概率）+ 运动类型五分类（true fixation / deceleration / constant velocity / acceleration / offscreen，δ=0.001 px/ms）。
 
-### 5.9 Mouse ↔ Gaze Relationship
+### 5.9 Mouse ↔ Gaze 关系
 无同步采集、无 per-sample 对齐。仅词级聚合相关（cross-participant 平均）：
 - MoTR↔眼动相关：gaze duration 0.51、go past 0.42、total duration 0.62、回归概率 0.19、跳读概率 0.80（对比 BSPR 0.35/0.26/0.40；眼动 split-half 上界 0.75/0.63/0.81/0.58/0.91）。
 - 回归触发词重叠：**98% 的 MoTR 回归触发词也是眼动回归触发词，但眼动回归触发词仅 38% 被 MoTR 捕获**（高精度低召回）——回归在 MoTR 中更难发起。
 - MoTR 阅读时间相对眼动系统性右偏（更长）。
 
-### 5.10 Model
+### 5.10 模型
 贝叶斯统计：相关分析（Behseta 2009）、GAM（surprisal/freq/length→RT）、多层模型（实验 2，by-item/by-subject 随机效应）；对比 BSPR 自采 + Boyce et al. (2020) 的 A/G-maze/SPR。
 
-### 5.11 Prediction Target
+### 5.11 预测目标
 词级阅读时间（gaze duration / total duration / go past）与回归/跳读概率；实验 2 预测 RT 与 FPReg 作为 condition 的函数。**不是** attention score / 不是 spatial 分类。
 
-### 5.12 Evaluation
+### 5.12 评估
 - 相关 + 95% CrI（表 1）；surprisal–RT 线性（ΔELPD 线性优于非线性）。
 - 实验 2 效应量（critical 区 RT 差异 + 95% CrI；adverb/coordination/relative clause）。
 - 功效分析：adverb 80% power 需 ~40 人、RC/coordination ~140 人；MoTR 敏感度介于 SPR 与 maze 之间。
 - 分析层面：cross-participant 词级平均（同 Smith & Levy 2013）。
 
-### 5.13 Individual Differences
+### 5.13 个体差异
 运动类型个体差异大："we observe a handful of participants whose behavior is similar to eye-tracking... However, the median participant is relatively well-balanced between the five types of movements"（PDF p.7）。无 personalization 建模。
 
-### 5.14 Task Dependence
+### 5.14 任务依赖
 回归策略随语言现象变化（adverb/RC 即时回归、coordination 句末回归）；true-fixation 比例 item 间 16–34%（平均 23%）。耦合机制（blur）在所有条件恒定。
 
-### 5.15 Causality / Construct Validity
+### 5.15 因果性 / 构念效度
 correlate + manipulated-difficulty。明确承认构念假设："coordinates of the cursor are analyzed as a proxy for gaze"（PDF p.4）；"One additional benefit of the cursor is that it may direct participant gaze during reading, **although we do not test this experimentally**"。未做无 blur 对照、未排除"鼠标运动只是 UI 强制行为副产物"。
 
-### 5.16 Transfer to Our English Reading System
+### 5.16 迁移到我们的英语阅读系统
 - **可直移**：attentional association 概念与实现（把 cursor 停在某词附近的连续时长合并为词级时间）；词级阅读时间度量族 + 首遍关联/回归/跳读定义；质控过滤（理解题 <80%、<20% 覆盖试次、fmin/fmax）；运动类型五分类；贝叶斯相关/层次模型/功效分析方法。
 - **要改造**：词与 mouse 的空间关系需自定（我们无 spotlight）；fmin/fmax、spotlight 直径需按我们字号重标定；需显式区分"mouse 移动是滚动/划词等操作行为"。
 - **不可移（核心边界）**：**MoTR 的效度数字建立在"必须移动 mouse 才能读"的强制耦合上**；我们系统用户可不动 mouse 阅读，`mouse≈reading position` 不成立，0.51–0.62 相关只能作为**强制耦合条件下的上限**参考。其"回归高精度低召回"结论也提示我们的回归信号推断会更弱。
 
-### 5.17 What This Paper Does NOT Establish
+### 5.17 这篇论文不能确立什么
 - **不能证明自然网页（无 blur）中 cursor=reading position**（耦合是界面制造的；未做无 blur 对照）。
 - 不能证明 mouse 阅读时间可复现眼动回归行为（MoTR 回归率 4% vs 眼动 15%，相关 0.19，仅捕获 38% 回归触发词）。
 - 不能证明 mouse 信号达到眼动的时间/空间精度（无同步对照、阅读时间右偏）。
@@ -415,61 +415,61 @@ correlate + manipulated-difficulty。明确承认构念假设："coordinates of 
 
 **定位：自然网页阅读中的 Pointer-Assisted Reading（PAR）——大规模 web analytics 观测研究。**
 
-### 6.1 Research Question
+### 6.1 研究问题
 从自然网页日志的大规模统计中研究 mouse 移动**方向与速度**的规律，并论证它们与文本阅读（PAR）相关。核心贡献是发现 PAR（cursor 当"虚拟手指"沿文本读）。
 
-### 6.2 Task / Environment
+### 6.2 任务 / 环境
 - **无实验任务**：公开技术文档网站（ObjectDB，Java Persistence API 教程）自然浏览阅读；匿名、无登录、read-only。
 - **完全自然交互**；无眼动、无强制 mouse 使用。
 - 137 个结构相似教学页；数据采集 6 个月（至 2020 年 6 月）。
 
-### 6.3 Participants
+### 6.3 被试
 **NOT REPORTED**（匿名访客）。估计 ~375,569 独立访客（浏览器指纹，作者自认偏高）。无招募/众包/人口学。
 
-### 6.4 Raw Mouse Data
+### 6.4 原始鼠标数据
 - 只记录 mouse move 事件（时间、x/y、页面区域）；click/scroll/keypress 未采集。
 - **采样：最多 10 events/second**。
 - 数据规模：**90,367,657 个 mouse move 事件 / 1,139,284 次页面浏览**；排除无移动 pageview → 1,015,587，平均每 pageview 89 个样本（8.9 秒移动）。
 
-### 6.5 Eye-Tracking Data
+### 6.5 眼动数据
 **NO EYE-TRACKING GROUND TRUTH。**
 
-### 6.6 Attention Ground Truth
+### 6.6 注意真值
 不直接测量 attention。分析对象是**阅读行为（PAR）**，潜在假设"cursor 沿文本移动≈阅读位置"建立在**转引**前人 gaze-cursor 相关性文献（[6,14,31]）之上，非本数据实测。GT 类型 = implicit assumption。
 
-### 6.7 Mouse Preprocessing
+### 6.7 鼠标预处理
 - client-side 10Hz 上限；movement = 同方向（12 个 30° 扇区之一）+ 相邻间隔 ≤5s（作者自认任意）的连续序列；最小长度过滤（≥3/≥5/≥10 moves）；无重采样/平滑/归一化/personalization。
 
-### 6.8 Mouse Features
+### 6.8 鼠标特征
 描述性统计量：方向（4 扇区 Right/Up/Left/Down ±45° 与 12 扇区）、速度（px/s）、movement 大小（moves 数）、位置区域（content/left menu/top menu/elsewhere）。无 ML 特征。
 
-### 6.9 Mouse ↔ Gaze Relationship
+### 6.9 Mouse ↔ Gaze 关系
 无自有 gaze。仅转引："Previous work has shown a correlation between eye gaze and mouse cursor positions on a screen [14], and the correlation is higher during mouse activity [6,31]"（PDF p.2）。
 
-### 6.10 Model
+### 6.10 模型
 **NONE**（纯统计描述 + 定性轨迹分析；Fisher's exact test）。
 
-### 6.11 Prediction Target
+### 6.11 预测目标
 **NONE**。
 
-### 6.12 Evaluation
+### 6.12 评估
 无分类/回归指标。唯一显著性：up 21.1% vs down 19.7%（Fisher's exact p<0.00001）。作者："the interesting question is not about statistical significance, but which observed differences indicate something meaningful"（PDF p.3）。
 
-### 6.13 Individual Differences
+### 6.13 个体差异
 证据弱：PAR 非人人用（鼠标移动 <2% 页面可见时间）；"the accuracy of PAR is varying"（tight vs loose）；开放问题——PAR 用户比例、horizontal-movers vs vertical-movers 分布。无 per-user 统计量。
 
-### 6.14 Task Dependence
+### 6.14 任务依赖
 内容区占 ~91.9% 的鼠标活动（content 83,017,547/90,367,657）；6 个流量最高国家方向/速度模式一致；阅读方向（LTR）解释右移慢、210° 方向对应"行尾回行首"；up>down 归因于滚动后光标上移回阅读位置。
 
-### 6.15 Causality / Construct Validity
+### 6.15 因果性 / 构念效度
 correlational/observational + 定性示例。方向-速度与阅读的关联靠三点间接论证：转引 gaze 相关性、右移峰值速度≈阅读速度（150–200px/s ≈ 180–240 wpm）、示例轨迹。作者承认 loose PAR 匹配困难（PDF p.14）。
 
-### 6.16 Transfer to Our English Reading System
+### 6.16 迁移到我们的英语阅读系统
 - **可直移**：概念层——方向+速度统计携带阅读信号；慢速右向水平移动≈跟随阅读、竖向移动≈标记行；PAR 方向模式跨国家一致（对环境稳健）。
 - **要改造**：速度阈值（150–200 px/s、>600px/s）依赖其站点字号（约 49.7 px/word）需重标定；单栏布局 vs 我们双栏独立滚动；斜向速度解释、左右不对称百分比（72.3%）是聚合常量不可搬为通用阈值。
 - **不可移**：无 per-user PAR 识别器（future work）；不能把光标"划过单词"当该词被阅读的强证据（loose PAR 匹配难）；无眼动 GT，无法支撑个体级 cursor→attention 量化。
 
-### 6.17 What This Paper Does NOT Establish
+### 6.17 这篇论文不能确立什么
 - 未量化"多少用户使用 PAR"（开放问题）；只定性称 PAR "uncommon"、鼠标移动 <2% 页面时间。
 - 未提供自动化 PAR 识别/分类方法（future work）。
 - 未在自有数据建立 cursor=gaze 量化关系（全部转引）。
@@ -482,74 +482,74 @@ correlational/observational + 定性示例。方向-速度与阅读的关联靠�
 
 **定位：mouse + eye tracking objective ground truth 的数据集论文（AdSERP）。**
 
-### 7.1 Research Question
+### 7.1 研究问题
 此前 mouse→注意工作依赖 post-task 自报 GT（"can be inaccurate and prone to biases"）；缺少「以眼动为客观标签、可用于训练 mouse 注意力预测模型」的公开大规模 SERP 数据集。贡献：(1) 大规模 in-lab 双模态数据集；(2) 复现既往 SERP 交互发现；(3) 以眼动 fixation 标签训练的 mouse attention baseline。
 
-### 7.2 Task / Environment
+### 7.2 任务 / 环境
 - **事务性查询**：给产品标题 + 对应查询（"buy" + Amazon Product Reviews 语料生成），要求想象购买并浏览 SERP、1 分钟内点击"通常会选择的元素"并确认。
 - **natural interaction**（明确把"要求鼠标刻意跟随眼动"列为他人研究缺陷）。
 - 静态 Google SERP（每 SERP 仅被一名被试看）；全屏 Chrome；平均 trial 22.16s（SD 13.20、中位 20s）；**主实验 6 blocks × 10 trials**（C6 原文 "The main experiment consisted of six blocks per participant"；C7 说明共 8 blocks、前 2 为 warm-up 不分析，故主实验 6 块；47×60−44 malformed = 2,776 ✓）；block 间休息 ≥1 分钟；每 block 前重校准眼动仪。
 
-### 7.3 Participants
+### 7.3 被试
 **N=47（27M/20F）**；年龄 19–44（M=29.66, SD=6.46, Mdn=29）；University of Luxembourg mailing lists + flyer；英语 ≥B2（CEFR）；书面知情同意、20 EUR；伦理 ID 'ERP 21-055'。国别未报告。数据集 **AdSERP 公开发布于 Zenodo**（https://zenodo.org/records/15236546），预处理脚本于 GitHub（MIT 许可）；数据含源 HTML/CSS、SERP 截图（多配置）、mouse/eye 事件、AOI 边界文件。
 
-### 7.4 Raw Mouse Data
+### 7.4 原始鼠标数据
 - 格式 `(t, x, y, e, xpath)`——时间戳、光标位置（相对屏幕左上角）、事件（scroll/mousemove/click）、相关 DOM 元素 xpath。
 - 采集：evtrack 库；**采样频率 NOT REPORTED**。
 - 设备：Dell MS116 鼠标。另有每 trial XML log（screen/window/document）。
 
-### 7.5 Eye-Tracking Data
+### 7.5 眼动数据
 - **Gazepoint GP3 HD，150 Hz**；原始 `(t, x, y, p_r, p_l)`（瞳孔径）。
 - Fixation `(t, x, y, d)`：相对截图左上角像素；**<100ms 过滤**；注视提取算法 NOT REPORTED（Gazepoint Analysis 软件导出）。
 - AOI：**"slot boundaries"**（广告 bounding box），由 DOM 程序化提取（Python + Selenium），`(x,y,w,h)` 相对截图；可提取细粒度元素（DD 广告的图片/价格；organic 的链接/描述/评分/评论）。校准：每 block 前重校准。
 
-### 7.6 Attention Ground Truth
+### 7.6 注意真值
 **客观眼动 fixation**："use an eye tracker to construct an objective ground-truth of continuous visual attention"。
 - `Attention_trial = Σ Fixation_Duration_AOI / Σ Fixation_Duration_total`（0–1，隐含次数与时长）。
 - `label_trial = 1 if Attention_trial > τ`（τ=中位数）。
 - 发布标签/基线 = trial 级二值（目标广告是否吸引注意）。
 
-### 7.7 Mouse Preprocessing
+### 7.7 鼠标预处理
 建模前 Mouse2Vec 输入**重采样到 20Hz**；轨迹取前 5/10/15/20s，短 pad / 长截断；fixation <100ms 过滤。无平滑/去噪/personalization 报告。
 
-### 7.8 Mouse Features
+### 7.8 鼠标特征
 - Mouse2Vec 嵌入（128-dim / 5s 窗口）+ AOI bbox (x,y,w,h)；
 - 时序原始坐标 (x,y) + bbox（给 GRU）。
 无手工特征（作者自述 GRU 做 automatic feature extraction）。
 
-### 7.9 Mouse ↔ Gaze Relationship（有量化）
+### 7.9 Mouse ↔ Gaze 关系（有量化）
 - **Mutual Information**：0.02（right-align DD+organic）/ 0.01（仅 organic）/ 0.06（left-align DD+organic）；布局间不显著（F(2,2644)=0.81, p=.4451）。
 - **KL divergence**：19.89 / 21.90 / 17.27；布局间显著（F=11.93, p<.0001）；post-hoc：**仅 organic 广告的 SERP 上 eye-mouse 分歧最大**。
 - **平均欧氏距离 372.89px（SD=293.78, Mdn=329.83）——约为 Huang et al. (M=178, SD=139) 的两倍**；Δx/Δy 都在 0 附近有峰，但 **Y 轴距离大于 X 轴**。
 - lag：NOT REPORTED。
 
-### 7.10 Model（baseline）
+### 7.10 模型（基线）
 SVM / k-NN（Mouse2Vec）+ GRU（时序，hidden 150、dropout 0.25、Adam、100 epochs、early stopping）。70/30 分层划分（DD 2,443：1,710/733；organic 2,647：1,853/794）。
 
-### 7.11 Prediction Target
+### 7.11 预测目标
 **trial 级二值**：目标广告是否吸引注意力（由 Eq.1+Eq.2 定义）。不是 element-level、不是连续 score。
 
-### 7.12 Evaluation
+### 7.12 评估
 - **最佳：GRU 前 5s → F1=93%（organic）/73%（DD）**；AUC organic 0.97（5s）。
 - 表 3（DD）：GRU 5s 0.70/0.78；10s 0.73/0.82（DD 最优）；15s 0.72/0.77；20s 0.69/0.74。SVM/kNN 更低。
 - **与自评 GT 对比**：同一 GRU 在 Attentive Cursor Dataset（自评）上 F1=56%/69%；本数据集 93%/73%——"self-reported labels are noisier than fixation-based labels"。
 - held-out（70/30），非 within/cross-user 报告。
 
-### 7.13 Individual Differences
+### 7.13 个体差异
 NOT REPORTED（无 per-user 建模/personalization）。相关工作中转述 eye-mouse 协调随 task/scroll 变化。
 
-### 7.14 Task Dependence
+### 7.14 任务依赖
 布局依赖：MI/KL 随 ad 布局变化（仅 organic 分歧最大）；注意分配依赖布局（DD 广告"capture user attention in much larger proportions than previously known"）；前 5–10s 轨迹足够预测注意；点击 82.42% 落在非广告元素。
 
-### 7.15 Causality / Construct Validity
+### 7.15 因果性 / 构念效度
 correlate/measurement；无因果。attention 以注视时长占比定义（引用"longer fixation durations correspond to higher attentional focus"）；<100ms 过滤对齐文献。
 
-### 7.16 Transfer to Our English Reading System
+### 7.16 迁移到我们的英语阅读系统
 - **可直移**：Attention_trial 公式（AOI 注视占比）可复用于段落/选项 AOI；前 5–10s 轨迹预测注意的做法；fixation <100ms 过滤 + 中位数 τ；DOM/xpath 关联事件（天然 element-level）。
 - **要改造**：坐标基准不同（gaze 相对截图、mouse 相对屏幕）——滚动长文需统一坐标、处理滚动位移；静态单屏 SERP 无双栏/滚动/划线交互，事件语义需重新定义；事务性购买任务 vs 阅读理解差异大。
 - **不可移**：只有 trial 级二值广告预测，**不能**据此声称可做 element-level continuous attention prediction；DD 广告 AUC 仅 0.71–0.82 提示高竞争区域（如选项区）信号衰减。
 
-### 7.17 What This Paper Does NOT Establish
+### 7.17 这篇论文不能确立什么
 - **不证明 cursor=gaze**：平均距离 372.89px、MI 0.01–0.06、KL 17–22——mouse 是弱、强依赖布局与轴方向的 attention 代理。
 - 不证明可预测逐 element / 连续 attention（标签是 trial 级广告二值）。
 - 未给注视提取算法/参数、鼠标采样率、eye-mouse 同步方法（复现缺口）。
@@ -561,67 +561,67 @@ correlate/measurement；无因果。attention 以注视时长占比定义（引�
 
 **定位：cursor trajectory → eye-tracking-derived attention（multi-slot sponsored search）。**
 
-### 8.1 Research Question
+### 8.1 研究问题
 把"注意力量化"显式化为两个 ML 任务：(1) 回归——cursor 轨迹能否预测 SERP 槽位的 TFT（总注视时长）/TFC（总注视次数）？(2) 分类——cursor 轨迹能否判断用户是否注意到某类 slot？
 
-### 8.2 Task / Environment
+### 8.2 任务 / 环境
 与 [C6] 相同：47 被试、事务性查询（"buy"+Product Reviews）、静态 Google SERP、8 blocks×10 trials（前 2 为 warm-up）、block 前重校准眼动仪、1 分钟/ trial 点击+确认。**natural interaction**。
 
-### 8.3 Participants
+### 8.3 被试
 N=47（20F/25M；[C6] 报 27M/20F——性别数字小出入，见 §19）；年龄 19–44（M=29.66, SD=6.46）；mailing lists 招募、20 EUR。
 
-### 8.4 Raw Mouse Data
+### 8.4 原始鼠标数据
 格式 `(t, x, y, e)`（e 为鼠标动作如 hover/click；[C6] 实际多 xpath）；**异步事件流，采样频率 NOT REPORTED**；坐标相对屏幕左上角，进模型前归一化到 [0,1]（viewport）；Dell MS116 鼠标。
 
-### 8.5 Eye-Tracking Data
+### 8.5 眼动数据
 **Gazepoint GP3 HD，150Hz**；17" Dell 1280×1024 60Hz；fixation `(t,x,y,d)`；**<100ms 过滤**；AOI = slot boundaries（ad blocks bounding box）。同步方式 NOT REPORTED。
 
-### 8.6 Attention Ground Truth
+### 8.6 注意真值
 **objective eye-tracker fixations**："for both the regression and classification tasks, the ground truth is obtained from the eye-tracker's fixations"。
 - 回归目标：**TFT**（slot 上总注视时长）/ **TFC**（总注视次数）；
 - 分类标签：把 slot 内长 fixation 聚成 cluster，以 TFT/TFC 的**中位数**为阈值二值化（fixation 率 42%/46%/44%/29% per slot 类）。
 
-### 8.7 Mouse Preprocessing
+### 8.7 鼠标预处理
 x/y 归一化到 [0,1]；LSTM 输入固定 250 timesteps（pad/截断），Transformer 变长；无连续重复坐标；无平滑/去噪/personalization。
 
-### 8.8 Mouse Features（每 timestep 4 个）
+### 8.8 鼠标特征（每 timestep 4 个）
 1. cursor coordinates (x,y)（viewport 归一化）；
 2. 每个坐标停留时间；
 3. **slot type at position**（−1..3：非 slot/direct-top/direct-right/organic-top/organic-bottom）；
 4. **normalized sequence index**（轨迹时序位置）。
 特征重要性：**sequence index 最关键**（移除→MSE 3.16 vs 基线 2.94）；slot type 次之（→3.10）；time（→3.05）。Slot metadata：归一化中心 (x_c,y_c)+type 最优；移除 type 影响最大。辅助 AOI：N=3 最优（MSE 2.94）；α=0.33 最优（2.86）。
 
-### 8.9 Mouse ↔ Gaze Relationship
+### 8.9 Mouse ↔ Gaze 关系
 NOT REPORTED（AdSight 内部无对齐/lag/AOI 一致分析；仅转引 "mouse movements are considered as a reasonable proxy for user's gaze, especially on SERPs"）。
 
-### 8.10 Model
+### 8.10 模型
 **Encoder-Decoder Transformer（Seq2Seq）**：encoder 处理 cursor 轨迹 embedding；decoder 输入 slot metadata + encoder 输出；共享 MLP readout 逐 slot 预测。Cursor embedding：共享 MLP + BiLSTM 或 Transformer encoder（l∈{16,32,64}）或 ViT（冻结+微调）。Loss：MSE 或 Listwise Rank Loss（auxiliary slots 用 α 加权）。Adam + Optuna 贝叶斯优化 + 3-fold CV。Baselines：MLP readout、以及 [C1] 的 BiLSTM/ResNet50 复现。
 
-### 8.11 Prediction Target
+### 8.11 预测目标
 - 回归：每 slot 的 **TFT（秒）或 TFC（次数）**（输出数 = SERP 槽位数，随 trial 变）；
 - 分类：4 个二分类——用户是否注意到某 **slot 类**（direct-top/right、organic-top/bottom）。由于 **"only 31% of trials contain a direct-right slot"**，采用统一模型同时输出四个分数，而非四个独立模型（PDF p.7）。
 
-### 8.12 Evaluation
+### 8.12 评估
 - **回归（表 1，Seq2Seq+Transformer）**：TFT MSE **2.86**±0.02（≈1.69s RMSE）/ NDCG 96.07；TFC MSE 50.07/NDCG 96.36。MLP baseline：4.99/82.36（TFT）。Wilcoxon：Seq2Seq>MLP 全组合 p<.05；Seq2Seq+Transformer 恒优于次优 p<.05。
 - **分类（表 2，Seq2Seq+Transformer）**：平均 **AUC 81.24/F1 76.25**；per-class Direct-Top 80.79/73.90、Direct-Right 81.72/75.07、**Organic-Top 71.87/67.27（最弱）**、Organic-Bottom 85.85/82.57。MLP baseline 71.95/66.67；**C1 模型复现仅 66.20/63.29（BiLSTM）、68.29/62.48（ResNet50）**。
 - slot 顺序无关性：任意顺序 MSE 2.9±0.03/NDCG 95.8±0.02。
 - 划分方式未明说 within/cross-user。
 
-### 8.13 Individual Differences
+### 8.13 个体差异
 NOT REPORTED（无 per-user 分析、无 personalization）。
 
-### 8.14 Task Dependence
+### 8.14 任务依赖
 slot 类调节性能（organic-bottom 最好 85.85、organic-top 最差 71.87）；时序表示在 direct-top/right 更优、视觉表示在 organic-bottom 更优；auxiliary slots 提升性能。
 
-### 8.15 Causality / Construct Validity
+### 8.15 因果性 / 构念效度
 纯 predict/correlate；GT 客观（眼动）但只做相关性预测。"attention" 操作化为 TFT/TFC 与 cluster 二值标签。自述首创性表述"we are the first to introduce this methodology"与 [C6] 已用 fixation-AOI 标签训练 baseline 存在张力（见 §19 E 项）。
 
-### 8.16 Transfer to Our English Reading System
+### 8.16 迁移到我们的英语阅读系统
 - **可直移**："轨迹→区域标量注意力"的 Seq2Seq 框架（把 passage/question/选项当 slot）；auxiliary AOI 增强训练（N=3、α≈0.33）；"是否注意到某区域"分类建模；真实眼动 fixation 为 GT + <100ms 过滤。
 - **要改造**：坐标定义——AdSight 是静态全屏 viewport 像素，我们 passage 独立滚动会破坏 slot 边界与坐标对应，需按滚动位置动态算 slot 框；slot type 需替换为 passage/question/option/line 语义类别；LSTM 250 timesteps 与 transformer 变长策略可沿用但分布不同。
 - **不可移**：所有具体数值只对 Google SERP 事务搜索成立；未涉及阅读/滚动/双栏；未建立 cursor=gaze（proxy 是引用的）。
 
-### 8.17 What This Paper Does NOT Establish
+### 8.17 这篇论文不能确立什么
 - **不是独立 replication**：使用 [C6] 同一数据集（47 人、2,776 trials、同 SERP/眼动仪/mouse 日志）；贡献是建模方法。
 - 未建立 cursor=gaze（无 eye-mouse 对齐分析）。
 - 未建立跨布局/跨任务泛化（仅 Google SERP 事务型）。
@@ -634,73 +634,73 @@ slot 类调节性能（organic-bottom 最好 85.85、organic-top 最差 71.87）
 
 **定位：mouse features → task attentiveness / atypical responding（+ 人格）。研究的是 attentiveness/response quality，不是 spatial visual attention。**
 
-### 9.1 Research Question
+### 9.1 研究问题
 "Are mouse movement patterns exhibited in a choice-making task reflective of a person's internal states and traits?"——检验从鼠标行为推断 Big Five 人格，并提出 atypical responding 作为通用不专注/随机作答的测量。
 
-### 9.2 Task / Environment
+### 9.2 任务 / 环境
 - **在线图片评分/选择任务**：每 trial 展示 12 张街道照片，按某属性选 4 张（最喜欢/最不喜欢/可步行性/秩序性/复杂性等）；正常 trial 需 5 次点击（4 选择+continue），attention-check trial 6 次（含拖拽）。
 - **natural interaction**（任务要求点击选择，非强制"眼到鼠到"）。
 - **attention check**：随机分布在 trials 中，要求把损坏图片拖进垃圾桶；**连续两次失败终止会话**。
 - 每 trial 平均完成 14,849ms（SD 6,717）。
 
-### 9.3 Participants
+### 9.3 被试
 **N=791（清洗后）**：483 M/303 F/5 Other；平均 38.8 岁（SD 10.8）。AMT 招募（CloudResearch/TurkPrime）；芝加哥大学两项研究合并。清洗前原始 N 未报告。
 
-### 9.4 Raw Mouse Data
+### 9.4 原始鼠标数据
 - jQuery 采集，**约 60Hz（每 17ms）**，"a record is created whenever a movement occurs"。
 - 每条 4 字段：timestamp(ms)、x、y、dummy-coded click。
 - 坐标像素；无 viewport 归一化报告。
 
-### 9.5 Eye-Tracking Data
+### 9.5 眼动数据
 **NO EYE-TRACKING GROUND TRUTH**（全文无眼动、无 AOI）。
 
-### 9.6 Attention Ground Truth
+### 9.6 注意真值
 "attention/attentiveness" = **session/task 级作答规范度**，操作化为 **atypical responding**：
 - `Abs_Area_Under_Curve = |AUC − 0.5|`：对每被试，将其对每张图的选择（click or not）与群体平均选择做 leave-one-out ROC 得 AUC；偏离随机（AUC≈0.5）越远越异常。ρ=0.86 的评分者间信度保证"偏离群体=不专注"的合理性。
 - **attention check 是数据质量门**（连续两次失败终止会话），Abs_AUC 才是进入分析的投入度指标。
 - **不是 spatial visual attention**（无眼动、无位置语义）。
 
-### 9.7 Mouse Preprocessing
+### 9.7 鼠标预处理
 - 特征在**被试层面跨所有 trials 聚合**（Total_/Avg_ 前缀）。
 - 阈值：**long pause = 静止 >4s**；**fixation = 25px 内微运动持续 >250ms**。
 - 无个人 baseline 归一化（除按被试聚合）；PLS 前 z-scoring。
 
-### 9.8 Mouse Features（11 个）
+### 9.8 鼠标特征（11 个）
 - Time：Total_pause_cnt、Avg_fixation_dur、Avg_agg_fixation_dur、Avg_fixation_cnt；
 - Activity：Avg_euc_dist、Avg_euc_speed（ms/像素）、Avg_completion_time；
 - Click：avg_click_att、reclick_percent_att、avg_click_norm、reclick_percent_norm。
 第 12 变量：Abs_Area_Under_Curve。
 
-### 9.9 Mouse ↔ Gaze Relationship
+### 9.9 Mouse ↔ Gaze 关系
 **NOT REPORTED**（无 gaze）。
 
-### 9.10 Model
+### 9.10 模型
 Pearson 相关 + OLS（11 mouse + Abs_AUC 预测各 Big Five）+ **三套 PLS（multiverse）**（对 X（人格 791×5）与 Y（mouse 791×11）协方差矩阵 SVD；置换检验 10,000 + bootstrap 10,000 + e² 效应量）。**无 train/test、无 held-out 预测验证**。
 
-### 9.11 Prediction Target
+### 9.11 预测目标
 用鼠标特征预测 Big Five 特质与 Abs_AUC（投入度）——是关联/解释，非严格预测验证。**注意**：文中 AUC = atypical responding 的 ROC AUC（预测对象），与 ML 性能 AUC 完全不同。
 
-### 9.12 Evaluation
+### 9.12 评估
 - 单变量（Bonferroni）：**click 类特征与 Abs_AUC 显著负相关**（全部 p<0.001）：avg_click_att r=−0.18、reclick_percent_att r=−0.19、avg_click_norm r=−0.17、reclick_percent_norm r=−0.17；**fixation 次数正相关 r=0.11（p=0.002）**。
 - OLS 预测 Big Five：**R² 仅 0.03（Neuroticism）–0.08（Conscientiousness）**。
 - PLS：LV1 显著（p=0.001，解释 91% 协方差）；效应量 model r=0.29/0.38/0.22、e² mouse 0.64–0.72。
 - 无 held-out/预测性能指标。
 
-### 9.13 Individual Differences
+### 9.13 个体差异
 论文主题即个体差异（人格）。鼠标特征聚合到被试层与人格显著关联；提出用因子载荷预测未来用户特质轮廓（PDF p.11）——personalization 的前瞻提议，未做 held-out 验证。设备差异未记录（touchpad vs mouse 列为局限）。
 
-### 9.14 Task Dependence
+### 9.14 任务依赖
 作者明确承认任务依赖："the specific mouse movement patterns or traits of interest may be different depending on the task context"（PDF p.11）；加入 Age/Gender 会改变 PLS 模式。
 
-### 9.15 Causality / Construct Validity
+### 9.15 因果性 / 构念效度
 correlate/associate（PLS 协方差 + 相关 + OLS），无因果、无预测验证。对 Abs_AUC 的构念效度有明确保留（"additional work is needed to fully establish whether this measure of atypical responding does indeed reflect inattentiveness"）。未预注册。
 
-### 9.16 Transfer to Our English Reading System
+### 9.16 迁移到我们的英语阅读系统
 - **可直移**：click 类特征（avg_click_norm、reclick_percent）与异常/不专注作答的负相关逻辑——对选项的多余/反复点击可作为不投入/犹豫信号；pause >4s、25px/>250ms fixation 阈值**只能作为 candidate operationalization，必须按我们界面的字号/布局/任务重标定**（它们来自图片选择任务 + 特定设备，不是 universal cognitive boundary）；"偏离期望作答"的注意度量思路（我们有正确答案作 GT，比 group-average 更硬）；PLS/multiverse 稳健性检验模板。
 - **要改造**：被试级聚合需下放到 trial/内容块级；atypical responding 需换成任务正确答案/专家标注。
 - **不可移 / 不能引用为**：不能作为"cursor 位置≈视觉注意位置"的证据（无空间成分、无眼动）；图片选择任务与文本阅读/答题界面差异大。
 
-### 9.17 What This Paper Does NOT Establish
+### 9.17 这篇论文不能确立什么
 - **不能证明 cursor=gaze / 光标位置反映视觉注意位置**：无眼动、无 spatial 分析；"task attentiveness" 是任务级作答规范度。
 - 不能证明 Abs_AUC 就等同于不专注（论文自己声明尚需验证）。
 - 不能证明"预测人格"的实用精度（无 held-out；R² 仅 0.03–0.08）。
@@ -709,9 +709,9 @@ correlate/associate（PLS 协方差 + 相关 + OLS），无因果、无预测验
 
 ---
 
-## 10. Cross-Paper Comparison Matrix
+## 10. 跨论文对比矩阵
 
-| 论文 | GT 类型 | 眼动 | 生态效度 (Axis B) | 领域相似度 (Axis C) | N / 样本 | 任务 | 模型 | 预测目标 | 关键结果 | 个体差异 |
+| 论文 | GT 类型 | 眼动 | 生态效度（B 轴） | 领域相似度（C 轴） | N / 样本 | 任务 | 模型 | 预测目标 | 关键结果 | 个体差异 |
 |---|---|---|---|---|---|---|---|---|---|---|
 | [C1] Arapakis 2020 | 自评（post-task 5 点 Likert→二分类） | 无 | MEDIUM（自然交互，但众包单任务、页面被仪器化、仅 1 广告） | LOW–MEDIUM（SERP 广告） | 3,206 众包；2,289 sessions | 事务性搜索 + 点击 | RNN/CNN 表示学习 | "是否注意到广告"（session 级二分类） | 最优 AUC 0.739 / F1 0.731（ResNet50, trajectory 表示）；CNN>RNN；ad format 显著调节 | 未建模 |
 | [C2] Huang 2012 | 眼动 gaze 位置 | 是（Tobii x50, 50Hz） | MEDIUM（实验室自然搜索） | MEDIUM–HIGH（web search，含阅读行为） | 36 被试（38 招募），32 任务 | Bing 搜索（导航+信息型） | 多元线性回归 | gaze 位置（x/y） | RMSEd 236.6→181.1 px（−23.5%）；cursor 滞后 700ms；inactive 58.8%/233px | 个体差异最强（SD 33.9>20.2） |
@@ -724,11 +724,11 @@ correlate/associate（PLS 协方差 + 相关 + OLS），无因果、无预测验
 
 ---
 
-## 11. Attention Ground Truth Matrix
+## 11. 注意真值矩阵
 
 **这是 C 组最重要的概念表。每一篇的 "attention" 都必须按下面的定义理解，禁止跨论文混用。**
 
-| Paper | What is called "attention"? | Ground Truth | 客观性 |
+| 论文 | 被称作「attention」的内容 | 真值（GT） | 客观性 |
 |---|---|---|---|
 | [C1] | "user attention to the ad"（广告注意） | **post-task 自评问卷**（5 点 Likert "你注意到广告到什么程度" → 二分类 noticed/not-noticed，中性丢弃，66% 正类）；页面已不可见时作答 | 主观（事后知觉/记忆） |
 | [C2] | gaze 位置 / gaze-cursor alignment | **眼动 gaze 位置**（Tobii x50, 50Hz, 0.5°≈16px）；alignment = 距离/滞后/RMSE | 客观（眼动） |
@@ -747,7 +747,7 @@ correlate/associate（PLS 协方差 + 相关 + OLS），无因果、无预测验
 
 ---
 
-## 12. Mouse Feature Matrix
+## 12. 鼠标特征矩阵
 
 **按论文实际使用的特征归类（Spatial / Temporal / Movement / Interaction / Representation Learning）。**
 
@@ -777,7 +777,7 @@ correlate/associate（PLS 协方差 + 相关 + OLS），无因果、无预测验
 
 ---
 
-## 13. How Closely Does Cursor Track Gaze?
+## 13. Cursor 与 Gaze 的对应有多紧密？
 
 **结论先行：point-level（点级）上 cursor 与 gaze 的对齐是**条件性、稀疏**的——平均距离在 178–373 px 之间（因研究而异）、cursor 通常滞后 gaze 约 700 ms、inactive 时段（占 58.8%）几乎无对齐信息；但**行为标签化的 cursor**（action/click）以及 **区域级（region/AOI）聚合**要可靠得多。可以支持 `cursor near P2 → P(gaze in P2) increases` 这种概率推断，**不能**支持 `cursor in P2 → gaze = P2`。**注意："AOI≈paragraph" 是项目迁移假设（C6/C7 的 AOI 是广告槽位），不是 C 组直接验证的结论。**
 
@@ -836,7 +836,7 @@ correlate/associate（PLS 协方差 + 相关 + OLS），无因果、无预测验
 
 ---
 
-## 14. Forced Coupling vs Natural Cursor
+## 14. 强制耦合 vs 自然 Cursor
 
 **核心对比：[C4] MoTR 是「界面机制制造 mouse≈reading position」的受控上限；[C5] 是「自然网页中用户可完全不动 mouse」的真实生态证据。两类实验不能直接比较 performance。**
 
@@ -877,7 +877,7 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 
 ---
 
-## 15. Pointer-Assisted Reading
+## 15. 指针辅助阅读（PAR）
 
 **结论先行：存在一类用户会自然把 cursor 当"虚拟手指"沿文本移动（Pointer Assisted Reading, PAR）。这是 [C5] 在大规模自然网站日志中发现的真实现象，聚合统计强烈支持（水平主导、右向慢移≈阅读速度、垂直标记行）。但 PAR 的普遍性是「现象层面」的（cross-continental 的聚合模式），**不是**「每个用户都精确沿词移动」——PAR 松紧在个体间差异大，且用户可完全不用。文献支持「先判断某 user/session 是否处于 PAR 模式、再决定 cursor signal 权重」这一研究方向，但 C 组没有现成的 per-user PAR 分类器，需由 Group D/E 构建。**
 
@@ -912,7 +912,7 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 
 ---
 
-## 16. Mouse → Difficulty
+## 16. Mouse → 难度
 
 ### 16.1 difficulty 是否被实验操纵？
 - [C3]：**是**。三个目标题（employment detail / employee level / education level）每题把被试随机分到 easy/difficult 两个条件之一：
@@ -946,7 +946,7 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 
 ---
 
-## 17. Mouse → Attentiveness
+## 17. Mouse → 投入度
 
 **结论先行：[C8] 证明 mouse 行为（尤其 click 类特征）可以预测 session/task 级的「作答投入度 / 异常作答」（atypical responding），并与人（Big Five）关联。这是**会话级**的 engagement 信号，**不是** spatial attention 信号。cursor 可以同时携带空间注意信号与会话级投入信号，但必须分层，不能合并成一个 attention score。**
 
@@ -969,11 +969,11 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 - **可以，且 C 组支持分层**：
   - **spatial focus 信号**：由 [C2]/[C6]/[C7] 支持——行为标签化、AOI 聚合下 cursor 反映"gaze 在哪区域"（见 §13）。
   - **session-level attentiveness 信号**：由 [C8] 支持——click/reclick/fixation 次数反映"作答投入度"。
-  - 两者是**不同粒度、不同时间尺度**的独立通道（[C2] 的个体差异说明 spatial 信号强度因用户而异，[C8] 的 click 类特征说明 engagement 信号是会话级聚合）。**禁止合并成一个 attention score；应分别建模（见 §26、§20 Mouse Evidence Matrix）。**
+  - 两者是**不同粒度、不同时间尺度**的独立通道（[C2] 的个体差异说明 spatial 信号强度因用户而异，[C8] 的 click 类特征说明 engagement 信号是会话级聚合）。**禁止合并成一个 attention score；应分别建模（见 §26、§20 鼠标证据矩阵）。**
 
 ---
 
-## 18. Self-Reported Attention vs Eye Ground Truth
+## 18. 自评注意 vs 眼动真值
 
 **结论先行：[C1] 的 GT 是任务后自评问卷（"你是否注意到那个广告"），[C6]/[C7] 的 GT 是眼动 fixation。两者不是同一个 construct：自评"注意"测量的是事后广告知觉/记忆，眼动测量的是在线注视。而且 [C6] 用同模型对比：在自评 GT 数据集上 cursor 预测 F1 仅 56%/69%，在眼动 GT 数据集上达 93%/73%——**这一结果与 "fixation-derived labels 比 post-task self-report 更干净" 的判断一致（作者也这样解释），但两个数据集在参与者/SERP/流程/布局上均不同，不是受控的 ground-truth-only 消融实验**（93% vs 56% 不能完全归因于 GT 质量）。作为验证设计原则（眼动 GT 优先）成立，作为纯 GT 效应不成立。**
 
@@ -997,7 +997,7 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 
 ---
 
-## 19. C6 / C7 Data Independence Audit
+## 19. C6 / C7 数据独立性审计
 
 **结论先行：[C6] 与 [C7] 基于同一个实证来源——同一批被试、同一次实验、同 2,776 个 trials、同一眼动仪、同一批 mouse 日志。它们的关系是「dataset 论文 + 在该数据集上的建模论文」，不是两次独立 replication。任何证据综合不得把它们计为两份独立实验。**
 
@@ -1028,7 +1028,7 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 |---|---|---|---|
 | 数据集 | AdSERP（命名于 C6） | "associated dataset paper [43]" = C6 | ✅ 同一 |
 | 被试 | N=47（27M/20F） | N=47（25M/20F） | ✅ 同一（性别报告小出入） |
-| Trials | 2,776 transactional queries | 2,776 trials | ✅ 同一 |
+| 试次（Trials） | 2,776 个事务性查询 | 2,776 trials | ✅ 同一 |
 | 查询来源 | Amazon Product Reviews + "buy" | Amazon Product Reviews 语料 | ✅ 同一 |
 | 眼动仪 | Gazepoint GP3 HD | Gazepoint GP3 HD | ✅ 同一 |
 | 实验流程 | 主实验 6 blocks × 10 trials（C6 措辞） | 总 8 blocks × 10 trials、前 2 为 warm-up（C7 措辞） | ✅ 同一（8−2=6；47×60−44=2,776 ✓） |
@@ -1037,11 +1037,11 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 
 ---
 
-## 20. Mouse Evidence Matrix
+## 20. 鼠标证据矩阵
 
-**依据 C1–C8 逐条分级。Ground Truth 列按 §11 的客观性排序；Evidence Strength 指该信号对「空间注意/阅读位置」的支持强度（不是对 engagement 或 difficulty 的支持）。**
+**依据 C1–C8 逐条分级。真值（GT）列按 §11 的客观性排序；Evidence Strength 指该信号对「空间注意/阅读位置」的支持强度（不是对 engagement 或 difficulty 的支持）。**
 
-| Mouse Signal | Possible Meaning | Supporting Papers | Ground Truth | Evidence Strength | Major Confound |
+| Mouse 信号 | 可能含义 | 支持论文 | 真值（GT） | 证据强度 | 主要混杂 |
 |---|---|---|---|---|---|
 | cursor position（单独、无行为标签） | 当前注意位置 | [C2]（对齐 74–233px 因行为而异）；[C6]（平均距离 372.89px） | 眼动 | **Weak**（条件性；静止时近无信息） | inactive 时段（58.8%）；个体差异；700ms lag |
 | cursor–gaze 距离（点级） | 对齐程度 | [C2] p.4/p.6；[C6] §5.1 | 眼动 | **Weak–Conditional** | 任务/布局/行为调节 |
@@ -1063,7 +1063,7 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 
 ---
 
-## 21. Individual Differences and Personalization
+## 21. 个体差异与个性化
 
 **结论先行：C 组证据一致支持「不能假设每个人 mouse usage pattern 相同」。个人基线差异是 C 组最强的效应之一：个体差异 > 任务差异（[C2]）、个人 baseline 校正有明确价值但增益依任务而异（[C3]）、PAR 松紧个体化（[C5]）、人格与 mouse 行为相关（[C8]）。personal calibration 有明确文献依据——两个用户是否该用不同 cursor evidence strength，答案几乎必然是「是」（但效果大小不能写死）。**
 
@@ -1084,7 +1084,7 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 
 ---
 
-## 22. Attention vs Intent
+## 22. 注意 vs 意图
 
 **结论先行：cursor 对「interaction intent（即将点击什么 / 正在考虑哪个选项 / 操作目标）」比「reading gaze（正在看哪里）」更可靠。这是由 [C2] 的行为对齐证据直接支持的：主动交互（click 前 1 秒内）与 click 时刻是全部行为中 cursor–gaze 对齐最紧的时段（77 px / 74 px），而纯阅读/停留时段对齐松散（150–233 px）。cursor 接近选项 B 时，它更可能反映「用户正要把鼠标指向 B 去点击/操作」，而不是「正在读 B 文本」。**
 
@@ -1102,7 +1102,7 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 
 ---
 
-## 23. Pointer + Viewport Evidence
+## 23. Pointer + Viewport 证据
 
 **结论先行：加上 pointer 后，对 focus 的判断确实比 viewport-only 有增量，但增量是**条件性**的——取决于（a）cursor 是否处于 active 状态、（b）是否伴随 trajectory 指向、（c）用户个体基线。用 C 组证据逐情形判定：**
 
@@ -1135,7 +1135,7 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 
 ---
 
-## 24. Data Collection Implications
+## 24. 数据采集启示
 
 **结论先行：根据 C 组证据，**Raw Observable Events** 必须持久化，derived features 一律从原始序列后处理重算、不存成不可回放的 raw truth。**Raw Observable Events** 至少包括：`pointer x/y/t`、`pointer event type`（mousemove/enter/leave/click/scroll）、`viewport/visibility/layout`、`question navigation`、`underline`、`option elimination`、`answer selection` 等；而 `speed / acceleration / trajectory shape / hover episode / PAR episode` 属于 **derived feature/action**（依赖阈值参数，必须可由 raw 重算）。**`(x,y,t)` 只是 Raw Observable Events 的一部分，不是"唯一 ground truth"。**
 
@@ -1168,7 +1168,7 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 
 ---
 
-## 25. Fifteen Cross-Paper Research Questions
+## 25. 十五个跨论文研究问题
 
 
 ### Q1. cursor position 与 gaze position 到底有多可靠的对应关系？
@@ -1243,7 +1243,7 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 
 ---
 
-## 26. What Group C Establishes
+## 26. C 组确立了什么
 
 ### C 组正式结论（经核对审查修订后建议采用——6 条）
 
@@ -1254,7 +1254,7 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 5. **Personalization 很重要，但效果大小目前不能固定。** [C2]+[C3]+[C5] 一致支持「mouse usage 因人而异」→ 未来可研究 **Student-specific cursor reliability**；但不要写死 "personalization = +3–5pp"（实测 +1.2~4.9pp 依题而异）。
 6. **Region-level probabilistic focus 是合理方向，但仍缺阅读专项验证。** 目标应是 `P(Focus=Passage/P1/P2/Question/Option B/UNKNOWN)` 而非精确 gaze x,y；[C6]/[C7] 提供了方法学可行性证据，但 **paragraph-level + natural reading + independent scrolling + unseen student 四条件同时成立的验证，C 组还没有**。
 
-### Strong Evidence
+### 强证据
 1. **cursor ≠ gaze 在点级上普遍成立**：受控 SERP 上平均距离 178–373 px；cursor 静止时段（58.8%）对齐差（233 px）。[C2]/[C6]。
 2. **cursor 一致滞后 gaze（~700 ms），无反向**：所有个体 cursor 滞后 gaze，不存在 cursor 领跑。[C2] p.5。
 3. **个体差异 > 任务差异，且非年龄/性别可解释**：个体 SD 33.9 > 任务 SD 20.2；Levene p=0.037；个人 baseline 校正有明确价值（增益依任务而异：employment +4.9pp、employee/education +1.2–1.8pp，位置校正另贡献 +0.9–2.4pp）。[C2]/[C3]。
@@ -1266,18 +1266,18 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 7. **mouse→difficulty 证据独立于 mouse→spatial attention**：[C3] 三题上 full mouse model 优于 RT-only，但这是难度标签、无位置语义。
 8. **PAR 作为自然现象存在**：方向/速度聚合统计与"cursor 沿文本读"一致，且 cross-continental。[C5]。
 
-### Moderate Evidence
+### 中等证据
 9. **cursor 反映 interaction intent 比 reading gaze 更可靠**：交互目标处对齐最紧（[C2]），时序特征关键（[C7]）。（intent 方向属合理推论。）
 10. **cursor 沿文本行移动是更强的 reading 证据（自然界面）**：PAR 聚合统计 + 个案支持，但无眼动 GT、松紧个体化。[C5]。
 11. **mouse 特征可预测 difficulty，但增益有限（~1–3pp）且依赖难度来源**；RT 仍是强 baseline。[C3]。
 12. **mouse 特征可预测会话级投入度（atypical responding）**，但无 held-out 验证。[C8]。
 
-### Weak Evidence
+### 弱证据
 13. **cursor 静止/停留提示注意停留**：无法区分读/想/分心/忘动鼠标（[C2] inactive；[C3] hover 阈值敏感）。
 14. **cursor 接近区域（如段落）提示注意该区域**：仅 active 条件下成立，且强度个体化；"区域=段落" 是迁移假设。
 15. **速度/加速度等运动学特征**：与难度相关（[C3]）但对 spatial attention 无直接证据。
 
-### Unsupported / Still Open
+### 不支持 / 仍未解决
 16. **`cursor = gaze`**：被 [C2] 明确反驳（"claiming that the cursor approximates the gaze is misguided"，PDF p.9）。
 17. **`cursor near paragraph → likely attention there`**：作为**默认**命题不成立；只有 active + AOI + 校准条件下才是弱-中证据（条件性成立）。
 18. **`cursor follows text → likely reading`（自然界面）**：现象存在（[C5]），但无自然界面+眼动的 word-level 验证；[C4] 是强制耦合不可外推。
@@ -1288,7 +1288,7 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 23. **滚动/长文档下的 cursor 行为**：C 组全部是静态 SERP（[C1]/[C2]/[C6]/[C7]）或单屏文本（[C4]）或自然浏览统计（[C5]），**没有**一篇研究"独立滚动文档 + cursor"——我们系统的双栏独立滚动是 C 组证据的空白区。
 
 ### §24 逐命题判定速查
-| 命题 | Evidence Strength |
+| 命题 | 证据强度 |
 |---|---|
 | cursor = gaze | **Unsupported（被反驳）** |
 | cursor near paragraph → likely attention there | **Conditionally informative**（active + AOI + 校准） |
@@ -1299,7 +1299,7 @@ C5 提供的是：在无任何强制下，**确实存在用户把 cursor 当"虚
 
 ---
 
-## 27. Inputs Needed From Group D（Raw Event → Action / Activity Segmentation）
+## 27. 需要 D 组提供的输入（原始事件 → 行为 / 活动切分）
 
 C 组把以下问题交给 D 组（只列 D 组需要解决、而 C 组论文只给出启发式/未给出界面的问题）：
 
@@ -1312,7 +1312,7 @@ C 组把以下问题交给 D 组（只列 D 组需要解决、而 C 组论文只
 
 ---
 
-## 28. Inputs Needed From Group E（Process Evidence → Cognitive Diagnosis + Construct Validity）
+## 28. 需要 E 组提供的输入（过程证据 → 认知诊断 + 构念效度）
 
 C 组把以下问题交给 E 组：
 
@@ -1325,11 +1325,11 @@ C 组把以下问题交给 E 组：
 
 ---
 
-## 29. Evidence Index
+## 29. 证据索引
 
-**所有会影响系统设计的结论（Evidence Ledger，含 PDF 页码）。页码 = PDF 物理页。**
+**所有会影响系统设计的结论（证据台账，含 PDF 页码）。页码 = PDF 物理页。**
 
-| # | Conclusion | Paper | PDF Page | Section / Equation / Table / Figure |
+| # | 结论 | 论文 | PDF 页码 | 章节 / 公式 / 表格 / 图 |
 |---|---|---|---|---|
 | 1 | cursor 平均滞后 gaze ~700ms，个体 250ms–>1s；无「gaze 滞后 cursor」 | [C2] | p.2, p.5 | Abstract; Fig. 5; Temporal Effects |
 | 2 | inactive 占 58.8% 时间，对齐距离 233px；examining 32.9%/167px；reading 2.5%/150px；action 5.7%/77px；click 74px | [C2] | p.6 | Table 1 |

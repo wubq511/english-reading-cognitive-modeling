@@ -1,10 +1,10 @@
-# Source Authority Policy
+# 来源权威政策（Source Authority Policy）
 
-## Two independent authority axes
+## 两条独立的权威轴
 
 项目状态/决策与科学事实使用不同的权威顺序，不能混成一条“新文件永远赢”的规则。
 
-### A. Project state and intent
+### A. 项目状态与意图
 
 1. 当前用户在本地项目中的明确决定；
 2. 三份完整聊天 transcript 中较新的明确修正；
@@ -14,7 +14,7 @@
 
 Handoff 是会话边界时由 ChatGPT 生成的派生文档，不是逐字 transcript；用户将它列为主要恢复来源，但出现冲突时完整 transcript 更高。
 
-### B. Scientific claims
+### B. 科学主张
 
 1. 论文原文、正式标准、官方数据/规范与本项目可复现实验；
 2. 已核对原文页码和研究设计的深读报告；
@@ -24,11 +24,11 @@ Handoff 是会话边界时由 ChatGPT 生成的派生文档，不是逐字 trans
 
 历史聊天可以证明“当时讨论或决定过什么”，不能单独证明外部科学事实为真。
 
-## Temporal correction rule
+## 时间修正规则
 
 更晚不自动等于更真。后续内容只有在明确修正同一问题、给出更强证据或记录用户新决定时才覆盖旧内容。若后续只是压缩、迁移或宣告完成，不覆盖旧文档的未完成证据。
 
-## Claim states
+## 主张状态
 
 - `VERIFIED-CURRENT`: 由当前文件、代码、实验或外部一手来源证明。
 - `SOURCE-RECOVERED`: 历史主来源明确记录，但尚未在本地重做。
@@ -37,7 +37,7 @@ Handoff 是会话边界时由 ChatGPT 生成的派生文档，不是逐字 trans
 - `OPEN`: 证据不足或资产不可得。
 - `CONTRADICTED`: 当前证据直接否定。
 
-## Raw materials policy
+## 原始材料政策
 
 - `webchat_raw_materials/` 冻结保留，不移动、不清理、不作为日常研究资产。
 - 以 `RAW_SOURCE_MANIFEST.sha256` 检测意外变化。
@@ -45,11 +45,11 @@ Handoff 是会话边界时由 ChatGPT 生成的派生文档，不是逐字 trans
 - 公开 Git 从初始历史就排除 raw materials；以后删除文件不能清除既有 Git 历史，因此不得先提交再删除。
 - 计划建立加密异地备份，但备份位置和密钥治理尚未决定。
 
-## Canonical ownership map
+## Canonical 归属地图
 
 同一个事实只能有一个 canonical owner；其他文档可以给受众所需的一句话摘要，但必须链接 owner，不能复制会独立腐坏的完整状态或规则。
 
-| Topic | Canonical owner | Other surfaces may contain |
+| 主题 | Canonical owner | 其他表面可包含 |
 | --- | --- | --- |
 | 当前阶段、完成度、下一工作 | `reports/project_state/CURRENT_STATE.md` | 指针，不重复 phase 状态表 |
 | 研究问题 | `reports/project_state/RESEARCH_QUESTIONS.md` | RQ ID 与指针 |
@@ -66,7 +66,7 @@ Handoff 是会话边界时由 ChatGPT 生成的派生文档，不是逐字 trans
 
 README 和 Agent 规则只负责导航与不可突破的项目 invariant，不承担动态研究状态。
 
-## Change and supersession protocol
+## 变更与取代协议
 
 观点、决策、路径、ID、阶段或外部证据变化时，按以下顺序执行：
 
@@ -79,6 +79,6 @@ README 和 Agent 规则只负责导航与不可突破的项目 invariant，不�
 
 “保留历史”不等于让历史判断继续与当前判断并列。追溯证据保留在 provenance/raw 层，日常入口只呈现一个当前答案。
 
-## External source evidence rule
+## 外部来源证据规则
 
 需要全文支持的判断必须绑定 `sources/catalog.yaml` 的稳定 ID，并尽量给 page/section/table/figure。只有摘要时明确标 `ABSTRACT-ONLY`；无法取得全文时，要求用户把合法取得的 PDF 放入 `tmp/pdfs/`，再由 Agent 核验并执行 `scripts/sources inbox`，不能用常识补写原文内容。

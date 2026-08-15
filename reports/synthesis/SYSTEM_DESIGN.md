@@ -1,16 +1,16 @@
-# Baseline System Design
+# Baseline 系统设计
 
 > Status: `SOURCE-RECOVERED + PROJECT-INFERENCE`
-> Implementation: not started
-> Scientific validation: not started
+> 实现：未开始
+> 科学验证：未开始
 
-## 1. Scope
+## 1. 范围
 
 Baseline 要解决的不是“从点击直接读出学生思想”，而是构建一条可审计的测量链：忠实记录交互、恢复 UI 状态、抽象行为、生成有上下文的候选过程证据，最后只让通过独立效度门的证据进入学生模型。
 
 Baseline runtime 不调用 LLM、生成式 AI 或 Agent。研究与实验外环可以使用 AI，但其产物是待验证工件，详见 `AI_RESEARCH_TOOLING_POLICY.md`。
 
-## 2. Low-interference task UI
+## 2. 低干扰任务 UI
 
 ```text
 ┌────────────────────────────┬─────────────────────────┐
@@ -24,7 +24,7 @@ Baseline runtime 不调用 LLM、生成式 AI 或 Agent。研究与实验外环�
 └────────────────────────────┴─────────────────────────┘
 ```
 
-Locked properties:
+已锁定的属性：
 
 - Passage 独立滚动；右侧一次只显示一道题。
 - Prev/Next 与题号跳转并存，允许自由跳题。
@@ -34,21 +34,21 @@ Locked properties:
 
 `displayed_question_id` 是 UI context，不代表学生此刻只在思考该题；passage action 也不能自动归属给当时显示的题目。
 
-## 3. Collection tiers
+## 3. 采集层
 
-| Namespace | Role | Examples | Runtime role |
+| 命名空间 | 角色 | 示例 | 运行时角色 |
 | --- | --- | --- | --- |
-| `COL-L0` | passive interaction | viewport、scroll、navigation、answer history、visibility、timing、pointer | production |
-| `COL-L1` | paper-native explicit action | underline/highlight、text selection、option eliminate/restore | production |
-| `COL-L2` | explicit cognitive report | stimulated recall、explanation、confidence、interview | research only |
+| `COL-L0` | 被动交互 | viewport、scroll、navigation、answer history、visibility、timing、pointer | 生产 |
+| `COL-L1` | 纸面原生显式动作 | underline/highlight、text selection、option eliminate/restore | 生产 |
+| `COL-L2` | 显式认知报告 | stimulated recall、explanation、confidence、interview | 仅研究 |
 
 `COL-L2` 不进入常规答题流程，也不是绝对 cognition truth。
 
-## 4. Object-centric raw measurement
+## 4. 以对象为中心的原始测量
 
 Raw event 只记录浏览器可观察事实，不写 `student_confused`、`reading_P2` 或 `found_evidence`。事件可以同时关联 session、passage、paragraph、sentence、question、option 和 annotation；当前显示题目只是 context。
 
-Canonical V1 event vocabulary:
+Canonical V1 事件词汇表：
 
 ```text
 session_started                 session_submitted
@@ -72,20 +72,20 @@ layout_changed                  pointer_sampled
 
 Raw store append-only。纠错或新算法产生新派生版本，不能覆盖原始事件。
 
-## 5. System measurement layers
+## 5. 系统测量层
 
-| Layer | Responsibility | Current decision state |
+| 层 | 职责 | 当前决策状态 |
 | --- | --- | --- |
-| `SYS-L0` Measurement/Logging | 忠实记录事件、时钟和对象 | structure `LOCKED` |
-| `SYS-L1` State Reconstruction | 确定性恢复 UI state 与 replay | structure `LOCKED` |
-| `SYS-L2` Behavioral Abstraction | semantic events、composites、continuous episodes | mixed; continuous segmentation is gate |
-| `SYS-L3` Focus Estimation | region-level belief + abstention | `EXPERIMENT-GATE` |
-| `SYS-L4` Contextual Evidence | behavior + task semantics + temporal context | structure `LOCKED`, mappings open |
-| `SYS-L5` Process/Strategy Modeling | hypotheses, patterns, discovery/confirmation | `EXPERIMENT-GATE` |
-| `SYS-L6` Cognitive Validity Gate | 决定 mapping 能否支持认知用途 | must exist, `LOCKED` |
-| `SYS-L7` Student Model | 跨题整合技能/latent traits | `EXPERIMENT-GATE` |
+| `SYS-L0` 测量/日志 | 忠实记录事件、时钟和对象 | 结构 `LOCKED` |
+| `SYS-L1` 状态重建 | 确定性恢复 UI state 与 replay | 结构 `LOCKED` |
+| `SYS-L2` 行为抽象 | 语义事件、复合行为、连续片段 | 混合；连续分段是门槛 |
+| `SYS-L3` 焦点估计 | 区域级信念 + 弃权 | `EXPERIMENT-GATE` |
+| `SYS-L4` 情境证据 | 行为 + 任务语义 + 时间上下文 | 结构 `LOCKED`，映射开放 |
+| `SYS-L5` 过程/策略建模 | 假设、模式、发现/确认 | `EXPERIMENT-GATE` |
+| `SYS-L6` 认知效度门槛 | 决定 mapping 能否支持认知用途 | 必须存在，`LOCKED` |
+| `SYS-L7` 学生模型 | 跨题整合技能/latent traits | `EXPERIMENT-GATE` |
 
-## 6. Deterministic before probabilistic
+## 6. 确定性先于概率性
 
 无需 ML 的原子行为直接恢复：题目导航、答案选择、选项排除/恢复、划线创建/删除、文本选择。
 
@@ -99,7 +99,7 @@ scroll samples -> scroll end = SCROLL_BURST(candidate)
 
 只有 scroll/pointer 等连续流需要真正的 segmentation 候选比较。规则、change-point、HMM、HSMM 和 hybrid 均未在本项目同数据 head-to-head；不得提前指定 winner。
 
-## 7. Focus as belief, not gaze
+## 7. 焦点是信念，不是注视
 
 初始状态空间保持粗粒度：`PASSAGE_P1..Pn`、`QUESTION_STEM`、`OPTION_A..D`、`UNKNOWN`。输出为概率分布与证据质量，不是硬真值。
 
@@ -107,7 +107,7 @@ Pointer 只是上下文相关的辅助信号：active pointer、wheel target、s
 
 Webcam/eye tracking 不属于 baseline。它们可以在未来成为独立、经伦理批准的研究子项目，不能作为普通系统依赖。
 
-## 8. Task semantic context
+## 8. 任务语义上下文
 
 题目包需要显式 metadata：
 
@@ -123,7 +123,7 @@ candidate_skill_tags: []
 
 这些是 task prior/design metadata，不是学生实际过程或技能真值。官方 item type、作者意图、Q-matrix 或正确 evidence span 不能自动证明学生采用了对应认知过程。
 
-## 9. Contextual Evidence Packet
+## 9. 情境证据包
 
 裸 feature 不直接进入 cognition model。最小 packet 应绑定：
 
@@ -150,13 +150,13 @@ evidence_quality: unknown
 
 同一 revisit/pause/navigation 的解释依赖题目、前后行为、学生与时机，必须保留 competing hypotheses。
 
-## 10. Discovery and confirmatory lanes
+## 10. 发现与确认通道
 
 Discovery lane 可使用 sequence mining、process mining、DTW、clustering、network、mixture 或 latent-state models。其输出只能先命名为 `Pattern 1`、`Cluster 2`、`Latent State 3`。
 
 Confirmatory lane 只有在理论、任务设计、独立 response-process evidence、reliability 和泛化共同支持后，才将 pattern 命名为 Search、Verification 等 construct 并允许进入 runtime。
 
-## 11. Validation Registry
+## 11. 验证注册表
 
 每个 behavior→cognition mapping 至少记录：
 
@@ -176,16 +176,16 @@ version: 1
 
 状态至少包括 `VALIDATED`、`CONDITIONAL`、`UNVALIDATED`、`INVALIDATED`。任何 cognitive conclusion 必须能下钻到 packet、episode、action、state timeline 和 raw events。
 
-## 12. Student model gate
+## 12. 学生模型门槛
 
 Response-only baseline 永久保留。候选模型包括 response+RT/count、response+validated process indicators、key-action/phantom-item DCM、SRM/MSRM、TEM-like 和 joint process models；目前没有 winner。
 
 只有通过 `SYS-L6/BENCH-E4` 的 process evidence 才可进入 student model。模型拟合更好、分类更准或 simulation recovery 更高，都不能反向证明输入 mapping 的心理含义正确。
 
-## 13. Research plane
+## 13. 研究平面
 
 研究验证链使用 natural trace + replay + stimulated recall + independent human coding；眼动/Webcam 只是未来可选验证模态。Participant report、coder label、system prediction 和 sensor evidence 分库存储并保留分歧。详情见 `MEASUREMENT_VALIDATION_FRAMEWORK.md` 和 `HUMAN_RESEARCH_GATES.md`。
 
-## 14. Traceability to recovery sources
+## 14. 到恢复来源的可追溯性
 
 本设计的主要恢复锚点记录在 `reports/provenance/CLAIM_LEDGER.md`。架构是跨论文和跨领域的项目综合，不应伪装成某篇论文原样提出。

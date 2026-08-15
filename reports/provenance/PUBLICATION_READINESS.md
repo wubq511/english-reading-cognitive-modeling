@@ -1,56 +1,56 @@
-# Public Repository Readiness
+# 公开仓库就绪度（Public Repository Readiness）
 
 Status: `PUBLISHED; LIVE VERIFIED; PROTECTED`
 Audit date: 2026-08-14
 Target: `https://github.com/wubq511/english-reading-cognitive-modeling`
 
-## Decision
+## 决定
 
-The local research recovery, source-boundary migration and automation migration passed the final audit. The project owner explicitly authorized public publication, and the repository is live at `https://github.com/wubq511/english-reading-cognitive-modeling`.
+本地研究恢复、来源边界迁移与自动化迁移通过了最终审计。项目所有者明确授权公开发布，仓库已在 `https://github.com/wubq511/english-reading-cognitive-modeling` 上线。
 
-The initial audited snapshot `f3a826c7d4e53e4fdb9bad784a16ffe90646f079` was pushed to `main`. GitHub Actions run `31786325757` completed successfully. The protected branch requires pull requests and a strict `verify` status check, applies the rule to the administrator, and disallows force-pushes and branch deletion.
+经审计的初始快照 `f3a826c7d4e53e4fdb9bad784a16ffe90646f079` 已推送到 `main`。GitHub Actions run `31786325757` 成功完成。受保护分支要求 pull request 和严格的 `verify` 状态检查，规则适用于管理员，并禁止 force-push 与删除分支。
 
-The approved first snapshot must remain metadata-first: it contains canonical research documents, provenance, source metadata/checksums and recovery tooling, but no raw chat export, third-party source bytes or human-participant data.
+获准的初始快照必须保持元数据优先：它包含 canonical 研究文档、溯源、来源元数据/校验值与恢复工具，但不包含 raw 聊天导出、第三方来源字节或人类参与者数据。
 
-## Audited public boundary
+## 已审计的公开边界
 
-| Check | Result |
+| 检查项 | 结果 |
 | --- | --- |
-| Tracked raw recovery material | `0`; `webchat_raw_materials/` is ignored |
-| Tracked files after publication closeout | `99` |
-| Tracked third-party source files | `0`; only `sources/library/README.md` is tracked below the ignored local library |
-| Tracked human/private data directories | `0` |
-| Common credential/token/private-key signatures | no matches in the staged snapshot |
-| Credentialized URLs | no matches |
-| Personal email addresses | no matches |
-| Machine-local absolute paths | no matches |
-| Largest tracked blob | 277,815 bytes; no GitHub large-file boundary is approached |
-| Citation metadata | `CITATION.cff` parses successfully |
-| Workflow supply-chain pins | checkout `v7.0.1` and setup-python `v7.0.0` commit hashes verified against upstream tags |
-| Member activity logs | append-only schema, staged gate and post-boundary history gate covered by repository tests; CI fetches full history |
-| Diff hygiene | `git diff --cached --check` passes |
+| 被跟踪的 raw 恢复材料 | `0`；`webchat_raw_materials/` 被忽略 |
+| 发布收尾后被跟踪的文件 | `99` |
+| 被跟踪的第三方来源文件 | `0`；在被忽略的本地库之下，只有 `sources/library/README.md` 被跟踪 |
+| 被跟踪的真人/私有数据目录 | `0` |
+| 常见凭据/token/私钥签名 | 暂存快照中无匹配 |
+| 带凭据的 URL | 无匹配 |
+| 个人邮箱地址 | 无匹配 |
+| 机器本地绝对路径 | 无匹配 |
+| 最大的被跟踪 blob | 277,815 字节；未接近 GitHub 大文件边界 |
+| 引文元数据 | `CITATION.cff` 解析成功 |
+| 工作流供应链固定 | checkout `v7.0.1` 与 setup-python `v7.0.0` 的 commit hash 已对照上游 tag 核验 |
+| 成员活动日志 | append-only schema、暂存门禁与边界后历史门禁由仓库测试覆盖；CI 获取完整历史 |
+| diff 卫生 | `git diff --cached --check` 通过 |
 
-The credential scan is a bounded signature scan, not a proof that arbitrary prose can never encode sensitive information. The stronger structural protection is that the raw, PDF, AI-payload and human-data trees are excluded by path and verified before publication.
+凭据扫描是有边界的签名扫描，不能证明任意散文都不可能编码敏感信息。更强的结构性保护是：raw、PDF、AI 载荷与真人数据目录树按路径排除，并在发布前核验。
 
-## Source and rights state
+## 来源与权利状态
 
-- 80 required PDF/attachment files are present locally and pass exact SHA-256 and media-signature checks.
-- 11 catalog records have a currently hash-reproducible `DIRECT_PUBLIC` acquisition route; 7 are `MANUAL_ONLY`; 62 remain `UNKNOWN`. `METHOD-003` was downgraded after its official endpoint returned bytes that differed from the catalog lock during a fresh-clone audit.
-- Eight specific versions are conservatively marked `REDISTRIBUTION_ALLOWED`, ten `RESTRICTED`, and 62 `UNKNOWN`.
-- Despite the permissions, **zero source originals may enter the first Git history**. Any later release is a separate file-level audit and public-approval event.
-- Collaborators run `scripts/bootstrap` once. Human downloads go to `tmp/pdfs/`; Agents update metadata and use `scripts/sources inbox`, which removes only verified migrated copies.
+- 80 个必需的 PDF/附件文件已在本地，并通过精确 SHA-256 与媒体签名检查。
+- 11 条 catalog 记录当前有可 hash 复现的 `DIRECT_PUBLIC` 获取渠道；7 条为 `MANUAL_ONLY`；62 条仍是 `UNKNOWN`。`METHOD-003` 在一次全新克隆审计中，官方端点返回的字节与 catalog 锁定不一致，因此被降级。
+- 八个特定版本被保守标记为 `REDISTRIBUTION_ALLOWED`，十个为 `RESTRICTED`，62 个为 `UNKNOWN`。
+- 尽管有这些许可，**零个来源原件可以进入最初的 Git 历史**。任何后续发布都是独立的文件级审计与公开批准事件。
+- 协作者运行一次 `scripts/bootstrap`。人工下载进入 `tmp/pdfs/`；Agent 更新元数据并使用 `scripts/sources inbox`，它只删除已核验的迁移副本。
 
-The legal and engineering rationale is recorded in [`../../docs/project-management/SOURCE_DISTRIBUTION.md`](../../docs/project-management/SOURCE_DISTRIBUTION.md).
+法律与工程理由记录在 [`../../docs/project-management/SOURCE_DISTRIBUTION.md`](../../docs/project-management/SOURCE_DISTRIBUTION.md)。
 
-## Research-claim boundary
+## 研究主张边界
 
-- The public reports recover and organize prior work; they are not peer review or empirical confirmation.
-- The existing-literature audit samples major claims and marks unsupported upgrades, but does not certify every sentence of every legacy report.
-- Consequential future claims still require stable source IDs plus page/section evidence and, where relevant, independent empirical validation.
-- Phase 2A is design-closed only. Phase 0 remains open, Phase 3 is a draft specification, Phase 4 is not completed, and no system, benchmark result or human study exists yet.
-- AI/Agent use is allowed in the research and experiment plane under policy; the baseline runtime itself remains free of LLMs, generative AI and Agents.
+- 公开报告恢复并组织先前工作；它们不是同行评审或实证确认。
+- 既有文献审计抽样检查主要主张并标记无支持的升级，但并不认证每份遗留报告的每一句话。
+- 未来重大主张仍需要稳定来源 ID 加页码/章节证据，并在相关时提供独立实证验证。
+- Phase 2A 仅设计关闭。Phase 0 仍然开放，Phase 3 是规范草稿，Phase 4 未完成，且尚不存在系统、benchmark 结果或人类研究。
+- 按政策，AI/Agent 在研究平面与实验平面被允许；baseline runtime 本身仍然不含 LLM、生成式 AI 与 Agent。
 
-## Verification evidence
+## 验证证据
 
 ```text
 39 unit tests (local complete corpus)              PASS
@@ -71,12 +71,12 @@ initial GitHub Actions run 31786325757            PASS on published commit f3a82
 main branch protection                            PASS: PR + strict verify; admin enforced; no force-push/delete
 ```
 
-The Git client does not clone or automatically enable repository-controlled hooks. Each clone therefore needs one explicit bootstrap invocation; root `AGENTS.md` requires Codex and Claude (through the `CLAUDE.md` `@AGENTS.md` import) to announce and run it, so the human does not need to remember the command. `scripts/bootstrap` on POSIX and `.\scripts\bootstrap.cmd` on Windows configure hooks, validate/repair repository skill mappings, restore sources and check log identity. Checkout, merge, commit and push hooks then enforce continuity. Duplicate tool-specific SessionStart hooks remain deferred unless real omission evidence appears. The current local branch proposes macOS/Windows skill-mapping CI, but that remote acceptance evidence remains pending until an explicitly approved push/PR. See [`../../docs/project-management/AGENT_BOOTSTRAP.md`](../../docs/project-management/AGENT_BOOTSTRAP.md), [`../../docs/agents/SKILL_EVALUATION.md`](../../docs/agents/SKILL_EVALUATION.md), and [`../../logs/README.md`](../../logs/README.md).
+Git 客户端不会克隆或自动启用仓库控制的 hooks。因此每个克隆需要显式执行一次 bootstrap；根级 `AGENTS.md` 要求 Codex 和 Claude（通过 `CLAUDE.md` 的 `@AGENTS.md` 导入）宣告并运行它，这样人类不需要记住命令。POSIX 上的 `scripts/bootstrap` 与 Windows 上的 `.\scripts\bootstrap.cmd` 配置 hooks、校验/修复仓库技能映射、恢复来源并检查日志身份。之后 checkout、merge、commit 与 push hooks 强制执行连续性。重复的工具专属 SessionStart hooks 保持延后，除非出现真实遗漏证据。当前本地分支提议 macOS/Windows 技能映射 CI，但该远端验收证据在得到明确批准的 push/PR 之前仍为待定。参见 [`../../docs/project-management/AGENT_BOOTSTRAP.md`](../../docs/project-management/AGENT_BOOTSTRAP.md)、[`../../docs/agents/SKILL_EVALUATION.md`](../../docs/agents/SKILL_EVALUATION.md) 与 [`../../logs/README.md`](../../logs/README.md)。
 
-## Residual actions after publication
+## 发布后的遗留动作
 
-1. Continue the item/data-rights, laboratory and ethics queue in [`../project_state/MANUAL_ACTIONS.md`](../project_state/MANUAL_ACTIONS.md).
-2. Treat every later push, Release or third-party-file distribution as a new publication event under `AGENTS.md`; the initial approval does not grant blanket publication authority.
-3. Never infer that deleting a later-public artifact retracts copies already cloned; prevent unsafe publication before push.
+1. 在 [`../project_state/MANUAL_ACTIONS.md`](../project_state/MANUAL_ACTIONS.md) 中继续题目/数据权利、实验室与伦理队列。
+2. 按 `AGENTS.md`，把每次后续 push、Release 或第三方文件分发都视为新的发布事件；初次批准不授予笼统的发布权限。
+3. 切勿推断删除后来公开的产物能撤回已克隆的副本；在 push 之前阻止不安全的发布。
 
-These follow-up actions do not expand the first publication scope.
+这些后续动作不扩大首次发布的范围。

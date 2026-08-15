@@ -1,6 +1,6 @@
 # 该部分论文阅读和思考主要聚焦于UI交互行为，并经过筛选后选取了A级论文进行深入阅读，我自己记下了以下笔记，调研论文目录如下：
 
-| ID | 年份 | 主题 | 文献 | Venue |
+| ID | 年份 | 主题 | 文献 | 发表处 |
 | --- | --- | --- | --- | --- |
 | UIB-001 | 2026 | 可用性诊断 | AMUSED: A Multi-Modal Dataset for Usability Smell Identification | IEEE Transactions on Affective Computing |
 | UIB-002 | 2025 | 动态探索策略 | Analyzing the Shifts in Users' Data Focus in Exploratory Visual Analysis | IUI |
