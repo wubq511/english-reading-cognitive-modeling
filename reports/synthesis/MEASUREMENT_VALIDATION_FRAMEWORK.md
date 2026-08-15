@@ -1,4 +1,4 @@
-# Measurement and Validation Framework (Phase 2A)
+# 测量与验证框架（Phase 2A）
 
 > Design status: `CLOSED FOR ITEM-INDEPENDENT V1`
 > Implementation status: `NOT STARTED`
@@ -6,7 +6,7 @@
 
 “Closed”只表示题目无关的 V1 结构已经充分收敛；schema、阈值、样本量、实际可靠性和效度仍需实现和实验。
 
-## 1. Product definition
+## 1. 产品定义
 
 Phase 2A 的产品不是一个扁平的“认知标签数据集”，而是可重放的 `Response-Process Evidence Dataset`：
 
@@ -24,7 +24,7 @@ immutable raw events
 
 这样 taxonomy 变化时可以从原证据重新编码，而不必重新做真人实验。
 
-## 2. Raw measurement contract
+## 2. 原始测量契约
 
 - Object-centric append-only events；raw 内禁止 cognition。
 - `wall_time + mono_ms + sequence`，保存 time origin 与 schema version。
@@ -33,13 +33,13 @@ immutable raw events
 - 内部 store 可以 OCEL-inspired，但不是宣称完全遵守 OCEL 标准。
 - Caliper 等语义导出是可选 interoperability 层，不能替代内部忠实记录。
 
-## 3. Replay fidelity
+## 3. Replay 保真度
 
 Replay 必须从日志和版本化任务资产确定性重建，不以屏幕视频作为唯一真相。对关键事件保存足够 layout/object snapshot，验证原始状态与 replay state 的差异。
 
 `BENCH-E0` 至少覆盖：navigation、answer history、eliminate/restore、underline create/delete、scroll burst、visibility、resize/zoom、duplicate/missing/out-of-order events。
 
-## 4. Stimulated recall
+## 4. 刺激回忆
 
 1. 学生正常完成任务；不显示模型预测。
 2. 任务后尽快 replay；不设未经证据支持的固定 5–10 分钟硬阈值。
@@ -50,7 +50,7 @@ Replay 必须从日志和版本化任务资产确定性重建，不以屏幕视�
 
 Recall 是回顾性证据，受记忆、重构和提示影响，不是 cognition 神谕。
 
-## 5. Annotation record
+## 5. 标注记录
 
 ```yaml
 episode_id: string
@@ -71,7 +71,7 @@ provenance: {}
 
 必须允许 `AMBIGUOUS_SEARCH_VERIFICATION`、`UNKNOWN_RECALL`、`INSUFFICIENT_OBSERVATION`、`CODER_DISAGREEMENT` 等状态。Adjudication 新增裁决，不覆盖独立原 label。
 
-## 6. Blinding and reliability
+## 6. 盲法与信度
 
 - 至少两名人类 coder 独立标注；关键认知构念由第三人 adjudicate。
 - Coders 不看 system/LLM predictions；adjudicator 不看系统输出。
@@ -81,29 +81,29 @@ provenance: {}
 
 AI 作为候选第三臂时还必须遵守 `AI_RESEARCH_TOOLING_POLICY.md`，不能替代 reference standard。
 
-## 7. Provenance chain
+## 7. 溯源链
 
 任何派生结论保留：source event range、task asset version、reconstruction version、segmentation version、codebook、coder、adjudication、mapping registry version、model version 和生成时间。Derived result 不覆盖旧版本。
 
-## 8. Production vs research
+## 8. 生产 vs 研究
 
-| Evidence | Production | Research validation |
+| 证据 | 生产 | 研究验证 |
 | --- | --- | --- |
-| natural `COL-L0/L1` | yes | yes |
-| replay | no | yes |
-| stimulated recall/interview | no | H2/H3 only |
-| human annotation | no | yes |
-| screen/audio recording | no | M1 approved only |
-| Webcam/eye tracking | no | optional M1 sub-study only |
+| 自然的 `COL-L0/L1` | 是 | 是 |
+| replay | 否 | 是 |
+| 刺激回忆/访谈 | 否 | 仅 H2/H3 |
+| 人工标注 | 否 | 是 |
+| 屏幕/音频录制 | 否 | 仅经批准的 M1 |
+| Webcam/眼动追踪 | 否 | 仅可选 M1 子研究 |
 
-## 9. Phase 2B remains open
+## 9. Phase 2B 仍未封闭
 
 只有具体题目和 pilot 到位后才能冻结：
 
-- per-item EvidenceMap；
-- item-specific recall probes；
-- episode taxonomy adjustments；
+- 逐题 EvidenceMap；
+- 题目特定 recall probes；
+- episode taxonomy 调整；
 - thresholds、class prevalence 与 sample size；
-- final annotation budget and adjudication rules。
+- 最终标注预算与 adjudication 规则。
 
 提前写死这些项目会把研究假设反向编码进题目和标签。

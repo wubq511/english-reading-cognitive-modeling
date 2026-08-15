@@ -1,4 +1,4 @@
-# Project State
+# 项目状态
 
 - [CURRENT_STATE.md](CURRENT_STATE.md)：截至 2026-08-14 的唯一状态入口。
 - [RESEARCH_QUESTIONS.md](RESEARCH_QUESTIONS.md)：问题树与成功条件。

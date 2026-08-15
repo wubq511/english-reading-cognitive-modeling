@@ -49,6 +49,13 @@
 - 已提交日志 append-only；更正时新建 `supersedes` 条目，不修改、删除或改名旧记录。
 - 首次 commit 前配置 `scripts/logs init <member-id>`；生成命令、schema、category 和门禁唯一说明见 `logs/README.md`。
 
+## Member-facing language
+
+- 首要读者是研究成员的内容——聊天汇报、`reports/research/human-tasks/`、成员日志——用中文写。
+- `reports/` 研究资产用中文论述（分析、论断、局限、决策含义）；英文只保留在不可翻的部分：文献标题、引文原文、检索式、source ID 与术语锚点。每个研究资产开头仍有中文「结论速览」段（核心结论、怎么得出的、未决项）。
+- 状态/判定枚举值（如 `OPEN`、`CURRENT`、`PROVEN`、`Resolved`）无论反引号还是粗体排版都保持英文，保证跨文件检索一致。
+- Agent 操作手册类文档（`.agents/skills/`、`docs/agents/`）维持现用语言，不受此约束。
+
 ## AI, human data, and publication
 
 - Baseline runtime 不调用 AI/Agent；研究外环遵守 `AI_RESEARCH_TOOLING_POLICY.md`。

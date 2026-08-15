@@ -1,4 +1,4 @@
-# Research Synthesis
+# 研究综合
 
 本目录包含从历史研究恢复、经冲突裁决后供日常研究使用的 canonical 综合。
 

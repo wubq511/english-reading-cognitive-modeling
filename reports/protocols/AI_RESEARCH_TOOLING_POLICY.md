@@ -1,6 +1,6 @@
 # AI 研究工具使用政策
 
-> 状态：ACTIVE
+> 状态：`ACTIVE`
 > 版本：1.0
 > 生效日期：2026-08-14
 > 适用范围：本项目的无 AI/Agent baseline、合成数据、实验编排、人工与 AI 标注、质量控制及结果报告
@@ -21,10 +21,10 @@ AI 产物一律视为**待验证的研究工件**，而非天然可信的证据�
 ### 2.1 LOCKED：不可在日常实验中自行放宽
 
 1. **Runtime baseline 不含 AI/Agent。** 若未来要研究 AI 增强，必须作为独立实验臂，与无 AI baseline 分开实现、标识和报告。
-2. **AI 不是真人认知真值。** 任何 AI 生成的过程数据、访谈、stimulated recall、认知/元认知标签或解释，都不能单独作为真人认知状态、情绪、策略或学习机制的 ground truth。
+2. **AI 不是真人认知真值。** 任何 AI 生成的过程数据、访谈、刺激回忆（stimulated recall）、认知/元认知标签或解释，都不能单独作为真人认知状态、情绪、策略或学习机制的 ground truth。
 3. **参考标准来自独立人类证据链。** 正式认知标签使用 `human reference annotation` 或 `adjudicated reference standard`；不得把专家共识描述为可直接观察的绝对真值。人类 reference set 必须独立于待评估系统和 AI 标注器。
 4. **合成标签仅是 simulation truth。** 它只能证明方法在已声明 data-generating mechanism（DGM）下能否回收设计者写入的状态，不能证明真人服从该 DGM。
-5. **逐任务验证。** 每一种构念、标签、语言、任务、数据源、目标人群、codebook 版本和 AI pipeline 都必须分别验证；其他数据集上的高性能不得外推。
+5. **逐任务验证。** 每一种构念、标签、语言、任务、数据源、目标人群、编码手册（codebook）版本和 AI pipeline 都必须分别验证；其他数据集上的高性能不得外推。
 6. **完整 provenance。** 未满足第 7 节最小字段的 AI 工件不能进入正式分析。
 7. **人类数据保护。** 未经相应同意、审查和数据处理安排，不得向外部 AI API 发送可识别的访谈、录屏、音频、Webcam、gaze 或个体级过程日志。
 
@@ -32,8 +32,8 @@ AI 产物一律视为**待验证的研究工件**，而非天然可信的证据�
 
 AI/Agent 可以用于：
 
-- 生成 schema、时间戳、缺失、重复、乱序、噪声和极端路径等工程测试数据；
-- 在人类已冻结的状态机/DGM 之上生成表面语言或行为变体；底层状态与 oracle 必须由独立规则预先确定；
+- 生成模式（schema）、时间戳、缺失、重复、乱序、噪声和极端路径等工程测试数据；
+- 在人类已冻结的状态机/DGM 之上生成表面语言或行为变体；底层状态与理想参照（oracle）必须由独立规则预先确定；
 - 实验编排、代码实现、候选假设和敏感性分析；
 - 候选证据片段抽取、重复/冲突检查、codebook 歧义提示和 negative-case 搜索；
 - 作为与人类标注并列的独立“第三臂”；
@@ -58,7 +58,7 @@ AI/Agent 可以用于：
 
 ### 2.4 PROHIBITED：禁止用途
 
-- 让 AI 单独充当 ground truth、reference standard 或最终 adjudicator；
+- 让 AI 单独充当 ground truth、reference standard 或最终裁决员（adjudicator）；
 - 用同一模型或高度同源的模型家族生成“学生过程”、标注过程并评价系统，形成循环论证；
 - 把 prompt/codebook 写入的规则生成成数据，再以系统成功回收这些规则作为构念效度、生态效度、真人效度或干预效果证据；
 - 在用于 prompt/codebook 调优的数据上报告最终性能；
@@ -98,7 +98,7 @@ LLM 合成回答的均值可能接近真人而方差和高阶关系明显失真�
 
 1. 先冻结 DGM、状态空间、参数范围和 oracle，再生成表面过程数据。
 2. 生成器与待评估测量器逻辑隔离；不得让测量器读取隐藏状态或生成 prompt。
-3. 若使用 LLM，LLM 只负责 surface realization；隐藏状态和预期结果由非 LLM 规则生成并单独保存。
+3. 若使用 LLM，LLM 只负责表层实现（surface realization）；隐藏状态和预期结果由非 LLM 规则生成并单独保存。
 4. 至少包含无 LLM 规则生成组，并对不同模型家族、prompt 和采样参数做敏感性分析。
 5. 合成数据与真人数据使用不同 dataset ID、目录和结果表；不得静默混报。
 6. 使用真实、冻结且未用于调优的人类 anchor set 检查 synthetic-to-real gap。
@@ -139,10 +139,10 @@ LLM 合成回答的均值可能接近真人而方差和高阶关系明显失真�
 
 在同一 locked test 上分别报告：
 
-- human A vs human B；
-- 每名 human vs adjudicated reference；
-- AI vs adjudicated reference；
-- baseline system vs adjudicated reference。
+- `human A vs human B`；
+- `每名 human vs adjudicated reference`；
+- `AI vs adjudicated reference`；
+- `baseline system vs adjudicated reference`。
 
 human–AI agreement 不得代替 human–human reliability。已有真实课堂对话研究中 human–ChatGPT 的总体 Cohen's kappa 为 0.560，低于 human–human 的 0.646；元认知标签分别只有 0.271 与 0.565，说明依赖隐含意图和上下文的构念尤其需要人类判断（[Shin, 2025](https://doi.org/10.1111/jcal.70089)）。
 

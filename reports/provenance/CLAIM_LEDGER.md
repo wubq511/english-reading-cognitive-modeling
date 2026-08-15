@@ -1,33 +1,33 @@
-# Canonical Claim Ledger
+# Canonical Claim 台账
 
-Source IDs:
+来源 ID：
 
-- `CHAT-1/2/3`: complete transcript and turn number;
-- `HO-1/2`: handoff files;
-- `USER-LOCAL-2026-08-14`: decisions made during local recovery;
-- external source IDs resolve through `sources/catalog.yaml`.
+- `CHAT-1/2/3`：完整 transcript 与 turn 编号；
+- `HO-1/2`：handoff 文件；
+- `USER-LOCAL-2026-08-14`：本地恢复期间做出的决定；
+- 外部来源 ID 通过 `sources/catalog.yaml` 解析。
 
-Line numbers refer to the frozen local recovery files and are protected by `RAW_SOURCE_MANIFEST.sha256`.
+行号指向冻结的本地恢复文件，并受 `RAW_SOURCE_MANIFEST.sha256` 保护。
 
-| Claim | State | Recovery locator | Scientific evidence requirement |
+| 主张（claim） | 状态 | 恢复定位符 | 科学证据要求 |
 | --- | --- | --- | --- |
-| Project seeks process/cognition/skill evidence beyond final correctness | `SOURCE-RECOVERED` | `CHAT-1/T1/L40+`; `HO-1/L9-L34` | research question, not external fact |
-| First build a runtime baseline without LLM/Agent; later vertical/horizontal AI extensions | `SOURCE-RECOVERED + CURRENT-DECISION` | `CHAT-1/T16/L6768+`; `CHAT-2/T2/L60-L74`; `HO-2/L39-L72`; user local clarification | AI policy governs experiments |
-| AI is allowed and important for research, experiments and synthetic assistance | `CURRENT-DECISION` | `USER-LOCAL-2026-08-14` | `AI_RESEARCH_TOOLING_POLICY.md` |
-| Low-interference UI uses left passage, one question at right, free navigation, underline/eliminate/change | `SOURCE-RECOVERED` | `CHAT-1/T14/L4251+`; `HO-1/L81-L113`; `HO-2/L190-L226` | usability must still be tested |
-| Raw events must not contain cognition and should be append-only/object-centric | `SOURCE-RECOVERED + PROJECT-INFERENCE` | `CHAT-1/T12/L3181+`; `HO-1/L155-L218`; `HO-2/L259-L316` | instrumentation benchmark required |
-| Viewport/pointer/dwell/revisit cannot be directly equated with attention/difficulty/confusion | `SOURCE-RECOVERED + PAPER-SUPPORTED` | `CHAT-1/T8/L1753+`; `HO-2/L118-L188` | B/C report Evidence Index |
-| The final architecture is a layered partial-observation evidence system | `PROJECT-INFERENCE` | `HO-2/L318-L421` | synthesis of A–E/UIB, not a single-paper claim |
-| Unknown and competing hypotheses are mandatory | `SOURCE-RECOVERED + MEASUREMENT-LOGIC` | `CHAT-2/T23/L10443+`; `CHAT-3/T7/L725-L1857`; `HO-2/L118-L188` | validate abstention/calibration |
-| Phase 2A item-independent design is closed, Phase 2B waits for items/pilot | `SOURCE-RECOVERED` | `CHAT-3/T7/L725-L1857` | design status only |
-| Phase 3 has a draft, not a completed benchmark | `VERIFIED-CURRENT` | `CHAT-3/T8/L1863-L2305`; `T9/L2306-L2318` | local repo has no runs/results |
-| Phase 4 was announced but not delivered in raw chat | `VERIFIED-CURRENT` | `CHAT-3/T10/L2319-L2331` | package additions cannot upgrade status |
-| Multiple algorithm candidates must be resolved by local experiments | `SOURCE-RECOVERED` | `CHAT-2/T21/L10413-L10439`; `HO-2/L74-L116` | same-data benchmark |
-| Synthetic data cannot establish real behavior→cognition validity | `SOURCE-RECOVERED + PAPER-SUPPORTED` | `HO-2/L902-L1011`; `CHAT-3/T8/L1869+` | AI policy sources + human anchor data |
-| Webcam and eye tracking are optional research sub-studies, not baseline dependencies | `CURRENT-DECISION` | `USER-LOCAL-2026-08-14` | M1 ethics gate before use |
-| H1 casual testing is debug-only; research data starts at H2 | `CURRENT-DECISION + OFFICIAL-RULE` | `USER-LOCAL-2026-08-14` | `HUMAN_RESEARCH_GATES.md` |
-| Raw chats remain local frozen evidence, not daily assets or public Git content | `CURRENT-DECISION` | `USER-LOCAL-2026-08-14` | source policy + checksums |
-| PDFs use manifest/local cache and rights-aware sync rather than blanket public Git | `CURRENT-DECISION` | `USER-LOCAL-2026-08-14` | per-paper rights audit still open |
-| A public download endpoint and public redistribution permission are independent states | `OFFICIAL-RULE + CURRENT-DESIGN` | `USER-LOCAL-2026-08-14`; copyright/GitHub audit | `acquisition_status` and `redistribution_status` remain separate in catalog |
-| The 2026 J. Intell. study directly inherits attributes/Q-matrices from TSC 2026, not an explicitly declared 2022 data lineage | `PRIMARY-SOURCE-SUPPORTED` | `ITEM-001`; Phase 0 source audit | 2022→2026 same test/matrix is `NOT FOUND`; family relation only `INFERENCE` |
-| J. Intell. S2 contains a 20-item test but is not a deployable gold item bank | `PRIMARY-SOURCE-SUPPORTED` | `ITEM-002`; Phase 0 source audit | independent answer key, evidence spans and item-level rights required |
+| 项目寻求最终正确性之外的过程/认知/技能证据 | `SOURCE-RECOVERED` | `CHAT-1/T1/L40+`; `HO-1/L9-L34` | 研究问题，而非外部事实 |
+| 先构建不含 LLM/Agent 的 runtime baseline；之后再做纵向/横向 AI 扩展 | `SOURCE-RECOVERED + CURRENT-DECISION` | `CHAT-1/T16/L6768+`; `CHAT-2/T2/L60-L74`; `HO-2/L39-L72`; 用户本地澄清 | AI 政策约束实验 |
+| AI 在研究、实验与合成辅助中被允许且重要 | `CURRENT-DECISION` | `USER-LOCAL-2026-08-14` | `AI_RESEARCH_TOOLING_POLICY.md` |
+| 低干扰 UI：左侧文章、右侧单题、自由导航、underline/eliminate/change（下划线/消除/改答） | `SOURCE-RECOVERED` | `CHAT-1/T14/L4251+`; `HO-1/L81-L113`; `HO-2/L190-L226` | 可用性仍需测试 |
+| raw 事件不得包含认知内容，且应为 append-only/以对象为中心（object-centric） | `SOURCE-RECOVERED + PROJECT-INFERENCE` | `CHAT-1/T12/L3181+`; `HO-1/L155-L218`; `HO-2/L259-L316` | 需要埋点 benchmark |
+| Viewport/pointer/dwell/revisit 不能直接等同于注意/难度/困惑（attention/difficulty/confusion） | `SOURCE-RECOVERED + PAPER-SUPPORTED` | `CHAT-1/T8/L1753+`; `HO-2/L118-L188` | B/C 报告 Evidence Index |
+| 最终架构是分层的部分观测证据系统 | `PROJECT-INFERENCE` | `HO-2/L318-L421` | A–E/UIB 的综合，而非单篇论文的主张 |
+| 未知与相互竞争的假设是强制要求的 | `SOURCE-RECOVERED + MEASUREMENT-LOGIC` | `CHAT-2/T23/L10443+`; `CHAT-3/T7/L725-L1857`; `HO-2/L118-L188` | 验证弃权/校准（abstention/calibration） |
+| Phase 2A 的与题目无关设计已关闭，Phase 2B 等待题目/试测 | `SOURCE-RECOVERED` | `CHAT-3/T7/L725-L1857` | 仅设计状态 |
+| Phase 3 有草稿，没有完成的 benchmark | `VERIFIED-CURRENT` | `CHAT-3/T8/L1863-L2305`; `T9/L2306-L2318` | 本地仓库没有 runs/结果 |
+| Phase 4 在 raw chat 中只是被宣布，未交付 | `VERIFIED-CURRENT` | `CHAT-3/T10/L2319-L2331` | package 新增内容不能升级状态 |
+| 多个算法候选必须由本地实验裁决 | `SOURCE-RECOVERED` | `CHAT-2/T21/L10413-L10439`; `HO-2/L74-L116` | 同数据 benchmark |
+| 合成数据不能确立真实行为→认知效度 | `SOURCE-RECOVERED + PAPER-SUPPORTED` | `HO-2/L902-L1011`; `CHAT-3/T8/L1869+` | AI 政策来源 + 人类锚点数据 |
+| 摄像头与眼动追踪（eye tracking）是可选的子研究，不是 baseline 依赖 | `CURRENT-DECISION` | `USER-LOCAL-2026-08-14` | 使用前需过 M1 伦理门禁 |
+| H1 随意测试仅用于调试；研究数据从 H2 开始 | `CURRENT-DECISION + OFFICIAL-RULE` | `USER-LOCAL-2026-08-14` | `HUMAN_RESEARCH_GATES.md` |
+| raw 聊天仍是本地冻结证据，不是日常资产或公开 Git 内容 | `CURRENT-DECISION` | `USER-LOCAL-2026-08-14` | 来源政策 + 校验值 |
+| PDF 使用 manifest/本地缓存与权利感知（rights-aware）同步，而不是一律放进公开 Git | `CURRENT-DECISION` | `USER-LOCAL-2026-08-14` | 逐篇权利审计仍然开放 |
+| 公开下载端点与公开再分发许可是两个独立状态 | `OFFICIAL-RULE + CURRENT-DESIGN` | `USER-LOCAL-2026-08-14`; 版权/GitHub 审计 | catalog 中 `acquisition_status` 与 `redistribution_status` 保持分离 |
+| 2026 J. Intell. 研究直接继承 TSC 2026 的属性/Q-matrix，而不是显式声明的 2022 数据谱系 | `PRIMARY-SOURCE-SUPPORTED` | `ITEM-001`; Phase 0 来源审计 | 2022→2026 的 same test/matrix 为 `NOT FOUND`；家族关系仅为 `INFERENCE` |
+| J. Intell. S2 包含一个 20 题测试，但不是可部署的金标准题库 | `PRIMARY-SOURCE-SUPPORTED` | `ITEM-002`; Phase 0 来源审计 | 需要独立 answer key、证据范围与题目级权利 |

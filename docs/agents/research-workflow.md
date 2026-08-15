@@ -50,6 +50,10 @@ An Issue may summarize what its audience needs, but it must link the owner and m
 
 ## Transition rules
 
+### Decision closure review
+
+A decision child closes only through a human review path: the Agent presents a review briefing in chat — work list, headline findings, file guide, open residuals; briefing content is owned by `ercm-research` step 9, procedure by `ercm-wayfinder` Invocation B — and obtains the user's sign-off before posting the resolution comment and closing the ticket. A resolution the reviewer of record has not seen is not a resolution, and a ticket closed without review does not count toward the Wayfinder → Spec exit gate. Located-but-unread evidence keeps the ticket open by default; closing earlier is the user's explicit call.
+
 ### Wayfinder → Spec
 
 - The destination is a reviewable contract, not “finish Phase N”.

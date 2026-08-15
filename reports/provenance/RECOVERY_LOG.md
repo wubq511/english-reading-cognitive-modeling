@@ -1,8 +1,8 @@
 # Recovery Log
 
-## 2026-08-14 — Local canonical recovery
+## 2026-08-14 — 本地 canonical 恢复
 
-### Inputs audited
+### 已审计的输入
 
 - `chat1.md`: 22 turns, 8,044 lines, SHA-256 `e4179574…9534`；
 - `chat2.md`: 28 turns, 10,923 lines, SHA-256 `b0e65242…e6b7`；
@@ -13,7 +13,7 @@
 
 两份 migration-package legacy handoff 与 `handoff/` 对应文件逐字节相同。`integrated_synthesis_snapshot.txt` 是 GPT 综合稿，保留不可解析的网页附件引用，不作为独立论文证据。
 
-### Existing assets audited at recovery start
+### 恢复开始时已审计的既有资产
 
 - A–E: 44 PDFs + 6 deep-reading reports；
 - UI behavior: 18 PDFs + 2 notes/index files；
@@ -22,7 +22,7 @@
 - 34 个 B–E 报告旧 PDF basename 与当前路径不一致；已由 crosswalk 解析；
 - UI 旧“论文 1–18”与稳定 UIB ID 已建立 crosswalk；`UIB-088` 暂不纠正。
 
-### Contradictions resolved
+### 已解决的矛盾
 
 - migration package 的“package wins”规则被当前用户来源政策覆盖；
 - Phase 0/3/4 的完成状态下调到 raw evidence 支持的真实级别；
@@ -31,7 +31,7 @@
 - 真人 casual test 拆为 H1 debug-only 与 H2 research pilot；
 - 第三方 PDF 从“全部传 GitHub”改为 rights-aware manifest + local cache + fail-closed preflight。
 
-### Canonical assets created
+### 创建的 canonical 资产
 
 - root navigation and Agent rules；
 - project state, research questions and roadmap；
@@ -41,7 +41,7 @@
 - typed source catalog, checksum file and source/report crosswalk（初始 62 份，首轮专项审计后 74 份，本轮用户原文补齐后 80 份）；
 - local source collaboration CLI、`tmp/pdfs` 收件箱和自动 Git hooks（由测试与 verifier 证明）。
 
-### Primary-source augmentation after recovery
+### 恢复后的一手来源扩充
 
 - Phase 0 审计回到 J. Intell./TSC/CSE/PELDiaG/Jin & Liu 及 OECD/IEA/NCES 官方来源；`DOMAIN-004` 到手后，2022/TSC 的初始/最终题数、6+2 属性、专家/学生流程及 `20×8` Q-matrix 已足以确认共享研发谱系，但同题本文字与响应数据复用仍保持 `NOT FOUND/INFERENCE`；
 - 新增 3 份 Phase 0 本地全文/附件；S2 虽含 20 题，但无独立官方 answer key 与 item-level rights，不升级为可用 Candidate Bank；
@@ -50,7 +50,7 @@
 - 用户补齐 TSC 2026、PELDiaG 2021、Ma & Du 2022、Shin 2025 与 GRRAS，并新增 Zhang et al. 2024；当前没有未完成的论文全文获取项，Phase 0 的外部依赖转为题本、答案、数据、谱系声明与使用权；
 - 高杠杆文献主张已对 7 份本地 PDF 作重点复核，固定 `SUPPORTED/PARTIAL/PROJECT-INFERENCE/OVERSTATED` 边界。
 
-### Explicitly not done yet
+### 明确尚未完成的事项
 
 - no runtime system/code implementation；
 - no benchmark or empirical result；

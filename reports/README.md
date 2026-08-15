@@ -1,8 +1,8 @@
-# Reports
+# 报告
 
 `reports/` 是项目的 canonical 研究资产层。新研究从这里开始，不从网页聊天或迁移包开始。
 
-## Navigation
+## 导航
 
 - [`project_state/`](project_state/)：当前状态、研究问题、路线图。
 - [`synthesis/`](synthesis/)：恢复后的系统设计、可观测性、测量验证、benchmark 和文献综合。
@@ -12,7 +12,7 @@
 - [`literature/a-e/`](literature/a-e/)：A/A+/B/C/D/E 深读报告；旧 basename 与 provenance 缺口由 crosswalk 记录。
 - [`literature/ui-interaction/`](literature/ui-interaction/)：UI 行为论文笔记与稳定编号映射。
 
-## Evidence labels
+## 证据标签
 
 Canonical 报告中的重要判断应使用下列状态之一：
 

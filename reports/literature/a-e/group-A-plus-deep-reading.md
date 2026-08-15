@@ -1,4 +1,4 @@
-# Group A+ — Process Measurement Model Frontier Update 深度阅读报告
+# Group A+ — Process Measurement Model Frontier Update（过程测量模型前沿更新）深度阅读报告
 
 **服务对象**：后续负责跨论文综合与系统架构设计的研究 Agent。
 **Baseline**：`A-deep-reading.md`（A1–A5 结论，本文只修订/新增，不重复）。
@@ -8,10 +8,10 @@
 
 | 正式编号 | 论文 | 备注 |
 |---|---|---|
-| **A+1** | Wang, Han & Liu (2026) — TEM / Probability-based Effectiveness | BRM 58:123 |
-| **A+2** | Wang & Liu (2024) — SRM-PEI（Polytomous Effectiveness） | Psychometrika，无印刷页，用 PDF 页 |
-| **A+3** | Fu et al. (2024) — Action Sequence + Action Time（SRM+LATM） | BRM 56:4293–4310 |
-| **A+4** | Han et al. (2026) — SRM with Growth Parameters（SRM-G） | JEBS（印刷页=PDF 页） |
+| **A+1** | Wang, Han & Liu (2026) — TEM / Probability-based Effectiveness（基于概率的有效性） | BRM 58:123 |
+| **A+2** | Wang & Liu (2024) — SRM-PEI（Polytomous Effectiveness，多元有效性） | Psychometrika，无印刷页，用 PDF 页 |
+| **A+3** | Fu et al. (2024) — Action Sequence + Action Time（SRM+LATM，动作序列 + 动作时间） | BRM 56:4293–4310 |
+| **A+4** | Han et al. (2026) — SRM with Growth Parameters（SRM-G，带增长参数的 SRM） | JEBS（印刷页=PDF 页） |
 | **A+5** | Xu & Ji (2026) — RLMM | **arXiv preprint（2026-05-10, arXiv:2605.09305v1，未同行评审），证据等级低于其余四篇** |
 
 **页码约定**：A+1/A+3/A+4 标注印刷页；A+2 为在线先出版，标注 `PDF p.`；A+5 用 arXiv 页。
@@ -270,7 +270,7 @@
 
 ---
 
-# A1–A5 Conclusions That Remain Valid
+# A1–A5 Conclusions That Remain Valid（A1–A5 仍然成立的结论）
 
 1. **"能力 = 在预定义有效/正确动作上的选择倾向"这一测量学机制，A+ 组没有推翻，反而全部继承**。A+1/A+2/A+3/A+4 的选择模型都与 A1/A4 Eq. 同构（`exp(λ + eff·θ)` 的 divide-by-total）；唯一改变的是 eff 的来源与取值。**"process data → 连续潜在能力"可工作**的判断被 A+1/A+2 的实证再次确认（能力与结果相关 ~0.6，模式区分清楚）。
 2. **能力是单维的，且与结果高度共线**：A+1（vs SRM-PEI 0.999）、A+2（vs SRM 0.987、vs SRMM 0.975）的能力估计与旧模型几乎重合——**换 effectiveness 定义基本不改变学生排序**，改变的只是拟合与解释。baseline 的"能力语义上限 = 选对动作的倾向，不构成构念有效性证明"依然成立。
@@ -280,7 +280,7 @@
 6. **状态空间抽象层缺失**：所有 A+ 都假设状态已被定义好（A+1/A+2/A+3/A+4 用专家 FSA 状态；A+5 用建模者定义的元组）。**Raw events → 语义状态这一层，A+ 组依旧没有提供**（baseline Q3/Q4 结论不变）。
 7. **每条能力链路的识别前提不变**：A+1/A+2/A+4 的能力识别仍依赖"动作价值/正确性"输入，A+5 依赖 reward——**"谁定义好/成功/奖励"的人工判断没有消失，只是换了位置**。
 
-# A1–A5 Conclusions That Must Be Revised
+# A1–A5 Conclusions That Must Be Revised（A1–A5 必须修订的结论）
 
 1. **"正确性标注（I⁺/Iss′/V）是不可避免的共同前提"——必须修订**。
    A+2 证明可自动计算（图算法），A+1 证明可直接从数据估计（成功比例），A+5 证明可彻底改用 reward+价值函数。**修订为**："SRM 家族的能力模型需要某种'动作价值'输入；A+2 把它自动化到'只需状态空间+目标态'，A+1 把它样本化到'只需成败标注+状态图'，A+5 把它转移给 reward 函数设计。**逐转移人工判定不再是唯一选项，但'谁定义好/成功/奖励'的人工判断没有消失，只是换了个位置。**"
@@ -294,7 +294,7 @@
    A+1 证明"任意历史下有效性"可完全由 `p_s` 的条件概率自然承载（到达状态 s 的成功率已经隐含历史），死端/终止态无需人工赋值。**修订为**："有效性标注的最严苛形式（A5）已被 A+1 淘汰——代价是从'任务理论有效性'转为'经验成功概率'（outcome-derived effectiveness）。"
 6. **（新增）baseline 未覆盖的 outcome-derived effectiveness 风险面**：A+1/A+5 使"有效性的来源"与"能力的估计"共享同一批数据和同一个成功标准，产生 baseline 时代（全部 expert-defined）不存在的**两层风险**：(a) generated-regressor / calibration uncertainty（Δp 抽样误差未传播到 θ，θ 置信区间可能过于乐观）；(b) construct circularity（好行为=答对关联行为、高能力=倾向好行为，再用答对率验证即循环）。**术语统一为"outcome-derived effectiveness + construct circularity risk"，不简单叫 label leakage。**（若用独立 calibration 样本估计 Δp 再对新学生评分，则不属于训练-测试 label leakage。）
 
-# New Capabilities Introduced by A+
+# New Capabilities Introduced by A+（A+ 引入的新能力）
 
 1. **Effectiveness 数据化（A+1）**：状态有效性=到达后的成功条件概率 `p_s`，转移有效性=成功概率差分 `Δp`；死端态、终止态自然处理，无需人工赋值；且能捕捉"任务理论判错但数据判对"的动作（F→A 反例）。
 2. **Effectiveness 自动化（A+2）**：多目标/多最优路径/大规模转移下，用图搜索+最短距离算法自动给出全部转移有效性，无需专家逐条判定（Balance Beam 10,000 态/168,000 转移）。
@@ -304,7 +304,7 @@
 6. **step-level 影响诊断（A+5）**：影响函数量化"每一步对能力估计的证据方向与强度"，识别任务的关键决策步——这是 A1–A5 都没有的输出。
 7. **"无对错动作"的两条建模通道（A+1/A+5）**：data-driven 有效性（A+1）与 reward 价值（A+5）首次让"不标对错的行为"原则上可进入测量模型，尽管条件（成败标注/reward 定义）在阅读场景尚不成立。
 
-# Still-Unsolved Problems After A+
+# Still-Unsolved Problems After A+（A+ 之后仍未解决的问题）
 
 1. **阅读没有"目标/成功状态"的可辩护定义——A+ 的全部 effectiveness 来源（距离/概率/reward）都以此为前提**。这是 A+ 组暴露的最大、最根本的未解问题，直接抛给 Group B。
 2. **outcome-derived effectiveness 的合法化边界**：A+1 用同一数据的成功定义有效性，A+5 用同一数据的 reward 学价值。两层风险（calibration uncertainty + construct circularity）都未解决；对教学诊断（可接受）与评分（不可接受）的边界未划定。
@@ -316,7 +316,7 @@
 8. **动态学习的人级差异**：A+4 状态级增长参数无法刻画"为什么同样的重读，A 学到了 B 没有"；person-specific growth 未实现。
 9. **时间作为"能力/速度特质"的价值仍待定**：A+5 与 A+3 的证据只涉及速度特质的跨任务/效标一致性，且结论偏弱；**但这不等于时间整体价值有限**——时间作为过程状态/分割证据的用途（Focus Estimation、Action Segmentation 等）与本问题正交，仍须保留。
 
-# Implications for What Group B Must Investigate
+# Implications for What Group B Must Investigate（对 Group B 必须调查内容的启示）
 
 1. **（最高优先级）阅读是否有可辩护的"成功/目标状态"**：直接决定 A+ 三条 effectiveness 路线（A+2 距离 / A+1 概率 / A+5 reward）哪条可用。若阅读仅以"答对"为成功，则 A+1 可迁移但必须直面 circularity；若阅读想保留"过程质量"（深层理解、策略），则需要 B 组给出独立于答对的过程成功标准——这正是 A 组与 A+ 组都缺失的东西。
 2. **为阅读行为提供"有效性代理"的证据**：A+1 把有效性=行为后答对率的条件概率。B 组要回答：**scroll/revisit/underline 落在哪个"状态"上，"到达该状态后的答对率"是否有稳定、可辩护的估计？** 尤其是重读（revisit）——A+4 的"重访次数→经验效应"框架（有效能力=θ+γ·f）可直接迁移：`f` 就是段落重访次数，B 组要提供"重读与理解"的实证以决定经验效应 γ 的方向与大小。
