@@ -20,7 +20,7 @@
 | --- | --- | --- | --- | --- |
 | 使用了选项排除 | 排除开关 | 意外开关 | `DIRECT` | 事件 QA |
 | 答案更改 | 答案历史 | 意外点击 | `DIRECT` | replay QA |
-| 文章/题目已显示 | UI 状态 | 已显示不等于已处理 | `DIRECT` | 埋点 QA |
+| 文章/题目已显示 | UI 状态 | 已显示不等于已处理 | `DIRECT` | 埋点（instrumentation）QA |
 | 文章回访 | 重建的 viewport/scroll | layout/scroll 伪迹 | `BEHAVIORAL` | 边界标注 |
 | 证据区回访 | 回访 + 题目 EvidenceMap | EvidenceMap 可能与学生证据不匹配 | `BEHAVIORAL` | 题目审计 |
 | 阅读焦点区域 | viewport、pointer、selection、action history | 眼睛可能在无事件时移动；inactive pointer | `PROBABILISTIC` | 粗粒度回忆与可选独立传感器研究 |
