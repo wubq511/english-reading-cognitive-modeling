@@ -43,6 +43,16 @@
                 "It requires one user-named child issue",
                 "It does not assign or start research, prototyping, grilling, or task work"
             ]
+        },
+        {
+            "id": 5,
+            "prompt": "$ercm-wayfinder #42 — research for this child is finished and the asset is written. Evaluation mode: draft only; do not write to GitHub.",
+            "expected_output": "Presents a review briefing in chat and waits for the user's sign-off before drafting any resolution comment or closure.",
+            "expectations": [
+                "It reports headline findings and how they were produced in chat before closing anything",
+                "It names which file and section holds which result so the user can review",
+                "It does not post the resolution comment or close the ticket before the user's sign-off"
+            ]
         }
     ]
 }

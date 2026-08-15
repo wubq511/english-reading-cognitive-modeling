@@ -100,9 +100,10 @@ The user supplies a map and exactly one child decision ticket.
 2. If only the map is supplied, inspect its decision frontier read-only and report up to three titled options. Recommend one based on the user's stated destination, downstream decisions unlocked, evidence/gate readiness, and fit with the requested work; explain why the alternatives may be chosen instead. Then stop and ask the user to name one child. Recommendation is selection assistance, not assignment or permission to work.
 3. Assign the named decision ticket to the current GitHub user before work. Never take a ticket assigned to someone else.
 4. Resolve the question using the ticket type and required evidence. Preserve rejected alternatives, uncertainty, null findings, and project claim states.
-5. Post one resolution comment with: answer; evidence/assets; rejected alternatives; uncertainty/gates; downstream implications.
-6. Close the child, append only its linked-title gist to `Decisions so far`, and verify the map.
-7. Create newly visible decision tickets and dependency edges; move clarified fog into tickets and remove it from `Not yet specified`.
-8. When the frontier and fog are empty, mark the map ready for `ercm-to-spec`. Do not write the spec in the same invocation.
+5. Present a review briefing in chat and wait for the user's review before any GitHub write: headline findings, how they were produced, which file and section holds which result, and the open residuals. The human research member is the reviewer of record — a resolution they have not seen is not a resolution. For research children the briefing content follows `ercm-research` step 9.
+6. After the user's sign-off, post one resolution comment with: answer; evidence/assets; rejected alternatives; uncertainty/gates; downstream implications.
+7. Close the child, append only its linked-title gist to `Decisions so far`, and verify the map.
+8. Create newly visible decision tickets and dependency edges; move clarified fog into tickets and remove it from `Not yet specified`.
+9. When the frontier and fog are empty, mark the map ready for `ercm-to-spec`. Do not write the spec in the same invocation.
 
 If new evidence contradicts an earlier decision, create or reopen a decision ticket and record supersession. Never silently rewrite the old resolution.
