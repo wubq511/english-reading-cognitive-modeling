@@ -124,8 +124,39 @@ A+ 报告第 4 行的历史 baseline `gpt-add-group-A-deep-reading.md` 当前解
 | `METHOD-007` | human-centered generative annotation | `sources/library/papers/methods/2025_Pangakis_Keeping_Humans_in_the_Loop.pdf` | `reports/research/methods-and-governance-source-audit.md` |
 | `METHOD-008` | human–ChatGPT classroom-dialogue coding comparison | `sources/library/papers/methods/2025_Shin_Co_Coding_Classroom_Dialogue.pdf` | `reports/research/new-user-provided-pdfs-source-audit.md` |
 | `METHOD-009` | GRRAS reliability/agreement reporting guideline, IJNS version | `sources/library/papers/methods/2011_Kottner_GRRAS_IJNS.pdf` | `reports/research/new-user-provided-pdfs-source-audit.md` |
+| `METHOD-010` | cursor-movement paradata screening careless/unmotivated responding（PsyArXiv 预印本，正式版 EJPA 2023） | `sources/library/papers/methods/2022_Pokropek_MouseChase_CursorCareless.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-011` | 测验模式效应（TME）来源/检测/应用中文方法综述 | `sources/library/papers/methods/2023_Chen_TestModeEffect_Review.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-012` | ACT 纸笔 vs 机考三项可比性研究技术报告 | `sources/library/papers/methods/2020_Steedle_ACT_Mode_Comparability.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-013` | NAEP 数学 D&D 题目过程数据解题策略（CC BY 4.0） | `sources/library/papers/methods/2021_Jiang_NAEP_DragDrop_ProcessData.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-014` | 中学生数字 vs 纸笔阅读过程与理解关联（ERIC EJ1260522） | `sources/library/papers/methods/2020_Goodwin_DigitalVsPaper_ReadingProcesses.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-015` | 跨计算机化投递设备分数可比性 CCSSO 报告（ERIC ED610777） | `sources/library/papers/methods/2016_DePascale_Device_Comparability.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-016` | 拖拽题特征对作答表现与策略的效应（EMIP 2020） | `sources/library/papers/methods/2020_Arslan_DragDrop.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-017` | 用过程数据评估无障碍与通用设计特征有效性（EMIP 2025） | `sources/library/papers/methods/2025_Ogut_UniversalByDesign.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-018` | 阅读媒介对理解影响的元分析（ERR 2018，CC BY-NC-ND） | `sources/library/papers/methods/2018_Delgado_DigitalVsPaper.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-019` | 纸屏阅读系统综述与元分析（JRR 2019） | `sources/library/papers/methods/2019_Clinton_DigitalVsPaper.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-020` | 叙事文本屏幕阅读无负效应元分析（Media Psychology 2022，CC BY） | `sources/library/papers/methods/2022_Schwabe_ScreenVsPrintComprehension.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-021` | 手持设备 vs 纸介质阅读效应及调节变量元分析（JEP 2024） | `sources/library/papers/methods/2024_Salmeron_HandheldVsPaper.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-022` | 近 20 年纸 vs 数字阅读效应元分析（Telematics and Informatics Reports 2024，CC BY-NC） | `sources/library/papers/methods/2024_Li_DigitalVsPaper.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-023` | PISA 题目特征与考生脱离投入（OECD 工作论文 No.312，2024） | `sources/library/papers/methods/2024_OECD_ItemDisengagement.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-024` | PISA 2009 数字阅读评估导航章节（OECD 2011 整卷） | `sources/library/papers/methods/2011_OECD_StudentsOnLine.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-025` | PISA 2015 结果卷五（协作解决问题；模式效应现场试验仅过程声明，量化结果在 PISA 2015 Technical Report） | `sources/library/papers/methods/2017_OECD_CollaborativeProblemSolving.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-026` | 语言测评无障碍调整议题与挑战（Language Testing 2023） | `sources/library/papers/methods/2023_Taylor_LanguageAssessmentAccommodations.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-027` | 纸屏线性文本阅读理解效应一手实验（IJER 2013） | `sources/library/papers/methods/2013_Mangen_PaperVsScreen.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-028` | K–12 阅读测评机考 vs 纸笔可比性元分析（EPM 2008） | `sources/library/papers/methods/2008_Wang_TestModeEffects.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-029` | 屏幕 vs 纸面阅读表现元分析（Computers & Education 2018） | `sources/library/papers/methods/2018_Kong_ScreenVsPaper.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-030` | 儿童纸屏阅读理解模式效应被试内实验（C&E 2020，CC BY） | `sources/library/papers/methods/2020_Stole_PaperVsScreen.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-031` | 延时调整使用与分数可比性（Psychology in the Schools 2024，CC BY） | `sources/library/papers/methods/2024_Witmer_ExtendedTimeScoreComparability.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-032` | 技术增强题目（拖拽交互）对测验表现与效率的效应（JECR 2021） | `sources/library/papers/methods/2021_Ponce_DragDropResponseEffects.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-033` | 机考中空间整合与交互信号的分散注意效应（EMIP 2022） | `sources/library/papers/methods/2022_Moon_SplitAttention.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-034` | 反应量表格式对粗心/低投入作答的效应（LSAE 2024，CC BY） | `sources/library/papers/methods/2024_Ulitzsch_ScaleFormatCIER.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-035` | 儿童纸屏阅读元分析（RER 2021，39 研究） | `sources/library/papers/methods/2021_Furenes_PaperVsScreen.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-036` | 阅读理解测验上的通用设计调整效果（AEI 2023） | `sources/library/papers/methods/2023_Dembitzer_UniversalAccommodations.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-037` | 州级机考嵌入式调整功能使用率（PARE 2021，ERIC EJ1327403） | `sources/library/papers/methods/2021_Lee_EmbeddedAccommodationUsage.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-038` | L2 阅读测验反应格式 × 文本组织方法效应（Language Testing 2002） | `sources/library/papers/methods/2002_Kobayashi_MethodEffectsTextFormat.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
+| `METHOD-039` | 小学低年级题目格式效应被试内实验（School Psychology 2020） | `sources/library/papers/methods/2020_Woodcock_ItemFormatEffects.pdf` | `reports/research/ui-instrument-effects-evidence-audit.md` |
 | `STANDARD-001` | educational/psychological testing standards | `sources/library/standards/2014_AERA_APA_NCME_Testing_Standards.pdf` | `reports/research/methods-and-governance-source-audit.md` |
 | `STANDARD-002` | NIST generative-AI risk profile | `sources/library/standards/2024_NIST_AI_600-1_Generative_AI_Profile.pdf` | `reports/research/methods-and-governance-source-audit.md` |
+| `STANDARD-003` | WCAG 2.2 规范性成功标准文本（W3C Recommendation 2024-12-12，单文件 HTML） | `sources/library/standards/2024_W3C_WCAG22_Recommendation.html` | `reports/research/ui-instrument-effects-evidence-audit.md` |
 | `DOMAIN-001` | CSE-based reading cognitive diagnostic model | `sources/library/papers/domain/2024_Zhang_Cognitive_Diagnostic_CSE_Reading.pdf` | `reports/research/new-user-provided-pdfs-source-audit.md` |
 | `DOMAIN-002` | TSC 2026 inferential-reading cognitive diagnosis | `sources/library/papers/domain/2026_Du_Ma_From_Coarse_to_Fine.pdf` | `reports/research/phase-0-item-data-source-audit.md` |
 | `DOMAIN-003` | PELDiaG multi-CDM reading study | `sources/library/papers/domain/2021_Du_Ma_Multi_CDM_EFL_Reading.pdf` | `reports/research/phase-0-item-data-source-audit.md` |
