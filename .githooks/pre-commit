@@ -3,4 +3,14 @@ set -u
 
 REPO_ROOT=$(git rev-parse --show-toplevel) || exit 1
 cd "$REPO_ROOT" || exit 1
-exec scripts/logs check-staged
+
+if command -v python >/dev/null 2>&1 && python -c "import sys; raise SystemExit(sys.version_info < (3, 10))" >/dev/null 2>&1; then
+    TASK_PYTHON=python
+elif command -v python3 >/dev/null 2>&1 && python3 -c "import sys; raise SystemExit(sys.version_info < (3, 10))" >/dev/null 2>&1; then
+    TASK_PYTHON=python3
+else
+    echo "activity logs: FAIL reason=python_3_10_or_newer_not_found" >&2
+    exit 127
+fi
+
+exec "$TASK_PYTHON" scripts/logs.py check-staged

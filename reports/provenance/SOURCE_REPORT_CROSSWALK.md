@@ -162,6 +162,22 @@ A+ 报告第 4 行的历史 baseline `gpt-add-group-A-deep-reading.md` 当前解
 | `DOMAIN-003` | PELDiaG multi-CDM reading study | `sources/library/papers/domain/2021_Du_Ma_Multi_CDM_EFL_Reading.pdf` | `reports/research/phase-0-item-data-source-audit.md` |
 | `DOMAIN-004` | 2022 CSE 阅读推理认知诊断与成绩报告 | `sources/library/papers/domain/2022_Ma_Du_CSE_Reading_Inference_Cognitive_Diagnosis.pdf` | `reports/research/phase-0-item-data-source-audit.md` |
 
+## Replay fidelity 与 engineering oracle 原文
+
+| Catalog ID | 用途 | 当前路径 | 核验报告 |
+| --- | --- | --- | --- |
+| `REPLAY-001` | GUI Oracle 强度与调用频率 | `sources/library/papers/methods/replay/2007_Xie_Memon_GUI_Test_Oracles.pdf` | `reports/research/replay-fidelity-metrics-and-engineering-oracles.md` |
+| `REPLAY-002` | JavaScript 确定性捕获与回放 | `sources/library/papers/methods/replay/2010_Mickens_Mugshot.pdf` | `reports/research/replay-fidelity-metrics-and-engineering-oracles.md` |
+| `REPLAY-003` | Web 交互式 record/replay 与调试 | `sources/library/papers/methods/replay/2013_Burg_Timelapse.pdf` | `reports/research/replay-fidelity-metrics-and-engineering-oracles.md` |
+| `REPLAY-004` | 2025 GUI invariant Oracle 实证研究 | `sources/library/papers/methods/replay/2025_Yarifard_GUI_Invariant_Oracles.pdf` | `reports/research/replay-fidelity-metrics-and-engineering-oracles.md` |
+| `REPLAY-005` | 事件偏序、逻辑时钟与全序 | `sources/library/papers/methods/replay/1978_Lamport_Time_Clocks.pdf` | `reports/research/replay-fidelity-metrics-and-engineering-oracles.md` |
+| `REPLAY-006` | Delta Debugging 与失败输入缩减 | `sources/library/papers/methods/replay/2002_Zeller_Delta_Debugging.pdf` | `reports/research/replay-fidelity-metrics-and-engineering-oracles.md` |
+| `REPLAY-007` | 跨浏览器功能状态/轨迹一致性 | `sources/library/papers/methods/replay/2011_Mesbah_Cross_Browser_Testing.pdf` | `reports/research/replay-fidelity-metrics-and-engineering-oracles.md` |
+| `REPLAY-008` | wall clock 与 monotonic clock 语义 | `sources/library/standards/replay/2026_W3C_High_Resolution_Time_Level_3.html` | `reports/research/replay-fidelity-metrics-and-engineering-oracles.md` |
+| `REPLAY-009` | 浏览器动作与截图观察面 | `sources/library/standards/replay/2026_W3C_WebDriver.html` | `reports/research/replay-fidelity-metrics-and-engineering-oracles.md` |
+| `REPLAY-010` | Telemetry retry 的重复数据边界 | `sources/library/standards/replay/OpenTelemetry_OTLP_1.11.0.html` | `reports/research/replay-fidelity-metrics-and-engineering-oracles.md` |
+| `REPLAY-011` | 页面生命周期中的 Beacon 发送 | `sources/library/standards/replay/2022_W3C_Beacon.html` | `reports/research/replay-fidelity-metrics-and-engineering-oracles.md` |
+
 ## 同一作品的不同本地版本
 
 | 作品 | Catalog IDs | 判断边界 |

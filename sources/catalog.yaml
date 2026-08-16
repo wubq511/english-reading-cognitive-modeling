@@ -1,9 +1,9 @@
 # Canonical local external-source catalog. Metadata is limited to inspected files,
 # primary source records, and existing evidence audits.
 schema_version: 2
-generated_on: "2026-08-14"
+generated_on: "2026-08-16"
 source_policy: LOCAL_SOURCE_AND_PRIMARY_METADATA
-source_count: 111
+source_count: 122
 
 source_defaults: &source_defaults
   asset_type: "PAPER"
@@ -2115,3 +2115,219 @@ sources:
     sha256: "ade421ac2e82e2cf14c0ffd10b719a71cd23ad174b1a0d59113c6738ea812062"
     same_work: null
     cited_by_reports: ["reports/research/ui-instrument-effects-evidence-audit.md"]
+  - id: "REPLAY-001"
+    <<: *source_defaults
+    aliases: ["REPLAY-001_Xie_Memon_2007_GUI_Oracles.pdf"]
+    title: "Designing and Comparing Automated Test Oracles for GUI-based Software Applications"
+    authors: ["Qing Xie","Atif M. Memon"]
+    year: 2007
+    venue: "ACM Transactions on Software Engineering and Methodology 16(1), Article 4"
+    doi: "10.1145/1189748.1189752"
+    needs_metadata: []
+    required: true
+    acquisition_status: "DIRECT_PUBLIC"
+    source_url: "https://www.cs.umd.edu/users/atif/papers/XieMemonTOSEM2006-abstract.html"
+    download_url: "https://www.cs.umd.edu/~atif/papers/XieMemonTOSEM2006.pdf"
+    redistribution_status: "RESTRICTED"
+    license: "ACM copyright; author-hosted reading copy does not establish redistribution permission"
+    local_path: "sources/library/papers/methods/replay/2007_Xie_Memon_GUI_Test_Oracles.pdf"
+    sha256: "a88a7b2c2c0de92508f8827d9a105c0a42d7793029d78e3a255a84dc4aaa84e8"
+    same_work: null
+    cited_by_reports: ["reports/research/replay-fidelity-metrics-and-engineering-oracles.md"]
+  - id: "REPLAY-002"
+    <<: *source_defaults
+    aliases: ["REPLAY-002_Mickens_2010_Mugshot.pdf"]
+    title: "Mugshot: Deterministic Capture and Replay for JavaScript Applications"
+    authors: ["James Mickens","Jeremy Elson","Jon Howell"]
+    year: 2010
+    venue: "7th USENIX Symposium on Networked Systems Design and Implementation (NSDI 10)"
+    doi: null
+    needs_metadata: []
+    required: true
+    acquisition_status: "DIRECT_PUBLIC"
+    source_url: "https://www.usenix.org/conference/nsdi10-0/mugshot-deterministic-capture-and-replay-javascript-applications"
+    download_url: "https://www.microsoft.com/en-us/research/wp-content/uploads/2010/04/mugshot.pdf"
+    redistribution_status: "RESTRICTED"
+    license: "USENIX open-access reading copy; no explicit redistribution license verified"
+    local_path: "sources/library/papers/methods/replay/2010_Mickens_Mugshot.pdf"
+    sha256: "d97f127d69c20ef4397d73f27b2ebe579f5dd40f8f7fe72c24a984af5a85da09"
+    same_work: null
+    cited_by_reports: ["reports/research/replay-fidelity-metrics-and-engineering-oracles.md"]
+  - id: "REPLAY-003"
+    <<: *source_defaults
+    aliases: ["REPLAY-003_Burg_2013_Timelapse.pdf"]
+    title: "Interactive Record/Replay for Web Application Debugging"
+    authors: ["Brian Burg","Richard Bailey","Andrew J. Ko","Michael D. Ernst"]
+    year: 2013
+    venue: "26th ACM Symposium on User Interface Software and Technology (UIST 2013):473-484"
+    doi: "10.1145/2501988.2502050"
+    needs_metadata: []
+    required: true
+    acquisition_status: "DIRECT_PUBLIC"
+    source_url: "https://homes.cs.washington.edu/~mernst/pubs/record-replay-uist2013-abstract.html"
+    download_url: "https://homes.cs.washington.edu/~mernst/pubs/record-replay-uist2013.pdf"
+    redistribution_status: "RESTRICTED"
+    license: "ACM copyright; author-hosted reading copy does not establish redistribution permission"
+    local_path: "sources/library/papers/methods/replay/2013_Burg_Timelapse.pdf"
+    sha256: "db9e2ed02a74e8f03994cf369bdcbea86b1cef269161757627bddbb0cede2213"
+    same_work: null
+    cited_by_reports: ["reports/research/replay-fidelity-metrics-and-engineering-oracles.md"]
+  - id: "REPLAY-004"
+    <<: *source_defaults
+    aliases: ["REPLAY-004_Yarifard_2025_GUI_Invariants.pdf"]
+    title: "Extraction and Empirical Evaluation of GUI-level Invariants as GUI Oracles in Mobile App Testing"
+    authors: ["Ali Asghar Yarifard","Saeed Araban","Samad Paydar","Vahid Garousi","Maurizio Morisio","Riccardo Coppola"]
+    year: 2025
+    venue: "Information and Software Technology 177, Article 107531"
+    doi: "10.1016/j.infsof.2024.107531"
+    needs_metadata: []
+    required: true
+    acquisition_status: "DIRECT_PUBLIC"
+    source_url: "https://pure.qub.ac.uk/en/publications/extraction-and-empirical-evaluation-of-gui-level-invariants-as-gu/"
+    download_url: "https://pureadmin.qub.ac.uk/ws/portalfiles/portal/611794631/PAPER_-_GUI_invariants.pdf"
+    redistribution_status: "REDISTRIBUTION_ALLOWED"
+    license: "Accepted author manuscript, CC BY 4.0"
+    local_path: "sources/library/papers/methods/replay/2025_Yarifard_GUI_Invariant_Oracles.pdf"
+    sha256: "fdc417d38847fa6255ddeb41a0b09f47390aa74b095d26d1754c3c61487d2411"
+    same_work: null
+    cited_by_reports: ["reports/research/replay-fidelity-metrics-and-engineering-oracles.md"]
+  - id: "REPLAY-005"
+    <<: *source_defaults
+    aliases: ["REPLAY-007_Lamport_1978_Time_Clocks.pdf"]
+    title: "Time, Clocks, and the Ordering of Events in a Distributed System"
+    authors: ["Leslie Lamport"]
+    year: 1978
+    venue: "Communications of the ACM 21(7):558-565"
+    doi: "10.1145/359545.359563"
+    needs_metadata: []
+    required: true
+    acquisition_status: "DIRECT_PUBLIC"
+    source_url: "https://lamport.azurewebsites.net/pubs/time-clocks.pdf"
+    download_url: "https://lamport.azurewebsites.net/pubs/time-clocks.pdf"
+    redistribution_status: "RESTRICTED"
+    license: "ACM copyright; author-hosted reading copy does not establish redistribution permission"
+    local_path: "sources/library/papers/methods/replay/1978_Lamport_Time_Clocks.pdf"
+    sha256: "c55e7cab4230aa3d7126748a149b2db6f0d7a67296d5eccfdd50a210299a96b2"
+    same_work: null
+    cited_by_reports: ["reports/research/replay-fidelity-metrics-and-engineering-oracles.md"]
+  - id: "REPLAY-006"
+    <<: *source_defaults
+    aliases: ["REPLAY-008_Zeller_2002_Delta_Debugging.pdf"]
+    title: "Simplifying and Isolating Failure-Inducing Input"
+    authors: ["Andreas Zeller","Ralf Hildebrandt"]
+    year: 2002
+    venue: "IEEE Transactions on Software Engineering 28(2):183-200"
+    doi: "10.1109/32.988498"
+    needs_metadata: []
+    required: true
+    acquisition_status: "DIRECT_PUBLIC"
+    source_url: "https://www.st.cs.uni-saarland.de/publications/details/zeller-tse-2002/"
+    download_url: "https://www.st.cs.uni-saarland.de/publications/files/zeller-tse-2002.pdf"
+    redistribution_status: "RESTRICTED"
+    license: "IEEE copyright; author-hosted reading copy does not establish redistribution permission"
+    local_path: "sources/library/papers/methods/replay/2002_Zeller_Delta_Debugging.pdf"
+    sha256: "7ed0c812e1b3212f3956f5a624ac9103a00468ab665cae00784520d866e1c8aa"
+    same_work: null
+    cited_by_reports: ["reports/research/replay-fidelity-metrics-and-engineering-oracles.md"]
+  - id: "REPLAY-007"
+    <<: *source_defaults
+    aliases: ["REPLAY-009_Mesbah_2011_Cross_Browser.pdf"]
+    title: "Automated Cross-Browser Compatibility Testing"
+    authors: ["Ali Mesbah","Mukul R. Prasad"]
+    year: 2011
+    venue: "33rd International Conference on Software Engineering (ICSE 2011):561-570"
+    doi: "10.1145/1985793.1985870"
+    needs_metadata: []
+    required: true
+    acquisition_status: "DIRECT_PUBLIC"
+    source_url: "https://people.ece.ubc.ca/amesbah/papers/"
+    download_url: "https://people.ece.ubc.ca/amesbah/resources/papers/icse11.pdf"
+    redistribution_status: "RESTRICTED"
+    license: "ACM copyright; author-hosted reading copy permits personal/classroom use but not redistribution"
+    local_path: "sources/library/papers/methods/replay/2011_Mesbah_Cross_Browser_Testing.pdf"
+    sha256: "6a27c339a6873e25c8a4961a05cd5b31e2a2ab2891af8717d1617af6dce49f83"
+    same_work: null
+    cited_by_reports: ["reports/research/replay-fidelity-metrics-and-engineering-oracles.md"]
+  - id: "REPLAY-008"
+    <<: *source_defaults
+    asset_type: "STANDARD"
+    media_type: "text/html"
+    aliases: ["REPLAY-010_W3C_High_Resolution_Time.html"]
+    title: "High Resolution Time Level 3"
+    authors: ["W3C Web Performance Working Group"]
+    year: 2026
+    venue: "W3C Working Draft, 24 March 2026"
+    doi: null
+    needs_metadata: []
+    required: true
+    acquisition_status: "DIRECT_PUBLIC"
+    source_url: "https://www.w3.org/TR/hr-time-3/"
+    download_url: "https://www.w3.org/TR/hr-time-3/"
+    redistribution_status: "REDISTRIBUTION_ALLOWED"
+    license: "W3C permissive document license"
+    local_path: "sources/library/standards/replay/2026_W3C_High_Resolution_Time_Level_3.html"
+    sha256: "60381699f081dbb86a1a8e4bb4e2051a5d51f74ca9a7a91d3a2d2719de8c0137"
+    same_work: null
+    cited_by_reports: ["reports/research/replay-fidelity-metrics-and-engineering-oracles.md"]
+  - id: "REPLAY-009"
+    <<: *source_defaults
+    asset_type: "STANDARD"
+    media_type: "text/html"
+    aliases: ["REPLAY-011_W3C_WebDriver2.html"]
+    title: "WebDriver"
+    authors: ["W3C Browser Testing and Tools Working Group"]
+    year: 2026
+    venue: "W3C Working Draft, 02 July 2026"
+    doi: null
+    needs_metadata: []
+    required: true
+    acquisition_status: "DIRECT_PUBLIC"
+    source_url: "https://www.w3.org/TR/webdriver2/"
+    download_url: "https://www.w3.org/TR/webdriver2/"
+    redistribution_status: "REDISTRIBUTION_ALLOWED"
+    license: "W3C permissive document license"
+    local_path: "sources/library/standards/replay/2026_W3C_WebDriver.html"
+    sha256: "929f2f0be15b73b0b3e33052f115a47fc1561ec42f0a8992d532780591ae919e"
+    same_work: null
+    cited_by_reports: ["reports/research/replay-fidelity-metrics-and-engineering-oracles.md"]
+  - id: "REPLAY-010"
+    <<: *source_defaults
+    asset_type: "STANDARD"
+    media_type: "text/html"
+    aliases: ["REPLAY-012_OTLP_1_11.html"]
+    title: "OpenTelemetry Protocol (OTLP) Specification 1.11.0"
+    authors: ["OpenTelemetry Authors"]
+    venue: "OpenTelemetry Specification 1.11.0"
+    doi: null
+    needs_metadata: []
+    required: true
+    acquisition_status: "DIRECT_PUBLIC"
+    source_url: "https://opentelemetry.io/docs/specs/otlp/"
+    download_url: "https://opentelemetry.io/docs/specs/otlp/"
+    redistribution_status: "RESTRICTED"
+    license: "Public official specification; redistribution license not verified for the rendered page"
+    local_path: "sources/library/standards/replay/OpenTelemetry_OTLP_1.11.0.html"
+    sha256: "e57b2a7d6a4b4e12683bade253a084b8afdf517e5e1885d0c9b558359b20a557"
+    same_work: null
+    cited_by_reports: ["reports/research/replay-fidelity-metrics-and-engineering-oracles.md"]
+  - id: "REPLAY-011"
+    <<: *source_defaults
+    asset_type: "STANDARD"
+    media_type: "text/html"
+    aliases: ["REPLAY-013_W3C_Beacon.html"]
+    title: "Beacon"
+    authors: ["W3C Web Performance Working Group"]
+    year: 2022
+    venue: "W3C Candidate Recommendation Draft, 03 August 2022"
+    doi: null
+    needs_metadata: []
+    required: true
+    acquisition_status: "DIRECT_PUBLIC"
+    source_url: "https://www.w3.org/TR/beacon/"
+    download_url: "https://www.w3.org/TR/beacon/"
+    redistribution_status: "REDISTRIBUTION_ALLOWED"
+    license: "W3C permissive document license"
+    local_path: "sources/library/standards/replay/2022_W3C_Beacon.html"
+    sha256: "bb0d4a09eb7b4185367c1eecf0fb396a71ffc8ec5e6b6463500d2b0e9a9e91cb"
+    same_work: null
+    cited_by_reports: ["reports/research/replay-fidelity-metrics-and-engineering-oracles.md"]

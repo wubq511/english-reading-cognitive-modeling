@@ -6,6 +6,7 @@
 - [Methods and governance source audit](methods-and-governance-source-audit.md): all 25 external sources used by the AI and human-research protocols, including version-specific PDF rights gates.
 - [Existing literature validation audit](existing-literature-validation-audit.md): local-PDF recheck of seven high-leverage A/A+/B/C/D/E/UIB claims and transfer boundaries.
 - [UI-instrument effects evidence audit](ui-instrument-effects-evidence-audit.md): primary-source verdicts on whether answer-UI layout, navigation, feedback, accessibility and interaction affordances affect behavior, missingness, instrument reliability, or the estimand (Wayfinder #5).
+- [Replay-fidelity metrics and engineering oracles](replay-fidelity-metrics-and-engineering-oracles.md): issue #7 primary-source options review, `replay-fidelity-oracles/v1` metric registry, layered BENCH-E0 oracles, and three `simulation-only` counterexamples.
 
 The standing register of human-only work (environment setup, gated-database queries, paywalled acquisition) is [human-tasks/](human-tasks/README.md) — one Chinese-language file per ticket plus a cross-ticket `setup.md`; `ercm-research` registers items there the moment they arise and names the file and section in chat.
 

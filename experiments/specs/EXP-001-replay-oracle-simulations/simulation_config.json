@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "experiment_id": "EXP-001",
+  "dataset_id": "DATA-D1-REPLAY-ORACLES-V1",
+  "evidence_label": "simulation-only",
+  "metric_registry_version": "replay-fidelity-oracles/v1",
+  "scenarios": {
+    "event_corruption": {
+      "canonical_sequences": [1, 2, 3, 4, 5, 6, 7, 8],
+      "arrival_sequences": [1, 2, 3, 5, 5, 7, 6, 8],
+      "expected": {
+        "missing_sequences": [4],
+        "duplicate_instances": 1,
+        "inversion_count": 1,
+        "adjacent_descents": 1,
+        "unique_event_coverage": 0.875,
+        "first_divergence_position": 4
+      }
+    },
+    "final_state_blind_spot": {
+      "reference_answers": ["A", "B"],
+      "candidate_answers": ["B"],
+      "expected": {
+        "final_state_equal": true,
+        "event_stream_equal": false,
+        "state_trajectory_equal": false,
+        "final_state_only_false_negative": true
+      }
+    },
+    "time_fields": {
+      "arrival_sequences": [1, 3, 2, 5, 4],
+      "wall_time_by_sequence": [1000, 1005, 1002, 1008, 1008],
+      "mono_ms_by_sequence": [0, 5, 5, 10, 15],
+      "expected_inversions": {
+        "arrival": 2,
+        "wall_time_only": 2,
+        "mono_ms_only": 1,
+        "sequence": 0
+      }
+    }
+  }
+}

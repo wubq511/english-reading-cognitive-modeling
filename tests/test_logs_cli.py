@@ -186,6 +186,23 @@ class StagedGateTests(unittest.TestCase):
 
 
 class HistoryGateTests(unittest.TestCase):
+    def test_history_gate_reads_utf8_entries(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            boundary = init_repo(root)
+            write_policy(root, boundary)
+            path, text = valid_entry(summary="记录可审计的研究变更")
+            entry = root / path
+            entry.parent.mkdir(parents=True, exist_ok=True)
+            entry.write_text(text, encoding="utf-8")
+            run_git(root, "add", "logs/policy.json", path)
+            run_git(root, "commit", "-m", "add UTF-8 activity log")
+
+            out, err = StringIO(), StringIO()
+            result = logs_cli.run_check_history(root, out, err)
+
+            self.assertEqual(0, result, err.getvalue())
+
     def test_history_gate_finds_commit_without_log_after_boundary(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

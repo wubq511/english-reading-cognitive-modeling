@@ -1,0 +1,45 @@
+schema_version: 1
+artifact_id: "AI-ISSUE7-RESEARCH-AND-SIMULATION-V1"
+artifact_role: "analysis"
+created_at: "2026-08-16T18:00:00+08:00"
+operator: "smiling-wei-assisted-by-codex"
+
+provider: "OpenAI"
+model_family: "GPT-5"
+model_id: "unknown-not-exposed-by-codex-desktop"
+model_snapshot_or_digest: "unknown"
+access_date: "2026-08-16"
+endpoint_or_runtime: "Codex desktop"
+
+prompt_id: "issue-7-formal-research-and-simulations"
+prompt_version: "1"
+prompt_sha256: "f85c3c9f818859f0cae74ef9f18de7e2e622c64ec7f9446192228ae5e44afdab"
+system_prompt_sha256: "unknown-not-exposed"
+codebook_version: "not-applicable"
+codebook_sha256: "not-applicable"
+
+input_dataset_id: "ISSUE-7-AND-REPLAY-SOURCE-SET"
+input_dataset_version: "1"
+input_sha256: "fac336642b6e5892d221d610e096f4503c3ac3aabee47bfa948a68c623a5547e"
+split: "not_applicable"
+output_sha256: "5f8c1076a94712058abd4b62c93dd02d53cc9d7d420240f5480bfac293f4c94e"
+
+temperature: "not-exposed"
+top_p: "not-exposed"
+
+verification:
+  human_owner: "smiling-wei"
+  status: "pending-teammate-review"
+  executed_generator_uses_ai: false
+  simulation_label: "simulation-only"
+  output_bundle_manifest:
+    - path: "reports/research/replay-fidelity-metrics-and-engineering-oracles.md"
+      sha256: "ba5c166aa059752a3eda2e7e7a1bb27aea35c19600c42f56ad4873e44888c3f2"
+    - path: "experiments/specs/EXP-001-replay-oracle-simulations/EXPERIMENT_SPEC.md"
+      sha256: "389d893417a54cc4f5f66e80168c48e58f162ce6dd8dbebb099fd0a6723a2bda"
+    - path: "experiments/specs/EXP-001-replay-oracle-simulations/simulation_config.json"
+      sha256: "237eb34f2c596f90d8364ab0279375cf5cc2c1e1f4a0a06ace7af0a2db929feb"
+    - path: "experiments/specs/EXP-001-replay-oracle-simulations/simulate.py"
+      sha256: "e5ae22eae46af22b6b1fb6fc4875a105fa129ec3922dc3653efaf4038271e8de"
+    - path: "tests/test_replay_oracle_simulations.py"
+      sha256: "7b437ba1e762f7465978e1ac4b6f1e21dd5a1981339d377b84fd1b3f166125a4"
