@@ -1,219 +1,221 @@
-# Replay-fidelity metrics and engineering oracles
+# 回放保真度指标与工程 Oracle
 
-- Status: `DRAFT_FOR_REVIEW`
-- Owner: `smiling-wei`
-- GitHub decision issue: [#7](https://github.com/wubq511/english-reading-cognitive-modeling/issues/7)
-- Experiment: `EXP-001`, run `2026-08-16-simulation-only-v2`
-- Metric registry version: `replay-fidelity-oracles/v1`
-- Evidence cutoff: 2026-08-16
+- 状态：`DRAFT_FOR_REVIEW`（待评审草案）
+- 负责人：`smiling-wei`
+- GitHub 决策议题：[#7](https://github.com/wubq511/english-reading-cognitive-modeling/issues/7)
+- 实验：`EXP-001`，运行批次 `2026-08-16-simulation-only-v2`
+- 指标登记版本：`replay-fidelity-oracles/v1`
+- 证据截止日期：2026-08-16
 
-## 1. Question and claim boundary
+## 1. 问题与声明边界
 
-This report asks which engineering methods should be evaluated for BENCH-E0 to measure event completeness, deterministic reconstruction, replay equivalence, cross-browser/device fidelity, and failure localization.
+本报告研究：在 `BENCH-E0` 中，应评估哪些工程方法，才能衡量事件完整性、确定性状态重建、回放等价性、跨浏览器/设备保真度，以及故障定位能力。
 
-The report can support a sourced options decision and a concrete experiment contract. It does **not** show that the current runtime is production-ready, that any threshold is universal, or that a faithfully replayed UI trace identifies a reader's cognitive state. The three included demonstrations are `simulation-only` DATA-D1 engineering fixtures.
+本报告可以支持基于来源证据的方案选择，并给出具体的实验约定；但它**不能**证明当前 runtime 已达到生产可用状态，不能证明任何阈值具有普适性，也不能证明得到忠实回放的 UI 轨迹能够识别读者的认知状态。报告中的三个演示均为 `simulation-only` 的 `DATA-D1` 工程模拟。
 
-## 2. Method and search boundary
+## 2. 方法与检索边界
 
-The search combined backward/forward citation tracing and targeted searches for: deterministic browser capture/replay; GUI test oracles; cross-browser functional consistency; event ordering and clocks; telemetry duplication; page-lifecycle delivery; and failure-inducing trace reduction. Preference was given to original papers, publisher/author manuscripts, and official specifications. Seven full papers and four official specifications were downloaded or snapshotted, assigned stable IDs, hashed, and passed the repository's per-file format/hash checks.
+本次检索结合了前向/后向引文追踪，并围绕以下主题进行定向检索：浏览器确定性捕获与回放、GUI 测试 Oracle、跨浏览器功能一致性、事件排序与时钟、遥测重复、页面生命周期中的发送可靠性，以及可诱发故障轨迹的最小化。来源优先选择原始论文、出版方或作者稿，以及官方规范。最终下载或快照保存了 7 篇全文论文和 4 份官方规范，并为其分配稳定 ID、计算哈希，且通过仓库的逐文件格式与哈希检查。
 
-Recent work was not excluded: `REPLAY-004` is a 2025 empirical GUI-oracle study; the High Resolution Time and WebDriver snapshots are 2026 Working Drafts. TimelyRep (2020, DOI `10.1002/stvr.1745`) and STAn (2023, DOI `10.1007/s10009-023-00719-8`) were screened but not used for full-text-dependent claims because a verified local full text was not obtained. This avoids treating metadata or a failed HTML download as a paper.
+本次工作并未排除近期研究：`REPLAY-004` 是 2025 年的 GUI Oracle 实证研究；High Resolution Time 与 WebDriver 的本地快照均为 2026 年工作草案。TimelyRep（2020，DOI `10.1002/stvr.1745`）与 STAn（2023，DOI `10.1007/s10009-023-00719-8`）已完成初筛，但因未取得经过核验的本地全文，未用于依赖全文的判断。这样可以避免把元数据或下载失败的 HTML 页面误当成论文全文。
 
-The repository-wide `sources doctor` still reports 70 missing historical sources outside this selected set. No claim in this report depends on those missing originals; the global gate remains an explicit project-level unresolved item.
+仓库全局 `sources doctor` 仍报告本次精选来源集之外有 70 份历史来源缺失。本报告的结论均不依赖这些缺失原件；该全局门禁仍是明确的项目级未决项。
 
-## 3. Evidence table
+## 3. 证据表
 
-| ID | Evidence and exact locator | What it establishes here | Limits |
+| ID | 证据与精确定位 | 本报告据此确认的内容 | 局限 |
 | --- | --- | --- | --- |
-| `REPLAY-001` | Xie & Memon (2007), PDF p. 1, Abstract | Oracle content and invocation frequency materially affect fault detection; weak oracles lose faults; some faults are visible only during a short execution window. | Four GUI systems from an older desktop era; does not prescribe a BENCH-E0 threshold. |
-| `REPLAY-002` | Mickens, Elson, & Howell (2010), PDF pp. 1–3, Abstract and §3 opening | A final crash snapshot is insufficient for root-cause analysis; deterministic browser replay requires capturing external nondeterminism and event ordering. | JavaScript/browser assumptions and evaluation environment are historical. |
-| `REPLAY-003` | Burg et al. (2013), PDF p. 1, Abstract and Introduction | Deterministic web replay captures and reuses user, network, and other nondeterministic inputs; the small user study's larger-task result was null. | Debugging tool, not a metric standard; small evaluation. |
-| `REPLAY-004` | Yarifard et al. (2025), PDF p. 2, Abstract; pp. 3–4, §§1–2 | App-specific GUI invariants can augment crash-only/implicit oracles; reported fault-detection improvement was 18%–32% in the studied mobile-app test suites. | Mobile app mutation study; the percentage must not be transferred to this reading UI. |
-| `REPLAY-005` | Lamport (1978), journal pp. 558–560 / PDF pp. 1–3, “The Partial Ordering” and “Logical Clocks” | Causal order is a partial order; logical clocks can extend order, while physical time alone is not a sufficient causal ordering rule. | Multi-process theory; a single session-local counter is a project specialization. |
-| `REPLAY-006` | Zeller & Hildebrandt (2002), PDF p. 1, Abstract and Introduction | `ddmin` can reduce a failure-inducing input while preserving the failure; the Mozilla example reduced 95 actions to 3. | Requires a stable, automatable pass/fail predicate. |
-| `REPLAY-007` | Mesbah & Prasad (2011), PDF pp. 1–4, §§2 and 4.1–4.2 | Cross-browser compatibility is a functional state/trace consistency problem, not merely screenshot similarity; state-machine equivalence is one usable differential oracle. | Old browser stack and finite-state abstraction; visual-only differences remain a separate class. |
-| `REPLAY-008` | W3C High Resolution Time Level 3 (2026 WD), §§1 and 2.1 | Wall time may decrease or stay equal; monotonic time is intended for measurement but can be coarsened and is not a cross-execution global clock. | Working Draft; monotonic timestamps can still tie and are not event identities. |
-| `REPLAY-009` | W3C WebDriver (2026 WD), §§15.7, 17.1–17.2 | Standard browser actions and screenshot endpoints provide a repeatable driver/observation surface. | Working Draft; a driver and screenshot API do not define semantic correctness. |
-| `REPLAY-010` | OTLP 1.11.0, §“Known Limitations → Request Acknowledgements → Duplicate Data” | A client retry after a missing acknowledgement can create server-side duplicate telemetry. | OTLP is not this project's transport; it supplies a primary counterexample to “retry implies exactly once.” |
-| `REPLAY-011` | W3C Beacon (2022 CR Draft), §1 Introduction, Example 1 | `visibilitychange` is the lifecycle trigger recommended over `unload`; lifecycle-aware send mitigates termination loss. | Queueing a beacon is not an end-to-end durable-delivery proof or an exactly-once guarantee. |
+| `REPLAY-001` | Xie 与 Memon（2007），PDF 第 1 页，摘要 | Oracle 的检查内容和调用频率会显著影响故障检出；较弱的 Oracle 会漏掉故障；部分故障只在很短的执行窗口内可见。 | 研究对象是较早桌面时代的 4 个 GUI 系统；不能据此规定 `BENCH-E0` 的阈值。 |
+| `REPLAY-002` | Mickens、Elson 与 Howell（2010），PDF 第 1–3 页，摘要及第 3 节开头 | 只保存崩溃后的最终快照不足以进行根因分析；浏览器确定性回放需要捕获外部非确定性和事件顺序。 | JavaScript/浏览器假设与评估环境具有历史局限。 |
+| `REPLAY-003` | Burg 等（2013），PDF 第 1 页，摘要和引言 | Web 确定性回放需要捕获并重用用户输入、网络输入和其他非确定性输入；其小规模用户研究在较大任务上的结果为零结果。 | 这是调试工具研究，不是指标标准；评估规模较小。 |
+| `REPLAY-004` | Yarifard 等（2025），PDF 第 2 页，摘要；第 3–4 页，第 1–2 节 | 应用特定的 GUI 不变量可以补充只检查崩溃的隐式 Oracle；在所研究的移动应用测试套件中，报告的故障检出提升为 18%–32%。 | 这是移动应用变异测试研究；该百分比不能直接迁移到本项目的阅读 UI。 |
+| `REPLAY-005` | Lamport（1978），期刊第 558–560 页 / PDF 第 1–3 页，“The Partial Ordering”与“Logical Clocks” | 因果顺序是偏序；逻辑时钟可以扩展顺序，而仅靠物理时间不足以作为因果排序规则。 | 属于多进程理论；单会话局部计数器是本项目的具体化方案。 |
+| `REPLAY-006` | Zeller 与 Hildebrandt（2002），PDF 第 1 页，摘要和引言 | `ddmin` 可以在保留故障的前提下缩减诱发故障的输入；Mozilla 案例把 95 个动作缩减为 3 个。 | 需要稳定且可自动执行的通过/失败谓词。 |
+| `REPLAY-007` | Mesbah 与 Prasad（2011），PDF 第 1–4 页，第 2 节及第 4.1–4.2 节 | 跨浏览器兼容性是功能状态/轨迹一致性问题，不只是截图相似性问题；状态机等价是一种可用的差分 Oracle。 | 浏览器技术栈较旧，且采用有限状态抽象；仅视觉层面的差异仍需单独处理。 |
+| `REPLAY-008` | W3C High Resolution Time Level 3（2026 工作草案），第 1 节和第 2.1 节 | 墙上时间可能倒退或保持相等；单调时间用于测量，但可能被降低精度，且不是跨执行过程的全局时钟。 | 工作草案仍可能变化；单调时间戳仍可能相同，也不能充当事件身份。 |
+| `REPLAY-009` | W3C WebDriver（2026 工作草案），第 15.7、17.1–17.2 节 | 标准浏览器动作和截图端点提供了可重复的驱动与观测接口。 | 工作草案仍可能变化；驱动器和截图 API 本身不定义语义正确性。 |
+| `REPLAY-010` | OTLP 1.11.0，“Known Limitations → Request Acknowledgements → Duplicate Data”一节 | 客户端未收到确认后进行重试，可能导致服务端产生重复遥测数据。 | OTLP 不是本项目的传输协议；这里仅把它作为反驳“重试就等于恰好一次”的一手反例。 |
+| `REPLAY-011` | W3C Beacon（2022 候选推荐草案），第 1 节引言，示例 1 | 相比 `unload`，规范推荐使用 `visibilitychange` 作为生命周期触发器；生命周期感知发送可以缓解页面终止导致的数据丢失。 | 将数据加入 Beacon 队列不等于端到端持久送达证明，也不保证恰好一次。 |
 
-## 4. Findings
+## 4. 研究发现
 
-### 4.1 “Replay fidelity” is not one number
+### 4.1 “回放保真度”不是一个单一数字
 
-The literature supports separating at least four questions:
+文献支持至少把以下四个问题分开评估：
 
-1. **Did the expected evidence arrive?** Stable identities and an expected sequence expose loss and duplication.
-2. **Can the same ordered inputs reconstruct the same states?** Deterministic replay requires the relevant nondeterministic inputs, not only user gestures (`REPLAY-002`, PDF pp. 1–3; `REPLAY-003`, PDF p. 1).
-3. **Did important intermediate states agree?** Xie and Memon found that some faults are observable only within a small execution window; therefore a thorough final check can be cost-effective without being universally sufficient (`REPLAY-001`, PDF p. 1).
-4. **Is behavior equivalent across environments?** Functional state/transition consistency and user-observable rendering differences are related but non-identical (`REPLAY-007`, PDF pp. 2–4).
+1. **预期证据是否到达？** 稳定身份与预期序列可以暴露事件丢失和重复。
+2. **相同的有序输入能否重建相同状态？** 确定性回放需要捕获相关的非确定性输入，而不只是用户手势（`REPLAY-002`，PDF 第 1–3 页；`REPLAY-003`，PDF 第 1 页）。
+3. **重要的中间状态是否一致？** Xie 与 Memon 发现，部分故障只能在很短的执行窗口内观察到；因此，完整的最终检查可能具有较好的成本效益，但并非在所有场景中都充分（`REPLAY-001`，PDF 第 1 页）。
+4. **不同环境中的行为是否等价？** 功能状态/转移一致性与用户可见的渲染差异相关，但二者并不等同（`REPLAY-007`，PDF 第 2–4 页）。
 
-Consequently, a single final-state equality flag can report a false pass even when events were lost or the process path changed.
+因此，如果只检查最终状态是否相等，即使发生了事件丢失或过程路径变化，也可能得到错误的通过结果。
 
-### 4.2 Metric registry `replay-fidelity-oracles/v1`
+### 4.2 指标登记表 `replay-fidelity-oracles/v1`
 
-The following definitions are **PROJECT-INFERENCE**, derived from the source constraints and designed for BENCH-E0 evaluation. They are not claimed as universal published standards.
+以下定义属于 **`PROJECT-INFERENCE`（项目推论）**：它们由上述来源约束推导，并为 `BENCH-E0` 评估而设计，不应被表述为通用的已发表标准。
 
-| Metric | Definition | Direction and diagnostic role |
+| 指标 | 定义 | 趋势与诊断作用 |
 | --- | --- | --- |
-| Unique-event coverage | `|U_observed ∩ U_expected| / |U_expected|`, where `U` uses stable event IDs | Higher is better; isolates missing unique evidence. Report numerator and denominator. |
-| Missing-event rate | `|U_expected − U_observed| / |U_expected|` | Lower is better; report missing IDs and sequence gaps, not only the rate. |
-| Duplicate-instance rate | `(N_observed − |U_observed|) / N_observed` | Lower is better; preserve retry/arrival records while replay deduplicates by stable ID. |
-| Order inversion rate | Pairwise inversions among first occurrences divided by `m(m−1)/2`, relative to the frozen reference order | Lower is better; exposes global reordering. Also report adjacent descents for local debugging. |
-| Exact stream equivalence | Ordered normalized event tuples match exactly after declared deduplication rules | Binary strict oracle for deterministic fixtures. |
-| Prefix/state-trajectory equivalence | All declared state projections agree after every replayed event | Strict process oracle; catches transient divergences hidden by final state. |
-| Final semantic-state equivalence | Declared semantic projection of final reconstructed state agrees | Useful but insufficient alone; exclude volatile/render-only properties explicitly. |
-| Timing interval error | On matched adjacent events, compare monotonic intervals; report MAE, P95, maximum, and monotonic violations | Lower is better; do not infer order from a tied or cross-execution monotonic value alone. |
-| Cross-environment differential | Per browser/device: unreachable transitions, missing/extra semantic states, invariant violations, final projection mismatches, and separately visual diffs | Zero unexplained semantic differences is the deterministic-fixture target; visual tolerance must be specified per property. |
-| First divergence | First event position/ID and first state field whose expected and actual values differ | Localization output, not an aggregate quality score. |
+| 唯一事件覆盖率 | `|U_observed ∩ U_expected| / |U_expected|`，其中 `U` 使用稳定事件 ID | 越高越好；用于隔离唯一证据缺失。必须同时报告分子和分母。 |
+| 事件缺失率 | `|U_expected − U_observed| / |U_expected|` | 越低越好；除比率外，还应报告缺失 ID 与序列缺口。 |
+| 重复实例率 | `(N_observed − |U_observed|) / N_observed` | 越低越好；保留重试/到达记录，但回放视图按稳定 ID 去重。 |
+| 顺序逆序率 | 相对于冻结参考顺序，首次出现事件的成对逆序数除以 `m(m−1)/2` | 越低越好；用于暴露整体乱序。局部调试时还应报告相邻下降次数。 |
+| 精确事件流等价 | 按已声明的去重规则处理后，有序且规范化的事件元组完全一致 | 面向确定性夹具的二元严格 Oracle。 |
+| 前缀/状态轨迹等价 | 每次回放事件后，所有已声明的状态投影都一致 | 严格的过程 Oracle；可发现被最终状态掩盖的瞬时分歧。 |
+| 最终语义状态等价 | 重建后最终状态的已声明语义投影一致 | 有用但单独使用并不充分；必须明确排除易变属性和仅渲染属性。 |
+| 时间间隔误差 | 对匹配的相邻事件比较单调时钟间隔，并报告 MAE、P95、最大值和单调性违规 | 越低越好；不能只靠相同值或跨执行过程的单调时间来推断顺序。 |
+| 跨环境差分 | 对每个浏览器/设备分别报告：不可达转移、缺失/多余语义状态、不变量违规、最终投影不匹配，并单独报告视觉差异 | 对确定性夹具，目标是没有无法解释的语义差异；视觉容差必须按属性声明。 |
+| 首个分歧点 | 预期值与实际值首次不同的事件位置/ID，以及首个不同的状态字段 | 属于定位输出，不是汇总质量分数。 |
 
-All metric outputs should use `PASS`, `FAIL`, `UNRESOLVED`, or `INVALID`. An unavailable expected event set must not be silently converted to 100% coverage; it is `UNRESOLVED`. A run with source/config/input drift is `INVALID`.
+所有指标输出都应使用 `PASS`、`FAIL`、`UNRESOLVED` 或 `INVALID`。如果预期事件集合不可得，不能悄悄把覆盖率记为 100%，而应标为 `UNRESOLVED`。来源、配置或输入发生漂移的运行应标为 `INVALID`。
 
-### 4.3 Layered engineering oracles
+### 4.3 分层工程 Oracle
 
-**PROJECT-INFERENCE:** BENCH-E0 should combine, rather than choose only one of, these oracle layers:
+**`PROJECT-INFERENCE`：** `BENCH-E0` 应组合使用下列 Oracle 层，而不是只选择其中一种：
 
-| Layer | Minimum checks | Blind spot if used alone |
+| 层级 | 最低检查要求 | 单独使用时的盲点 |
 | --- | --- | --- |
-| O1 Structural ingestion | schema/version, session/producer ID, stable event ID, sequence continuity, duplicate instances, append-only provenance | Does not prove state transitions are correct. |
-| O2 Ordered replay | deterministic sort/dedup policy; exact normalized event stream; capture of declared external inputs | Can reproduce an incorrect state reducer perfectly. |
-| O3 Prefix transition | invariant and state-projection checks after each event; first divergence | Higher storage/execution cost; only sees properties included in the projection. |
-| O4 Final semantic state | answer history outcome, eliminate/restore outcome, submission and other declared semantic fields | Misses compensating errors and alternate paths ending in the same state. |
-| O5 Timing | monotonic interval error, lifecycle gaps, clock anomalies | Timing agreement does not prove semantic correctness. |
-| O6 Cross-environment differential | same fixture/actions across supported browser/device matrix; semantic state/transition diff plus separate screenshot diff | A common bug across all environments can pass a differential oracle. |
+| O1 结构化摄取 | schema/版本、会话/生产者 ID、稳定事件 ID、序列连续性、重复实例、append-only 谱系 | 不能证明状态转移正确。 |
+| O2 有序回放 | 确定性排序/去重规则、规范化事件流精确一致、捕获已声明的外部输入 | 可能完美复现一个本身错误的状态 reducer。 |
+| O3 前缀状态转移 | 每个事件后的不变量与状态投影检查、首个分歧点 | 存储和执行成本较高；只能观察投影包含的属性。 |
+| O4 最终语义状态 | 答案历史最终结果、排除/恢复结果、提交状态及其他已声明语义字段 | 会漏掉相互抵消的错误，以及以不同路径到达同一状态的情况。 |
+| O5 时间 | 单调时间间隔误差、生命周期缺口、时钟异常 | 时间一致不能证明语义正确。 |
+| O6 跨环境差分 | 在支持的浏览器/设备矩阵中执行同一夹具/动作；比较语义状态/转移，并另做截图差分 | 所有环境共有的同一错误可能通过差分 Oracle。 |
 
-App-specific invariants are a promising supplement because implicit crash-only oracles miss non-crashing faults (`REPLAY-004`, PDF pp. 3–4). They remain fallible specifications: each invariant needs an owner, scope, rationale, and negative test.
+应用特定的不变量是一种有前景的补充，因为只检查崩溃的隐式 Oracle 会漏掉非崩溃故障（`REPLAY-004`，PDF 第 3–4 页）。但不变量本身仍是可能出错的规范：每条不变量都需要负责人、适用范围、设计理由和负向测试。
 
-### 4.4 Ordering-field roles
+### 4.4 三种排序字段的职责
 
-High Resolution Time explicitly distinguishes wall and monotonic clocks: wall clocks may be adjusted backwards, while monotonic clocks are for measurement and do not provide a universal cross-execution time (`REPLAY-008`, §§1, 2.1). Lamport separately shows that observable/causal order and physical time are not interchangeable (`REPLAY-005`, journal pp. 558–560).
+High Resolution Time 明确区分墙上时钟与单调时钟：墙上时钟可能因校时而倒退；单调时钟用于测量，但不能提供跨执行过程的通用时间（`REPLAY-008`，第 1、2.1 节）。Lamport 则说明，可观察/因果顺序与物理时间不可互换（`REPLAY-005`，期刊第 558–560 页）。
 
-**PROJECT-INFERENCE:** retain all three fields, with different roles:
+**`PROJECT-INFERENCE`：** 应同时保留三个字段，但让它们承担不同职责：
 
-| Field | Primary role | Do not use it as |
+| 字段 | 主要职责 | 不应将它用作 |
 | --- | --- | --- |
-| `sequence` | Session- and producer-local total order; deterministic replay key; gap detection | A duration or a cross-producer causal order without an explicit merge contract. |
-| `mono_ms` | Within one execution/time-origin: elapsed time, interval plausibility, latency | Stable identity, total order under ties, or a cross-restart clock. |
-| `wall_time` | UTC calendar anchor, human-readable audit, approximate cross-system alignment | The sole replay order or duration clock. |
+| `sequence` | 会话内、生产者局部的全序；确定性回放键；缺口检测 | 时长；或在没有显式合并约定时充当跨生产者因果顺序。 |
+| `mono_ms` | 在同一次执行/同一 time origin 内测量经过时间、间隔合理性和延迟 | 稳定身份；时间相同时的全序；或跨重启时钟。 |
+| `wall_time` | UTC 日历锚点、人类可读审计、近似跨系统对齐 | 唯一的回放排序键或持续时长时钟。 |
 
-For multiple producers/contexts, include `producer_id` and either a frozen aggregator sequence or an explicit causal/merge rule. Preserve transport `arrival_index` separately; never overwrite raw arrival evidence when deriving replay order.
+如果存在多个生产者/上下文，应加入 `producer_id`，并使用冻结的聚合器序列，或声明明确的因果/合并规则。还应单独保留传输层 `arrival_index`；推导回放顺序时，绝不能覆盖原始到达证据。
 
-### 4.5 Delivery, duplication, and lifecycle
+### 4.5 发送、重复与生命周期
 
-OTLP documents the fundamental retry ambiguity: if acknowledgement is missing, resending may duplicate data (`REPLAY-010`, §“Duplicate Data”). Beacon recommends `visibilitychange` over `unload` for mobile/background lifecycle transitions (`REPLAY-011`, §1 Example 1), but this does not establish durable server acknowledgement.
+OTLP 记录了一种根本性的重试歧义：如果确认消息丢失，重新发送可能产生重复数据（`REPLAY-010`，“Duplicate Data”一节）。Beacon 建议在移动端/后台生命周期转换中使用 `visibilitychange`，而不是 `unload`（`REPLAY-011`，第 1 节示例 1），但这并不能证明服务端已经持久接收。
 
-**PROJECT-INFERENCE:** a BENCH-E0 candidate should therefore test:
+**`PROJECT-INFERENCE`：** 因此，`BENCH-E0` 候选方案应测试：
 
-- stable `event_id` idempotency across retry;
-- local durable buffer and explicit acknowledgement/watermark behavior;
-- page background, termination, offline/reconnect, and collector timeout faults;
-- raw arrival multiplicity plus a deterministic deduplicated replay view;
-- observed gaps as `UNKNOWN/UNRESOLVED` evidence, not reconstructed user actions.
+- 基于稳定 `event_id` 的跨重试幂等性；
+- 本地持久缓冲区和明确的确认/水位线行为；
+- 页面进入后台、页面终止、离线/重连，以及收集器超时故障；
+- 原始到达次数和确定性去重后的回放视图；
+- 将观测到的缺口保留为 `UNKNOWN/UNRESOLVED` 证据，而不是补造用户动作。
 
-“At least once plus idempotency” is a testable candidate contract; “exactly once” should not be claimed merely because retries exist.
+“至少一次发送 + 幂等”是可测试的候选约定；不能仅因为系统支持重试，就声称实现了“恰好一次”。
 
-### 4.6 Cross-browser/device oracle
+### 4.6 跨浏览器/设备 Oracle
 
-WebDriver supplies standard actions and observation endpoints, including screenshots (`REPLAY-009`, §§15.7, 17), but it is a driver rather than a truth definition. Mesbah and Prasad model functional compatibility through state/transition behavior and explicitly distinguish DOM/trace differences from visible differences (`REPLAY-007`, §§2, 4).
+WebDriver 提供了标准动作和包括截图在内的观测端点（`REPLAY-009`，第 15.7、17 节），但它只是驱动工具，并不是真值定义。Mesbah 与 Prasad 通过状态/转移行为建模功能兼容性，并明确区分 DOM/轨迹差异与可见差异（`REPLAY-007`，第 2、4 节）。
 
-**PROJECT-INFERENCE:** run the identical frozen fixture and action schedule on every supported environment and compare:
+**`PROJECT-INFERENCE`：** 应在每个受支持环境中执行完全相同的冻结夹具与动作计划，并比较：
 
-1. event capture and ordering metrics;
-2. reachable semantic states and transitions;
-3. declared GUI/state invariants;
-4. final semantic projection;
-5. screenshots/layout as a separate, tolerance-bound channel.
+1. 事件捕获与排序指标；
+2. 可达的语义状态与转移；
+3. 已声明的 GUI/状态不变量；
+4. 最终语义投影；
+5. 作为独立通道并带有明确容差的截图/布局差异。
 
-Do not let screenshot equality substitute for event/state equivalence, or DOM equality substitute for user-observable correctness.
+不能用截图相等代替事件/状态等价，也不能用 DOM 相等代替用户可观察层面的正确性。
 
-### 4.7 Failure localization
+### 4.7 故障定位
 
-Every failure should first report the event ID/sequence, state field, environment, and oracle layer at the first divergence. If a deterministic predicate can be replayed automatically, apply `ddmin` to the trace while preserving the same failure signature. Zeller and Hildebrandt's Mozilla case reduced 95 actions to 3 (`REPLAY-006`, PDF p. 1), demonstrating the diagnostic value of a reproducible pass/fail predicate rather than prescribing a fixed reduction rate.
+每次失败都应先报告首次分歧处的事件 ID/序列、状态字段、环境和 Oracle 层。如果某个确定性谓词能够自动回放，则可以在保留相同故障特征的条件下对轨迹应用 `ddmin`。Zeller 与 Hildebrandt 的 Mozilla 案例把 95 个动作缩减到 3 个（`REPLAY-006`，PDF 第 1 页），说明可复现的通过/失败谓词具有诊断价值；这并不意味着缩减比例应固定。
 
-## 5. Simulation-only demonstrations
+## 5. 仅模拟演示
 
-The frozen design is in `experiments/specs/EXP-001-replay-oracle-simulations/`; bulk output is in ignored run artifacts. The result hash is `6c527fd5d26594f91dd272529b920914066a2995ddc1ad2b41f5d550214ae237`.
+冻结设计位于 `experiments/specs/EXP-001-replay-oracle-simulations/`；大体积输出位于被 Git 忽略的运行工件目录。结果哈希为 `6c527fd5d26594f91dd272529b920914066a2995ddc1ad2b41f5d550214ae237`。
 
-| Simulation (`simulation-only`) | Frozen manipulation | Observed result | What it demonstrates—and does not demonstrate |
+| 模拟（`simulation-only`） | 冻结操纵 | 观测结果 | 能说明什么，以及不能说明什么 |
 | --- | --- | --- | --- |
-| Event loss / duplicate / disorder | Canonical sequence `1..8`; arrival `1,2,3,5,5,7,6,8` | Missing `[4]`; duplicate instances `1`; inversions `1`; adjacent descents `1`; coverage `7/8 = 0.875`; first divergence at position 4 | The v1 metrics exactly recover injected corruption in this DGM. It says nothing about real loss prevalence. |
-| Final-state Oracle blind spot | Reference answer path `A→B`; candidate path `B` | Final state equal; event stream unequal; state trajectory unequal; final-only false negative `true` | Final equality is insufficient for process fidelity. It does not validate a cognitive interpretation of either path. |
-| Three ordering fields | Arrival `1,3,2,5,4`; wall rollback/tie; monotonic tie | Inversions: arrival `2`, wall-only `2`, monotonic-only `1`, sequence `0` | Fields have different roles; `sequence` recovers this frozen within-session total order. It is not a universal cross-producer ordering proof. |
+| 事件丢失/重复/乱序 | 标准序列 `1..8`；到达序列 `1,2,3,5,5,7,6,8` | 缺失 `[4]`；重复实例 `1`；逆序 `1`；相邻下降 `1`；覆盖率 `7/8 = 0.875`；首个分歧位于第 4 个位置 | v1 指标能在该 DGM 下准确恢复被注入的破坏；不能说明真实场景中的丢失发生率。 |
+| 最终状态 Oracle 盲点 | 参考答案路径 `A→B`；候选路径 `B` | 最终状态相等；事件流不等；状态轨迹不等；仅最终状态造成的假阴性为 `true` | 最终状态相等不足以证明过程保真；也不能验证任一路径的认知解释。 |
+| 三种排序字段 | 到达顺序 `1,3,2,5,4`；墙上时钟倒退/相同；单调时钟相同 | 逆序数：到达顺序 `2`、仅墙上时间 `2`、仅单调时间 `1`、序列号 `0` | 三种字段职责不同；`sequence` 能恢复本模拟中冻结的单会话全序，但这不是通用的跨生产者排序证明。 |
 
-All 10 predeclared checks passed, so this exact run is `COMPLETE`. The run was executed from a dirty worktree and records commit `9ef61368f881ead0f4fb63b6a95862598749769a`; that provenance is intentional and prevents the run from being mistaken for a release artifact.
+预先声明的 10 项检查全部通过，因此这次精确运行的状态是 `COMPLETE`。运行发生在有未提交修改的工作树中，并记录了 commit `9ef61368f881ead0f4fb63b6a95862598749769a`；这是有意保留的谱系信息，可防止该运行被误认为发布工件。
 
-## 6. Decision implications for issue #7
+## 6. 对议题 #7 的决策含义
 
-Recommended answer to carry into #8 as experiment gates, not locked product truth:
+建议把以下答案带入 #8，作为实验门禁，而不是已经锁定的产品真值：
 
-1. Evaluate the layered O1–O6 oracle stack; do not collapse replay fidelity into final-state equality.
-2. Require stable `event_id`, `session_id`, `producer_id`, session-local `sequence`, `mono_ms`, `wall_time`, schema/version, and preserved arrival provenance as candidate evidence fields.
-3. Use `sequence` for within-session deterministic replay, `mono_ms` for elapsed-time checks, and `wall_time` for calendar audit.
-4. For frozen deterministic DATA-D1 fixtures, require exact recovery of injected counts and zero unexplained semantic mismatches. Treat this as a project engineering gate, not a literature-derived universal threshold.
-5. Leave empirical tolerances for real browsers/devices open until BENCH-E0 supplies distributions, negative cases, and repeated runs.
-6. Report final state, prefix trajectory, event structure, timing, and cross-environment differentials separately, with first divergence and optional `ddmin` reduction.
-7. Preserve `UNKNOWN/UNRESOLVED` when expected evidence is unavailable; synthetic recovery cannot create missing truth.
+1. 评估分层的 O1–O6 Oracle 组合；不能把回放保真度压缩成最终状态是否相等。
+2. 把稳定的 `event_id`、`session_id`、`producer_id`、会话局部 `sequence`、`mono_ms`、`wall_time`、schema/版本，以及被保留的到达谱系作为候选证据字段。
+3. 使用 `sequence` 进行会话内确定性回放，使用 `mono_ms` 检查经过时间，使用 `wall_time` 进行日历审计。
+4. 对冻结的确定性 `DATA-D1` 夹具，要求准确恢复注入计数，并且没有无法解释的语义不匹配。这是项目工程门禁，不是文献给出的通用阈值。
+5. 在 `BENCH-E0` 提供真实浏览器/设备上的分布、负向案例和重复运行结果之前，真实环境容差保持开放。
+6. 分别报告最终状态、前缀轨迹、事件结构、时间和跨环境差分，并报告首个分歧点；需要时可使用 `ddmin` 缩减。
+7. 预期证据不可用时保留 `UNKNOWN/UNRESOLVED`；合成数据恢复不能创造缺失的真值。
 
-## 7. Limitations and open questions
+## 7. 局限与未决问题
 
-- The browser replay and cross-browser papers are foundational but use older platforms. Their principles motivate candidate checks; they do not establish current browser support.
-- High Resolution Time and WebDriver are 2026 Working Drafts and may change.
-- The 2025 invariant study concerns mobile apps and mutation testing, not this reading UI.
-- The simulations are deterministic counterexamples, not performance, stochastic recovery, cross-browser, or field-loss studies.
-- No verified TimelyRep/STAn full text was used; their metadata cannot carry detailed formal claims here.
-- The project still needs #8 to freeze the actual benchmark matrix, supported environments, state projection, negative fixtures, repetitions, and tolerance rules.
-- Global source preflight remains red because 70 historical sources unrelated to the selected #7 evidence are absent in this clone.
+- 浏览器回放和跨浏览器研究属于基础性工作，但其平台较旧。其原理可以帮助设计候选检查，不能证明当前浏览器支持情况。
+- High Resolution Time 与 WebDriver 均为 2026 年工作草案，仍可能变化。
+- 2025 年不变量研究针对移动应用和变异测试，而不是本项目的阅读 UI。
+- 三个模拟是确定性反例，不是性能研究、随机恢复研究、跨浏览器研究或实际场景事件丢失研究。
+- 本报告未使用经过核验的 TimelyRep/STAn 全文；其元数据不能承载详细的形式化结论。
+- 项目仍需在 #8 中冻结实际 benchmark 矩阵、支持环境、状态投影、负向夹具、重复次数和容差规则。
+- 全局来源预检仍为红色，因为当前克隆缺少 70 份与 #7 精选证据无关的历史来源。
 
-## 8. Meeting presentation outline (8–10 minutes)
+## 8. 会议汇报提纲（8–10 分钟）
 
-### Slide 1 — Why issue #7 matters (45 s)
+### 第 1 页 — 为什么议题 #7 很重要（45 秒）
 
-- BENCH-E0 must show that raw UI evidence survives capture, transport, reconstruction, and replay before downstream inference.
-- Decision question: which metrics and Oracles should #8 freeze as experiment gates?
+- 在开展下游推断之前，`BENCH-E0` 必须证明原始 UI 证据能够经受捕获、传输、状态重建和回放。
+- 决策问题：#8 应冻结哪些指标和 Oracle 作为实验门禁？
 
-### Slide 2 — Main evidence (75 s)
+### 第 2 页 — 主要证据（75 秒）
 
-- Deterministic replay needs event order plus external nondeterministic inputs (`REPLAY-002`, `REPLAY-003`).
-- Oracle strength and invocation timing change fault detection; final checks can miss transient faults (`REPLAY-001`).
-- Recent app-specific invariant evidence shows value beyond crash-only Oracles (`REPLAY-004`, 2025), without transferring its effect size to our UI.
+- 确定性回放需要事件顺序和外部非确定性输入（`REPLAY-002`、`REPLAY-003`）。
+- Oracle 的强度和调用时机影响故障检出；最终检查可能漏掉瞬时故障（`REPLAY-001`）。
+- 近期应用特定不变量研究说明，仅检查崩溃之外的 Oracle 也有价值（`REPLAY-004`，2025），但不能把其效应量迁移到本项目 UI。
 
-### Slide 3 — Recommended metric stack (75 s)
+### 第 3 页 — 建议的指标组合（75 秒）
 
-- Completeness: unique coverage, missing rate, duplicate rate.
-- Ordering: inversion rate, adjacent descents, first divergence.
-- Equivalence: exact stream, prefix trajectory, final semantic state, timing error.
-- Cross-environment: state/transition/invariant differences and separate visual differences.
+- 完整性：唯一事件覆盖率、缺失率、重复率。
+- 排序：逆序率、相邻下降数、首个分歧点。
+- 等价性：精确事件流、前缀轨迹、最终语义状态、时间误差。
+- 跨环境：状态/转移/不变量差异，以及单独报告的视觉差异。
 
-### Slide 4 — Why one final-state Oracle fails (60 s)
+### 第 4 页 — 为什么单一最终状态 Oracle 会失效（60 秒）
 
-- Show `A→B` versus `B`.
-- Same final answer; different stream and trajectory.
-- Message: final state is necessary for some questions, never sufficient for replay fidelity.
+- 展示 `A→B` 与 `B`。
+- 最终答案相同，但事件流和状态轨迹不同。
+- 核心信息：最终状态对某些问题是必要的，但永远不足以单独证明回放保真度。
 
-### Slide 5 — Which time field does what? (75 s)
+### 第 5 页 — 三种时间字段各自负责什么？（75 秒）
 
-- Simulation result: wall `2` inversions, monotonic `1`, sequence `0`.
-- `sequence`: replay order; `mono_ms`: elapsed time; `wall_time`: calendar audit.
-- Multi-producer merge remains an explicit #8 contract item.
+- 模拟结果：墙上时间逆序数 `2`，单调时间逆序数 `1`，序列号逆序数 `0`。
+- `sequence`：回放顺序；`mono_ms`：经过时间；`wall_time`：日历审计。
+- 多生产者合并仍是 #8 需要显式约定的事项。
 
-### Slide 6 — Layered Oracles and failure localization (75 s)
+### 第 6 页 — 分层 Oracle 与故障定位（75 秒）
 
-- O1 structure → O2 ordered replay → O3 prefix state → O4 final semantic → O5 timing → O6 cross-environment.
-- First divergence first; then `ddmin` when a stable predicate exists.
+- O1 结构 → O2 有序回放 → O3 前缀状态 → O4 最终语义 → O5 时间 → O6 跨环境。
+- 先找首个分歧点；存在稳定谓词时，再使用 `ddmin`。
 
-### Slide 7 — Decision and remaining gates (60 s)
+### 第 7 页 — 决策与剩余门禁（60 秒）
 
-- Adopt the metric/oracle options as #8 experiment gates.
-- Do not freeze real-world tolerances yet.
-- Explicitly retain `UNKNOWN/UNRESOLVED`, negative/null results, and `simulation-only` labels.
+- 采纳这些指标/Oracle 选项，作为 #8 的实验门禁。
+- 暂不冻结真实场景的容差。
+- 明确保留 `UNKNOWN/UNRESOLVED`、负向/零结果和 `simulation-only` 标签。
 
-### Backup slide — Provenance and caveats
+### 备用页 — 谱系与注意事项
 
-- 11 local verified sources; exact source IDs and locators.
-- 3 simulations, 10/10 checks; output SHA shown above.
-- Global historical-source gate remains red; selected #7 evidence is locally verified.
+- 11 份本地已核验来源，并给出精确来源 ID 与定位信息。
+- 3 个模拟、10/10 项检查通过；上文已列出输出 SHA。
+- 全局历史来源门禁仍为红色；#7 所选证据已在本地核验。
 
-## References
+## 参考文献
+
+> 为保证可检索性与书目信息准确，论文和规范的正式题名保留原文。
 
 - `REPLAY-001` — Qing Xie & Atif M. Memon. [Designing and Comparing Automated Test Oracles for GUI-based Software Applications](https://doi.org/10.1145/1189748.1189752). TOSEM, 2007.
 - `REPLAY-002` — James Mickens, Jeremy Elson, & Jon Howell. [Mugshot: Deterministic Capture and Replay for JavaScript Applications](https://www.usenix.org/conference/nsdi10-0/mugshot-deterministic-capture-and-replay-javascript-applications). NSDI, 2010.

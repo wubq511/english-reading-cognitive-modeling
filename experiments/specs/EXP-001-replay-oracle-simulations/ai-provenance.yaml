@@ -1,8 +1,9 @@
 schema_version: 1
-artifact_id: "AI-ISSUE7-RESEARCH-AND-SIMULATION-V1"
+artifact_id: "AI-ISSUE7-RESEARCH-AND-SIMULATION-V2"
 artifact_role: "analysis"
-created_at: "2026-08-16T18:00:00+08:00"
+created_at: "2026-08-16T18:47:05+08:00"
 operator: "smiling-wei-assisted-by-codex"
+supersedes_artifact_id: "AI-ISSUE7-RESEARCH-AND-SIMULATION-V1"
 
 provider: "OpenAI"
 model_family: "GPT-5"
@@ -11,21 +12,37 @@ model_snapshot_or_digest: "unknown"
 access_date: "2026-08-16"
 endpoint_or_runtime: "Codex desktop"
 
-prompt_id: "issue-7-formal-research-and-simulations"
-prompt_version: "1"
-prompt_sha256: "f85c3c9f818859f0cae74ef9f18de7e2e622c64ec7f9446192228ae5e44afdab"
+prompt_id: "issue-7-chinese-localization"
+prompt_version: "2"
+prompt_sha256: "f306cf1994b0a9c0ec5f6ceb64ad4b81bbc75986c672d7b04485f7319e3bba6f"
+prompt_text: "我希望所有报告和说明性文件都用中文来写"
 system_prompt_sha256: "unknown-not-exposed"
 codebook_version: "not-applicable"
 codebook_sha256: "not-applicable"
 
 input_dataset_id: "ISSUE-7-AND-REPLAY-SOURCE-SET"
-input_dataset_version: "1"
-input_sha256: "fac336642b6e5892d221d610e096f4503c3ac3aabee47bfa948a68c623a5547e"
+input_dataset_version: "2"
+input_sha256: "1d72cc782bc2ef1d304bd90f4d0d1f46f0e9fadcd9b24c57c036c89f7f15cc0d"
 split: "not_applicable"
-output_sha256: "5f8c1076a94712058abd4b62c93dd02d53cc9d7d420240f5480bfac293f4c94e"
+output_sha256: "b0bac83ec6864e5e4b0f2c72050470e98fb2cb38282658928f58e184aaf537a7"
 
 temperature: "not-exposed"
 top_p: "not-exposed"
+seed: "not-supported"
+max_output_tokens: "not-exposed"
+other_parameters: {}
+attempt_count: 2
+retry_policy: "manual-retry-after-apply-patch-validation-failure"
+preprocessing_version: "none"
+postprocessing_version: "chinese-localization-v1-preserve-stable-technical-identifiers"
+human_review_status: "pending"
+human_reviewer: null
+
+data_classification: "synthetic"
+external_transfer_basis: "not-applicable"
+software_environment_or_container_digest: "unknown"
+cost_and_usage: "not-available"
+raw_response_archive: "not-available-from-codex-desktop-direct-file-edit"
 
 verification:
   human_owner: "smiling-wei"
@@ -34,9 +51,13 @@ verification:
   simulation_label: "simulation-only"
   output_bundle_manifest:
     - path: "reports/research/replay-fidelity-metrics-and-engineering-oracles.md"
-      sha256: "ba5c166aa059752a3eda2e7e7a1bb27aea35c19600c42f56ad4873e44888c3f2"
+      sha256: "7432edc3ad2de2c4af32d9bf8fd416f2b2a15ad1065bb46126ffd6b5ffecb937"
     - path: "experiments/specs/EXP-001-replay-oracle-simulations/EXPERIMENT_SPEC.md"
-      sha256: "389d893417a54cc4f5f66e80168c48e58f162ce6dd8dbebb099fd0a6723a2bda"
+      sha256: "6a0bf4bf72441f2080f10913110fb8a9ff9befbb71e06e0b6d68818a6f5c654f"
+    - path: "experiments/specs/README.md"
+      sha256: "d781ac8f69834587874191bb7df3fe628c47fadabf07b28cec76558d0fefc581"
+    - path: "reports/research/README.md"
+      sha256: "8f0da382338ae9ad48a1ae20a65fc3bb619ccd2c4b8b05663436acb1e349e23d"
     - path: "experiments/specs/EXP-001-replay-oracle-simulations/simulation_config.json"
       sha256: "237eb34f2c596f90d8364ab0279375cf5cc2c1e1f4a0a06ace7af0a2db929feb"
     - path: "experiments/specs/EXP-001-replay-oracle-simulations/simulate.py"

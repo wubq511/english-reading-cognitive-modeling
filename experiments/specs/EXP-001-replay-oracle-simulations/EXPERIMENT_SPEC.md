@@ -1,47 +1,47 @@
-# EXP-001 — Replay-fidelity and engineering-oracle simulations
+# EXP-001 — 回放保真度与工程 Oracle 模拟
 
-Status: `READY`
+状态：`READY`
 
-All outputs from this experiment are `simulation-only` engineering evidence.
+本实验的所有输出均属于 `simulation-only` 工程证据。
 
-## Question and claim boundary
+## 问题与声明边界
 
-- Research question: Can a small deterministic DATA-D1 fixture expose event loss, duplication, arrival reordering, final-state-only oracle blind spots, and ambiguity among `wall_time`, `mono_ms`, and session-local `sequence`?
-- Allowed claim: The specified metrics and oracles recover the corruption written into this frozen fixture and demonstrate the stated counterexamples under this data-generating mechanism (DGM).
-- Claims this experiment cannot support: prevalence in real sessions; cross-browser/device performance; construct, ecological, or human validity; universal metric thresholds; production readiness.
-- Falsification / failure condition: any expected injected defect is missed, an un-injected defect is reported, the final-state blind spot is not reproduced, or `sequence` does not recover the frozen within-session order.
+- 研究问题：一个小型确定性 `DATA-D1` 夹具，能否暴露事件丢失、重复、到达乱序、只检查最终状态的 Oracle 盲点，以及 `wall_time`、`mono_ms` 与会话局部 `sequence` 之间的含义混淆？
+- 允许的声明：在本数据生成机制（DGM）下，指定指标和 Oracle 能够恢复写入该冻结夹具的破坏，并展示预先声明的反例。
+- 本实验不能支持的声明：真实会话中的发生率；跨浏览器/设备表现；构念效度、生态效度或真人效度；通用指标阈值；生产就绪状态。
+- 证伪/失败条件：任何预期注入的缺陷未被检出；报告了未注入的缺陷；未能复现最终状态盲点；或 `sequence` 未能恢复冻结的会话内顺序。
 
-## Inputs and gates
+## 输入与门禁
 
-- Data role and dataset IDs: `DATA-D1-REPLAY-ORACLES-V1`, synthetic engineering fixture embedded by the generator and described in `simulation_config.json`.
-- Required source IDs: `REPLAY-001`, `REPLAY-002`, `REPLAY-003`, `REPLAY-004`, `REPLAY-005`, `REPLAY-006`, `REPLAY-007`, `REPLAY-008`, `REPLAY-009`, `REPLAY-010`, `REPLAY-011`.
-- Human-research gate: `N/A`
-- Sensitive-modality gate: `N/A`
-- AI research tooling gate: `G0` (AI-assisted implementation and QA only; the executed generator and all oracles are deterministic non-AI code).
+- 数据角色与数据集 ID：`DATA-D1-REPLAY-ORACLES-V1`；由生成器内嵌、并在 `simulation_config.json` 中描述的合成工程夹具。
+- 必需来源 ID：`REPLAY-001`、`REPLAY-002`、`REPLAY-003`、`REPLAY-004`、`REPLAY-005`、`REPLAY-006`、`REPLAY-007`、`REPLAY-008`、`REPLAY-009`、`REPLAY-010`、`REPLAY-011`。
+- 真人研究门禁：`N/A`
+- 敏感模态门禁：`N/A`
+- AI 研究工具门禁：`G0`（AI 只辅助实现与 QA；实际执行的生成器和全部 Oracle 都是确定性非 AI 代码）。
 
-## ADEMP and frozen comparison
+## ADEMP 与冻结比较
 
-- Aim: exercise engineering failure detection and clarify ordering-field roles.
-- DGM:
-  - Scenario 1 injects exactly one missing event, one duplicate instance, and one adjacent arrival-order inversion into an eight-event canonical trace.
-  - Scenario 2 compares a two-step trace (`A` then `B`) with a one-step trace (`B`) that has the same final state.
-  - Scenario 3 injects a wall-clock rollback, timestamp ties, and transport reordering into one five-event session.
-- Estimands: unique-event coverage; missing and duplicate counts; inversion and adjacent-descent counts; first stream divergence; final/full-state and process-trajectory equivalence; inversion count for each ordering field.
-- Baseline: final-state equality alone and transport arrival order.
-- Candidate methods: stable event identity plus session-local sequence checks; prefix/state-trajectory oracle; wall, monotonic, and sequence ordering comparisons.
-- Split and leakage controls: not applicable; the complete fixture is engineering synthetic data and its injected truth is frozen before execution.
-- Metrics and versions: `replay-fidelity-oracles/v1`, owned by `reports/research/replay-fidelity-metrics-and-engineering-oracles.md`.
-- Compute/time budget: one deterministic standard-library Python run, under one minute.
-- Seeds / repetitions: no randomness and no Monte Carlo estimand; one exact run. Monte Carlo uncertainty is not applicable to a deterministic counterexample fixture.
+- 目标（Aim）：检验工程故障检测，并明确三种排序字段的职责。
+- 数据生成机制（DGM）：
+  - 场景 1 在 8 个事件的标准轨迹中，准确注入 1 个缺失事件、1 个重复实例和 1 个相邻到达逆序。
+  - 场景 2 比较两步轨迹（先 `A` 后 `B`）与具有相同最终状态的一步轨迹（`B`）。
+  - 场景 3 在一个包含 5 个事件的会话中，注入墙上时钟倒退、时间戳相同和传输乱序。
+- 估计目标（Estimands）：唯一事件覆盖率；缺失数与重复数；逆序数与相邻下降数；首个事件流分歧点；最终/完整状态等价和过程轨迹等价；每种排序字段的逆序数。
+- 基线：只比较最终状态，以及使用传输到达顺序。
+- 候选方法：稳定事件身份与会话局部序列检查；前缀/状态轨迹 Oracle；墙上时间、单调时间和序列号排序比较。
+- 切分与泄漏控制：不适用；完整夹具是工程合成数据，其注入真值在执行前已经冻结。
+- 指标与版本：`replay-fidelity-oracles/v1`，由 `reports/research/replay-fidelity-metrics-and-engineering-oracles.md` 统一维护。
+- 计算/时间预算：执行一次只使用 Python 标准库的确定性运行，耗时不超过 1 分钟。
+- 随机种子/重复次数：无随机性，也无 Monte Carlo 估计目标；只执行一次精确运行。Monte Carlo 不确定性不适用于确定性反例夹具。
 
-## Exit gate
+## 退出门禁
 
-- Required checks: unit tests pass; generated assertions all pass; run manifest records source/config/data/output hashes; output is labelled `simulation-only`.
-- Negative and null-result handling: any mismatch remains visible in `results.json`; the run is `INVALID` rather than selectively omitted.
-- Decision rule: mark the run `COMPLETE` only when all predeclared expected outcomes match. This supports implementation selection for BENCH-E0 but does not freeze universal thresholds.
+- 必需检查：单元测试通过；生成断言全部通过；运行清单记录来源/配置/数据/输出哈希；输出标记为 `simulation-only`。
+- 负向与零结果处理：任何不匹配都必须保留在 `results.json` 中；相应运行标为 `INVALID`，不能选择性省略。
+- 决策规则：只有全部预先声明的预期结果都匹配时，才能把运行标为 `COMPLETE`。这可以支持 `BENCH-E0` 的实现选择，但不能冻结通用阈值。
 
-## Provenance
+## 谱系
 
-- Owner: `smiling-wei`
-- Review record: pending teammate review in GitHub issue #7.
-- Supersedes / superseded by: none.
+- 负责人：`smiling-wei`
+- 评审记录：等待队友在 GitHub 议题 #7 中评审。
+- 取代/被取代关系：无。
