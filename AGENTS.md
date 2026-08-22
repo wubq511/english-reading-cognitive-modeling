@@ -41,6 +41,7 @@
 - 新增来源必须同步更新 `sources/catalog.yaml`、`sources/checksums.sha256` 和必要 crosswalk/报告；不猜 DOI、许可或版本。
 - 不移动或改名已有来源，除非同一变更更新 catalog、checksum、crosswalk、链接和验证。
 - `webchat_raw_materials/` 本地冻结且不删除；它是追溯证据，不是研究资产。
+- `members/<member-id>/`：成员个人空间（如 `briefings/` 展示材料）；只呈现、不拥有事实，不是 canonical 研究资产，不作为结论引用源。
 
 ## Member activity logs
 

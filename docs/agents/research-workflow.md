@@ -37,7 +37,7 @@ Phase 是依赖与 exit gate 的导航层，不是可直接领取的工作单元
 | Information | One owner | GitHub Issue role |
 | --- | --- | --- |
 | Wayfinder destination/fog/decision topology | map Issue | canonical map |
-| One decision and its resolution | decision child Issue | canonical answer and discussion |
+| One decision and its resolution | `reports/decisions/wayfinder-<issue>-*.md` (ADR 0008) | discussion/assignment surface; resolution summary links the record |
 | Software/UI instrument behavior contract | implementation spec Issue | canonical spec |
 | Scientific experiment design | `experiments/specs/EXP-*` | publication, owner, review and status index; no duplicate full spec |
 | Hybrid contract | parent spec Issue + linked implementation Issue + `EXP-*` | relationship and collaboration surface |
@@ -52,7 +52,7 @@ An Issue may summarize what its audience needs, but it must link the owner and m
 
 ### Decision closure review
 
-A decision child closes only through a human review path: the Agent presents a review briefing in chat — work list, headline findings, file guide, open residuals; briefing content is owned by `ercm-research` step 9, procedure by `ercm-wayfinder` Invocation B — and obtains the user's sign-off before posting the resolution comment and closing the ticket. A resolution the reviewer of record has not seen is not a resolution, and a ticket closed without review does not count toward the Wayfinder → Spec exit gate. Located-but-unread evidence keeps the ticket open by default; closing earlier is the user's explicit call.
+A decision child closes only through a human review path: the Agent presents a review briefing in chat — work list, headline findings, file guide, open residuals; briefing content is owned by `ercm-research` step 9, procedure by `ercm-wayfinder` Invocation B — and obtains the user's sign-off before landing the decision record under `reports/decisions/`, posting the resolution summary comment linking it, and closing the ticket. A resolution the reviewer of record has not seen is not a resolution, and a ticket closed without review does not count toward the Wayfinder → Spec exit gate. Located-but-unread evidence keeps the ticket open by default; closing earlier is the user's explicit call.
 
 ### Wayfinder → Spec
 
