@@ -23,7 +23,7 @@ Use project terms and evidence states. Historical chats are not a normal plannin
 
 - The map is one GitHub Issue labelled `wayfinder:map`.
 - Every known decision is a GitHub sub-issue with exactly one `wayfinder:<type>` label: `research`, `prototype`, `grilling`, or `task`.
-- The map is an index. A decision answer lives once, in its child ticket resolution; the map contains only a one-line titled link.
+- The map is an index. A decision answer lives once, in its decision record under `reports/decisions/` (ADR 0008); the child ticket carries the discussion plus a resolution summary linking the record, and the map contains only a one-line titled link.
 - Native GitHub sub-issues and dependencies are canonical. Follow `docs/agents/issue-tracker.md`; do not invent another tracker.
 - Refer to issues as linked titles in prose, not bare numbers.
 - Do not execute the destination, create implementation tickets, freeze an experiment, or claim scientific validity.
@@ -101,7 +101,7 @@ The user supplies a map and exactly one child decision ticket.
 3. Assign the named decision ticket to the current GitHub user before work. Never take a ticket assigned to someone else.
 4. Resolve the question using the ticket type and required evidence. Preserve rejected alternatives, uncertainty, null findings, and project claim states.
 5. Present a review briefing in chat and wait for the user's review before any GitHub write: headline findings, how they were produced, which file and section holds which result, and the open residuals. The human research member is the reviewer of record — a resolution they have not seen is not a resolution. For research children the briefing content follows `ercm-research` step 9.
-6. After the user's sign-off, post one resolution comment with: answer; evidence/assets; rejected alternatives; uncertainty/gates; downstream implications.
+6. After the user's sign-off, write the decision record at `reports/decisions/wayfinder-<issue>-<slug>.md` (answer; evidence/assets; rejected alternatives; uncertainty/gates; downstream implications), land it on the default branch through the repository's review path, then post one resolution summary comment linking the record.
 7. Close the child, append only its linked-title gist to `Decisions so far`, and verify the map.
 8. Create newly visible decision tickets and dependency edges; move clarified fog into tickets and remove it from `Not yet specified`.
 9. When the frontier and fog are empty, mark the map ready for `ercm-to-spec`. Do not write the spec in the same invocation.

@@ -8,6 +8,7 @@
 - [`synthesis/`](synthesis/)：恢复后的系统设计、可观测性、测量验证、benchmark 和文献综合。
 - [`protocols/`](protocols/)：AI、真人研究、数据和实验门禁。
 - [`research/`](research/)：回到论文原文、标准和官方来源形成的专项审计。
+- [`decisions/`](decisions/)：Wayfinder 决策票的决议答案记录（canonical owner，ADR 0008）。
 - [`provenance/`](provenance/)：来源权威、冲突、恢复记录、论文 crosswalk。
 - [`literature/a-e/`](literature/a-e/)：A/A+/B/C/D/E 深读报告；旧 basename 与 provenance 缺口由 crosswalk 记录。
 - [`literature/ui-interaction/`](literature/ui-interaction/)：UI 行为论文笔记与稳定编号映射。
