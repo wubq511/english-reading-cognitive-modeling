@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<!--
+  PROTOTYPE — Wayfinder issue #6 (Freeze baseline UI variants and invariant instrument behavior)
+  Question answered: which single-factor answer-UI variants are worth freezing as candidates,
+  and what stays invariant across all of them.
+  Six variants of one reading answer UI, switchable via ?v=0..5 and the floating bottom bar.
+  Throwaway: no persistence, no network, synthetic passage/items. Reactions are decisions, not data.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>PROTOTYPE #6 — baseline answer-UI variants</title>
+<style>
+  :root { --line:#c8c4bc; --ink:#1c1c1a; --mut:#6b675f; --accent:#1f4e79; --panel:#f7f5f1; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:15px/1.55 Georgia, 'Times New Roman', serif; color:var(--ink); background:#fff; }
+  button { font:14px/1.2 system-ui, sans-serif; min-height:28px; min-width:28px; cursor:pointer; }
+  button:focus-visible, input:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
+
+  #proto-badge { position:fixed; top:0; left:0; right:0; z-index:30; background:#7a1f1f; color:#fff;
+    font:12px/1.4 system-ui; padding:4px 10px; text-align:center; }
+  #caption { margin:34px 10px 8px; padding:8px 12px; background:var(--panel); border:1px solid var(--line);
+    font:13px/1.45 system-ui; }
+  #caption b { color:var(--accent); }
+  #caption details { margin-top:6px; }
+  #caption summary { cursor:pointer; color:var(--accent); }
+  #caption ul { margin:6px 0 2px; padding-left:18px; }
+
+  #stage { margin:0 10px 90px; }
+
+  /* V0 reference: dual column */
+  .cols { display:flex; gap:14px; height:calc(100vh - 240px); min-height:420px; }
+  .cols .passage { flex:1.25; }
+  .cols .question { flex:1; }
+  .stack { display:flex; flex-direction:column; gap:14px; }
+  .stack .passage { max-height:42vh; }
+  .side { display:flex; gap:14px; height:calc(100vh - 240px); min-height:420px; }
+  .side nav { display:flex; flex-direction:column; gap:8px; padding:8px; border:1px solid var(--line); background:var(--panel); }
+  .side .passage { flex:1.2; }
+  .side .question { flex:1; }
+
+  .pane { border:1px solid var(--line); background:#fff; display:flex; flex-direction:column; min-height:120px; }
+  .pane h2 { margin:0; padding:6px 10px; font:12px/1.4 system-ui; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--mut); border-bottom:1px solid var(--line); background:var(--panel); display:flex; justify-content:space-between; align-items:center; }
+  .passage-body { overflow-y:auto; padding:10px 16px 24px; flex:1; }
+  .passage-body p { margin:0 0 12px; text-align:justify; }
+  .underline { text-decoration:underline 2px #b3541e; text-underline-offset:3px; cursor:pointer; }
+  #ul-btn { position:absolute; z-index:20; font:12px/1 system-ui; padding:4px 8px; background:var(--accent); color:#fff; border:0; border-radius:3px; }
+
+  .qbar { display:flex; gap:8px; align-items:center; padding:8px 10px; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+  .qbar .nums { display:flex; gap:4px; }
+  .qbar .cur { font-weight:700; }
+  .qbar button[aria-current="true"] { background:var(--accent); color:#fff; }
+  .qbody { padding:10px 16px; overflow-y:auto; flex:1; }
+  .stem { margin:2px 0 10px; }
+  .opt { display:flex; align-items:flex-start; gap:8px; padding:7px 8px; border:1px solid transparent; border-radius:4px; margin-bottom:4px; }
+  .opt:hover { background:#f2efe9; }
+  .opt input { margin-top:4px; width:16px; height:16px; }
+  .opt .txt { flex:1; }
+  .opt .elim { font:11px/1 system-ui; padding:5px 7px; border:1px solid var(--line); background:#fff; border-radius:3px; }
+  .opt.eliminated .txt { text-decoration:line-through; color:var(--mut); }
+  .opt[draggable="true"] { cursor:grab; }
+  #tray { margin:10px 16px; padding:8px; border:2px dashed var(--line); border-radius:6px; min-height:44px; font:13px system-ui; }
+  #tray.over { border-color:var(--accent); background:#eef3f8; }
+  #tray .chip { display:inline-flex; gap:6px; align-items:center; margin:3px 5px 3px 0; padding:4px 8px; background:var(--panel); border:1px solid var(--line); border-radius:12px; }
+  #tray .chip button { min-height:22px; min-width:22px; font-size:11px; padding:0 5px; }
+  .timer { font:700 16px/1 system-ui; color:#7a1f1f; padding:2px 8px; border:1px solid #7a1f1f; border-radius:4px; }
+  .submit-row { padding:10px 16px; border-top:1px solid var(--line); }
+  .pagebar { display:flex; gap:10px; align-items:center; font:13px system-ui; }
+
+  /* switcher + drawer */
+  #switcher { position:fixed; bottom:14px; left:50%; transform:translateX(-50%); z-index:40;
+    display:flex; gap:10px; align-items:center; background:#1c1c1a; color:#fff; border-radius:999px;
+    padding:8px 14px; box-shadow:0 4px 18px rgba(0,0,0,.35); font:13px system-ui; }
+  #switcher button { background:#3a3a36; color:#fff; border:0; border-radius:999px; padding:6px 12px; }
+  #switcher #vlabel { min-width:230px; text-align:center; }
+  #drawer { position:fixed; top:0; right:-520px; width:500px; max-width:95vw; height:100vh; z-index:50;
+    background:#101010; color:#d7f7d7; transition:right .2s; display:flex; flex-direction:column; font:12px/1.5 ui-monospace,monospace; }
+  #drawer.open { right:0; }
+  #drawer header { padding:8px 10px; background:#1c1c1a; color:#fff; font:13px system-ui; display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  #drawer header button { font-size:12px; }
+  #derived { padding:6px 10px; background:#22221f; color:#ffd; border-bottom:1px solid #333; white-space:pre-wrap; }
+  #events { flex:1; overflow-y:auto; padding:8px 10px; white-space:pre-wrap; word-break:break-all; }
+
+  @media (max-width: 880px) {
+    .cols, .side { flex-direction:column; height:auto; }
+    .cols .passage, .side .passage { max-height:40vh; }
+    .side nav { flex-direction:row; }
+  }
+</style>
+</head>
+<body>
+<div id="proto-badge">PROTOTYPE — Wayfinder #6 — synthetic passage/items — NOT a measurement instrument — nothing is stored or transmitted — reactions are decisions, not data</div>
+<div id="caption"></div>
+<div id="stage"></div>
+
+<div id="switcher" aria-label="prototype variant switcher">
+  <button id="prev" title="previous variant (←)">‹</button>
+  <span id="vlabel"></span>
+  <button id="next" title="next variant (→)">›</button>
+  <button id="evbtn">Events (0)</button>
+</div>
+
+<div id="drawer" aria-label="canonical event log">
+  <header>
+    <strong>Raw events — canonical V1 vocabulary, append-only</strong>
+    <button id="dl">Download JSONL</button>
+    <button id="close">Close</button>
+    <span style="flex-basis:100%; color:#9a968e;">Identical emitter in every variant. Variant switching is prototype chrome, not an instrument event; each switch starts a new synthetic session. Absent pointer/scroll events are design-dependent states, not errors.</span>
+  </header>
+  <div id="derived"></div>
+  <div id="events"></div>
+</div>
+
+<script>
+"use strict";
+/* ---------------- content: synthetic, written for this prototype ---------------- */
+const PASSAGE = [
+  ["P1", "In the summer of 2019, the city of Millbrook set out to count its trees. Teams of volunteers walked every street with clipboards and measuring tapes, and by autumn the city had its first complete inventory: just over 14,000 street trees, mapped one by one. The count was meant to guide a new planting program, but it ended up changing how the city thought about shade altogether."],
+  ["P2", "The inventory revealed a pattern that surprised few residents. The older, wealthier districts in the west had three times as many trees per block as the newer eastern districts, where summer pavement temperatures could run six degrees Celsius higher. Officials had assumed the difference was mainly a matter of planting budgets. The maps suggested something else: decades of small decisions about where trees could fit, and who complained when roots cracked a sidewalk."],
+  ["P3", "Encouraged by the attention, the city council proposed planting 5,000 new trees in two years. Dr. Ada Reyes, an urban ecologist advising the program, urged caution. “A tree is not an air conditioner you can simply install,” she told the council. A young street tree, she explained, survives only if the soil is loosened, water arrives during dry weeks, and someone notices when a stake rubs through the bark. Without that care, studies of similar programs found, a third of new street trees die within five years."],
+  ["P4", "The council adjusted. It funded fewer trees but hired watering crews, and it changed how success would be measured: not the number of trees planted, but the share still alive after five summers. By 2024 the survival rate had reached 85 percent, and Millbrook’s program was being cited as a model. Reyes, when asked, said the lesson was less about trees than about counting. “We finally started measuring the thing we actually wanted,” she said. “The canopy takes decades. So does honesty about what planting means.”"]
+];
+const QUESTIONS = [
+  { id:"Q1", stem:"According to the passage, what did the 2019 inventory show about Millbrook’s street trees?",
+    options:["They were mostly planted before 1980.","They were unevenly distributed across districts.","They were healthier in the eastern districts.","They cost more to maintain than expected."], answer:"B" },
+  { id:"Q2", stem:"In paragraph 3, Dr. Reyes says “a tree is not an air conditioner you can simply install.” She means that a tree —",
+    options:["cools the air less effectively than a machine.","is too expensive for most city programs.","provides benefits only if it receives continuing care.","should be planted indoors rather than on streets."], answer:"C" },
+  { id:"Q3", stem:"It can be inferred that the council changed its success measure because the number of trees planted —",
+    options:["had been exaggerated by earlier inventories.","did not show whether the trees were actually surviving.","was too difficult for volunteers to verify.","compared unfavorably with wealthier districts."], answer:"B" },
+  { id:"Q4", stem:"Which statement best expresses the main idea of the passage?",
+    options:["Volunteers can conduct surveys as reliably as professionals.","Eastern districts need trees more urgently than western ones.","A city’s tree program improved once it measured survival rather than promises.","Street trees usually die within five years of planting."], answer:"C" }
+];
+const OPT_IDS = ["A","B","C","D"];
+
+/* ---------------- variants: each differs from V0 by exactly one factor ---------------- */
+const VARIANTS = {
+  0: { name:"Baseline dual-column",
+       factor:"Reference — locked low-interference design (SYSTEM_DESIGN.md §2).",
+       anchors:"SYSTEM_DESIGN.md §2; UIE-15", note:"" },
+  1: { name:"Stacked layout",
+       factor:"Spatial arrangement: side-by-side columns → vertically stacked panes (changes scroll demand and split-attention direction; also the 320px reflow end-state).",
+       anchors:"UIE-24, UIE-34, UIE-37", note:"" },
+  2: { name:"Sidebar navigation",
+       factor:"Navigation scheme: inline Prev/Next + number row → persistent question-list sidebar (changes navigation affordance and access demand).",
+       anchors:"UIE-03, UIE-04, UIE-56", note:"" },
+  3: { name:"Paginated passage",
+       factor:"Passage navigation: continuous independent scroll → discrete pages.",
+       anchors:"UIE-12, UIE-56",
+       note:"Page turns produce NO canonical V1 event — the vocabulary has no passage-page event. Adding one is an instrument-contract change (schema version), not a UI tweak. The visibly thinner log is the trade-off to judge." },
+  4: { name:"Drag-to-eliminate",
+       factor:"Elimination response format: button toggle → drag-to-tray, PLUS the WCAG-mandated single-pointer alternative (the V0 button stays).",
+       anchors:"UIE-01/02, UIE-23, UIE-31/35, UIE-58",
+       note:"SC 2.5.7 forces the alternative path; that path is itself a different response format whose process/product comparability cannot be assumed — it must be measured (UIE-23)." },
+  5: { name:"Visible countdown",
+       factor:"Timing display: no timer → visible countdown (no enforcement in this prototype).",
+       anchors:"UIE-25, UIE-46/50, UIE-61",
+       note:"Whether baseline is timed at all, the limit value, display style, and any 'essential' exception under SC 2.2.1 are construct claims that must be frozen in the instrument contract — this variant exists to make that decision concrete." }
+};
+const INVARIANTS = [
+  "Canonical V1 event vocabulary + fields (wall_time, mono_ms, sequence, type+schema version, semantic object IDs, UI/layout context, producer version); append-only; raw events carry no cognitive labels.",
+  "One question displayed at a time; displayed_question_id is UI context, never evidence about what the student is thinking.",
+  "Free navigation (Prev/Next + direct jump), free answer change, eliminate/restore; no forced order, no per-item submit, no explanation/confidence prompts (COL-L2 stays research-only).",
+  "No correctness feedback, scores, hints, or adaptivity anywhere.",
+  "Passage actions (selection, underline, scroll) are never auto-attributed to the displayed question.",
+  "Missing signals are design-dependent states, not instrument errors: an absent pointer/scroll stream is recorded as such, never imputed.",
+  "Variants may not introduce new event types; needing one means changing the instrument contract and schema version (V3 demonstrates this).",
+  "WCAG 2.2 floor: SC 2.5.7 (any drag has a single-pointer alternative), SC 1.4.10 (reflow without two-dimensional scroll at 320 CSS px equivalent), SC 2.2.1 (any time limit adjustable; 'essential' exception = recorded construct claim), SC 2.5.8 (pointer targets ≥ 24×24 CSS px)."
+];
+
+/* ---------------- state ---------------- */
+let variant = "0";
+let cur = 0;                       // question index
+let answers = {};                  // qid -> option letter
+let eliminated = {};               // qid -> Set(letter)
+let page = 0;                      // V3 passage page
+let uidSeq = 0;
+let log = [];
+let seq = 0;
+let timerLeft = 600, timerId = null;
+
+const $ = s => document.querySelector(s);
+const layoutMode = () => (matchMedia("(max-width: 880px)").matches ? "stacked-reflow" : (variant === "1" ? "stacked" : variant === "2" ? "sidebar" : "dual"));
+
+function emit(type, objects, extra) {
+  log.push({
+    seq: ++seq,
+    wall_time: new Date().toISOString(),
+    mono_ms: +performance.now().toFixed(1),
+    type, schema: "ercm.raw.v1",
+    objects: objects || {},
+    context: Object.assign({ variant: "V" + variant, displayed_question_id: QUESTIONS[cur].id, layout_mode: layoutMode(), passage_page: variant === "3" ? page + 1 : null }, extra || {}),
+    producer: "ui-variant-prototype/0.1.0"
+  });
+  renderLog();
+}
+
+/* ---------------- rendering ---------------- */
+function render() {
+  const v = VARIANTS[variant];
+  $("#caption").innerHTML =
+    "<b>V" + variant + " — " + v.name + "</b><br>Single factor changed vs V0: " + v.factor +
+    "<br>Evidence anchors: " + v.anchors + "." +
+    (v.note ? "<br><b>Note:</b> " + v.note : "") +
+    "<details><summary>Invariant contract (draft) — identical in all variants</summary><ul>" +
+    INVARIANTS.map(i => "<li>" + i + "</li>").join("") + "</ul></details>";
+
+  const cls = variant === "1" ? "stack" : variant === "2" ? "side" : "cols";
+  $("#stage").innerHTML =
+    '<div class="' + cls + '">' +
+    (variant === "2" ? sidebarHtml() : "") +
+    '<section class="pane passage" data-zone="passage"><h2>Passage' + (variant === "3" ? " — paged" : " — scroll") + pageBarHtml() + "</h2>" +
+    '<div class="passage-body" id="pbody">' + passageHtml() + "</div></section>" +
+    '<section class="pane question" data-zone="question"><h2>Question' + (variant === "5" ? ' <span class="timer" id="timer">10:00</span>' : "") + "</h2>" +
+    (variant === "2" ? "" : qbarHtml()) +
+    '<div class="qbody">' + questionHtml() + "</div>" +
+    (variant === "4" ? '<div id="tray" data-zone="tray">Eliminated options — drag here</div>' : "") +
+    '<div class="submit-row"><button id="submit">Submit session</button></div></section></div>';
+
+  wire();
+  $("#vlabel").textContent = "V" + variant + " — " + v.name;
+  if (variant === "5") startTimer();
+}
+
+function pageBarHtml() {
+  if (variant !== "3") return "";
+  return ' <span class="pagebar"><button id="pg-prev" ' + (page === 0 ? "disabled" : "") + ">‹</button> Page " + (page + 1) + " of 2 <button id=\"pg-next\" " + (page === 1 ? "disabled" : "") + ">›</button></span>";
+}
+function passageHtml() {
+  const ps = variant === "3" ? PASSAGE.slice(page * 2, page * 2 + 2) : PASSAGE;
+  return ps.map(p => '<p data-pid="' + p[0] + '">' + p[1] + "</p>").join("");
+}
+function sidebarHtml() {
+  return "<nav>" + QUESTIONS.map((q, i) =>
+    '<button data-nav="' + i + '" aria-current="' + (i === cur) + '">' + q.id + (answers[q.id] ? " ✓" : "") + "</button>").join("") + "</nav>";
+}
+function qbarHtml() {
+  return '<div class="qbar"><button id="q-prev" ' + (cur === 0 ? "disabled" : "") + ">‹ Prev</button>" +
+    '<span class="nums">' + QUESTIONS.map((q, i) => '<button data-nav="' + i + '" class="' + (i === cur ? "cur" : "") + '" aria-current="' + (i === cur) + '">' + (i + 1) + "</button>").join("") + "</span>" +
+    '<button id="q-next" ' + (cur === QUESTIONS.length - 1 ? "disabled" : "") + ">Next ›</button></div>";
+}
+function questionHtml() {
+  const q = QUESTIONS[cur];
+  const elim = eliminated[q.id] || new Set();
+  return '<div class="stem"><b>' + q.id + ".</b> " + q.stem + "</div>" +
+    q.options.map((t, i) => {
+      const L = OPT_IDS[i];
+      return '<label class="opt' + (elim.has(L) ? " eliminated" : "") + '" data-opt="' + L + '"' + (variant === "4" ? ' draggable="true"' : "") + ">" +
+        '<input type="radio" name="' + q.id + '" value="' + L + '"' + (answers[q.id] === L ? " checked" : "") + ">" +
+        '<span class="txt"><b>' + L + ".</b> " + t + "</span>" +
+        '<button type="button" class="elim" data-elim="' + L + '">' + (elim.has(L) ? "restore" : "eliminate") + "</button></label>";
+    }).join("");
+}
+
+/* ---------------- wiring ---------------- */
+function wire() {
+  const q = QUESTIONS[cur];
+  $("#submit").onclick = () => {
+    if (confirm("Submit session? (prototype — nothing is stored or transmitted)"))
+      emit("session_submitted", { answered: Object.keys(answers).length, of: QUESTIONS.length });
+  };
+  const nav = (to, mech) => {
+    if (to === cur) return;
+    emit("question_navigated", { from: q.id, to: QUESTIONS[to].id }, { mechanism: mech });
+    cur = to; render();
+  };
+  document.querySelectorAll("[data-nav]").forEach(b => b.onclick = () => nav(+b.dataset.nav, variant === "2" ? "sidebar" : "number"));
+  const pv = $("#q-prev"), nx = $("#q-next");
+  if (pv) pv.onclick = () => nav(cur - 1, "prev");
+  if (nx) nx.onclick = () => nav(cur + 1, "next");
+
+  document.querySelectorAll('.opt input[type=radio]').forEach(r => r.onchange = () => {
+    const prev = answers[q.id] || null;
+    answers[q.id] = r.value;
+    emit("answer_option_clicked", { question_id: q.id, option_id: r.value, previous_option_id: prev });
+    if (variant === "2") render(); // refresh sidebar status
+  });
+  const toggleElim = (L, mech) => {
+    const set = eliminated[q.id] || (eliminated[q.id] = new Set());
+    const now = !set.has(L);
+    now ? set.add(L) : set.delete(L);
+    emit("option_elimination_toggled", { question_id: q.id, option_id: L, eliminated: now }, { mechanism: mech });
+    render();
+  };
+  document.querySelectorAll("[data-elim]").forEach(b => b.onclick = e => { e.preventDefault(); toggleElim(b.dataset.elim, "button"); });
+
+  if (variant === "4") {
+    document.querySelectorAll(".opt").forEach(row => {
+      row.addEventListener("dragstart", e => e.dataTransfer.setData("text/plain", row.dataset.opt));
+    });
+    const tray = $("#tray");
+    tray.addEventListener("dragover", e => { e.preventDefault(); tray.classList.add("over"); });
+    tray.addEventListener("dragleave", () => tray.classList.remove("over"));
+    tray.addEventListener("drop", e => {
+      e.preventDefault(); tray.classList.remove("over");
+      const L = e.dataTransfer.getData("text/plain");
+      if (OPT_IDS.includes(L) && !(eliminated[q.id] || new Set()).has(L)) toggleElim(L, "drag");
+    });
+    renderTray();
+  }
+
+  if (variant === "3") {
+    const pp = $("#pg-prev"), pn = $("#pg-next");
+    if (pp) pp.onclick = () => { page = 0; render(); }; // no canonical event: deliberate (see caption note)
+    if (pn) pn.onclick = () => { page = 1; render(); };
+  } else {
+    const body = $("#pbody");
+    let scrollT = null;
+    body.addEventListener("scroll", () => {
+      const now = performance.now();
+      if (!body._lastS || now - body._lastS > 200) {
+        body._lastS = now;
+        emit("passage_scroll_sampled", { passage_id: "PASS-1", scroll_top: Math.round(body.scrollTop), max_scroll: Math.round(body.scrollHeight - body.clientHeight) });
+      }
+      clearTimeout(scrollT);
+      scrollT = setTimeout(() => emit("passage_scroll_ended", { passage_id: "PASS-1", scroll_top: Math.round(body.scrollTop), max_scroll: Math.round(body.scrollHeight - body.clientHeight) }), 300);
+    });
+  }
+
+  // text selection + underline (passage actions; never attributed to displayed question)
+  const body = $("#pbody");
+  body.addEventListener("mouseup", () => {
+    const sel = getSelection();
+    const old = $("#ul-btn"); if (old) old.remove();
+    if (!sel || sel.isCollapsed) return;
+    const range = sel.getRangeAt(0);
+    const p = range.startContainer.parentElement && range.startContainer.parentElement.closest("p[data-pid]");
+    if (!p || !body.contains(range.commonAncestorContainer)) return;
+    if (range.startContainer.parentElement.classList && range.startContainer.parentElement.classList.contains("underline")) return;
+    const txt = sel.toString();
+    if (!txt.trim()) return;
+    const r = range.cloneRange(); r.selectNodeContents(p); r.setEnd(range.startContainer, range.startOffset);
+    const start = r.toString().length;
+    emit("text_selection_committed", { passage_id: "PASS-1", paragraph_id: p.dataset.pid, start_offset: start, end_offset: start + txt.length, text_length: txt.length });
+    const rect = range.getBoundingClientRect(), br = body.getBoundingClientRect();
+    const btn = document.createElement("button");
+    btn.id = "ul-btn"; btn.textContent = "Underline";
+    btn.style.left = (rect.left - br.left + body.scrollLeft) + "px";
+    btn.style.top = (rect.bottom - br.top + body.scrollTop + 4) + "px";
+    btn.onclick = () => {
+      const span = document.createElement("span");
+      span.className = "underline"; span.dataset.uid = "U" + (++uidSeq);
+      try { range.surroundContents(span); } catch (e) { btn.remove(); return; } // cross-node selection: prototype limitation
+      emit("underline_created", { annotation_id: span.dataset.uid, passage_id: "PASS-1", paragraph_id: p.dataset.pid, start_offset: start, end_offset: start + txt.length });
+      btn.remove(); sel.removeAllRanges();
+    };
+    body.appendChild(btn);
+  });
+  body.addEventListener("click", e => {
+    const u = e.target.closest(".underline");
+    if (!u) return;
+    const p = u.closest("p[data-pid]");
+    emit("underline_removed", { annotation_id: u.dataset.uid, passage_id: "PASS-1", paragraph_id: p ? p.dataset.pid : null });
+    u.replaceWith(...u.childNodes);
+  });
+}
+
+function renderTray() {
+  const q = QUESTIONS[cur], set = eliminated[q.id] || new Set();
+  const tray = $("#tray");
+  tray.innerHTML = "Eliminated options — drag here ";
+  set.forEach(L => {
+    const chip = document.createElement("span");
+    chip.className = "chip";
+    chip.innerHTML = q.id + "·" + L + ' <button data-restore="' + L + '">restore</button>';
+    tray.appendChild(chip);
+  });
+  tray.querySelectorAll("[data-restore]").forEach(b => b.onclick = () => {
+    eliminated[q.id].delete(b.dataset.restore);
+    emit("option_elimination_toggled", { question_id: q.id, option_id: b.dataset.restore, eliminated: false }, { mechanism: "button" });
+    render();
+  });
+}
+
+function startTimer() {
+  clearInterval(timerId); timerLeft = 600;
+  timerId = setInterval(() => {
+    timerLeft = Math.max(0, timerLeft - 1);
+    const el = $("#timer");
+    if (el) el.textContent = String(Math.floor(timerLeft / 60)).padStart(2, "0") + ":" + String(timerLeft % 60).padStart(2, "0");
+    if (timerLeft === 0) clearInterval(timerId); // no enforcement: policy is an open contract question
+  }, 1000);
+}
+
+/* ---------------- ambient instrumentation: identical across variants ---------------- */
+let lastPointer = 0, idleFired = false;
+document.addEventListener("pointermove", e => {
+  const now = performance.now();
+  if (now - lastPointer < 250) return;
+  lastPointer = now; idleFired = false;
+  const zone = (e.target.closest && e.target.closest("[data-zone]")) ? e.target.closest("[data-zone]").dataset.zone : "other";
+  emit("pointer_sampled", { x: Math.round(e.clientX), y: Math.round(e.clientY), over: zone, active: true });
+});
+setInterval(() => {
+  if (!idleFired && performance.now() - lastPointer > 3000 && lastPointer > 0) {
+    idleFired = true;
+    emit("pointer_sampled", { active: false }); // pointer absence is a normal state (UIE-13), recorded once per idle stretch
+  }
+}, 1000);
+
+let resizeT = null;
+addEventListener("resize", () => {
+  clearTimeout(resizeT);
+  resizeT = setTimeout(() => emit("viewport_changed", { width: innerWidth, height: innerHeight }), 300);
+});
+let lastLayout = null;
+matchMedia("(max-width: 880px)").addEventListener("change", () => {
+  const m = layoutMode();
+  if (lastLayout && lastLayout !== m) emit("layout_changed", { from: lastLayout, to: m, cause: "reflow" });
+  lastLayout = m;
+});
+document.addEventListener("visibilitychange", () =>
+  emit("visibility_changed", { state: document.visibilityState }));
+
+/* ---------------- log drawer + derived state ---------------- */
+function derivedState() {
+  let i = log.length - 1;
+  while (i >= 0 && log[i].type !== "session_started") i--;
+  const ev = log.slice(Math.max(0, i));
+  const ans = {}, elim = {};
+  let scrolls = 0, uls = 0;
+  ev.forEach(e => {
+    if (e.type === "answer_option_clicked") ans[e.objects.question_id] = e.objects.option_id;
+    if (e.type === "option_elimination_toggled") {
+      (elim[e.objects.question_id] = elim[e.objects.question_id] || new Set());
+      e.objects.eliminated ? elim[e.objects.question_id].add(e.objects.option_id) : elim[e.objects.question_id].delete(e.objects.option_id);
+    }
+    if (e.type === "passage_scroll_sampled") scrolls++;
+    if (e.type === "underline_created") uls++;
+    if (e.type === "underline_removed") uls--;
+  });
+  return "Derived state (recomputable from events after last session_started):\n  answers: " +
+    (QUESTIONS.map(q => q.id + "=" + (ans[q.id] || "–") + (elim[q.id] && elim[q.id].size ? " (elim " + [...elim[q.id]].join(",") + ")" : "")).join("  ")) +
+    "\n  scroll samples: " + scrolls + " · open underlines: " + uls + " · events this session: " + ev.length;
+}
+function renderLog() {
+  $("#evbtn").textContent = "Events (" + log.length + ")";
+  $("#derived").textContent = derivedState();
+  const el = $("#events");
+  const atBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 40;
+  el.textContent = log.map(e => JSON.stringify(e)).join("\n");
+  if (atBottom) el.scrollTop = el.scrollHeight;
+}
+
+/* ---------------- switcher ---------------- */
+function setVariant(v) {
+  clearInterval(timerId);
+  variant = String((v + 6) % 6);
+  cur = 0; answers = {}; eliminated = {}; page = 0;
+  const u = new URL(location.href); u.searchParams.set("v", variant);
+  history.replaceState(null, "", u);
+  emit("session_started", { synthetic_content: true });
+  render();
+}
+$("#prev").onclick = () => setVariant(+variant - 1);
+$("#next").onclick = () => setVariant(+variant + 1);
+document.addEventListener("keydown", e => {
+  if (e.target.closest("input, textarea, [contenteditable]")) return;
+  if (e.key === "ArrowLeft") setVariant(+variant - 1);
+  if (e.key === "ArrowRight") setVariant(+variant + 1);
+});
+$("#evbtn").onclick = () => $("#drawer").classList.toggle("open");
+$("#close").onclick = () => $("#drawer").classList.remove("open");
+$("#dl").onclick = () => {
+  const blob = new Blob([log.map(e => JSON.stringify(e)).join("\n")], { type: "application/jsonl" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "prototype-events-V" + variant + "-" + Date.now() + ".jsonl";
+  a.click(); URL.revokeObjectURL(a.href);
+};
+
+/* ---------------- boot ---------------- */
+variant = ["0","1","2","3","4","5"].includes(new URLSearchParams(location.search).get("v")) ? new URLSearchParams(location.search).get("v") : "0";
+lastLayout = layoutMode();
+emit("session_started", { synthetic_content: true });
+render();
+</script>
+</body>
+</html>
