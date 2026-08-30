@@ -65,7 +65,7 @@ Use extensive numbered stories only where they add observable coverage. Do not i
 
 ## Publish and verify
 
-1. Draft all bodies/files before external writes.
+1. Draft all bodies/files before external writes. Every spec Issue body opens with the plain-language `速览` block owned by the Readability contract in `docs/agents/issue-tracker.md`.
 2. Publish Issues using the labels and relationships in `docs/agents/issue-tracker.md`.
 3. Read every Issue back, verify labels/links/parentage, and report the titled URLs plus canonical artifact paths.
 4. Do not apply `ready-for-agent`; a spec must pass review and then be decomposed by `ercm-to-tickets`.

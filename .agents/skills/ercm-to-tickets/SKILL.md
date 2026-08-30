@@ -81,6 +81,8 @@ Wide mechanical refactors may use expand–migrate–contract tickets when no gr
 <explicit boundary>
 ```
 
+The ticket body opens with the plain-language `速览` block owned by the Readability contract in `docs/agents/issue-tracker.md`, above `## Parent contract`. Do not stack namespace IDs in titles.
+
 ## Process
 
 1. Draft dependency-ordered slices and check that every spec acceptance condition is owned exactly once.

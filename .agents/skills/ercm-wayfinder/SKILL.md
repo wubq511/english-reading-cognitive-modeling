@@ -73,6 +73,8 @@ Use project terms and evidence states. Historical chats are not a normal plannin
 <what a sufficient answer must record, including alternatives and uncertainty>
 ```
 
+Every map and decision ticket body opens with the plain-language `速览` block owned by the Readability contract in `docs/agents/issue-tracker.md`, above the template sections. Do not stack namespace IDs in titles, and record stakeholder feedback on the ticket with date and source.
+
 ## Ticket types
 
 - `wayfinder:research` — primary-source or local-evidence investigation that answers a decision. Use `ercm-research`. An LLM summary is not evidence.
