@@ -11,7 +11,7 @@ Phase 0 Item/Data closure
   -> Phase 1 observability specification
   -> Phase 2A measurement infrastructure
   -> Phase 3 development data + benchmark
-  -> Phase 4 implementation + BENCH-E0/E1/E2
+  -> Phase 4 implementation + BENCH-E0 + 内部信号冒烟（2026-08-30 #10 收窄；E1/E2 正式 benchmark 移到 pilot 后）
   -> Phase 5 H2-approved human pilot
   -> Phase 2B item-specific protocol freeze
   -> Phase 6 main human validity study
@@ -90,7 +90,7 @@ UI 不是 Phase 4 的普通前端子任务，而是贯穿 Phase 1/2A/4/5/6 的�
 
 ## Phase 5 / Phase 2B — 先 pilot，再题目专属冻结
 
-Phase 5 只有具备 H2 批准、题目资产和数据管理安排后才能开始。pilot 估计可行性、分布、题目难度、回忆/标注可用性与测量失败。pilot 之后，Phase 2B 冻结题目 EvidenceMaps、探针（probes）、分类体系（taxonomy）、阈值、样本量与主要研究分析。
+Phase 5 只有具备 H2 批准、题目资产和数据管理安排后才能开始。pilot 前最低实现范围为 `BENCH-E0`（日志/重建/回放）加一次内部 H0 数据上的切分/焦点信号存在性冒烟（go/no-go，不冻结模块）；`BENCH-E1/E2` 正式 benchmark 移到 pilot 后用 D3 数据完成（2026-08-30 #10 决定，依据：采集不可逆、派生可重算，切分候选方法需真实数据定胜负）。pilot 估计可行性、分布、题目难度、回忆/标注可用性与测量失败。pilot 之后，Phase 2B 冻结题目 EvidenceMaps、探针（probes）、分类体系（taxonomy）、阈值、样本量与主要研究分析。
 
 ## Phase 6–8 — 效度、学生模型与泛化
 
