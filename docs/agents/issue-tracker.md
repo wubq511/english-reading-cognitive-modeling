@@ -12,6 +12,27 @@ GitHub Issues are the collaboration surface for maps, decisions, specs and evide
 - Never paste secrets, third-party restricted originals, human data or private recovery materials into an Issue.
 - Issue/label publication is authorized when the user explicitly invokes the relevant project workflow. Push/PR/Release remains a separate publication boundary.
 
+## Readability contract (owner)
+
+Issues are read by research members and supervisors who do not track internal namespaces. Every Issue body written by an Agent — map, decision ticket, spec, evidence slice — must open with a plain-language summary block in Chinese before any template section:
+
+```markdown
+## 速览
+
+- 一句话：<这张票做什么，不用任何项目代号>
+- 为什么现在需要：<被它卡住的具体下游>
+- 需要谁拍板：<人、机构或委员会；无决策则写"无需拍板，纯工程/研究执行">
+- 对应研究问题：<负责人 RQ 编号 + 项目 RQ 编号，按 RESEARCH_QUESTIONS.md 的映射>
+```
+
+Rules:
+
+- Titles and the 速览 block must not stack internal namespace IDs (`RQ*`、`BENCH-*`、`DATA-*`、`COL-*`、`SYS-*`、`EXP-*`、`H0–H3`); each ID may appear only with a one-line Chinese gloss at first use in the body.
+- Stakeholder decisions and feedback are recorded on the Issue with date and source (e.g. `负责人 2026-08-30 意见：…`), so later readers can distinguish current direction from older discussion.
+- The technical template sections remain unchanged below the 速览 block; this block summarizes, it does not replace them.
+
+Skills that author Issues (`ercm-wayfinder`, `ercm-to-spec`, `ercm-to-tickets`) follow this contract by reference; they do not restate it.
+
 ## Labels
 
 | Label | Meaning |
