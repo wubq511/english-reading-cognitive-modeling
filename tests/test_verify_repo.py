@@ -3,6 +3,7 @@ import importlib.util
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,6 +22,17 @@ class VerifyRepoTests(unittest.TestCase):
 
     def test_local_markdown_links_resolve(self):
         self.assertEqual([], VERIFY.check_links())
+
+    def test_nested_repository_is_not_scanned(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            kept = root / "kept.md"
+            kept.write_text("kept", encoding="utf-8")
+            nested = root / "separate-site"
+            (nested / ".git").mkdir(parents=True)
+            (nested / "ignored.md").write_text("ignored", encoding="utf-8")
+            with patch.object(VERIFY, "ROOT", root):
+                self.assertEqual([kept], VERIFY.markdown_files())
 
     def test_no_stale_current_paths(self):
         self.assertEqual([], VERIFY.check_stale_current_paths())
@@ -48,6 +60,12 @@ class VerifyRepoTests(unittest.TestCase):
 
     def test_source_hooks_and_bootstrap_are_present(self):
         self.assertEqual([], VERIFY.check_hook_files())
+
+    def test_pre_push_supports_one_shot_public_snapshot_mode(self):
+        hook = (ROOT / ".githooks" / "pre-push").read_text(encoding="utf-8")
+        self.assertIn("ERCM_VERIFY_MODE", hook)
+        self.assertIn("exec scripts/verify --public", hook)
+        self.assertIn("exec scripts/verify", hook)
 
     def test_repository_skill_doctor_passes(self):
         self.assertEqual([], VERIFY.run_skill_doctor())

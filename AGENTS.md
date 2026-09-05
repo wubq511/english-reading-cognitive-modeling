@@ -25,6 +25,7 @@
 - 区分 `observed`、`derived`、`inferred`、`validated` 与 `simulation-only`；模型拟合、预测增益和 synthetic recovery 都不自动构成构念效度。
 - 保留 alternatives、uncertainty、negative/null result 与 `UNKNOWN`；禁止为了完整画像强制推断。
 - 依赖全文的判断必须先通过 `scripts/sources doctor`，引用稳定 source ID 与页码/章节。
+- 文档齐备与 source/rights-record closure 默认是门禁；只有用户明确点名具体任务与跳过项时，才按 `docs/agents/research-workflow.md` 记为 `WAIVED_BY_OWNER` 并缩窄交付与主张范围。豁免不把缺失原件、来源或权利状态变成 `validated`。
 - Raw event append-only；派生资产必须可回到输入、代码、配置和版本。
 
 ## Single-source knowledge maintenance
@@ -82,6 +83,7 @@
 
 - 文档/来源/知识变更：运行 `scripts/verify`。
 - 来源变更：另运行 `scripts/sources inbox`、`scripts/sources doctor` 和 catalog/checksum 检查。
+- 用户明确声明某次提交不需要本地 source/raw 文件时，可仅对该次 push 使用 `ERCM_VERIFY_MODE=public`；仍须运行 `scripts/verify --public`，并记录 `WAIVED_BY_OWNER` 的范围与后果。不得用该选项跳过 catalog/checksum、skill、日志或公开快照完整性检查。
 - 代码变更：运行相关测试与 lint；实验变更验证 manifest、split、metric 与 source lock。
 - Skill/Agent 工作流变更：运行 `scripts/skills doctor`（Windows 用 `.\scripts\skills.cmd doctor`）和对应 eval，再运行 `scripts/verify`。
 - 提交前：确保本次成员日志与改动同时 staged；`pre-commit` 和远端 `verify` 会 fail closed。

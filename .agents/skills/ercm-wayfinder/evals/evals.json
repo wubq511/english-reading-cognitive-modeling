@@ -53,6 +53,18 @@
                 "It names which file and section holds which result so the user can review",
                 "It does not post the resolution comment or close the ticket before the user's sign-off"
             ]
+        },
+        {
+            "id": 6,
+            "prompt": "$ercm-wayfinder #43 — I explicitly waive the missing appendices and source/rights-record closure for this ticket; narrow the result accordingly. Evaluation mode: draft only; do not write to GitHub.",
+            "expected_output": "Records two task-scoped WAIVED_BY_OWNER gates, narrows the deliverable and claims, preserves unknown evidence states, and does not treat either waiver as verification or publication approval.",
+            "expectations": [
+                "It records the exact waived documents and source/provenance/rights-record gate as WAIVED_BY_OWNER",
+                "It states the narrowed deliverable and claim boundary plus downstream reopen conditions",
+                "It keeps missing and unknown evidence states explicit rather than reporting the gates as passed",
+                "It treats public distribution as a separate exact-material approval",
+                "It does not waive human-research, privacy, security, CI, technical acceptance, or human review gates"
+            ]
         }
     ]
 }
