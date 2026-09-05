@@ -49,6 +49,8 @@ def git(root: Path, *args: str, check: bool = True) -> subprocess.CompletedProce
         ["git", *args],
         cwd=root,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         check=False,

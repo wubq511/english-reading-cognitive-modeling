@@ -54,6 +54,21 @@ An Issue may summarize what its audience needs, but it must link the owner and m
 
 A decision child closes only through a human review path: the Agent presents a review briefing in chat — work list, headline findings, file guide, open residuals; briefing content is owned by `ercm-research` step 9, procedure by `ercm-wayfinder` Invocation B — and obtains the user's sign-off before landing the decision record under `reports/decisions/`, posting the resolution summary comment linking it, and closing the ticket. A resolution the reviewer of record has not seen is not a resolution, and a ticket closed without review does not count toward the Wayfinder → Spec exit gate. Located-but-unread evidence keeps the ticket open by default; closing earlier is the user's explicit call.
 
+### Explicit owner waiver
+
+Document completeness and source/provenance/rights-record closure are default gates, not unconditional claims that every task needs every possible document. The user may resolve either gate as `WAIVED_BY_OWNER` for one named task when they explicitly say that the named documents or the named closure record are not required. The Agent must not infer a waiver from urgency, silence, a general request to continue, or permission to publish.
+
+A valid waiver records in the owning decision/spec/ticket:
+
+- the date and current user authority;
+- the exact task, documents and gate being waived;
+- the resulting deliverable and claim boundary;
+- the downstream work that must re-open the gate before relying on the omitted material.
+
+The waiver removes only the named deliverable from that task's exit gate. Missing documents remain missing; unknown source, provenance and rights fields remain `UNKNOWN` or `NOT_RECORDED`; conclusions cannot rely on unread material; and no downstream task may cite the waiver as affirmative evidence. Public distribution still requires the separate, exact-material approval in `AGENTS.md`. Human-research approval, consent, privacy/sensitive-data controls, credentials/security, technical acceptance, CI and required review cannot use this waiver.
+
+For a push that intentionally excludes local raw/PDF files, the one-shot `ERCM_VERIFY_MODE=public` option selects `scripts/verify --public`; it is permitted only after an explicit user statement that those local files are not required for that push. Public mode still validates catalog/checksum structure, skills, logs, links and the tracked public snapshot. It does not change source metadata or establish rights.
+
 ### Wayfinder → Spec
 
 - The destination is a reviewable contract, not “finish Phase N”.

@@ -5,5 +5,19 @@ REPO_ROOT=$(git rev-parse --show-toplevel) || exit 1
 cd "$REPO_ROOT" || exit 1
 
 scripts/bootstrap --check || exit 1
-scripts/bootstrap --hook || exit 1
-exec scripts/verify
+
+VERIFY_MODE=${ERCM_VERIFY_MODE:-local}
+case "$VERIFY_MODE" in
+    local)
+        scripts/bootstrap --hook || exit 1
+        exec scripts/verify
+        ;;
+    public)
+        echo "pre-push: explicit public-snapshot verification; local source files are not required"
+        exec scripts/verify --public
+        ;;
+    *)
+        echo "pre-push: FAIL ERCM_VERIFY_MODE must be local or public" >&2
+        exit 2
+        ;;
+esac

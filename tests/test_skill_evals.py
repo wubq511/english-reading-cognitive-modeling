@@ -15,7 +15,7 @@ SPEC.loader.exec_module(EVALS)
 class SkillEvalTests(unittest.TestCase):
     def test_all_entry_skill_eval_suites_are_valid(self):
         self.assertEqual([], EVALS.validate_all())
-        self.assertEqual(17, EVALS.total_evals())
+        self.assertEqual(18, EVALS.total_evals())
 
     def test_implicit_prompt_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -1,12 +1,12 @@
 # 当前研究状态
 
-> 截至：2026-08-14
+> 截至：2026-09-05
 > 状态类型：canonical 恢复 + 公共协作
 > 运行时实现：未开始
 
 ## 一句话状态
 
-项目已经完成历史研究的本地恢复、文献资产索引和题目无关的测量设计整理，但尚未完成题目资产、实现、开发数据、benchmark 或真人研究；下一项研究工作不是“继续选最终算法”，而是闭合题目/数据资产并把 measurement 设计实现为可回放的工程基线。
+项目已经完成历史研究的本地恢复、文献资产索引和题目无关的测量设计整理，并冻结 5 篇 35 题的候选专家评审包；但专家结果、内部答案/evidence spans、Candidate Bank V1、baseline 实现、开发数据、benchmark 和真人研究仍未完成。下一项研究工作不是“继续选最终算法”，而是评审候选题包并把 measurement 设计实现为可回放的工程基线。
 
 ## 现有且可用
 
@@ -18,6 +18,7 @@
 | A/A+/B/C/D/E 深读 | 44 PDF + 6 份深读报告；均有页码 Evidence Index | 可用，附 provenance 注意事项 |
 | UI 行为文献研究 | 18 PDF + 笔记；旧编号 crosswalk 已建立 | 可用 |
 | UI 作为测量仪器的研究线 | 已确认需要独立考察 UI 对行为、缺失、可观测性和 estimand 的影响；尚无 variant 实验或结果 | **设计要求 / 实验未开始** |
+| 五篇候选专家评审包 | [#3 决策记录](../decisions/wayfinder-3-usable-item-package.md)冻结 5 篇、35 题；公开盲评站不含答案、解析或预设 evidence spans | **候选范围已冻结 / 专家结果与正式准入开放** |
 | 外部来源目录 | 80 PDF/附件，均有稳定 ID、类型、路径与 SHA；论文、标准、题目附件已分层，逐版本权利在已审计范围内记录 | 本地就绪；来源门禁已自动化 |
 | 系统概念架构 | 聊天与 handoff 反复收敛，已恢复到 `synthesis/` | 研究设计，非实现 |
 | Phase 2A measurement/validation | 原始会话明确标记题目无关设计基本关闭 | 设计已关闭；实现开放 |
@@ -27,7 +28,7 @@
 
 | 历史阶段 | 当前证据 | Canonical 状态 |
 | --- | --- | --- |
-| Phase 0 — 题目与数据来源 | 已落地 2026 J. Intell. 正文+S2、Jin & Liu 作者稿、PELDiaG 2021、Ma & Du 2022、TSC 2026 和 Zhang et al. 2024；2022/TSC 的共享测验/Q 矩阵研发谱系已由逐单元格相同的 `20 × 8` 矩阵确认，但完整题本、独立答案键、逐题权利与响应数据关系未闭合，Candidate Bank V1 和 pilot 规则未冻结 | **OPEN / 核心全文已获取，可用题本缺失** |
+| Phase 0 — 题目与数据来源 | 已落地 2026 J. Intell. 正文+S2、Jin & Liu 作者稿、PELDiaG 2021、Ma & Du 2022、TSC 2026 和 Zhang et al. 2024；2022/TSC 的共享测验/Q 矩阵研发谱系已确认；另有 5 篇 35 题候选盲评包与公开专家评审站。但专家结果、内部答案/解析/evidence spans、Candidate Bank V1、pilot subset 和响应数据关系尚未闭合 | **OPEN / 候选评审包已冻结，正式题库未准入** |
 | Phase 1 — 认知目标与可观测性 | 目标矩阵、不可识别边界和 `UNKNOWN` 原则在聊天/handoff 中已形成 | **SOURCE-RECOVERED 设计**；未做真人效度实验 |
 | Phase 2A — 测量与验证框架 | Raw event、replay、recall、annotation、provenance 等题目无关框架被明确标记 `RESEARCH DESIGN CLOSED` | **设计已关闭**；未实现 |
 | Phase 2B — 题目专属实例化 | 明确等待具体题目和 pilot | **未开始 / 受题目 + pilot 阻塞** |
@@ -62,7 +63,7 @@
 
 以下工作由 [Wayfinder 父地图 #2](https://github.com/wubq511/english-reading-cognitive-modeling/issues/2) 协调；Phase 状态仍由本文件维护，Issue 不成为第二份状态真相。
 
-1. 闭合 Phase 0：获取或自建权利清晰的 passage/item 资产、建立独立答案键/evidence spans、Candidate Bank V1 与 pilot 选择协议。
+1. 闭合 Phase 0：对 5 篇 35 题候选包汇总专家 UI 证据评审，建立内部答案/evidence spans，并由 #4 冻结 Candidate Bank V1 与 pilot subset；任务级文档或 source/rights-record closure 只有在负责人点名后才能记为 `WAIVED_BY_OWNER`，且不构成验证通过。
 2. 向作者核对 2021 PELDiaG、2022 CSE、TSC 2026 与 J. Intell. 2026 的题本、答案键、Q 矩阵版本和响应数据谱系；2022 全文获取项已关闭。
 3. 实现 `BENCH-E0`：raw logging、确定性 state reconstruction 与 replay fidelity。
 4. 建立 engineering synthetic；它只验证 schema/invariants，不验证 cognition。

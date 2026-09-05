@@ -58,12 +58,22 @@ REQUIRED_SKELETON = (
 )
 
 
+def repository_files() -> list[Path]:
+    """Return files in this checkout without descending into nested repositories."""
+
+    files: list[Path] = []
+    for directory, dirnames, filenames in os.walk(ROOT):
+        current = Path(directory)
+        if current != ROOT and (current / ".git").exists():
+            dirnames[:] = []
+            continue
+        dirnames[:] = sorted(name for name in dirnames if name not in SKIP_PARTS)
+        files.extend(current / name for name in filenames)
+    return sorted(files)
+
+
 def markdown_files() -> list[Path]:
-    return sorted(
-        path
-        for path in ROOT.rglob("*.md")
-        if not any(part in SKIP_PARTS for part in path.relative_to(ROOT).parts)
-    )
+    return [path for path in repository_files() if path.suffix.lower() == ".md"]
 
 
 def check_links() -> list[str]:
@@ -87,8 +97,8 @@ def check_links() -> list[str]:
 
 def check_stale_current_paths() -> list[str]:
     errors: list[str] = []
-    for path in sorted(ROOT.rglob("*")):
-        if not path.is_file() or path.suffix.lower() in {".pdf"}:
+    for path in repository_files():
+        if path.suffix.lower() in {".pdf"}:
             continue
         rel = path.relative_to(ROOT)
         if any(part in SKIP_PARTS for part in rel.parts) or rel.as_posix() in HISTORY_ALLOWLIST:
@@ -178,7 +188,7 @@ def run_skill_eval_doctor() -> list[str]:
 
 def run_activity_log_check(command: str) -> list[str]:
     result = subprocess.run(
-        [str(ROOT / "scripts" / "logs"), command],
+        [sys.executable, str(ROOT / "scripts" / "logs.py"), command],
         cwd=ROOT,
         text=True,
         stdout=subprocess.PIPE,
@@ -286,7 +296,7 @@ def check_source_crosswalk() -> list[str]:
 
 def run_source_doctor() -> list[str]:
     result = subprocess.run(
-        [str(ROOT / "scripts" / "sources"), "doctor"],
+        [sys.executable, str(ROOT / "scripts" / "sources.py"), "doctor"],
         cwd=ROOT,
         text=True,
         stdout=subprocess.PIPE,
@@ -300,7 +310,7 @@ def run_source_doctor() -> list[str]:
 
 def run_source_catalog_check() -> list[str]:
     result = subprocess.run(
-        [str(ROOT / "scripts" / "sources"), "catalog-check"],
+        [sys.executable, str(ROOT / "scripts" / "sources.py"), "catalog-check"],
         cwd=ROOT,
         text=True,
         stdout=subprocess.PIPE,
