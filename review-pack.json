@@ -1,0 +1,974 @@
+{
+  "package_id": "issue-3-five-passages-v0",
+  "status": "candidate_private_review",
+  "language": "en",
+  "review_language": "zh-CN",
+  "item_count": 35,
+  "count_note": "当前选择为 10 + 5 + 10 + 5 + 5 = 35 题，与先前口头提到的 30 题不一致。",
+  "rights_note": "仅按用户提供的合法来源在本地私有目录整理；未完成公开再分发权审计，不得提交到公开 Git 或公开网站。",
+  "sources": {
+    "source_1_2_docx": {
+      "filename": "第一、二篇 原文原题 来源.docx",
+      "sha256": "2330FB0EB0E450430B893FEC2C4E9E230F4B8A03E9E87F46B89A65658F0A239D"
+    },
+    "analysis_1_2_docx": {
+      "filename": "第一、二篇 解析 来源.docx",
+      "sha256": "5F371D6C2CF23850E200DCE3F336D6D8D4572E73BA5C780F859BD6B418139FC5",
+      "content_mode": "page_images"
+    },
+    "source_3_4_docx": {
+      "filename": "第三、四篇 原文原题 来源.docx",
+      "sha256": "C3BC70DA908686B9A69540EC24C694B967C223AC02516EC56F04B605CCAD1A34"
+    },
+    "analysis_3_4_docx": {
+      "filename": "第三、四篇 解析 来源.docx",
+      "sha256": "E8EC91C6304A734EDFF3D534753EC004E277B6CC17FB23096623A0E20849B813",
+      "content_mode": "page_images"
+    },
+    "source_analysis_5_docx": {
+      "filename": "第五篇 原文原题解析 来源.docx",
+      "sha256": "F50CD1DE4A09934309B901F7D23910884263271B1DACA609BCC5F1E88F368C11"
+    }
+  },
+  "passages": [
+    {
+      "id": "P1",
+      "title": "The Star Quality of New Zealand’s Great Barrier Island",
+      "selection": "Section B",
+      "instructions": "Directions: In this section, you are going to read a passage with ten statements attached to it. Each statement contains information given in one of the paragraphs. Identify the paragraph from which the information is derived. You may choose a paragraph more than once. Each paragraph is marked with a letter. Answer the questions by marking the corresponding letter on Answer Sheet 2.",
+      "paragraphs": [
+        {
+          "id": "A",
+          "text": "I was glad I had such terrible jetlag. Wide awake at 3:30am with our nine-year-old daughter on our lodge balcony, I stared for hours at the most incredible night sky I’ve ever seen before the dawn slowly started to rub out the stars on the horizon and the multiple shooting stars faded away."
+        },
+        {
+          "id": "B",
+          "text": "We were going to my wife’s big family reunion in Auckland, New Zealand, but when we found out that Great Barrier Island, just off the coast, had been recently awarded Dark Sky Sanctuary status—a typically remote area that has an “exceptional or distinguished quality of starry nights”—we thought it would be the perfect place to relax before our busy schedule. It’s the first island and only the fourth location in the world to achieve this status."
+        },
+        {
+          "id": "C",
+          "text": "After a 28-hour flight with two travel-sick children, our hearts sank when we saw the tiny twin engine 10-seater that was to take us the 90km across the Hauraki Gulf to Great Barrier Island. But we needn’t have worried. Whether it was the gravity force of the plane climbing or the noise of the engine, it put our three-year-old daughter instantly to sleep until we bumped down on the grass at Claris Airport. Our first empty sick bag against all the odds...Things were looking up."
+        },
+        {
+          "id": "D",
+          "text": "Great Barrier Island has no public facilities and the 950 people living there (though only about half permanently) rely on solar and wind energy, and bottled gas for cooking. There are no streetlights. There are no cash machines or banks. The police force comprises a husband and wife, and there’s one postman. It’s not just the lack of light but the lack of noise that’s so delightful on this unique and gorgeous scene. It was first discovered by East Polynesians about 700 years ago and the Maori name for the island is Aotea. Captain Cook gave the island its European name, because it acts as a barrier between the Pacific and the Hauraki Gulf."
+        },
+        {
+          "id": "E",
+          "text": "The climate here is subtropical (亚热带的) like Auckland’s. The island boasts a beautiful wilderness with dense forests, glorious, unspoilt sandy beaches and plenty of bays and a few mountainous areas where there are good walking tracks among the wetlands and valleys. You can birdwatch, dive, surf and boat. The best beaches are on the eastern side of the island where the surf is better, too. The sheltered western side is where you’ll find the best diving and boating. Lots of people come here for the fantastic fishing spots around the island. Like a lot of spots in New Zealand, there are whale-watching trips and you might just catch sight of sharks."
+        },
+        {
+          "id": "F",
+          "text": "It’s rare to find an island that really does feel undiscovered—but this is it. When one of my wife’s relations, who comes here regularly, found out that we’d been there, he whispered to us, only half-joking: “Shh—don’t tell anyone!” The locals are a relaxed and friendly bunch—a lot of them told us that it’s like what Waiheke Island (now in effect a suburb of Auckland) was in the 1970s when it was a commune of artists and people wanting to escape the city."
+        },
+        {
+          "id": "G",
+          "text": "Our guide for some of our stay was the inestimable Hilde Hoven, a Dark Sky ambassador who runs Good Heavens with Deborah Kilgallon and Orla Cumisky. They bring their Dobsonian telescope and beanbags (it’s hard work staring up wide-eyed in wonder without neck support), and, our elder daughter was glad to hear, hot chocolate to wherever you are on the island. “It’s odd but when the light readings were done,” said Hilde, explaining how the island was awarded its special status, “they found there was more light pollution on the northern side coming from Fiji, which is about 3,000km away, than Auckland to the south. It’s pretty dark!”"
+        },
+        {
+          "id": "H",
+          "text": "Beginning their astronomical PowerPoint demonstration using a green laser pointer, Hilde and Orla showed us the Messier 4 spherical cluster (星团) with white dwarf stars (白矮星), Saturn and its rings, the Southern Cross and the Milky Way, which stretched across the sky. Our daughter was especially taken with Hilde’s narrating of the Maori myth of Māui’s fish hook to explain the shape of Scorpius. In the fable, Māui hauled the North Island of New Zealand from the bottom of the ocean with his hook."
+        },
+        {
+          "id": "I",
+          "text": "We stayed at Mount St Paul’s Estate, a luxurious lodge run by the friendly Chris and Teara, both from Canada. Teara used to be a chef at the Langham in Auckland and so dinner, eaten around a huge circular table (made of one of the most ancient trees in the world), was every bit as mouth-watering as you’d expect. Eating pancakes on the balcony overlooking the unspoilt white sandy beach was a great way to start the day."
+        },
+        {
+          "id": "J",
+          "text": "Another highlight was an hour-long walk to Kaitoke hot pools in the centre of the island, through wetlands and a forest, where we whiled away a good hour sitting in the pools shaded from the heat by layers of delicate umbrella-like plants."
+        },
+        {
+          "id": "K",
+          "text": "We also loved visiting the potter (陶艺家) Sarah Harrison, who showed us round her studio at Shoal Bay harbour, and her many pots and jugs, plates and bowls and colourful mosaics (马赛克). In her work, she also uses a lot of materials found on the beach. Our elder daughter loved the gorgeous hidden pool at Medlands beach where the water is separated from the sea in a private rock pool. Other high points were the ancient pōhutukawa trees and the incredible views of Okiwi Basin and Whangapoua beach from the top of Windy Canyon, just a 10-minute hike through a narrow valley up some steep wooden steps on the eastern side of the island."
+        },
+        {
+          "id": "L",
+          "text": "Apparently the island council turned down famous musician Paul McCartney’s application to buy a property at Great Barrier Island because of the unwelcome attention he would have brought. You can see why he wanted to come here; equally, the island knows exactly what kind of star watching it prefers."
+        }
+      ],
+      "questions": [
+        {
+          "number": 36,
+          "stem": "The author’s daughter slept throughout the last leg of their flight to Great Barrier Island.",
+          "options": []
+        },
+        {
+          "number": 37,
+          "stem": "The lodge where the author stayed provided very delicious food.",
+          "options": []
+        },
+        {
+          "number": 38,
+          "stem": "Many people are attracted to Great Barrier Island because of the incredible fishing sites around it.",
+          "options": []
+        },
+        {
+          "number": 39,
+          "stem": "A well-known artist failed to purchase a house on Great Barrier Island.",
+          "options": []
+        },
+        {
+          "number": 40,
+          "stem": "Unable to fall asleep after a long flight, the author was pleased to enjoy the most gorgeous view of the night sky in his life.",
+          "options": []
+        },
+        {
+          "number": 41,
+          "stem": "Great Barrier Island is compared to another island which attracted a lot of artists and people who wished to stay away from city life half a century ago.",
+          "options": []
+        },
+        {
+          "number": 42,
+          "stem": "One most memorable part of the author’s visit to Great Barrier Island was a one-hour walk to its centre’s hot springs.",
+          "options": []
+        },
+        {
+          "number": 43,
+          "stem": "Great Barrier Island has officially been recognized for its extraordinary starry nights.",
+          "options": []
+        },
+        {
+          "number": 44,
+          "stem": "Great Barrier Island is not connected to any public power supply lines.",
+          "options": []
+        },
+        {
+          "number": 45,
+          "stem": "It is strange that light pollution on Great Barrier Island mainly comes from a faraway island to the north.",
+          "options": []
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "title": "Passage Two - Cooperation, selfishness, genes and environment",
+      "selection": "Section C, Passage Two",
+      "instructions": "Questions 51 to 55 are based on the following passage.",
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "It is still controversial whether we are fundamentally generous or selfish and whether these tendencies are shaped by our genes or environment."
+        },
+        {
+          "id": "p2",
+          "text": "Some evidence points to humans being born cooperative. At later stages in life we routinely work together to reach goals and help out in times of need."
+        },
+        {
+          "id": "p3",
+          "text": "Yet instances of selfish behavior are also plenty. One recent study tested people’s willingness to set aside selfish interests to reach a greater good. It found that being selfish was more advantageous than cooperating. The benefit may be short-lived, however. Another study showed that players who cooperated did better in the long run."
+        },
+        {
+          "id": "p4",
+          "text": "It seems that human nature supports both pro-social and selfish traits ( 特征). Genetic studies have made some progress toward identifying their biological roots. By comparing identical twins, who share nearly 100 percent of their genes, and non-identical twins, who share about half, researchers have found overwhelming evidence for genetic effects on behaviors. In these twin studies, identical and non-identical twins are asked, for example, to split a sum of money with a peer. Such studies often also rely on careful psychological assessments and DNA analysis."
+        },
+        {
+          "id": "p5",
+          "text": "Other work highlights specific genes as key players. My colleagues and I recently identified a gene linked to altruistic ( 利他的) behavior and found that a particular variant of it was associated with more selfish behavior in preschoolers."
+        },
+        {
+          "id": "p6",
+          "text": "According to evolutionary scientists, cooperative behavior may have evolved first among relatives to promote the continuation of their genetic line. As communities diversified, mutual support could have broadened to include individuals not linked by blood. Another possibility is that humans cooperate to gain some advantage, such as boosting reputation. Finally, evolutionary processes take place at the group level. Groups of highly cooperative individuals have higher chances of survival because they can work together to reach goals that are unattainable to less cooperative groups."
+        },
+        {
+          "id": "p7",
+          "text": "Yet almost no behavior is entirely genetic, even among identical twins. Culture, schooling and parenting are important determinants of cooperation. Thus, the degree to which we act cooperatively or selfishly is unique to each individual and depends on a variety of genetic and environmental influences."
+        }
+      ],
+      "questions": [
+        {
+          "number": 51,
+          "stem": "What is the finding of one recent study about being selfish?",
+          "options": [
+            {
+              "id": "A",
+              "text": "It may bring certain benefits in the short term."
+            },
+            {
+              "id": "B",
+              "text": "It usually yields more disadvantages than advantages."
+            },
+            {
+              "id": "C",
+              "text": "It serves individual interest rather than a collective’s."
+            },
+            {
+              "id": "D",
+              "text": "It may give way to cooperating in the long run."
+            }
+          ]
+        },
+        {
+          "number": 52,
+          "stem": "What have researchers found by studying identical and non-identical twins?",
+          "options": [
+            {
+              "id": "A",
+              "text": "They are overwhelmingly different in the amounts of genes."
+            },
+            {
+              "id": "B",
+              "text": "One’s behavior is largely determined by their genetic traits."
+            },
+            {
+              "id": "C",
+              "text": "One’s biological roots can be identified by their genes."
+            },
+            {
+              "id": "D",
+              "text": "They differ from each other in their behavior patterns."
+            }
+          ]
+        },
+        {
+          "number": 53,
+          "stem": "What did the author and colleagues identify in their recent research?",
+          "options": [
+            {
+              "id": "A",
+              "text": "A gene-related selfish behavior in preschool children."
+            },
+            {
+              "id": "B",
+              "text": "Key factors that determine one’s altruistic behavior."
+            },
+            {
+              "id": "C",
+              "text": "A specific gene associated with altruistic behavior."
+            },
+            {
+              "id": "D",
+              "text": "Roles played by genes in shaping one’s character."
+            }
+          ]
+        },
+        {
+          "number": 54,
+          "stem": "What do we learn from evolutionary scientists about cooperative behavior?",
+          "options": [
+            {
+              "id": "A",
+              "text": "It may have initially originated in individuals linked by blood."
+            },
+            {
+              "id": "B",
+              "text": "It may have caused the diversification of communities."
+            },
+            {
+              "id": "C",
+              "text": "It helps to build relationships among blood-related people."
+            },
+            {
+              "id": "D",
+              "text": "It guarantees the achievement of goals otherwise unattainable."
+            }
+          ]
+        },
+        {
+          "number": 55,
+          "stem": "What can we infer from the last paragraph?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Cooperative behavior is evident among identical twins."
+            },
+            {
+              "id": "B",
+              "text": "One is born either cooperative or non-cooperative."
+            },
+            {
+              "id": "C",
+              "text": "Genes determine one’s tendency to cooperate."
+            },
+            {
+              "id": "D",
+              "text": "Cooperative behavior may be cultivated."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "title": "Meet the “digital nomads” who travel the world in search of fast Wi-Fi",
+      "selection": "Section B",
+      "instructions": "Directions: In this section, you are going to read a passage with ten statements attached to it. Each statement contains information given in one of the paragraphs. Identify the paragraph from which the information is derived. You may choose a paragraph more than once. Each paragraph is marked with a letter. Answer the questions by marking the corresponding letter on Answer Sheet 2.",
+      "paragraphs": [
+        {
+          "id": "A",
+          "text": "For those “citizens of the world”, the office can be anything from a beach hut in Brisbane to a Starbucks in Seattle, thanks to the growing prevalence of remote-based work. But roaming the globe from café to café is not without its challenges."
+        },
+        {
+          "id": "B",
+          "text": "When the average traveller lands in a city like Bangkok, Berlin, or Buenos Aires, their first step might be to drop their bags at their hotel and to log on to TripAdvisor to find out the hours of a popular tourist attraction or the best rooftop bar for happy hour."
+        },
+        {
+          "id": "C",
+          "text": "But people like Pieter Levels are not your average traveller. A Dutch website developer, Levels has been living and working nomadically ( 像游牧民那样) in places like Singapore, Hong Kong, Tokyo and Manila for two years. With just a carry-on backpack, he chooses his location at will, based on a variety of factors—Wi-Fi speed, average temperature, exotic food and cost of living—that have little bearing on the work he actually does."
+        },
+        {
+          "id": "D",
+          "text": "Somewhere in his nomadic journey, Levels noticed that there was a growing need to create an online infrastructure for people like himself. That’s when he created #nomads, a membership-based chat system which runs on the team communication platform known as Slack. The channel allows users to ask people in their current city the types of practical questions that a tourist would unlikely need to ask."
+        },
+        {
+          "id": "E",
+          "text": "Members of the geographically dispersed subculture that Levels is a part of call themselves “digital nomads”. They are borderless, mostly self-employed remote workers who interact with cities in a way that’s entirely different from a tourist, but still doesn’t quite reach the status of resident. A relatively new phenomenon, there are no hard statistics on the prevalence of digital nomads or location independent workers. But thanks to the growing prevalence of freelance (自由职业的) livelihoods, a global sharing economy and numerous digital tools, the number of people who are able to live this life is growing quickly. And in a rapidly urbanising world, where a major city in Asia increasingly offers the same comforts as one in Europe, many people are reaching the realisation they don’t need to stay in one place."
+        },
+        {
+          "id": "F",
+          "text": "So how does a nomad differ from a tourist or resident? In many ways, Levels says, you can think of a digital nomad like a “short-term independent expat (移居国外的人)”. Unlike a resident expat, they don’t work for a large multinational company in an air conditioned office building and they generally enter a country on a tourist visa, simply renewing or moving on when it expires. But unlike a tourist, they don ’t arrive in a foreign city without any responsibilities. Travel isn’t necessarily required for them to do their jobs, but neither is staying in one place."
+        },
+        {
+          "id": "G",
+          "text": "Janet Brent is an independent ebook designer. She says many people she knows assume she travels for work, but in reality her international destinations are largely up to her, and driven by cost. “Contrary to what some people might think, I don’t get paid to travel—I simply choose the lifestyle. Rather than rent in one given city, I choose to travel and do short-term, temporary stays around the world, and my travel decisions are literally based on what makes the most sense financially for me,” Brent said. “It’s completely different from vacationing—you really sink into the city life and get your feet wet in the communities.”"
+        },
+        {
+          "id": "H",
+          "text": "Bryce Adams is another such nomad. He works as a developer for a South African company WooThemes, which has a workforce that’s more than 80% remote-based. Though Adams frequently posts pictures on Instagram of his enviable cooking adventures from Seoul to Bangkok, he says nomad life in foreign cities has its downsides, including finding adequate Wi-Fi for the bandwidth-hungry work his livelihood depends on. Contrary to the perception that he works under a mango tree in a tropical haven, Adams says the reality of this life means that he often ends up staying in more western style places in globalised cities—ones that are sure to have air conditioning and a decent connection—rather than exotic beachfront cafés."
+        },
+        {
+          "id": "I",
+          "text": "“A fellow nomad posted quite a funny but honest message on Twitter a few days ago that stuck with me: ‘It’s funny that digital nomads spend 16 hours to fly to the other side of the world to sit in Starbucks,’ and it’s completely true,” Adams said. “When you’re a digital nomad, you don’t actually have as much freedom as most people think you do. We have deadlines, we all have people relying on us and a mouth (or two) that needs to be fed. It’s nice to be able to work anywhere in the world but it’s not without its challenges.”"
+        },
+        {
+          "id": "J",
+          "text": "But these challenges can often provide an opportunity for nomads to see a side of a city they may not have if they were staying in a luxury hotel for a long weekend. However inconvenient, a trip to a local doctor, immigration office or laundry—or a conflict with a local Airbnb host (the accommodation style of choice for most nomads)—can be far more culturally instructive than a trip to the national museum. And because nomads often have to stay where the strongest internet connection is, they tend to spend more time in developing cities compared to the average tourist, who often flees to more touristy destinations soon after landing at the airport."
+        },
+        {
+          "id": "K",
+          "text": "The nomad life is, by all accounts, one built out of privilege. You not only need a relatively powerful passport that makes tourist visas easy to attain, but also a knowledge economy job and access to the technology and devices that make remote working possible. But nomads like Adams say that while they are aware of this privilege, they believe living this way elevates what they’re able to offer, by giving them a broader perspective on what they’re building, writing, or designing and expanding their world view."
+        },
+        {
+          "id": "L",
+          "text": "“Being able to travel and get around makes it easy to stay inspired,” he added. “I truly believe that it makes me a more sensible human being, as I tend to see and appreciate the creative solutions people come up with in other parts of the world, even though many tend to have far more constraints than we have at home.”"
+        },
+        {
+          "id": "M",
+          "text": "So when you’re constantly on the road and don’t own any property or have a fixed address, which city do you call home? It’s no surprise that many nomads are dual citizens or “third culture kids,” who have grown up with a notion of identity that’s not tied to nationalism or staying in one place. Levels says that the nomad life has not only changed his notions of citizenship, but the people he chooses to spend time with as well. “Saying you’re a ‘citizen of the world’ is a super cliché, right? But it’s becoming quite true,” Levels said. “This global awareness has been the reason I started Nomad List and it’s affected who my friends are. It’s normal to have dinner now and sit with a Korean girl, a British-Singaporean guy, a Mexican girl and a Nigerian guy. As much as that sounds like a politically correct TV advertisement, it’s great that that’s the time we’re in now.”"
+        }
+      ],
+      "questions": [
+        {
+          "number": 36,
+          "stem": "Pieter Levels created a chat system to satisfy the need of digital nomads for information tourists normally don’t seek.",
+          "options": []
+        },
+        {
+          "number": 37,
+          "stem": "It is said that digital nomads do not enjoy as much freedom as most people suppose.",
+          "options": []
+        },
+        {
+          "number": 38,
+          "stem": "Different from tourists, digital nomads travel to foreign places with work to do.",
+          "options": []
+        },
+        {
+          "number": 39,
+          "stem": "Digital nomads believe their lifestyle enables them to broaden their vision and do a better job.",
+          "options": []
+        },
+        {
+          "number": 40,
+          "stem": "The first thing a typical traveller possibly does after arriving at a city is search for information online about its popular tourist attractions.",
+          "options": []
+        },
+        {
+          "number": 41,
+          "stem": "One digital nomad thinks their life in foreign cities has its disadvantages.",
+          "options": []
+        },
+        {
+          "number": 42,
+          "stem": "Travelling around helps to keep digital nomads inspired.",
+          "options": []
+        },
+        {
+          "number": 43,
+          "stem": "The number of self-employed remote workers living a digital nomad’s life is fast increasing.",
+          "options": []
+        },
+        {
+          "number": 44,
+          "stem": "Pieter Levels says his life as a nomad has transformed not only his idea of citizenship, but his choice of companions.",
+          "options": []
+        },
+        {
+          "number": 45,
+          "stem": "Interactions with local people and institutions provide nomads with far more cultural information than a visit to the national museum.",
+          "options": []
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "title": "Passage Two - Corporate profit-shifting to tax havens",
+      "selection": "Section C, Passage Two",
+      "instructions": "Questions 51 to 55 are based on the following passage.",
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "About a decade ago, the G-20, a forum of the world’s biggest economies, agreed to crack down on multinational corporations’ abusive use of tax havens. This resulted in a plan that aimed to curb practices that shielded a large chunk of corporate profits from tax authorities."
+        },
+        {
+          "id": "p2",
+          "text": "But, instead of reining in the use of tax havens—countries such as the Bahamas and Cayman Islands with very low or no effective tax rates—the problem has only gotten worse."
+        },
+        {
+          "id": "p3",
+          "text": "In a new study, we measured the excessive profits reported in tax havens that cannot be explained by ordinary economic activity such as employees, factories and research in that country. Our findings show a striking pattern of artificial shifting of paper profits to tax havens by corporations, which has been relentless since the 1980s."
+        },
+        {
+          "id": "p4",
+          "text": "We found that the world’s biggest multinational businesses shifted 37% of the profits—$969 billion—they earned in other countries to tax havens in 2019. The figure was less than 2% in the 1970s. The main reasons for the large increase were the growth of the tax avoidance industry in the 1980s and U.S. policies that made it easier to shift profits from high-tax countries to tax havens."
+        },
+        {
+          "id": "p5",
+          "text": "We estimate that the amount of corporate taxes lost as a result reached 10% of total corporate revenue in 2019, up from less than 0.1% in the 1970s. In 2019, the total government tax loss globally was $250 billion."
+        },
+        {
+          "id": "p6",
+          "text": "U.S. multinational corporations alone accounted for about half of that, followed by the U.K. and Germany."
+        },
+        {
+          "id": "p7",
+          "text": "How do policymakers fix this? So far, the world as a whole has been trying to solve this problem by cutting or scrapping corporate taxes in a very gradual way. In the past 40 years, the global effective corporate tax rate has fallen from 23% to 17%. At the same time, governments have relied more heavily on consumption taxes."
+        },
+        {
+          "id": "p8",
+          "text": "But the root cause of profit-shifting is the incentives involved, such as generous or lenient corporate tax rates in other countries. If countries could agree on a global minimum corporate tax rate of, say, 20%, the problem of profit-shifting would largely disappear, as tax havens would simply cease to exist."
+        },
+        {
+          "id": "p9",
+          "text": "This type of mechanism is exactly what more than 130 countries signed onto in 2021, with implementation of a 15% minimum tax set to begin soon in the EU, U.K., Japan, Indonesia and many other countries. The U.S. has notably not been able to pass this legislation."
+        },
+        {
+          "id": "p10",
+          "text": "Our research suggests implementing this type of tax reform is necessary in reversing the shift of ever-greater amounts of corporate profits to tax havens—instead of being taxed by the governments where they operate and create value."
+        }
+      ],
+      "questions": [
+        {
+          "number": 51,
+          "stem": "What do we learn about the G-20’s agreement on curbing the use of tax havens?",
+          "options": [
+            {
+              "id": "A",
+              "text": "It has aggravated the problem in non-G-20 countries."
+            },
+            {
+              "id": "B",
+              "text": "It has taken a toll on countries such as Cayman Islands."
+            },
+            {
+              "id": "C",
+              "text": "It has failed to achieve the expected outcome."
+            },
+            {
+              "id": "D",
+              "text": "It has failed to result in any long-term plan."
+            }
+          ]
+        },
+        {
+          "number": 52,
+          "stem": "What mainly accounted for the large increase in the world’s biggest multinational corporations’ shift of profits to tax havens?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Fluctuating tax rates globally."
+            },
+            {
+              "id": "B",
+              "text": "Lenient policies of the U.S."
+            },
+            {
+              "id": "C",
+              "text": "Heavy taxes imposed on them."
+            },
+            {
+              "id": "D",
+              "text": "Rapid growth of their business."
+            }
+          ]
+        },
+        {
+          "number": 53,
+          "stem": "What have policymakers been doing to prevent government tax loss?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Reducing corporate taxes step by step."
+            },
+            {
+              "id": "B",
+              "text": "Scrapping consumption taxes gradually."
+            },
+            {
+              "id": "C",
+              "text": "Making joint efforts to levy corporate taxes."
+            },
+            {
+              "id": "D",
+              "text": "Adjusting global effective corporate tax rates."
+            }
+          ]
+        },
+        {
+          "number": 54,
+          "stem": "What does the author say would bring tax havens to an end?",
+          "options": [
+            {
+              "id": "A",
+              "text": "The alignment of corporate taxes with consumption taxes."
+            },
+            {
+              "id": "B",
+              "text": "The implementation of generous tax rates in all countries."
+            },
+            {
+              "id": "C",
+              "text": "The agreement on the root cause of global profit-shifting."
+            },
+            {
+              "id": "D",
+              "text": "The imposition of a global minimum corporate tax rate."
+            }
+          ]
+        },
+        {
+          "number": 55,
+          "stem": "What could be expected of the global problem of profit-shifting in the near future?",
+          "options": [
+            {
+              "id": "A",
+              "text": "It would be solved with more countries cutting tax rates."
+            },
+            {
+              "id": "B",
+              "text": "It would end with governments’ awareness of its severity."
+            },
+            {
+              "id": "C",
+              "text": "It would cease to exist with worldwide corporate support."
+            },
+            {
+              "id": "D",
+              "text": "It would continue because of noncooperation from the U.S."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P5",
+      "title": "Reading Passage 1 - Children’s ideas about rainforests",
+      "selection": "READING PASSAGE 1, Questions 9-13",
+      "instructions": "Question 9-13 The box below gives a list of responses A-P to the questionnaire discussed in Reading Passage 1. Answer the following questions by choosing the correct responses A-P. Write your answers in boxes 9-13 on your answer sheet.",
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "Adults and children are frequently confronted with statements about the alarming rat of loss of tropical rainforests. For example, one graphic illustration to which children might readily relate is the estimate that rainforests are being destroyed at a rate equivalent to one thousand football fields every forty minutes – about the duration of a normal classroom period. In the face of the frequent and often vivid media coverage, it is likely that children will have formed ideas about rainforests – what and where they are, why they are important, what endangers them – independent of any formal tuition. It is also possible that some of these ideas will be mistaken."
+        },
+        {
+          "id": "p2",
+          "text": "Many studies have shown that children harbor misconceptions about ‘pure’, curriculum science. These misconceptions do not remain isolated but become incorporated into a multifaceted, but organized, conceptual framework, making it and the component ideas, some of which are erroneous, more robust but also accessible to modification. These ideas may be developed by children absorbing ideas through the popular media. Sometimes this information may be erroneous. It seems schools may not be providing an opportunity for children to re-express their ideas and so have them tested and refined by teachers and their peers."
+        },
+        {
+          "id": "p3",
+          "text": "Despite the extensive coverage in the popular media of the destruction of rainforests, little formal information is available about children’s ideas in this area, the aim of the present study is to start to provide such information, to help teachers design their educational strategies to build upon correct ideas and to displace misconceptions and to plan programs in environmental studies in their schools."
+        },
+        {
+          "id": "p4",
+          "text": "The study surveys children’s scientific knowledge and attitudes to rainforests."
+        },
+        {
+          "id": "p5",
+          "text": "Secondary school children were asked to complete a questionnaire containing five open-form questions. The most frequent responses to the first question were descriptions which are self-evident from the term ‘rainforest’. Some children described them as damp, wet or hot. The second question concerned the geographical location of rainforests. The commonest responses were continents or countries: Africa (given by 43% of children), South America (30%), Brazil (25%). Some children also gave more general locations, such as being near the Equator."
+        },
+        {
+          "id": "p6",
+          "text": "Responses to question three concerned the importance of rainforests. The dominant idea, raised by 64% of the pupils, was that rainforests provide animals with habitats. Fewer students responded that rainforests provide plant habitats, and even fewer (60%) raised the idea of rainforest as animal habitats."
+        },
+        {
+          "id": "p7",
+          "text": "Similarly, but at a lower level, more girls (13%) than boys (5%) said that rainforests provided human habitats. These observations are generally consistent with our previous studied of pupils’ views about the use and conservation of rainforests, in which girls were shown to be more sympathetic to animals and expressed views which seem to place an intrinsic value on non-human animal life."
+        },
+        {
+          "id": "p8",
+          "text": "The fourth question concerned the causes of the destruction of rainforests. Perhaps encouragingly, more than half of the pupil (59%) identified that it is human activities which are destroying rainforests, some personalizing the responsibility by the use of terms such as ‘we are’. About 18% of the pupils referred specifically to logging activity."
+        },
+        {
+          "id": "p9",
+          "text": "One misconception, expressed by some 1) % of the pupils, was that acid rain is responsible for rainforest destruction; a similar proportion said that pollution is destroying rainforests. Here, children are confusing rainforest destruction with damage to the forests of Western Europe by these factors. While two fifths of the students provided the information that the rainforests provide oxygen, in some cases this response also embraced the misconception that rainforest destruction would reduce atmospheric oxygen, making the atmosphere incompatible with human life on Earth."
+        },
+        {
+          "id": "p10",
+          "text": "In answer to the final question about the importance of rainforest conservation, the majority of children simply said that we need rainforests to survive. Only a few of the pupils (6%) mentioned that rainforest destruction may contribute to global warming. This is surprising considering the high level of media coverage on this issue. Some children expressed the idea that the conservation of rainforests is not important."
+        },
+        {
+          "id": "p11",
+          "text": "The results of this study suggest that certain ideas predominate in the thinking of children about rainforests. Pupils’ responses indicate some misconceptions in basic scientific knowledge of rainforests’ ecosystems such as their ideas about rainforests as habitats for animals, plants and humans and the relationship between climatic change and destruction of rainforests."
+        },
+        {
+          "id": "p12",
+          "text": "Pupils did not volunteer ideas that suggested that they appreciated the complexity of causes of rainforest destruction. In other words, they gave no indication of an appreciation of either the rage of ways in which rainforests are important or the complex social, economic and political factors which drive the activities which are destroying the rainforests. One encouragement is that the results of similar studies about other environmental issues suggest that older children seem to acquire the ability to appreciate value and evaluate conflicting views. Environmental education offers an arena in which these sills can be developed, which is essential fore these children as future decision –makers."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "stem": "What was the children’s most frequent response when asked where the rainforests were?",
+          "options": [
+            {
+              "id": "A",
+              "text": "There is a complicated combination of reasons for the loss of the rainforests."
+            },
+            {
+              "id": "B",
+              "text": "The rainforests are being destroyed by the same things that are destroying the forests of Western Europe."
+            },
+            {
+              "id": "C",
+              "text": "Rainforests are located near the Equator."
+            },
+            {
+              "id": "D",
+              "text": "Brazil is home to the rainforests."
+            },
+            {
+              "id": "E",
+              "text": "Without rainforests some animals would have nowhere to live."
+            },
+            {
+              "id": "F",
+              "text": "Rainforests are important habitats for a lot of plants."
+            },
+            {
+              "id": "G",
+              "text": "People are responsible for the loss of the rainforests."
+            },
+            {
+              "id": "H",
+              "text": "The rainforests are a source of oxygen."
+            },
+            {
+              "id": "I",
+              "text": "Rainforests are of consequence for a number of different reasons."
+            },
+            {
+              "id": "J",
+              "text": "As the rainforests are destroyed, the world gets warmer."
+            },
+            {
+              "id": "K",
+              "text": "Without rainforests there would not be enough oxygen in the air."
+            },
+            {
+              "id": "L",
+              "text": "There are people for whom the rainforests are home."
+            },
+            {
+              "id": "M",
+              "text": "Rainforests are found in Africa."
+            },
+            {
+              "id": "N",
+              "text": "Rainforests are not really important to human life."
+            },
+            {
+              "id": "O",
+              "text": "The destruction of the rainforests is the direct result of logging activity."
+            },
+            {
+              "id": "P",
+              "text": "Humans depend on the rainforests for their continuing existence."
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "stem": "What was the most common response to the question about the importance of the rainforests?",
+          "options": [
+            {
+              "id": "A",
+              "text": "There is a complicated combination of reasons for the loss of the rainforests."
+            },
+            {
+              "id": "B",
+              "text": "The rainforests are being destroyed by the same things that are destroying the forests of Western Europe."
+            },
+            {
+              "id": "C",
+              "text": "Rainforests are located near the Equator."
+            },
+            {
+              "id": "D",
+              "text": "Brazil is home to the rainforests."
+            },
+            {
+              "id": "E",
+              "text": "Without rainforests some animals would have nowhere to live."
+            },
+            {
+              "id": "F",
+              "text": "Rainforests are important habitats for a lot of plants."
+            },
+            {
+              "id": "G",
+              "text": "People are responsible for the loss of the rainforests."
+            },
+            {
+              "id": "H",
+              "text": "The rainforests are a source of oxygen."
+            },
+            {
+              "id": "I",
+              "text": "Rainforests are of consequence for a number of different reasons."
+            },
+            {
+              "id": "J",
+              "text": "As the rainforests are destroyed, the world gets warmer."
+            },
+            {
+              "id": "K",
+              "text": "Without rainforests there would not be enough oxygen in the air."
+            },
+            {
+              "id": "L",
+              "text": "There are people for whom the rainforests are home."
+            },
+            {
+              "id": "M",
+              "text": "Rainforests are found in Africa."
+            },
+            {
+              "id": "N",
+              "text": "Rainforests are not really important to human life."
+            },
+            {
+              "id": "O",
+              "text": "The destruction of the rainforests is the direct result of logging activity."
+            },
+            {
+              "id": "P",
+              "text": "Humans depend on the rainforests for their continuing existence."
+            }
+          ]
+        },
+        {
+          "number": 11,
+          "stem": "What did most children give as the reason for the loss of the rainforests?",
+          "options": [
+            {
+              "id": "A",
+              "text": "There is a complicated combination of reasons for the loss of the rainforests."
+            },
+            {
+              "id": "B",
+              "text": "The rainforests are being destroyed by the same things that are destroying the forests of Western Europe."
+            },
+            {
+              "id": "C",
+              "text": "Rainforests are located near the Equator."
+            },
+            {
+              "id": "D",
+              "text": "Brazil is home to the rainforests."
+            },
+            {
+              "id": "E",
+              "text": "Without rainforests some animals would have nowhere to live."
+            },
+            {
+              "id": "F",
+              "text": "Rainforests are important habitats for a lot of plants."
+            },
+            {
+              "id": "G",
+              "text": "People are responsible for the loss of the rainforests."
+            },
+            {
+              "id": "H",
+              "text": "The rainforests are a source of oxygen."
+            },
+            {
+              "id": "I",
+              "text": "Rainforests are of consequence for a number of different reasons."
+            },
+            {
+              "id": "J",
+              "text": "As the rainforests are destroyed, the world gets warmer."
+            },
+            {
+              "id": "K",
+              "text": "Without rainforests there would not be enough oxygen in the air."
+            },
+            {
+              "id": "L",
+              "text": "There are people for whom the rainforests are home."
+            },
+            {
+              "id": "M",
+              "text": "Rainforests are found in Africa."
+            },
+            {
+              "id": "N",
+              "text": "Rainforests are not really important to human life."
+            },
+            {
+              "id": "O",
+              "text": "The destruction of the rainforests is the direct result of logging activity."
+            },
+            {
+              "id": "P",
+              "text": "Humans depend on the rainforests for their continuing existence."
+            }
+          ]
+        },
+        {
+          "number": 12,
+          "stem": "Why did most children think it important for the rainforests to be protected?",
+          "options": [
+            {
+              "id": "A",
+              "text": "There is a complicated combination of reasons for the loss of the rainforests."
+            },
+            {
+              "id": "B",
+              "text": "The rainforests are being destroyed by the same things that are destroying the forests of Western Europe."
+            },
+            {
+              "id": "C",
+              "text": "Rainforests are located near the Equator."
+            },
+            {
+              "id": "D",
+              "text": "Brazil is home to the rainforests."
+            },
+            {
+              "id": "E",
+              "text": "Without rainforests some animals would have nowhere to live."
+            },
+            {
+              "id": "F",
+              "text": "Rainforests are important habitats for a lot of plants."
+            },
+            {
+              "id": "G",
+              "text": "People are responsible for the loss of the rainforests."
+            },
+            {
+              "id": "H",
+              "text": "The rainforests are a source of oxygen."
+            },
+            {
+              "id": "I",
+              "text": "Rainforests are of consequence for a number of different reasons."
+            },
+            {
+              "id": "J",
+              "text": "As the rainforests are destroyed, the world gets warmer."
+            },
+            {
+              "id": "K",
+              "text": "Without rainforests there would not be enough oxygen in the air."
+            },
+            {
+              "id": "L",
+              "text": "There are people for whom the rainforests are home."
+            },
+            {
+              "id": "M",
+              "text": "Rainforests are found in Africa."
+            },
+            {
+              "id": "N",
+              "text": "Rainforests are not really important to human life."
+            },
+            {
+              "id": "O",
+              "text": "The destruction of the rainforests is the direct result of logging activity."
+            },
+            {
+              "id": "P",
+              "text": "Humans depend on the rainforests for their continuing existence."
+            }
+          ]
+        },
+        {
+          "number": 13,
+          "stem": "Which of the responses is cited as unexpectedly uncommon, given the amount of time spent on the issue by the newspapers and television?",
+          "options": [
+            {
+              "id": "A",
+              "text": "There is a complicated combination of reasons for the loss of the rainforests."
+            },
+            {
+              "id": "B",
+              "text": "The rainforests are being destroyed by the same things that are destroying the forests of Western Europe."
+            },
+            {
+              "id": "C",
+              "text": "Rainforests are located near the Equator."
+            },
+            {
+              "id": "D",
+              "text": "Brazil is home to the rainforests."
+            },
+            {
+              "id": "E",
+              "text": "Without rainforests some animals would have nowhere to live."
+            },
+            {
+              "id": "F",
+              "text": "Rainforests are important habitats for a lot of plants."
+            },
+            {
+              "id": "G",
+              "text": "People are responsible for the loss of the rainforests."
+            },
+            {
+              "id": "H",
+              "text": "The rainforests are a source of oxygen."
+            },
+            {
+              "id": "I",
+              "text": "Rainforests are of consequence for a number of different reasons."
+            },
+            {
+              "id": "J",
+              "text": "As the rainforests are destroyed, the world gets warmer."
+            },
+            {
+              "id": "K",
+              "text": "Without rainforests there would not be enough oxygen in the air."
+            },
+            {
+              "id": "L",
+              "text": "There are people for whom the rainforests are home."
+            },
+            {
+              "id": "M",
+              "text": "Rainforests are found in Africa."
+            },
+            {
+              "id": "N",
+              "text": "Rainforests are not really important to human life."
+            },
+            {
+              "id": "O",
+              "text": "The destruction of the rainforests is the direct result of logging activity."
+            },
+            {
+              "id": "P",
+              "text": "Humans depend on the rainforests for their continuing existence."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "answer_key_included": false,
+  "artifact_status": "BLIND_REVIEW_PACKAGE",
+  "title": "ERCM 五篇文章独立专家评审"
+}
